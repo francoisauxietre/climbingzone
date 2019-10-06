@@ -1,0 +1,40 @@
+<p>climbers works!</p>
+<h3>{{climber.firstName}}</h3><h2>{{climber.name}}</h2>
+
+<div><span>id: </span>{{climber.id}}</div>
+<div><span>name: </span>{{climber.name}}</div>
+<div>
+  <label>name:
+    <input [(ngModel)]="climber.name" placeholder="name"/>
+  </label>
+</div>
+<div>
+  <label>fisrt Name:
+    <input [(ngModel)]="climber.firstName" placeholder="firstName"/>
+  </label>
+</div>
+<div><label for="start">Birth:</label>
+
+  <input type="date" id="start" name="trip-start"
+         value="2018-07-22"
+         min="1950-01-01" max="2200-12-31"></div>
+<h2>My Heroes</h2>
+<ul class="climbers">
+  <li *ngFor="let climber of climbers"
+      [class.selected]="climber === selectedClimber"
+      (click)="onSelect(climber)">
+    <span class="badge">{{climber.id}}</span> {{climber.name}}
+  </li>
+</ul>
+
+<div *ngIf="selectedClimber">
+
+  <h2>{{selectedClimber.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedClimber.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedClimber.name" placeholder="name"/>
+    </label>
+  </div>
+
+</div>

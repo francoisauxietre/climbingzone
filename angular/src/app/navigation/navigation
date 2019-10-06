@@ -1,0 +1,10 @@
+import {ViewChild} from '@angular/core';
+import {MatMenuTrigger} from '@angular/material';
+
+class Navigation {
+  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
+
+  someMethod() {
+    this.trigger.openMenu();
+  }
+}
