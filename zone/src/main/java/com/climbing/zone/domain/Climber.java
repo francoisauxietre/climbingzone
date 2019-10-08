@@ -34,10 +34,6 @@ public class Climber {
     String info = "";
 
 
-    public Climber(Logger logger) {
-        this.logger = logger;
-    }
-
     // constructeur vide par default obligatoire
     public Climber() {
         java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());

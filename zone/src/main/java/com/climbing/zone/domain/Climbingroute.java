@@ -12,9 +12,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Entity
-public class ClimbingRoute {
+public class Climbingroute {
 
-    Logger logger = LoggerFactory.getLogger(ClimbingRoute.class);
+    Logger logger = LoggerFactory.getLogger(Climbingroute.class);
 
     Long Id;
     String name;
@@ -32,13 +32,13 @@ public class ClimbingRoute {
     String info = "";
 
 
-    public ClimbingRoute() {
+    public Climbingroute() {
         java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         this.createAt = date;
         logger.info("creation d'une nuovelle voie vide");
     }
 
-    public ClimbingRoute(String name, Place place, RouteType routeType, ZoneType zoneType, float latitude, float longitude) {
+    public Climbingroute(String name, Place place, RouteType routeType, ZoneType zoneType, float latitude, float longitude) {
         this.name = name;
         this.place = place;
         this.routeType = routeType;

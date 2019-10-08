@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ClimbingRouteService {
+public class ClimbingrouteService {
 
     Logger logger = LoggerFactory.getLogger(Climber.class);
 
@@ -26,10 +26,12 @@ public class ClimbingRouteService {
         return climbingrouteRepository.findAll();
     }
 
-    public void deleteClimbingRouteById(Long id){
+    public void deleteClimbingrouteById(Long id){
         climbingrouteRepository.deleteClimbingrouteById(id);
 
     }
+
+
     public Long addRouteClimbing(String name, Place place, RouteType routeType, ZoneType zoneType, float latitude, float longitude){
         Climbingroute climbingRoute = new Climbingroute();
 
@@ -43,25 +45,22 @@ public class ClimbingRouteService {
         return climbingRoute.getId();
     }
 
-    public void deleteClimbingrouteByName(String name){
-        climbingrouteRepository.deleteClimbingrouteByName(name);
-    }
 
-    public List<Climbingroute>findByLatitudeAfterAndLatitudeBeforeAndLongitudeAfterAndLongitudeBefore(float lat1, float lat2, float long1, float long2){
-      return  climbingrouteRepository.findByLatitudeAfterAndLatitudeBeforeAndLongitudeAfterAndLongitudeBefore(lat1, lat2, long1, long2);
-    }
+//    public List<Climbingroute>findAllByLatitudeGreaterThanEqualAndLatitudeLessThanEqualAndLongitudeIsGreaterThanEqualAndLongitudeIsLessThanEqual(float lat1, float lat2, float long1, float long2){
+//      return  climbingrouteRepository.findAllByLatitudeGreaterThanEqualAndLatitudeLessThanEqualAndLongitudeIsGreaterThanEqualAndLongitudeIsLessThanEqual(lat1, lat2, long1, long2);
+//    }
 
-    public List<Parking> findAllByName(String name){
-       return climbingrouteRepository.findAllByName(name);
-    }
-
-    public List<Climbingroute> findAllByRouteType(RouteType routeType){
-        return climbingrouteRepository.findAllByRouteType(routeType);
-    }
-
-    public List<Climbingroute> findAllByZoneType(ZoneType zoneType){
-        return climbingrouteRepository.findAllByZoneType(zoneType);
-    }
+//    public List<Parking> findAllByName(String name){
+//       return climbingrouteRepository.findAllByName(name);
+//    }
+//
+//    public List<Climbingroute> findAllByRouteType(RouteType routeType){
+//        return climbingrouteRepository.findAllByRouteType(routeType);
+//    }
+//
+//    public List<Climbingroute> findAllByZoneType(ZoneType zoneType){
+//        return climbingrouteRepository.findAllByZoneType(zoneType);
+//    }
 
 }
 

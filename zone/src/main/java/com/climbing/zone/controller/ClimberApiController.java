@@ -1,7 +1,6 @@
 package com.climbing.zone.controller;
 
 import com.climbing.zone.domain.Climber;
-import com.climbing.zone.repository.ClimberRepository;
 import com.climbing.zone.service.ClimberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

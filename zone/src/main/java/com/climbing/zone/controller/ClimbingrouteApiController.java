@@ -1,8 +1,7 @@
 package com.climbing.zone.controller;
 
 import com.climbing.zone.domain.*;
-import com.climbing.zone.service.ClimberService;
-import com.climbing.zone.service.ClimbingRouteService;
+import com.climbing.zone.service.ClimbingrouteService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -18,11 +17,12 @@ import java.util.List;
 // pour ajouter api dans url avant chaque requete
 @RequestMapping("api")
 //information affichée dans swagger
-@Api(value = "ClimbingRoute", tags = {"Api ClimbingRoute: (findAll, AddClimbingRoute, DeleteClimbingRoute)"})
+@Api(value = "Climbingroute", tags = {"Api Climbingroute: (findAll, AddClimbingRoute, DeleteClimbingRoute)"})
 
-public class ClimbingRouteApiController {
 
-    Logger logger = LoggerFactory.getLogger(com.climbing.zone.controller.ClimberApiController.class);
+public class ClimbingrouteApiController {
+
+    Logger logger = LoggerFactory.getLogger(ClimbingrouteApiController.class);
 
     //pour eviter le cache dans chrome et etre obliger d'aller le vider a la main
     @ModelAttribute
@@ -34,19 +34,19 @@ public class ClimbingRouteApiController {
     //lie au service du climbingRoute
     @Autowired
 
-    ClimbingRouteService climbingRouteService;
+    ClimbingrouteService climbingrouteService;
 
     //recherche la liste de tous les voies
     @ApiOperation(value = "Affiche la liste des voies", response = List.class)
-    @GetMapping("/ClimbingRoute")
-    public List<ClimbingRoute> findAll() {
+    @GetMapping("/Climbingroute")
+    public List<Climbingroute> findAll() {
         logger.info("affichage de tous les voies");
-        return climbingRouteService.findAll();
+        return climbingrouteService.findAll();
     }
 
     //ajoute une nouvelle voie
     @ApiOperation(value = "Ajoute une nouvelle voie (nom, endroit, TypeDeVoie, TypeDeZone, latitude, longitude)")
-    @PostMapping("/ClimbingRoute")
+    @PostMapping("/Climbingroute")
     public Long addRoute(@RequestParam("name") String name,
                          @RequestParam("place") Place place,
                          @RequestParam("routeType") RouteType routeType,
@@ -55,59 +55,51 @@ public class ClimbingRouteApiController {
                          @RequestParam("longitude") float longitude
     ) {
 
-        return climbingRouteService.addRouteClimbing(name, place, routeType, zoneType, latitude, longitude);
-    }
-
-    //efface un utilisateur par son id
-    @ApiOperation(value = "supprime une voie")
-    @DeleteMapping("/ClimbingRoute/id")
-    public void deleteClimbingRoute(@RequestParam("Id") Long id) {
-        logger.info("Admin :efface une voie");
-        climbingRouteService.deleteClimbingRouteById(id);
+        return climbingrouteService.addRouteClimbing(name, place, routeType, zoneType, latitude, longitude);
     }
 
     //efface un utilisateur par son npm
-    @ApiOperation(value = "supprime une voie depuis son nom")
-    @DeleteMapping("/ClimbingRoute/name")
-    public void deleteClimbingRoute(@RequestParam("name") String name) {
+    @ApiOperation(value = "supprime une voie depuis son id")
+    @DeleteMapping("/Climbingroute/id")
+    public void deleteClimbingroute(@RequestParam("name") Long id) {
         logger.info("Admin :efface une voie");
-        climbingRouteService.deleteClimbingRouteByName(name);
+        climbingrouteService.deleteClimbingrouteById(id);
     }
-
-
-    //affiche la liste des voies par latitudes et longitudes
-    @ApiOperation(value = "Affiche la liste des voies dans une boite de latitude longitudes", response = List.class)
-    @GetMapping("/ClimbingRoute/firstName/{lat1}&{lat2}&{long1}&{long2}")
-    public List<ClimbingRoute> findRouteClimbingByBox(@PathVariable float lat1,
-                                                      @PathVariable float lat2,
-                                                      @PathVariable float long1,
-                                                      @PathVariable float long2) {
-        logger.info("affichage de toutes les voies");
-        return climbingRouteService.findByLatitudeAfterAndLatitudeBeforeAndLongitudeAfterAndLongitudeBefore(lat1, lat2, long1, long2);
-    }
-
-    //affiche la liste des parking
-    @ApiOperation(value = "Affiche la liste des parking", response = List.class)
-    @GetMapping("/ClimbingRoute/parking")
-    public List<Parking> findAllByName(@PathVariable("parking") String name) {
-        logger.info("affichage de tous les parking");
-        return climbingRouteService.findAllByName(name);
-    }
-
-    //affiche la liste des voies de type
-    @ApiOperation(value = "Affiche la liste des voies de type", response = List.class)
-    @GetMapping("/ClimbingRoute/routeType")
-    public List<ClimbingRoute> findAllByRouteType(@PathVariable("routeType") RouteType routeType) {
-        logger.info("affichage de tous les voies de type");
-        return climbingRouteService.findAllByRouteType(routeType);
-    }
-    //affiche la liste des voies de zone
-    @ApiOperation(value = "Affiche la liste des voies de zone", response = List.class)
-    @GetMapping("/ClimbingRoute/zoneType")
-    public List<ClimbingRoute> findAllByZoneType(@PathVariable("zoneType") ZoneType zoneType) {
-        logger.info("affichage de tous les voies de zone");
-        return climbingRouteService.findAllByZoneType(zoneType);
-    }
+//(@PathVariable("firstName") String firstName)
+//
+//    //affiche la liste des voies par latitudes et longitudes
+//    @ApiOperation(value = "Affiche la liste des voies dans une boite de latitude longitudes", response = List.class)
+//    @GetMapping("/Climbingroute/{lat1}/{lat2}/{long1}/{long2}")
+//    public List<Climbingroute> findRouteClimbingByBox(@PathVariable("lat1") float lat1,
+//                                                      @PathVariable("lat2") float lat2,
+//                                                      @PathVariable("long1") float long1,
+//                                                      @PathVariable("long2") float long2) {
+//        logger.info("affichage de toutes les voies");
+//        return climbingrouteService.findAllByLatitudeGreaterThanEqualAndLatitudeLessThanEqualAndLongitudeIsGreaterThanEqualAndLongitudeIsLessThanEqual(lat1, lat2, long1, long2);
+//    }
+//
+//    //affiche la liste des parking
+//    @ApiOperation(value = "Affiche la liste des parking", response = List.class)
+//    @GetMapping("/Climbingroute/parking")
+//    public List<Parking> findAllByName(@PathVariable("parking") String name) {
+//        logger.info("affichage de tous les parking");
+//        return climbingrouteService.findAllByName(name);
+//    }
+//
+//    //affiche la liste des voies de type
+//    @ApiOperation(value = "Affiche la liste des voies de type", response = List.class)
+//    @GetMapping("/Climbingroute/routeType")
+//    public List<Climbingroute> findAllByRouteType(@PathVariable("routeType") RouteType routeType) {
+//        logger.info("affichage de tous les voies de type");
+//        return climbingrouteService.findAllByRouteType(routeType);
+//    }
+//    //affiche la liste des voies de zone
+//    @ApiOperation(value = "Affiche la liste des voies de zone", response = List.class)
+//    @GetMapping("/Climbingroute/zoneType")
+//    public List<Climbingroute> findAllByZoneType(@PathVariable("zoneType") ZoneType zoneType) {
+//        logger.info("affichage de tous les voies de zone");
+//        return climbingrouteService.findAllByZoneType(zoneType);
+//    }
 
 
 }
