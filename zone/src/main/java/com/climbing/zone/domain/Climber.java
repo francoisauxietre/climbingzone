@@ -118,6 +118,7 @@ public class Climber {
         this.friendsList = friendsList;
     }
 
+
     //    <---------------GETTERS---------------->
 
 //    @ManyToMany
@@ -140,6 +141,8 @@ public class Climber {
     public Date getBirth() {
         return birth;
     }
+
+
 
     @Override
     public String toString() {

@@ -51,7 +51,7 @@ public class ClimberApiController {
     }
 
     //ajoute un nouvel utilisateur
-    @ApiOperation(value = "Ajoute un nouvel Utilisateur (prenom, nom, date: jour, mois, année")
+    @ApiOperation(value = "Ajoute un nouvel Utilisateur (prenom, nom, date: jour, mois, année)")
     @PostMapping("/Climber")
     public Long addUser(@RequestParam("firstName") String firstName,
                         @RequestParam("lastName") String lastName,
@@ -61,4 +61,15 @@ public class ClimberApiController {
 
         return climberService.addClimber(firstName, lastName, day, month, year);
     }
+
+    //efface un utilisateur par son id
+    @ApiOperation(value = "supprime un grimpeur")
+    @DeleteMapping("/User")
+    public void deleteClimberById(@RequestParam("Id") Long id) {
+        logger.info("Admin :efface un utilisateur par son id");
+        climberService.deleteClimberById(id);
+    }
+
 }
+
+

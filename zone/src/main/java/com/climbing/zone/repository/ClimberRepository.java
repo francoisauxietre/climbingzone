@@ -12,6 +12,6 @@ public interface ClimberRepository extends CrudRepository<Climber, Long> {
 
     List<Climber> findByLastName(String lastname);
     List<Climber> findAll();
-
+    void deleteUserById(Long id);
 }
 
