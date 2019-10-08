@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 @Service
 public class ClimberService {
@@ -24,6 +26,27 @@ public class ClimberService {
         public List<Climber> findAll(){
                 return climberRepository.findAll();
         }
+
+        /**
+         *
+         * @param lastName :nom
+         * @param firstName :prenom
+         * @param day   : jour de naissance
+         * @param month    :mois
+         * @param year   :annee
+         * @return  l'id du nouvel utilisateur
+         */
+        public Long addClimber(String lastName, String firstName, int day, int month, int year) {
+                Climber climber = new Climber();
+                LocalDate date = LocalDate.of(year, month, day);
+                Date birth = Date.valueOf(date);
+                climber.setBirth(birth);
+                climber.setLastName(lastName);
+                climber.setFirstName(firstName);
+                climberRepository.save(climber);
+                return climber.getId();
+        }
+
 }
 
 

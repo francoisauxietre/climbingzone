@@ -66,7 +66,7 @@ public class Climber {
     // a la fin de la creation
     @PostPersist
     public void stopLog() {
-        logger.info("création terminée de " + this.info);
+        logger.info("création terminée " + this.info);
     }
 
     //en cas de destruction
