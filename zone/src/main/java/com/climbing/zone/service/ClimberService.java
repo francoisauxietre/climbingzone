@@ -20,6 +20,10 @@ public class ClimberService {
         public List<Climber> findAllByLastName(String lastName) {
             return climberRepository.findByLastName(lastName);
         }
+
+        public List<Climber> findAll(){
+                return climberRepository.findAll();
+        }
 }
 
 
