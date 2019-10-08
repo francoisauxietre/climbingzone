@@ -20,10 +20,10 @@ public class ClimberService {
     ClimberRepository climberRepository;
 
 
-    public List<Climber> findAllByLastName(String lastName) {
-        return climberRepository.findByLastName(lastName);
-    }
-
+    /**
+     * liste de tous les grimpeurs
+     * @return liste des grimpeurs enregistrés
+     */
     public List<Climber> findAll() {
         return climberRepository.findAll();
     }
@@ -47,10 +47,35 @@ public class ClimberService {
         return climber.getId();
     }
 
+    /**
+     * Admin : efface un grimpeiur depuis son id
+     * @param id : id du grimpeur
+     */
     public void deleteClimberById(Long id) {
         climberRepository.deleteUserById(id);
 
     }
+
+
+    /**
+     * affiche la liste des grimpeurs par prénom
+     * @param lastName
+     * @return
+     */
+    public List<Climber> findAllByLastName(String lastName) {
+        return climberRepository.findByLastName(lastName);
+    }
+
+    /**
+     * affiche la liste des grimpeurs par nom
+     * @param firstName
+     * @return
+     */
+    public List<Climber> findAllByFirstName(String firstName) {
+        return climberRepository.findByFirstName(firstName);
+    }
+
+
 
 }
 

@@ -64,11 +64,28 @@ public class ClimberApiController {
 
     //efface un utilisateur par son id
     @ApiOperation(value = "supprime un grimpeur")
-    @DeleteMapping("/User")
+    @DeleteMapping("/Climber")
     public void deleteClimberById(@RequestParam("Id") Long id) {
         logger.info("Admin :efface un utilisateur par son id");
         climberService.deleteClimberById(id);
     }
+
+    //affiche la liste des grimpeur par prenom
+    @ApiOperation(value = "Affiche la liste des utilisateurs par prenom", response = List.class)
+    @GetMapping("/Climber/firstName/{firstName}")
+    public List<Climber> findAllByFirstName(@PathVariable("firstName") String firstName) {
+        logger.info("affichage de tous les utilisateurs");
+        return climberService.findAllByFirstName(firstName);
+    }
+
+    //affiche la liste des grimpeur par nom
+    @ApiOperation(value = "Affiche la liste des utilisateurs par nom", response = List.class)
+    @GetMapping("/Climber/lastName/{lastName}")
+    public List<Climber> findAllByLastName(@PathVariable("lastName") String lastName) {
+        logger.info("affichage de tous les utilisateurs par prenom");
+        return climberService.findAllByLastName(lastName);
+    }
+
 
 }
 

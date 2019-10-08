@@ -10,8 +10,9 @@ import java.util.List;
 
 public interface ClimberRepository extends CrudRepository<Climber, Long> {
 
-    List<Climber> findByLastName(String lastname);
     List<Climber> findAll();
     void deleteUserById(Long id);
+    List<Climber>findByFirstName(String firstName);
+    List<Climber>findByLastName(String lastName);
 }
 
