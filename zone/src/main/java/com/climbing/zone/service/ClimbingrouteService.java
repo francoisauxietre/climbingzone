@@ -47,7 +47,7 @@ public class ClimbingrouteService {
 
 
 //    public List<Climbingroute>findAllByLatitudeGreaterThanEqualAndLatitudeLessThanEqualAndLongitudeIsGreaterThanEqualAndLongitudeIsLessThanEqual(float lat1, float lat2, float long1, float long2){
-//      return  climbingrouteRepository.findAllByLatitudeGreaterThanEqualAndLatitudeLessThanEqualAndLongitudeIsGreaterThanEqualAndLongitudeIsLessThanEqual(lat1, lat2, long1, long2);
+//      return  climbingrouteRepository.findAllByLatitudeGreaterThan(:lat1)EqualAndLatitudeLessThanEqualAndLongitudeIsGreaterThanEqualAndLongitudeIsLessThanEqual(lat1, lat2, long1, long2);
 //    }
 
 //    public List<Parking> findAllByName(String name){

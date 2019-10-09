@@ -1,4 +1,6 @@
 # docker compose up
+# il faut commencer par connaitre adress ip du conteneur
+# apres tu modifie dans
 version: '3.3'
 services:
   db:
@@ -14,6 +16,7 @@ services:
       MYSQL_ROOT_PASSWORD: 'root'
     ports:
       - '3308:3306'
+#    ouvre le port chez lui
     expose:
       - '3306'
     volumes:
