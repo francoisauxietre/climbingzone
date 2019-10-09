@@ -1,0 +1,26 @@
+version: '3.3'
+
+services:
+   db:
+     image: mysql:5.7
+     restart: always
+     ports:
+      - "3306:3306"
+     environment:
+       MYSQL_ROOT_HOST: "%"
+       MYSQL_ROOT_PASSWORD: "fafal"
+       MYSQL_DATABASE: "climbing"
+
+   spring:
+     depends_on:
+       - db
+     build: zone/
+     ports:
+       - "8080:8080"
+     restart: always
+     environment:
+      DB_NAME: "climbing"
+      DB_USER: "root"
+      DB_PASSWORD: "fafa1"
+      DB_URL: db
+      
