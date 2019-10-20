@@ -16,8 +16,9 @@ public class Climbingroute {
 
     Logger logger = LoggerFactory.getLogger(Climbingroute.class);
 
-    Long Id;
+    Long IdClimbingroute;
     String name;
+
     Place place;
     Parking parking;
     RouteType routeType;
@@ -72,14 +73,14 @@ public class Climbingroute {
     @javax.persistence.Id
     @GeneratedValue
     public Long getId() {
-        return Id;
+        return IdClimbingroute;
     }
 
     //    <---------------SETTERS---------------->
 
 
-    public void setId(Long id) {
-        Id = id;
+    public void setId(Long idClimbingroute) {
+        IdClimbingroute = idClimbingroute;
     }
 
     public void setName(String name) {

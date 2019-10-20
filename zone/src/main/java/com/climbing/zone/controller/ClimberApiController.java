@@ -4,6 +4,7 @@ import com.climbing.zone.domain.Climber;
 import com.climbing.zone.service.ClimberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.jboss.logging.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,17 +30,17 @@ public class ClimberApiController {
         response.setHeader("Access-Control-Allow-Origin", "*");
     }
 
-    //pourra etre enlever apres dans notre api
-//    @RequestMapping(value = "test")
-//    public String test() {
-//        return "SUCCESS";
-//    }
-
-
     //lie au service du climber
     @Autowired
-//    ClimberRepository climberRepository;
     ClimberService climberService;
+
+    //recherche la liste de tous les utilisateurs
+//    @ApiOperation(value = "Ajoute un voie à un grimpeur", response = List.class)
+//    @GetMapping("/AddClimberClimbingroute")
+//    public void addClimbingroute(@RequestParam("idClimbingroute") Long idClimbingroute) {
+//        logger.info("ajoute une voie au grimpeur courant");
+//        climberService.addClimbingroute(idClimbingroute);
+//    }
 
     //recherche la liste de tous les utilisateurs
     @ApiOperation(value = "Affiche la liste des utilisateurs", response = List.class)
@@ -64,9 +65,9 @@ public class ClimberApiController {
     //efface un utilisateur par son id
     @ApiOperation(value = "supprime un grimpeur")
     @DeleteMapping("/Climber")
-    public void deleteClimberById(@RequestParam("Id") Long id) {
+    public void deleteClimberByIdClimber(@RequestParam("IdClimber") Long idClimber) {
         logger.info("Admin :efface un utilisateur par son id");
-        climberService.deleteClimberById(id);
+        climberService.deleteClimberByIdClimber(idClimber);
     }
 
     //affiche la liste des grimpeur par prenom

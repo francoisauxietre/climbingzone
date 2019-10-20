@@ -1,6 +1,7 @@
 package com.climbing.zone.service;
 
 import com.climbing.zone.domain.Climber;
+import com.climbing.zone.domain.ClimberClimbingroute;
 import com.climbing.zone.repository.ClimberRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,9 +20,21 @@ public class ClimberService {
     @Autowired
     ClimberRepository climberRepository;
 
+    /**
+     * @return 1
+     * TODO voir avec le session du grimpeur
+     */
+//    public Long findByIdClimber() {
+//       return climberRepository.findByIdClimber();
+//    }
 
+
+    public void addClimbingroute(){
+
+    }
     /**
      * liste de tous les grimpeurs
+     *
      * @return liste des grimpeurs enregistrés
      */
     public List<Climber> findAll() {
@@ -44,21 +57,31 @@ public class ClimberService {
         climber.setLastName(lastName);
         climber.setFirstName(firstName);
         climberRepository.save(climber);
-        return climber.getId();
+        return climber.getIdClimber();
     }
+
+//    public void addClimbingroute(Long idClimbingroute) {
+//        Long idClimber = findId();
+//        ClimberClimbingroute climberClimbingroute = new ClimberClimbingroute(idClimber, idClimbingroute);
+//        climberClimbingroute.setIdClimber(idClimber);
+//        climberClimbingroute.setIdClimberClimbingroute(idClimbingroute);
+//        climberRepository.addClimbingroute(idClimbingroute);
+//    }
 
     /**
      * Admin : efface un grimpeiur depuis son id
-     * @param id : id du grimpeur
+     *
+     * @param idClimber : id du grimpeur
      */
-    public void deleteClimberById(Long id) {
-        climberRepository.deleteUserById(id);
+    public void deleteClimberByIdClimber(Long idClimber) {
+        climberRepository.deleteClimberByIdClimber(idClimber);
 
     }
 
 
     /**
      * affiche la liste des grimpeurs par prénom
+     *
      * @param lastName
      * @return
      */
@@ -68,13 +91,13 @@ public class ClimberService {
 
     /**
      * affiche la liste des grimpeurs par nom
+     *
      * @param firstName
      * @return
      */
     public List<Climber> findAllByFirstName(String firstName) {
         return climberRepository.findByFirstName(firstName);
     }
-
 
 
 }

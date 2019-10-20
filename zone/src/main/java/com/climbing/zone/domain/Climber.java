@@ -3,7 +3,6 @@ package com.climbing.zone.domain;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PreDestroy;
 import javax.persistence.*;
@@ -21,7 +20,7 @@ import java.util.List;
 public class Climber {
     Logger logger = LoggerFactory.getLogger(Climber.class);
 
-    Long Id; //id autogenerer
+    Long IdClimber; //id autogenerer
 
     String firstName; //prenom
     String lastName; // Nom
@@ -75,15 +74,15 @@ public class Climber {
     //ATTENTION BIEN METTRE LES @ SUR LES GETTERS
     @javax.persistence.Id
     @GeneratedValue
-    public Long getId() {
-        return Id;
+    public Long getIdClimber() {
+        return IdClimber;
     }
 
 //    <---------------SETTERS---------------->
 
 
-    public void setId(Long id) {
-        Id = id;
+    public void setIdClimber(Long idClimber) {
+        IdClimber = idClimber;
     }
 
     public void setFirstName(String firstName) {
@@ -131,6 +130,7 @@ public class Climber {
     public String getLastName() {
         return lastName;
     }
+
     // pour ne pas avoir des erreurs sur les dates de java
     @Basic
     @Temporal(value = TemporalType.DATE)
@@ -139,11 +139,10 @@ public class Climber {
     }
 
 
-
     @Override
     public String toString() {
         return "Climber{" +
-                "Id=" + Id +
+                "IdClimber=" + IdClimber +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", birth=" + birth +
