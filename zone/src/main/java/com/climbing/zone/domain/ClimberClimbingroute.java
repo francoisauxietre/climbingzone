@@ -5,10 +5,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PreDestroy;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.PostPersist;
-import javax.persistence.PrePersist;
+import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -17,21 +15,29 @@ public class ClimberClimbingroute {
     Logger logger = LoggerFactory.getLogger(Climber.class);
 
     Long IdClimberClimbingroute;
-    Long IdClimber;
-    Long IdClimbingroute;
+    Climber climber;
+    Climbingroute climbingroute;
     Date date;
     String info;
 
 
 
-    public ClimberClimbingroute(Long idClimber, Long idClimbingroute) {
+    public ClimberClimbingroute(){}
 
-        IdClimber = idClimber;
-        IdClimbingroute = idClimbingroute;
-        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        this.date = date;
+    public ClimberClimbingroute(Climber climber, Climbingroute climbingroute) {
+
+        this.climber = climber;
+        this.climbingroute = climbingroute;
+        this.date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         logger.info("creation du grimpeur qui a fait cette voie");
 
+    }
+
+    public ClimberClimbingroute(Climber climber, Climbingroute climbingroute, java.sql.Date date, String info) {
+        this.climber = climber;
+        this.climbingroute = climbingroute;
+        this.date = date;
+        this.info = info;
     }
 
     // a chaque fois qu'on fera un nouvel ajout d'un grimpeur on aura cette merthode qui ajoutera des infos
@@ -54,7 +60,7 @@ public class ClimberClimbingroute {
 
     //creation d'un Id pour la base de donne auto generer
     //ATTENTION BIEN METTRE LES @ SUR LES GETTERS
-    @javax.persistence.Id
+    @Id
     @GeneratedValue
     public Long getIdClimberClimbingroute() {
         return IdClimberClimbingroute;
@@ -64,20 +70,22 @@ public class ClimberClimbingroute {
         IdClimberClimbingroute = idClimberClimbingroute;
     }
 
-    public Long getIdClimber() {
-        return IdClimber;
+    @ManyToOne
+    public Climber getClimber() {
+        return climber;
     }
 
-    public void setIdClimber(Long idClimber) {
-        IdClimber = idClimber;
+    public void setClimber(Climber climber) {
+        this.climber = climber;
     }
 
-    public Long getIdClimbingroute() {
-        return IdClimbingroute;
+    @ManyToOne
+    public Climbingroute getClimbingroute() {
+        return climbingroute;
     }
 
-    public void setIdClimbingroute(Long idClimbingroute) {
-        IdClimbingroute = idClimbingroute;
+    public void setClimbingroute(Climbingroute climbingroute) {
+        this.climbingroute = climbingroute;
     }
 
     public Date getDate() {

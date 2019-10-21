@@ -35,12 +35,12 @@ public class ClimberApiController {
     ClimberService climberService;
 
     //recherche la liste de tous les utilisateurs
-//    @ApiOperation(value = "Ajoute un voie à un grimpeur", response = List.class)
-//    @GetMapping("/AddClimberClimbingroute")
-//    public void addClimbingroute(@RequestParam("idClimbingroute") Long idClimbingroute) {
-//        logger.info("ajoute une voie au grimpeur courant");
-//        climberService.addClimbingroute(idClimbingroute);
-//    }
+    @ApiOperation(value = "Ajoute un voie à un grimpeur", response = List.class)
+    @GetMapping("/AddClimberClimbingroute")
+    public void addClimbingroute(@RequestParam("idClimbingroute") Long idClimbingroute) {
+        logger.info("ajoute une voie au grimpeur courant");
+        climberService.addClimbingroute(idClimbingroute);
+    }
 
     //recherche la liste de tous les utilisateurs
     @ApiOperation(value = "Affiche la liste des utilisateurs", response = List.class)

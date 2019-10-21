@@ -44,7 +44,11 @@ public class PlaceService {
     public List<Place> findAllByName(String name) {
         return placeRepository.findAllByName(name);
     }
- }
+
+    public Place findAllById(Long idPlace) {
+        return placeRepository.findById(idPlace).get();
+    }
+}
 
 
 

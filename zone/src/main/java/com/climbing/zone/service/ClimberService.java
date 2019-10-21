@@ -24,12 +24,13 @@ public class ClimberService {
      * @return 1
      * TODO voir avec le session du grimpeur
      */
-//    public Long findByIdClimber() {
-//       return climberRepository.findByIdClimber();
-//    }
+    public Climber findClimberById(Long idClimber) {
+       return climberRepository.findByIdClimber(idClimber);
+    }
 
 
-    public void addClimbingroute(){
+    public void addClimbingroute(long idRoute){
+
 
     }
     /**

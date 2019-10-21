@@ -56,7 +56,7 @@ public class PlaceApiController {
     //efface un utilisateur par son id
     @ApiOperation(value = "supprime un lieu")
     @DeleteMapping("/Place")
-    public void deleteClimberByIdClimber(@RequestParam("IdPalce") Long idPlace) {
+    public void deleteClimberByIdClimber(@RequestParam("IdPlace") Long idPlace) {
         logger.info("Admin :efface un lieu par son id");
         placeService.deletePlaceByIdPlace(idPlace);
     }

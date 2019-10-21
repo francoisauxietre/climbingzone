@@ -2,6 +2,7 @@ package com.climbing.zone.controller;
 
 import com.climbing.zone.domain.*;
 import com.climbing.zone.service.ClimbingrouteService;
+import com.climbing.zone.service.PlaceService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -19,7 +20,6 @@ import java.util.List;
 //information affichée dans swagger
 @Api(value = "Climbingroute", tags = {"Api Climbingroute: (findAll, AddClimbingRoute, DeleteClimbingRoute)"})
 
-
 public class ClimbingrouteApiController {
 
     Logger logger = LoggerFactory.getLogger(ClimbingrouteApiController.class);
@@ -33,8 +33,10 @@ public class ClimbingrouteApiController {
 
     //lie au service du climbingRoute
     @Autowired
-
     ClimbingrouteService climbingrouteService;
+
+    @Autowired
+    PlaceService placeService;
 
     //recherche la liste de tous les voies
     @ApiOperation(value = "Affiche la liste des voies", response = List.class)
@@ -48,14 +50,14 @@ public class ClimbingrouteApiController {
     @ApiOperation(value = "Ajoute une nouvelle voie (nom, endroit, TypeDeVoie, TypeDeZone, latitude, longitude)")
     @PostMapping("/Climbingroute")
     public Long addRoute(@RequestParam("name") String name,
-                         @RequestParam("place") Place place,
+                         @RequestParam("idPlace") Long idPlace,
                          @RequestParam("routeType") RouteType routeType,
                          @RequestParam("zoneType") ZoneType zoneType,
                          @RequestParam("latitude") float latitude,
                          @RequestParam("longitude") float longitude
     ) {
 
-        return climbingrouteService.addRouteClimbing(name, place, routeType, zoneType, latitude, longitude);
+        return climbingrouteService.addRouteClimbing(name, placeService.findAllById(idPlace), routeType, zoneType, latitude, longitude);
     }
 
     //efface un utilisateur par son npm

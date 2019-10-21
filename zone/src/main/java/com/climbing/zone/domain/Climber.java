@@ -25,7 +25,9 @@ public class Climber {
     String firstName; //prenom
     String lastName; // Nom
     Date birth; //anniversaire
+
     List<Climber> friendsList = new ArrayList<>(); //liste d'amis
+    List<ClimberClimbingroute> climberClimbingroutes;
 
     Date createAt; //date de creation
     Date modifyAt; //date de modification
@@ -147,5 +149,15 @@ public class Climber {
                 ", lastName='" + lastName + '\'' +
                 ", birth=" + birth +
                 '}';
+    }
+
+
+    @OneToMany(mappedBy = "climber")
+    public List<ClimberClimbingroute> getClimberClimbingroutes() {
+        return climberClimbingroutes;
+    }
+
+    public void setClimberClimbingroutes(List<ClimberClimbingroute> climberClimbingroutes) {
+        this.climberClimbingroutes = climberClimbingroutes;
     }
 }

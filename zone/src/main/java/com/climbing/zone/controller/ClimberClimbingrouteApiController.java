@@ -1,9 +1,12 @@
 package com.climbing.zone.controller;
 
+import com.climbing.zone.domain.Climber;
+import com.climbing.zone.domain.ClimberClimbingroute;
 import com.climbing.zone.domain.Climbingroute;
 import com.climbing.zone.domain.Place;
 import com.climbing.zone.service.CardService;
 import com.climbing.zone.service.ClimberClimbingrouteService;
+import com.climbing.zone.service.ClimberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -36,12 +39,28 @@ public class ClimberClimbingrouteApiController {
     @Autowired
     ClimberClimbingrouteService climberClimbingrouteService ;
 
+    @Autowired
+    ClimberService climberService;
+
+//    @Autowired
+//    ClimberClimbingroute climberClimbingroute;
+
+
     //recherche la liste de tous les voies
     @ApiOperation(value = "Affiche le nombre de grimpeur ayant fait la voie", response = List.class)
     @GetMapping("/ClimberClimbingroute")
 
     public List<Climbingroute> findClimbingrouteByIdClimber(@RequestParam("id") Long idClimber) {
         logger.info("affichage de tous les voies faites par le grimpeur");
-        return climberClimbingrouteService.findClimbingrouteByIdClimber(idClimber);
+        Climber climber = climberService.findClimberById(idClimber);
+        return climberClimbingrouteService.findClimbingrouteByIdClimber(climber);
+    }
+
+    public Long addRelation(@RequestParam("idClimber") Long idClimber,
+                            @RequestParam("idClimbingroute") Long idClimberoute,
+                            @RequestParam("info") String info){
+        Climber climber = climberService.findClimberById(idClimber);
+//        Climbingroute climbingroute = climberClimbingrouteService.findClimberById(idClimber);
+        return new Long(0) ;
     }
 }

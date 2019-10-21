@@ -4,12 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.PreDestroy;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.PostPersist;
-import javax.persistence.PrePersist;
+import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Climbingroute {
@@ -26,6 +24,11 @@ public class Climbingroute {
 
     float latitude;
     float longitude;
+
+
+
+    List<ClimberClimbingroute> climberClimbingrouteList;
+
 
     Date createAt;
     Date modifyAt;
@@ -123,5 +126,13 @@ public class Climbingroute {
         this.deleteAt = deleteAt;
     }
 
+    @OneToMany(mappedBy = "climbingroute")
+    public List<ClimberClimbingroute> getClimberClimbingrouteList() {
+        return climberClimbingrouteList;
+    }
+
+    public void setClimberClimbingrouteList(List<ClimberClimbingroute> climberClimbingrouteList) {
+        this.climberClimbingrouteList = climberClimbingrouteList;
+    }
 
 }
