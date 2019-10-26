@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import Hello from './component/Hello'
 import Hello1 from './component/Hello1'
@@ -13,25 +12,30 @@ import EventBind from "./classe/EventBind";
 import Parent from "./parent/Parent";
 import List from "./classe/List";
 import Card from "./input/Card";
-
-import Stylesheet from "./css/Stylesheet";
-// import "./css/AppStyles.css" // le css va dans tous les fils pas dans le cas d'un module
-// import styles from "./css/AppStyles.module.css"
-import ControlComponentInputText from "./input/ControlComponentInputText";
 import MainHeader from "./component/MainHeader";
 import HeaderCenter from "./component/HeaderCenter";
 import HeaderMenu from "./component/HeaderMenu";
+import MethodeGet from "./request/MethodeGet";
+import Stylesheet from "./css/Stylesheet";
+
+// import "./css/AppStyles.css" // le css va dans tous les fils pas dans le cas d'un module
+// import styles from "./css/AppStyles.module.css"
+
+
 
 class App extends Component {
     render() {
         return (
             <div className={'root'}>
+                <MethodeGet/>
+
                 <div className={'primary'}>
                     <HeaderCenter/>
                     <MainHeader/>
                     <HeaderMenu/>
 
                     <Card/>
+
                 </div>
                 <header>
                     <Stylesheet primary='true'/>

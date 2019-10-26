@@ -1,0 +1,18 @@
+FROM node:8.7.0-alpine
+  #voir pour mettre un 10.0.0 si limage existe
+  #Tell Docker we want to use Node v8.7.0 installed in a alpine Linux image.
+  #The alpine image is an extremely optimized minimal Docker image based on the Alpine Linux. Its own size is as small
+  #as 5 MB, adding Node on top of it will make it around 50 MB,
+  #still very slim (quasi 1/10 of the “-slim” Linux image whose size is about 650 MB, according to this post )
+RUN mkdir -p /app/directory/path
+  #Create a directory in the container to hold the app, the -p flag enables us to create the directory recursively without having to go into each level
+WORKDIR /app/directory/path
+  #Go into the app folder by making it the working directory
+COPY package.json and COPY package-lock.json
+  #Copy the local package.json and package-lock.json files into the container to install node modules
+RUN npm install install
+  #the node modules that the project needs
+COPY . /app/directory/path #
+  #Copy local code into the container
+CMD ["npm", "start"]
+#Now our app lives in the container, we can run the command npm start . The CMD basically put together a command to run by joining what you write in the array with spaces, and then run it in the shell inside the container

@@ -1,5 +1,5 @@
 ##Base de donnée 
-lancée en independant en port 3008 grace au docker compose
+lancée en independant en port 3009 grace au docker compose
 lancement: dans le repertoire zone
 docker-compose up (le docker-compose gere la base de donnee en msql)
 

@@ -10,7 +10,6 @@ import './../css/style1.scss'
 class Card extends Component {
     constructor(props) {
         super(props);
-        let info = ""
 
         this.state = {
             email: '',
