@@ -8,7 +8,7 @@ class HeaderCenter extends React.Component {
     render() {
         return (
             <div>
-                <TableCell align="left"><img src={logo} className="App-logo" alt="climbing Zone logo"/></TableCell>
+                <div align="left"><img src={logo} className="App-logo" alt="climbing Zone logo"/></div>
             </div>
         )
     }

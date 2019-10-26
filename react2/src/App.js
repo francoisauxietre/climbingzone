@@ -15,8 +15,8 @@ import Card from "./input/Card";
 import MainHeader from "./component/MainHeader";
 import HeaderCenter from "./component/HeaderCenter";
 import HeaderMenu from "./component/HeaderMenu";
-import MethodeGet from "./request/MethodeGet";
 import Stylesheet from "./css/Stylesheet";
+import PostClimber from "./request/PostClimber";
 
 // import "./css/AppStyles.css" // le css va dans tous les fils pas dans le cas d'un module
 // import styles from "./css/AppStyles.module.css"
@@ -27,14 +27,18 @@ class App extends Component {
     render() {
         return (
             <div className={'root'}>
-                <MethodeGet/>
+
 
                 <div className={'primary'}>
-                    <HeaderCenter/>
-                    <MainHeader/>
-                    <HeaderMenu/>
 
+
+
+                    <HeaderCenter/>
+
+                    <HeaderMenu/>
+                    <MainHeader/>
                     <Card/>
+                    <PostClimber/>
 
                 </div>
                 <header>

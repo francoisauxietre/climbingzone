@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 
-class MethodeGet extends Component {
+class GetClimber extends Component {
     constructor(props) {
         super(props);
         this.state = {
             climbers: [],
             error: ''
-
         }
     }
 
@@ -16,7 +15,7 @@ class MethodeGet extends Component {
         axios.get('http://localhost:8080/api/Climber')
             .then(response => {
                 console.log(response)
-                 this.setState({climbers: response.data})
+                this.setState({climbers: response.data})
             })
             .catch(error => {
                     console.log(error)
@@ -24,7 +23,8 @@ class MethodeGet extends Component {
                 }
             )
     }
-    errorHandler  = () =>{
+
+    errorHandler = () => {
         alert(`${this.state.error}`)
     }
 
@@ -37,8 +37,8 @@ class MethodeGet extends Component {
                 {
                     climbers.length ?
                         climbers.map(climber =>
-                            <div key={climber.idClimber}> {climber.lastName}  {climber.firstName}
-                            </div>):
+                            <div key={climber.idClimber}> {climber.lastName} {climber.firstName}
+                            </div>) :
                         null
                 }
                 {this.state.error ? this.errorHandler() : null}
@@ -46,4 +46,4 @@ class MethodeGet extends Component {
     }
 }
 
-export default MethodeGet
+export default GetClimber

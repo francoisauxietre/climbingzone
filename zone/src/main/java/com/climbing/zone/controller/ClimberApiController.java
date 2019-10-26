@@ -35,8 +35,10 @@ public class ClimberApiController {
     ClimberService climberService;
 
     //recherche la liste de tous les utilisateurs
+    //ajouter pour pouvoir faire un post depuis un port localhost 3000
     @ApiOperation(value = "Ajoute un voie à un grimpeur", response = List.class)
     @GetMapping("/AddClimberClimbingroute")
+//    @CrossOrigin(origins = "http://localhost:3000")
     public void addClimbingroute(@RequestParam("idClimbingroute") Long idClimbingroute) {
         logger.info("ajoute une voie au grimpeur courant");
         climberService.addClimbingroute(idClimbingroute);
@@ -45,6 +47,7 @@ public class ClimberApiController {
     //recherche la liste de tous les utilisateurs
     @ApiOperation(value = "Affiche la liste des utilisateurs", response = List.class)
     @GetMapping("/Climber")
+//    @CrossOrigin(origins = "http://localhost:3000")
     public List<Climber> findAll() {
         logger.info("affichage de tous les grimpeurs");
         return climberService.findAll();
@@ -53,6 +56,7 @@ public class ClimberApiController {
     //ajoute un nouvel utilisateur
     @ApiOperation(value = "Ajoute un nouvel Utilisateur (prenom, nom, date: jour, mois, année)")
     @PostMapping("/Climber")
+//    @CrossOrigin(origins = "http://localhost:3000")
     public Long addUser(@RequestParam("firstName") String firstName,
                         @RequestParam("lastName") String lastName,
                         @RequestParam("day") int day,
