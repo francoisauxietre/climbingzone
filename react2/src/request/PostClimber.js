@@ -71,6 +71,7 @@ class PostClimber extends Component {
                     </div>
 
                     <button type={'submit'}>Submit</button>
+                    <h1>{JSON.stringify(this.state)}</h1>
                 </form>
             </div>
         );

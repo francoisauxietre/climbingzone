@@ -4,7 +4,8 @@ import Hello from './component/Hello'
 import Hello1 from './component/Hello1'
 import Hello2 from "./component/Hello2";
 import Message from "./component/message";
-import Counter from "./component/Counter";
+import CounterClass from "./component/CounterClass";
+
 import HelloDestruct from "./component/HelloDestruct";
 import FunctionClick from "./function/functionClick";
 import ClickClass from "./classe/ClickClass";
@@ -17,29 +18,28 @@ import HeaderCenter from "./component/HeaderCenter";
 import HeaderMenu from "./component/HeaderMenu";
 import Stylesheet from "./css/Stylesheet";
 import PostClimber from "./request/PostClimber";
+import Counter1 from "./hook/Counter1";
+import Counter2 from "./hook/Counter2";
+import Counter3 from "./hook/Counter3";
 
 // import "./css/AppStyles.css" // le css va dans tous les fils pas dans le cas d'un module
 // import styles from "./css/AppStyles.module.css"
-
 
 
 class App extends Component {
     render() {
         return (
             <div className={'root'}>
-
-
                 <div className={'primary'}>
-
-
-
                     <HeaderCenter/>
-
                     <HeaderMenu/>
                     <MainHeader/>
                     <Card/>
                     <PostClimber/>
-
+                    <CounterClass/>
+                    <Counter1/>
+                    <Counter2/>
+                    <Counter3/>
                 </div>
                 <header>
                     <Stylesheet primary='true'/>
@@ -48,7 +48,7 @@ class App extends Component {
                     <List/>
                     {/*<img src={logo} className="App-logo" alt="logo"/>*/}
                     <Parent/>
-                    <Counter/>
+                    <CounterClass/>
                     <EventBind/>
                     <ClickClass/>
                     <FunctionClick/>
@@ -60,6 +60,7 @@ class App extends Component {
                     <Hello name="Bruce"/>
                     <Hello1/>
                     <Hello2 name={"diana"}/>
+
                     <Message/>
                 </header>
             </div>
