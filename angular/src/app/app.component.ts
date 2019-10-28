@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {MatSliderModule} from '@angular/material/slider';
+
 
 // metadata sous forme de decorateur de la classe
 // templateURL est url de la vue represente la vue
@@ -12,10 +12,21 @@ import {MatSliderModule} from '@angular/material/slider';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ClimbingZone1'
-  public firstName = 'test'
-  public lastName = 'test1'
+  title = 'ClimbingZone1';
+  public id1 = 'testId';
+  public firstName = 'test';
+  public lastName = 'test1';
   public siteUrl = window.location.href;
+  public isDisabled = false;
+  public hasError = false;
+  public isItalic = true;
+  public response;
+  public messageClasses = {
+    'text-succes': !this.hasError,
+    'text-danger': this.hasError,
+    'text-special': this.isItalic
+
+  }
   friends: Array<any>;
 
   constructor(private http: HttpClient) {
@@ -24,12 +35,16 @@ export class AppComponent {
 
   foo() {
     // this.http.get('/api/Friends').subscribe(e => this.friends = e as Array<any>);
-    this.http.get('/users').subscribe(e => this.foo());
+    // this.response = 'http://localhost:8080/api/Climber'.subscribe(e => this.foo());
+    console.log(this.response);
   }
 
   greatUser() {
-    return  'hello ' + name;
+    return 'hello ' + name;
 
   }
 
+  refresh(): void {
+    window.location.reload();
+  }
 }

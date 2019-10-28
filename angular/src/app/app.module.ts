@@ -12,6 +12,9 @@ import {_MatMenuDirectivesModule, MatIconModule, MatMenuModule} from '@angular/m
 import {DemoMaterialModule} from '../material-module';
 import { FriendsComponent } from './friends/friends.component';
 import { ClimbingRouteComponent } from './climbing-route/climbing-route.component';
+import { ClimbersDetailComponent } from './climbers-detail/climbers-detail.component';
+import { ClimbersListComponent } from './climbers-list/climbers-list.component';
+import {ClimbersService} from './climbers.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { ClimbingRouteComponent } from './climbing-route/climbing-route.componen
     UsersComponent,
     NavigationComponent,
     FriendsComponent,
-    ClimbingRouteComponent
+    ClimbingRouteComponent,
+    ClimbersDetailComponent,
+    ClimbersListComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,7 @@ import { ClimbingRouteComponent } from './climbing-route/climbing-route.componen
     MatIconModule,
     DemoMaterialModule
   ],
-  providers: [],
+  providers: [ClimbersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

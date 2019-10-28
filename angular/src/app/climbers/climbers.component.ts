@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Climber} from '../climber';
 
 
@@ -8,7 +8,8 @@ import {Climber} from '../climber';
   styleUrls: ['./climbers.component.css']
 })
 export class ClimbersComponent implements OnInit {
-  climber: Climber = {
+
+  public climber: Climber = {
     id: 1,
     name: 'francois ',
     firstName: 'Auxietre',
@@ -17,8 +18,14 @@ export class ClimbersComponent implements OnInit {
     modifyAt: Date.now(),
     deleteAt: Date.now()
 
- };
+  };
+
+  public selectedClimber = this.climber;
   climbers: any;
+
+  public onSelect(climber) {
+    return  'climber ';
+  }
 
   ngOnInit(): void {
   }

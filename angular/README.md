@@ -5,7 +5,8 @@ ng g c nomDuComposant
 exemple de methode sur les string   {{"toto".length}}  {{"toto".toUppercase}}   etc
 appel de methode {{coucou()}}
 binding [nom] ou bind-nom
-
+lancer sudo npm start pour que le refresh se fasse tout le temps dans le browser
+BIEN METTRE LE PORT DANS PROXY.CONF.JSON EN FONCTION DU SITE QUE LON VEUT ACCEDER
 
 # AngularEscalade
 
