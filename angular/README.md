@@ -1,3 +1,12 @@
+pour cree un nouveau composant 
+ng g c nomDuComposant
+(angular generate component)
+
+exemple de methode sur les string   {{"toto".length}}  {{"toto".toUppercase}}   etc
+appel de methode {{coucou()}}
+binding [nom] ou bind-nom
+
+
 # AngularEscalade
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.

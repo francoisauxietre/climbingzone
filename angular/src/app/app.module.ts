@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {_MatMenuDirectivesModule, MatIconModule, MatMenuModule} from '@angular/material';
 import {DemoMaterialModule} from '../material-module';
 import { FriendsComponent } from './friends/friends.component';
+import { ClimbingRouteComponent } from './climbing-route/climbing-route.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FriendsComponent } from './friends/friends.component';
     ClimbersComponent,
     UsersComponent,
     NavigationComponent,
-    FriendsComponent
+    FriendsComponent,
+    ClimbingRouteComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,10 @@ body {
   margin: 0;
 }
 
+.menu{
+    background-color: #495057;
+}
+
 .basic-container {
   padding: 30px;
 }

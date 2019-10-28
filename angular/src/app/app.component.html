@@ -1,12 +1,16 @@
+<app-navigation></app-navigation>
+<div> {{"welcome to " +title}} {{firstName}} {{lastName}}</div>
+{{greatUser()}}
 <div>
-
   <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
 </div>
-
+url du site {{siteUrl}}
 
 <div class="layout-container layout-menu-light">
   <div>
-    <app-navigation></app-navigation>
+    <div app-climbing-route></div>
+    <label>nom:</label>
+    <input type="text" value="toto">
     <app-climbers></app-climbers>
     <app-users></app-users>
     <app-friends></app-friends>
