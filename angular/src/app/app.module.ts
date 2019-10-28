@@ -15,6 +15,7 @@ import { ClimbingRouteComponent } from './climbing-route/climbing-route.componen
 import { ClimbersDetailComponent } from './climbers-detail/climbers-detail.component';
 import { ClimbersListComponent } from './climbers-list/climbers-list.component';
 import {ClimbersService} from './climbers.service';
+import {FriendsService} from './friends.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import {ClimbersService} from './climbers.service';
     MatIconModule,
     DemoMaterialModule
   ],
-  providers: [ClimbersService],
+  providers: [ClimbersService, FriendsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,22 +1,36 @@
 <app-navigation></app-navigation>
-<div> {{"welcome to " +title}} {{firstName}} {{lastName}}</div>
-{{greatUser()}}
+<!--<div> {{"welcome to " +title}} {{firstName}} {{lastName}}</div>-->
+<!--{{greatUser()}}-->
+<!--<div>-->
+<!--  <mat-slider min="1" max="100" step="1" value="1"></mat-slider>-->
+<!--</div>-->
+<!--url du site {{siteUrl}}-->
+<!--<button (click)="refresh()" >Refresh</button>-->
+<!--<div class="layout-container layout-menu-light">-->
+<!--  <div>-->
+<!--    <div app-climbing-route></div>-->
+<!--    <label class="text-succes">nom:</label>-->
+<!--    <input bind-disabled="isDisabled" [id]="id1" type="text" value="toto">-->
+<!--    <app-climbers-list></app-climbers-list>-->
+<!--    <app-climbers></app-climbers>-->
+<!--    <app-users></app-users>-->
+<!--    <app-friends></app-friends>-->
+<!--  </div>-->
+<!--    <button (click)="foo()"> Get Climbers</button>-->
+<!--  <h2 [class.text-danger]="hasError">test element</h2>-->
+<!--  <h2 [ngClass]="messageClasses">test element</h2>-->
+<!--  <app-climbers-list [parentData]="firstName"></app-climbers-list>-->
+<!-- <app-climbers-list (sentParentEvent)="message=$event" ></app-climbers-list>-->
+<!--  {{message | lowercase}} :slice:  {{message | slice:2:5}}-->
+<!--{{messageClasses | json}}-->
+<!--  <h2>{{16.356 | number:"1.2-3"}}</h2>-->
+<!--  <h2>{{16.356 | number:"8.2-2"}}</h2>-->
+<!--  <h2>{{16.356 | number:"3.1-2"}}</h2>-->
+<!--  <h2>{{16.356 | percent}}</h2>-->
+<!--  <h2>{{16.356 | currency}}</h2>-->
+<!--  <h2>{{16.356 | currency:"EUR"}}</h2>-->
+<!--  {{date | date:'short'}}-->
+<!--  <router-outlet></router-outlet>-->
 <div>
-  <mat-slider min="1" max="100" step="1" value="1"></mat-slider>
-</div>
-url du site {{siteUrl}}
-<button (click)="refresh()" >Refresh</button>
-<div class="layout-container layout-menu-light">
-  <div>
-    <div app-climbing-route></div>
-    <label class="text-succes">nom:</label>
-    <input bind-disabled="isDisabled" [id]="id1" type="text" value="toto">
-    <app-climbers></app-climbers>
-    <app-users></app-users>
-    <app-friends></app-friends>
-  </div>
-    <button (click)="foo()"> Get Climbers</button>
-  <h2 [class.text-danger]="hasError">test element</h2>
-  <h2 [ngClass]="messageClasses">test element</h2>
-  <router-outlet></router-outlet>
+  <app-climbers-detail></app-climbers-detail>
 </div>

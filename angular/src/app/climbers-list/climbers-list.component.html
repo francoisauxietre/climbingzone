@@ -1,1 +1,37 @@
-<p>climbers-list works!</p>
+<p [style.color]="hasError ? 'black' : 'red'">climbers-list works!</p>
+<p [style.color]="hightLightColor">climbers-list works!</p>
+<p [ngStyle]="titleStyles">climbers-list works!</p>
+<button [class]="hasError" (click)="onClick($event)">PRESS ME</button>
+{{name}}
+
+<!--reference avec # et un methode -->
+<input #mail type="text" label="Mail">
+<button (click)="logMessage(mail)">Mail</button>
+
+<!--2 way binding-->
+<input [(ngModel)]="lastName" type="text" label="test">{{lastName}}
+
+<!--bloc if then else en deux lignes -->
+<h2 *ngIf="displayName; else else1Block">AFFICHAGE</h2>
+<ng-template #else1Block><h2>ICI SINON </h2></ng-template>
+
+<!--bloc if then else en trois lignes -->
+<div *ngIf="displayName; then thenBlock; else elseBlock"></div>
+<ng-template #thenBlock><h1>then1 </h1></ng-template>
+<ng-template #elseBlock><h1>else1</h1></ng-template>
+
+<!--le switch case default-->
+<div [ngSwitch]="color">
+  <div *ngSwitchCase="'red'">red chose</div>
+  <div *ngSwitchCase="'blue'">blue chose</div>
+  <div *ngSwitchCase="'yellow'">yellow chose</div>
+  <div *ngSwitchDefault>Pick again</div>
+</div>
+<!--on peut faire first as first last as last odd as odd even as even etc-->
+<div *ngFor="let climber of climbers; index as index">
+  <ul>
+    <li>{{index}}:{{climber.name}} :{{climber.firstName}}</li>
+  </ul>
+</div>
+<h3>hello {{parentData}}</h3>
+<button (click)="sentEvent()">Send event</button>

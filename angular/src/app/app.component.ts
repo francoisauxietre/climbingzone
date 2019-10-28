@@ -14,8 +14,10 @@ import {HttpClient} from '@angular/common/http';
 export class AppComponent {
   title = 'ClimbingZone1';
   public id1 = 'testId';
-  public firstName = 'test';
+  public date = new Date();
+  public firstName = 'test1------------------';
   public lastName = 'test1';
+  public message = '';
   public siteUrl = window.location.href;
   public isDisabled = false;
   public hasError = false;
@@ -26,8 +28,8 @@ export class AppComponent {
     'text-danger': this.hasError,
     'text-special': this.isItalic
 
-  }
-  friends: Array<any>;
+  };
+  // friends: Array<any>;
 
   constructor(private http: HttpClient) {
   }

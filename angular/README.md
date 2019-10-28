@@ -8,6 +8,21 @@ binding [nom] ou bind-nom
 lancer sudo npm start pour que le refresh se fasse tout le temps dans le browser
 BIEN METTRE LE PORT DANS PROXY.CONF.JSON EN FONCTION DU SITE QUE LON VEUT ACCEDER
 
+pour passer des elements de parent a  enfant 
+parent vers enfants @input
+enfant vers parents @output
+
+{{message | lowercase}}  differentes options 
+uppercase titlecase slice: 3 json
+
+permier chiffre min digit, min decimal digit, et max decimal
+  <h2>{{16.356 | number:"1.2-3"}}</h2>
+  
+pour les dates {{date | date:'short'}} shortDate shortTime...
+
+un injecteur est en gros un container contenant toutes nos dependences que 
+l'on voudrait envoyer comme parametres à une methode
+
 # AngularEscalade
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
