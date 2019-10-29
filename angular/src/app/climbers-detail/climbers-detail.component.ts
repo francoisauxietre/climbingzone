@@ -13,16 +13,21 @@ export class ClimbersDetailComponent implements OnInit {
   public friends = [];
   private friendsNames = [];
   private firstName = '';
+  private message = '';
   public index = 0;
 
   constructor(private climbersService: ClimbersService, private friendsService: FriendsService) {
   }
 
   ngOnInit() {
-    // this.climbers = this.climbersService.getClimbers();
     this.climbersService.getClimbers().subscribe(data => this.climbers = data);
     this.friends = this.friendsService.getFriends();
 
+  }
+
+  messageError(message) {
+    this.message = message;
+    console.log(message);
   }
 
   getFriendsNameById(index) {
@@ -41,6 +46,10 @@ export class ClimbersDetailComponent implements OnInit {
 
 
   getFirstNameByClimberId(index) {
-    return this.climbers[index - 1].firstName;
+
+    if (this.climbers[index] !== '') {
+      return 'a';
+    }
+    return this.climbers[index].firstName;
   }
 }

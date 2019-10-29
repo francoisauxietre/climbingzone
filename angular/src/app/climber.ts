@@ -1,7 +1,7 @@
 export interface IClimber {
   id: number;
-  name: string;
   firstName: string;
+  lastName: string;
   birth: string;
 }
 
