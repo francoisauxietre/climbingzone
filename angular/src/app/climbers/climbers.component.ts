@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Climber} from '../climber';
+import {IClimber} from '../climber';
 
 
 @Component({
@@ -9,14 +9,11 @@ import {Climber} from '../climber';
 })
 export class ClimbersComponent implements OnInit {
 
-  public climber: Climber = {
+  public climber: IClimber = {
     id: 1,
     name: 'francois ',
     firstName: 'Auxietre',
-    birth: Date.now(),
-    createAt: Date.now(),
-    modifyAt: Date.now(),
-    deleteAt: Date.now()
+    birth: Date.now().toString(),
 
   };
 

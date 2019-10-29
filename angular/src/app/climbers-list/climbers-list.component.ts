@@ -32,7 +32,8 @@ export class ClimbersListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.climbers = this.climbersService.getClimbers();
+    // le getclimbers renvoi un observale auxquel on souscrit pour remplir notre climbers array
+    this.climbersService.getClimbers().subscribe(data => this.climbers = data);
     this.friends = this.friendsService.getFriends();
   }
 

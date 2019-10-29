@@ -19,7 +19,8 @@ export class ClimbersDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.climbers = this.climbersService.getClimbers();
+    // this.climbers = this.climbersService.getClimbers();
+    this.climbersService.getClimbers().subscribe(data => this.climbers = data);
     this.friends = this.friendsService.getFriends();
 
   }
