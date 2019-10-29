@@ -23,7 +23,7 @@ pour les dates {{date | date:'short'}} shortDate shortTime...
 un injecteur est en gros un container contenant toutes nos dependences que 
 l'on voudrait envoyer comme parametres à une methode
 
-
+![1](https://user-images.githubusercontent.com/55358842/67728832-018c9080-f9ef-11e9-9283-9760f317c58b.png)
 
 # AngularEscalade
 
