@@ -23,6 +23,8 @@ pour les dates {{date | date:'short'}} shortDate shortTime...
 un injecteur est en gros un container contenant toutes nos dependences que 
 l'on voudrait envoyer comme parametres à une methode
 
+
+
 # AngularEscalade
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.

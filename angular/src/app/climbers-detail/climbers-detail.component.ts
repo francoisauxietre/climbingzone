@@ -11,7 +11,9 @@ export class ClimbersDetailComponent implements OnInit {
 
   public climbers = [];
   public friends = [];
-  private test1 = [];
+  private friendsNames = [];
+  private firstName = '';
+  public index = 0;
 
   constructor(private climbersService: ClimbersService, private friendsService: FriendsService) {
   }
@@ -19,12 +21,25 @@ export class ClimbersDetailComponent implements OnInit {
   ngOnInit() {
     this.climbers = this.climbersService.getClimbers();
     this.friends = this.friendsService.getFriends();
+
   }
 
-// rtouver le nom correspodant a id du grimpeur
-//   getFriendsNameById() {
-//     this.test1.concat(...)
-//     return
-//   }
+  getFriendsNameById(index) {
+    this.friends.map(obj => {
+      if (index === obj.userId) {
+        const num = obj.climberId;
+        this.climbers.map(climber => {
+          if (climber.id === num) {
+            this.friendsNames.push(climber.firstName);
+          }
+        });
+      }
+    });
+    return this.friendsNames;
+  }
 
+
+  getFirstNameByClimberId(index) {
+    return this.climbers[index - 1].firstName;
+  }
 }

@@ -1,11 +1,9 @@
 <p>climbers-detail works!</p>
+<input type="number">
 <div *ngFor="let climber of climbers; index as index">
   <ul>
     <li>{{index}}, {{climber.id}}, {{climber.firstName}}, {{climber.lastName}}, {{climber.age}}</li>
   </ul>
-</div>
-<div *ngFor="let friend of friends; index as index1">
-  <ul>
-    <li>{{index1}}, {{friend.userId}}, {{friend.climberId}}</li>
-  </ul>
-</div>
+</div> Ami de {{getFirstNameByClimberId(3)}}
+{{getFriendsNameById(3)}}
+
