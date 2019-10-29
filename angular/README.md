@@ -35,8 +35,6 @@ docker exec -it 628c0dae82d2 bash
  show tables;
  ex de requette  SELECT t.* FROM climbing.climber t where first_name like '%aux%';
 
-
-
 ![1](https://user-images.githubusercontent.com/55358842/67728832-018c9080-f9ef-11e9-9283-9760f317c58b.png)
 
 # AngularEscalade

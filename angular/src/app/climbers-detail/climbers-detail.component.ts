@@ -48,7 +48,7 @@ export class ClimbersDetailComponent implements OnInit {
   getFirstNameByClimberId(index) {
 
     if (this.climbers[index] !== '') {
-      return 'a';
+      return 'null';
     }
     return this.climbers[index].firstName;
   }

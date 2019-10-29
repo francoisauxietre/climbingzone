@@ -1,43 +1,43 @@
 
 <!-- Navigation -->
-<div class="test">
-<button color="warn" mat-raised-button [matMenuTriggerFor]="climbersMenu">Climbers</button>
+<nav>
+<button class="button" color="warn" mat-raised-button [matMenuTriggerFor]="climbersMenu">Climbers</button>
 <mat-menu #climbersMenu="matMenu" yPosition="above">
-  <button mat-menu-item>Friends</button>
-  <button mat-menu-item>Cards</button>
+  <button mat-menu-item routerLink="/climbers/detail">Climbers details</button>
+  <button mat-menu-item routerLink="/climbers/list" routerLinkActive='active'>Climbers list</button>
+  <button mat-menu-item routerLink="climbers/friends">Friends</button>
 </mat-menu>
 
-<button color="warn" mat-raised-button [matMenuTriggerFor]="routesMenu">Routes</button>
+<button  class="button" color="warn" mat-raised-button [matMenuTriggerFor]="routesMenu">Routes</button>
 <mat-menu #routesMenu="matMenu" yPosition="below">
-  <button mat-menu-item>Add New</button>
-  <button mat-menu-item>List</button>
-  <button mat-menu-item>Around You</button>
-  <button mat-menu-item>Indoor</button>
-  <button mat-menu-item>Outdoor</button>
+  <button mat-menu-item routerLink="/climbing-routes/add" >Add New</button>
+  <button mat-menu-item routerLink="/climbing-routes/list">List</button>
+  <button mat-menu-item routerLink="/climbing-routes/around">Around You</button>
+  <button mat-menu-item routerLink="/climbing-routes/indoor">Indoor</button>
+  <button mat-menu-item routerLink="/climbing-routes/outdoor">Outdoor</button>
 </mat-menu>
 
-<button color="warn" mat-raised-button [matMenuTriggerFor]="cardsMenu">Cards</button>
+<button  class="button" color="warn" mat-raised-button [matMenuTriggerFor]="cardsMenu">Cards</button>
 <mat-menu #cardsMenu="matMenu" xPosition="before">
-  <button mat-menu-item>New</button>
-  <button mat-menu-item>Collection</button>
+  <button mat-menu-item routerLink="/card/add">Add New</button>
+  <button mat-menu-item routerLink="/cards/list">Collection</button>
 </mat-menu>
 
 
-<button color="warn" mat-raised-button [matMenuTriggerFor]="afterMenu">Boulders</button>
+<button  class="button" color="warn" mat-raised-button [matMenuTriggerFor]="afterMenu">Boulders</button>
 <mat-menu #afterMenu="matMenu" xPosition="after">
-  <button mat-menu-item>Indoor</button>
-  <button mat-menu-item>Outdoor</button>
+  <button mat-menu-item routerLink="/boulders/indoor">Indoor</button>
+  <button mat-menu-item routerLink="/boulders/outdoor">Outdoor</button>
 </mat-menu>
 
-<button color="warn" mat-raised-button [matMenuTriggerFor]="contactMenu">Contact</button>
+<button class="button"  color="warn" mat-raised-button [matMenuTriggerFor]="contactMenu">Contact</button>
 <mat-menu #contactMenu="matMenu" xPosition="after">
-  <button mat-menu-item>Contact Us</button>
-  <button mat-menu-item>Request features</button>
+  <button mat-menu-item routerLink="/contact/us">Contact Us</button>
+  <button mat-menu-item routerLink="/contact/request">Request features</button>
 </mat-menu>
 
-<button color="warn" mat-raised-button [matMenuTriggerFor]="gpsMenu">GPS</button>
+<button  class="button" color="warn" mat-raised-button [matMenuTriggerFor]="gpsMenu">GPS</button>
 <mat-menu #gpsMenu="matMenu" xPosition="after">
-  <button mat-menu-item>Indoor</button>
-  <button mat-menu-item>Outdoor</button>
+  <button mat-menu-item routerLink="/gps">Indoor</button>
 </mat-menu>
-</div>
+</nav>

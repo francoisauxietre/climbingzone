@@ -29,22 +29,16 @@ export class AppComponent {
     'text-special': this.isItalic
 
   };
-  // friends: Array<any>;
 
-  constructor(private http: HttpClient) {
+  constructor() {
   }
 
 
   foo() {
     // this.http.get('/api/Friends').subscribe(e => this.friends = e as Array<any>);
     // this.response = 'http://localhost:8080/api/Climber'.subscribe(e => this.foo());
-    console.log(this.response);
   }
 
-  greatUser() {
-    return 'hello ' + name;
-
-  }
 
   refresh(): void {
     window.location.reload();
