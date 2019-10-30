@@ -15,9 +15,11 @@ import {BouldersOutdoorComponent} from './boulders-outdoor/boulders-outdoor.comp
 import {ContactUsComponent} from './contact-us/contact-us.component';
 import {ContactRequestComponent} from './contact-request/contact-request.component';
 import {GpsComponent} from './gps/gps.component';
+import {PageErrorComponent} from './page-error/page-error.component';
 
 
 const routes: Routes = [
+  {path: '', redirectTo: '/climbers/list', pathMatch: 'full'},
   {path: 'climbers/detail', component: ClimbersDetailComponent},
   {path: 'climbers/list', component: ClimbersListComponent},
   {path: 'climbers/friends', component: FriendsComponent},
@@ -36,7 +38,7 @@ const routes: Routes = [
   {path: 'contact/us', component: ContactUsComponent},
   {path: 'contact/request', component: ContactRequestComponent},
   {path: 'gps', component: GpsComponent},
-
+  {path: '**', component: PageErrorComponent}
 
 ];
 
@@ -53,4 +55,4 @@ export class AppRoutingModule {
 export const routingComponent = [ClimbersDetailComponent, FriendsComponent, ClimbersListComponent,
   ClimbingRouteAddComponent, ClimbingRouteListComponent, ClimbingRouteAroundComponent, ClimbingRouteListComponent,
   ClimbingRouteOutdoorComponent, ClimbingRouteIndoorComponent, CardAddComponent, CardsListComponent,
-  BouldersIndoorComponent, BouldersOutdoorComponent, ContactUsComponent, ContactRequestComponent, GpsComponent];
+  BouldersIndoorComponent, BouldersOutdoorComponent, ContactUsComponent, ContactRequestComponent, GpsComponent, PageErrorComponent];

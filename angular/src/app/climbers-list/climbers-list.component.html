@@ -28,10 +28,10 @@
   <div *ngSwitchDefault>Pick again</div>
 </div>
 <!--on peut faire first as first last as last odd as odd even as even etc-->
-<div *ngFor="let climber of climbers; index as index">
-  <ul>
-    <li>{{index}}:{{climber.name}} :{{climber.firstName}}</li>
-  </ul>
-</div>
+<ul class="items">
+  <li *ngFor="let climber of climbers">
+    <span class="badge"> {{climber.id}}</span>{{climber.firstName}}
+  </li>
+</ul>
 <h3>hello {{parentData}}</h3>
 <button (click)="sentEvent()">Send event</button>

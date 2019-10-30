@@ -1,10 +1,13 @@
 <p>climbers-detail works!</p>
 <input type="number">
-<div *ngFor="let climber of climbers; index as index">
-  <ul>
-    <li>{{index}}, {{climber.id}}, {{climber.firstName}}</li>
-  </ul>
-</div> Ami de {{getFirstNameByClimberId(1)}}
-{{getFriendsNameById(1)}}
-{{message}}
+
+<ul class="items">
+  <li *ngFor="let climber of climbers">
+    <span class="badge">{{climber.id}}</span>{{climber.firstName}}
+  </li>
+</ul>
+<div> Ami de {{getFirstNameByClimberId(1)}}
+  {{getFriendsNameById(1)}}
+  {{message}}</div>
+
 

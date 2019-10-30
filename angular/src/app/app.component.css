@@ -1,40 +1,40 @@
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+/*@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';*/
 
-body {
-  font-family: Roboto, Arial, sans-serif;
-  margin: 0;
-}
+/*body {*/
+/*  font-family: Roboto, Arial, sans-serif;*/
+/*  margin: 0;*/
+/*}*/
 
-.menu{
-    background-color: #495057;
-}
+/*.menu{*/
+/*    background-color: #495057;*/
+/*}*/
 
-.basic-container {
-  padding: 30px;
-}
+/*.basic-container {*/
+/*  padding: 30px;*/
+/*}*/
 
-.version-info {
-  font-size: 8pt;
-  float: right;
-}
+/*.version-info {*/
+/*  font-size: 8pt;*/
+/*  float: right;*/
+/*}*/
 
-.text-succes {
-  color: blue;
-}
+/*.text-succes {*/
+/*  color: blue;*/
+/*}*/
 
-.text-danger {
-  color: red;
-}
-.text-italic {
-  font-style: italic;
-}
+/*.text-danger {*/
+/*  color: red;*/
+/*}*/
+/*.text-italic {*/
+/*  font-style: italic;*/
+/*}*/
 
-.active {
-  color: red;
+/*.active {*/
+/*  color: red;*/
 
-}
+/*}*/
 
-.button {
-  padding-left: 5px;
-  padding-right: 5px;
-}
+/*.button {*/
+/*  padding-left: 5px;*/
+/*  padding-right: 5px;*/
+/*}*/

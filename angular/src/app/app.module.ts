@@ -14,6 +14,7 @@ import {FriendsComponent} from './friends/friends.component';
 import {ClimbingRouteComponent} from './climbing-route/climbing-route.component';
 import {ClimbersService} from './climbers.service';
 import {FriendsService} from './friends.service';
+import { PageErrorComponent } from './page-error/page-error.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {FriendsService} from './friends.service';
     NavigationComponent,
     FriendsComponent,
     ClimbingRouteComponent,
-    routingComponent
+    routingComponent,
+    PageErrorComponent
   ],
   imports: [
     BrowserModule,

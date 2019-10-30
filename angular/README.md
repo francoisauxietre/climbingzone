@@ -1,5 +1,7 @@
 pour cree un nouveau composant 
 ng g c nomDuComposant
+ ng g c pageError -it -is // pas de creation de css ni de html
+
 (angular generate component)
 
 exemple de methode sur les string   {{"toto".length}}  {{"toto".toUppercase}}   etc
