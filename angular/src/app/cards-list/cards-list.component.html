@@ -1,39 +1,83 @@
-<p>cards-list works!</p>
+<!--<p>cards-list works!</p>-->
+<title>Collect them all</title>
+<div class="card-list">
+  <h1 class="page-title">Collect them all</h1>
+  <div class="card-container">
+    <div class="card-info-container">
+      <div class="card-info">
+        Number <span id="cards-number">0</span>
+      </div>
+      <div class="card-info">
+        Over <span id="over">100</span>
+      </div>
 
-<table border="1em">
-  <tr>
-    <th>IdCard</th>
-    <th>Star</th>
-    <th>level</th>
-    <th>qrcode</th>
-    <th>place</th>
-    <th>photo</th>
-    <th>climbingRouteName</th>
-    <th>physical</th>
-    <th>technical</th>
-    <th>tactical</th>
-    <th>mental</th>
-    <th>bonus</th>
-    <th>climberFirstName</th>
-    <th>climberLastName</th>
-    <th>info</th>
+    </div>
+    <div class="card">
+      <div class="card-back card-face">
+        <img class="top-web top-web-left" src="../angular/assets/1.png">
+      </div>
+      <div class="card-front card-face">
+
+      </div>
 
 
-  <tr *ngFor="let card of cardsApi">
-  <td align="center">{{card.idCard}}</td>
-  <td align="center">{{card.star}}</td>
-  <td align="center">{{card.level}}</td>
-  <td align="center">{{card.qrcode}}</td>
-  <td align="center">{{card.place}}</td>
-  <td align="center">{{card.photo}}</td>
-  <td align="center">{{card.climbingRouteName}}</td>
-  <td align="center">{{card.physical}}</td>
-  <td align="center">{{card.technical}}</td>
-  <td align="center">{{card.tactical}}</td>
-  <td align="center">{{card.mental}}</td>
-  <td align="center">{{card.bonus}}</td>
-  <td align="center">{{card.climberFirstName}}</td>
-  <td align="center">{{card.climberLastName}}</td>
-  <td align="center">{{card.info}}</td>
-  </tr>
-</table>
+    </div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+
+  </div>
+</div>
+
+<!--<table border="1em">-->
+<!--  <tr>-->
+<!--    <th>IdCard</th>-->
+<!--    <th>Star</th>-->
+<!--    <th>level</th>-->
+<!--    <th>qrcode</th>-->
+<!--    <th>place</th>-->
+<!--    <th>photo</th>-->
+<!--    <th>climbingRouteName</th>-->
+<!--    <th>physical</th>-->
+<!--    <th>technical</th>-->
+<!--    <th>tactical</th>-->
+<!--    <th>mental</th>-->
+<!--    <th>bonus</th>-->
+<!--    <th>climberFirstName</th>-->
+<!--    <th>climberLastName</th>-->
+<!--    <th>info</th>-->
+
+
+<tr *ngFor="let card of cardsApi">
+  <div class="parent">
+    <td class="id-card">{{card.idCard}}</td>
+    <td class="star">{{card.star}}</td>
+    <!--  <td align="center">{{card.level}}</td>-->
+    <!--  <td align="center">{{card.qrcode}}</td>-->
+    <!--  <td align="center">{{card.place}}</td>-->
+    <!--  <td align="center">{{card.photo}}</td>-->
+    <!--  <td align="center">{{card.climbingRouteName}}</td>-->
+    <!--  <td align="center">{{card.physical}}</td>-->
+    <!--  <td align="center">{{card.technical}}</td>-->
+    <!--  <td align="center">{{card.tactical}}</td>-->
+    <!--  <td align="center">{{card.mental}}</td>-->
+    <!--  <td align="center">{{card.bonus}}</td>-->
+    <!--  <td align="center">{{card.climberFirstName}}</td>-->
+    <!--  <td align="center">{{card.climberLastName}}</td>-->
+    <!--  <td align="center">{{card.info}}</td>-->
+  </div>
+</tr>
+<!--</table>-->
+

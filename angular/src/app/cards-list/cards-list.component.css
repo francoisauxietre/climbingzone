@@ -1,0 +1,93 @@
+.fa {
+  font-family: FontAwesome;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.card-list {
+  margin: 0px;
+  background: radial-gradient(#63d1e5, #0062E6);
+  min-height: 100vh;
+}
+
+.page-title {
+
+  /*police et sinon police par default*/
+  font-family: fantasy, Serif;
+  color: #495057;
+  font-style: normal;
+  text-align: center;
+  font-size: 4em;
+}
+
+.card-info {
+  font-family: fantasy, Serif;
+  color: #444444;
+  font-size: 2em;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(4, auto) ;
+  grid-gap: 10px;
+  margin: 50px;
+  justify-content: center ;
+
+}
+
+.card-info-container {
+grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.card {
+  background-color: black;
+  height: 175px;
+  width: 125px;
+}
+
+.level {
+
+}
+
+.star {
+
+}
+
+/*si on met en fixed meme si on bouge la page l element ne
+bouge pas, en absolute c'est par rapport au parent
+mieux parent en relative et fils en absolute
+en mode stycky si on descend la page il reste
+ encoe dessus*/
+.parent {
+  position: relative;
+  background-color: #33AEFF;
+}
+
+.id-card {
+  position: absolute;
+  background-color: aliceblue;
+  top: 100px;
+  left: 30px;
+  color: #000000;
+}
+
+
+.star {
+  position: relative;
+  background-color: forestgreen;
+}
+
+.child-three {
+  background-color: gold;
+}
+
+.top-web top-web-left {
+
+
+
+}

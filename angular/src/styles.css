@@ -1,25 +1,35 @@
-  /* Master Styles */
+/* Master Styles */
 h1 {
   color: #369;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: FontAwesome, Arial, Helvetica, sans-serif;
   font-size: 250%;
 }
+
+td {
+  text-align: center;
+}
+
 h2, h3 {
   color: #444;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }
+
 body {
   /*margin: 2em;*/
 }
+
 body, input[text], button {
   color: #888;
   font-family: Cambria, Georgia;
 }
+
+
 a {
   cursor: pointer;
   cursor: hand;
 }
+
 button {
   font-family: Arial;
   background-color: #eee;
@@ -29,9 +39,11 @@ button {
   cursor: pointer;
   cursor: hand;
 }
+
 button:hover {
   background-color: #cfd8dc;
 }
+
 button:disabled {
   background-color: #eee;
   color: #aaa;
@@ -47,13 +59,16 @@ nav a {
   background-color: #eee;
   border-radius: 4px;
 }
+
 nav a:visited, a:link {
   color: #607D8B;
 }
+
 nav a:hover {
   color: #039be5;
   background-color: #CFD8DC;
 }
+
 nav a.active {
   color: #039be5;
 }
@@ -65,6 +80,7 @@ nav a.active {
   padding-bottom: 10px;
   width: 10em;
 }
+
 .items li {
   cursor: pointer;
   position: relative;
@@ -75,11 +91,13 @@ nav a.active {
   height: 3em;
   /*border-radius: 4px;*/
 }
+
 .items li:hover {
   color: #607D8B;
   background-color: #DDD;
   left: .1em;
 }
+
 .items li.selected:hover {
   background-color: #BBD8DC;
   color: white;
@@ -118,10 +136,12 @@ nav a.active {
   margin-bottom: -1.2em;
   /*border-radius: 4px 0 0 4px;*/
 }
+
 .items li.selected {
   background-color: #CFD8DC;
   color: white;
 }
+
 /* everywhere else */
 * {
   font-family: Arial, Helvetica, sans-serif;
