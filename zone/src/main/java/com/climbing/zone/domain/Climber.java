@@ -21,7 +21,7 @@ public class Climber {
     Logger logger = LoggerFactory.getLogger(Climber.class);
 
     Long IdClimber; //id autogenerer
-
+    Long Id;
     String firstName; //prenom
     String lastName; // Nom
     Date birth; //anniversaire
@@ -51,6 +51,7 @@ public class Climber {
         java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         this.createAt = date;
         this.info = "nom:" + lastName + "prenom" + firstName + "  " + lastName + " " + birth;
+        this.Id = getIdClimber();
         logger.info(info);
     }
 

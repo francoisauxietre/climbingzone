@@ -1,16 +1,17 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ClimbersService} from '../climbers.service';
-import {FriendsService} from '../friends.service';
+import {ClimbersService} from '../api/climbers.service';
+import {FriendsService} from '../api/friends.service';
 
 @Component({
   selector: 'app-climbers-list',
   templateUrl: './climbers-list.component.html',
   styleUrls: ['./climbers-list.component.css']
 })
+
 export class ClimbersListComponent implements OnInit {
 
-  public climbers = [];
-  public friends = [];
+  public climbersApi = [];
+  public friendsApi = [];
   public color = 'blue';
   public name = '';
   // deux formes d'ecriture possible ici 1 et 2
@@ -28,13 +29,22 @@ export class ClimbersListComponent implements OnInit {
     fontStyle: 'italic'
   };
 
-  constructor(private climbersService: ClimbersService, private friendsService: FriendsService) {
+  constructor(private climbersApiService: ClimbersService, private friendsApiService: FriendsService) {
   }
-
   ngOnInit() {
-    // le getclimbers renvoi un observale auxquel on souscrit pour remplir notre climbers array
-    this.climbersService.getClimbers().subscribe(data => this.climbers = data);
-    this.friends = this.friendsService.getFriends();
+    this.climbersApiService.getApiClimbers()
+      .subscribe(
+        data => {
+          this.climbersApi = data;
+        }
+      );
+    this.friendsApiService.getApiFriends()
+      .subscribe(
+        data => {
+          this.friendsApi = data;
+        }
+      );
+
   }
 
   onClick(event) {

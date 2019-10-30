@@ -12,8 +12,8 @@ import {_MatMenuDirectivesModule, MatIconModule, MatMenuModule} from '@angular/m
 import {DemoMaterialModule} from '../material-module';
 import {FriendsComponent} from './friends/friends.component';
 import {ClimbingRouteComponent} from './climbing-route/climbing-route.component';
-import {ClimbersService} from './climbers.service';
-import {FriendsService} from './friends.service';
+import {ClimbersService} from './api/climbers.service';
+import {FriendsService} from './api/friends.service';
 import { PageErrorComponent } from './page-error/page-error.component';
 
 
@@ -26,7 +26,8 @@ import { PageErrorComponent } from './page-error/page-error.component';
     FriendsComponent,
     ClimbingRouteComponent,
     routingComponent,
-    PageErrorComponent
+    PageErrorComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -39,6 +40,7 @@ import { PageErrorComponent } from './page-error/page-error.component';
     MatIconModule,
     DemoMaterialModule
   ],
+  // dans le provider tous sera disponible comme service pour tout les composants
   providers: [ClimbersService, FriendsService],
   bootstrap: [AppComponent]
 })

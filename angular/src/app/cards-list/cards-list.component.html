@@ -1,1 +1,39 @@
 <p>cards-list works!</p>
+
+<table border="1em">
+  <tr>
+    <th>IdCard</th>
+    <th>Star</th>
+    <th>level</th>
+    <th>qrcode</th>
+    <th>place</th>
+    <th>photo</th>
+    <th>climbingRouteName</th>
+    <th>physical</th>
+    <th>technical</th>
+    <th>tactical</th>
+    <th>mental</th>
+    <th>bonus</th>
+    <th>climberFirstName</th>
+    <th>climberLastName</th>
+    <th>info</th>
+
+
+  <tr *ngFor="let card of cardsApi">
+  <td align="center">{{card.idCard}}</td>
+  <td align="center">{{card.star}}</td>
+  <td align="center">{{card.level}}</td>
+  <td align="center">{{card.qrcode}}</td>
+  <td align="center">{{card.place}}</td>
+  <td align="center">{{card.photo}}</td>
+  <td align="center">{{card.climbingRouteName}}</td>
+  <td align="center">{{card.physical}}</td>
+  <td align="center">{{card.technical}}</td>
+  <td align="center">{{card.tactical}}</td>
+  <td align="center">{{card.mental}}</td>
+  <td align="center">{{card.bonus}}</td>
+  <td align="center">{{card.climberFirstName}}</td>
+  <td align="center">{{card.climberLastName}}</td>
+  <td align="center">{{card.info}}</td>
+  </tr>
+</table>

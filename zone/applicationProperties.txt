@@ -1,22 +1,19 @@
-#test dans docker
-#spring.datasource.url=jdbc:mysql://localhost:3308/climbing
-#spring.datasource.username=fafa1
-#spring.datasource.password=fafa1
-#
-#spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+#Docker de mysql lancer avec un docker-compose up
 
-#spring.jpa.hibernate.ddl-auto=none ou create si on veu reafire une database
+#spring.jpa.hibernate.ddl-auto=create si on veu refaire une database
+
 spring.jpa.hibernate.ddl-auto=none
 spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
 spring.jpa.show-sql=true
+
 #server.error.whitelabel.enabled=false
-#
-#server.port=8080
+
 
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.datasource.url=jdbc:mysql://localhost:3309/climbing?createDatabaseIfNotExist=true&autoReconnect=true&useSSL=false
 spring.datasource.username=fafa1
 spring.datasource.password=fafa1
+
 #spring.datasource.initialize=false
 spring.datasource.initialization-mode=always
 

@@ -5,23 +5,31 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.PreDestroy;
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 public class Card {
 
     Logger logger = LoggerFactory.getLogger(Climber.class);
 
-    Long IdCard; //id autogenerer
+    Long IdCard; //id auto-generer
 
-    String name;
-    int physique;
-    int technique;
-    int tactique;
+    int star;
+    int level;
+    String qrcode;
+    int climberPlace;
+    int climberTotal;
+    String place;
+    String photo;
+    String climbingRouteName;
+    int physical;
+    int technical;
+    int tactical;
     int mental;
+    String bonus;
+    String climberFirstName;
+    String climberLastName;
 
     Date createAt; //date de creation
     Date modifyAt; //date de modification
@@ -35,15 +43,28 @@ public class Card {
         logger.info("creation d'une nouvelle carte vide");
     }
 
-    public Card(String name, int physique, int technique, int tactique, int mental) {
-        this.name = name;
-        this.physique = physique;
-        this.technique = technique;
-        this.tactique = tactique;
+    public Card(Long idCard, int star, int level, String qrcode, int climberPlace, int climberTotal, String place, String photo, String climbingRouteName, int physical, int technical, int tactical, int mental, String bonus, String climberFirstName, String climberLastName, Date createAt, String info) {
+        IdCard = idCard;
+        this.star = star;
+        this.level = level;
+        this.qrcode = qrcode;
+        this.climberPlace = climberPlace;
+        this.climberTotal = climberTotal;
+        this.place = place;
+        this.photo = photo;
+        this.climbingRouteName = climbingRouteName;
+        this.physical = physical;
+        this.technical = technical;
+        this.tactical = tactical;
         this.mental = mental;
-        this.info = "nom:" + name + physique + "  " + technique + " " + tactique+ " "+  mental;
+        this.bonus = bonus;
+        this.climberFirstName = climberFirstName;
+        this.climberLastName = climberLastName;
+        this.createAt = createAt;
+        this.info = "nom:" + climberLastName + physical + "  " + technical + " " + tactical + " "+  mental;
         logger.info(info);
     }
+
 
     // a chaque fois qu'on fera un nouvel ajout d'un grimpeur on aura cette merthode qui ajoutera des infos
     @PrePersist
@@ -75,36 +96,92 @@ public class Card {
         IdCard = idCard;
     }
 
-    public String getName() {
-        return name;
+    public int getStar() {
+        return star;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStar(int star) {
+        this.star = star;
     }
 
-    public int getPhysique() {
-        return physique;
+    public int getLevel() {
+        return level;
     }
 
-    public void setPhysique(int physique) {
-        this.physique = physique;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
-    public int getTechnique() {
-        return technique;
+    public String getQrcode() {
+        return qrcode;
     }
 
-    public void setTechnique(int technique) {
-        this.technique = technique;
+    public void setQrcode(String qrcode) {
+        this.qrcode = qrcode;
     }
 
-    public int getTactique() {
-        return tactique;
+    public int getClimberPlace() {
+        return climberPlace;
     }
 
-    public void setTactique(int tactique) {
-        this.tactique = tactique;
+    public void setClimberPlace(int climberPlace) {
+        this.climberPlace = climberPlace;
+    }
+
+    public int getClimberTotal() {
+        return climberTotal;
+    }
+
+    public void setClimberTotal(int climberTotal) {
+        this.climberTotal = climberTotal;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getClimbingRouteName() {
+        return climbingRouteName;
+    }
+
+    public void setClimbingRouteName(String climbingRouteName) {
+        this.climbingRouteName = climbingRouteName;
+    }
+
+    public int getPhysical() {
+        return physical;
+    }
+
+    public void setPhysical(int physical) {
+        this.physical = physical;
+    }
+
+    public int getTechnical() {
+        return technical;
+    }
+
+    public void setTechnical(int technical) {
+        this.technical = technical;
+    }
+
+    public int getTactical() {
+        return tactical;
+    }
+
+    public void setTactical(int tactical) {
+        this.tactical = tactical;
     }
 
     public int getMental() {
@@ -113,6 +190,38 @@ public class Card {
 
     public void setMental(int mental) {
         this.mental = mental;
+    }
+
+    public String getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(String bonus) {
+        this.bonus = bonus;
+    }
+
+    public String getClimberFirstName() {
+        return climberFirstName;
+    }
+
+    public void setClimberFirstName(String climberFirstName) {
+        this.climberFirstName = climberFirstName;
+    }
+
+    public String getClimberLastName() {
+        return climberLastName;
+    }
+
+    public void setClimberLastName(String climberLastName) {
+        this.climberLastName = climberLastName;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
     }
 
     @Basic
@@ -148,10 +257,10 @@ public class Card {
     @Override
     public String toString() {
         return "Card{" +
-                "name='" + name + '\'' +
-                ", physique=" + physique +
-                ", technique=" + technique +
-                ", tactique=" + tactique +
+                "name='" + climberLastName + '\'' +
+                ", physique=" + physical +
+                ", technique=" + technical +
+                ", tactique=" + tactical +
                 ", mental=" + mental +
                 ", createAt=" + createAt +
                 ", modifyAt=" + modifyAt +

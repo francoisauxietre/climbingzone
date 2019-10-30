@@ -44,15 +44,27 @@ public class CardApiController {
     }
 
     //ajoute un nouvelle carte
-    @ApiOperation(value = "Ajoute un nouvelle carte (nom, physique, technique, tactique , mental )")
+    @ApiOperation(value = "Ajoute un nouvelle carte (...)")
     @PostMapping("/Card")
-    public Long addUser(@RequestParam("name") String name,
-                        @RequestParam("physique") int physique,
-                        @RequestParam("tecnhique") int technique,
-                        @RequestParam("tactique") int tactique,
-                        @RequestParam("mental") int mental) {
+    public Long addUser(
+            @RequestParam("star") int star,
+            @RequestParam("level") int level,
+            @RequestParam("qrcode") String qrcode,
+            @RequestParam("place") String place,
+            @RequestParam("photo") String photo,
+            @RequestParam("climbingRouteName") String climbingRouteName,
+                        @RequestParam("physical") int physical,
+                        @RequestParam("technical") int technical,
+                        @RequestParam("tactical") int tactical,
+                        @RequestParam("mental") int mental,
+            @RequestParam("bonus") String bonus,
+            @RequestParam("climberFirstName") String climberFirstName,
+            @RequestParam("climberLastName") String climberLastName,
+            @RequestParam("info") String info)
 
-        return cardService.addCard(name, physique, technique, tactique, mental);
+    {
+
+        return cardService.addCard(star, level, qrcode, place, photo, climbingRouteName,physical, technical, tactical, mental, bonus, climberFirstName, climberLastName, info);
     }
 
 

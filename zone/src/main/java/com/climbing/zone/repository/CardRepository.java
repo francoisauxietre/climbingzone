@@ -9,5 +9,5 @@ import java.util.List;
 public interface CardRepository extends CrudRepository<Card, Long> {
     List<Card> findAll();
     void deleteCardByIdCard(Long idCard);
-    List<Card>findCardsByName(String name);
+    List<Card>findCardsByClimbingRouteName(String climbingRouteName);
 }

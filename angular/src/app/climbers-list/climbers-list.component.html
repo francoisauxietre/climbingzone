@@ -28,10 +28,24 @@
   <div *ngSwitchDefault>Pick again</div>
 </div>
 <!--on peut faire first as first last as last odd as odd even as even etc-->
-<ul class="items">
-  <li *ngFor="let climber of climbers">
-    <span class="badge"> {{climber.id}}</span>{{climber.firstName}}
-  </li>
-</ul>
+<!--<ul class="items">-->
+<!--  <li *ngFor="let climber of climbers">-->
+<!--    <span class="badge"> {{climber.id}}</span>{{climber.firstName}}-->
+<!--  </li>-->
+<!--</ul>-->
 <h3>hello {{parentData}}</h3>
 <button (click)="sentEvent()">Send event</button>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>mental</th>
+    <th>physical</th>
+    <th>tactical</th>
+  <tr *ngFor="let card of friendsApi">-->
+  <td>{{card.idCard}}</td>
+    <td>{{card.mental}}</td>
+    <td>{{card.physique}}</td>
+    <td>{{card.tactique}}</td>
+  </tr>
+</table>
