@@ -3,15 +3,15 @@
 <button (click)="search(id.value)">Search by Id</button>
 <input type="text" #firstName firstName.value=''>
 <button (click)="searchFirstName(firstName.value)">Search by First Name</button>
-<table>
+<table border="1px">
   <div *ngIf="show; then thenBlock else elseBlock"></div>
   <ng-template #thenBlock>
     <tr>
-      <th>Id</th>
-      <th>firstName</th>
-      <th>lastName</th>
+      <th>climber</th>
+      <th>first name</th>
+      <th>last name</th>
       <th>birth</th>
-    <tr *ngFor="let climber of climbersApi2">-->
+    <tr *ngFor="let climber of climbersApi2">
       <td>{{climber.idClimber}}</td>
       <td>{{climber.firstName}}</td>
       <td>{{climber.lastName}}</td>

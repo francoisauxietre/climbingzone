@@ -9,6 +9,7 @@ export class ClimbersService {
   private url = 'http://localhost:8080/api/Climber';
   private url1 = 'http://localhost:8080/api/Climber/';
   private url2 = 'http://localhost:8080/api/Climber/firstName/';
+  private url3 = 'https://jsonplaceholder.typicode.com/posts?userId=1';
 
   constructor(private httpclient: HttpClient) {
   }
@@ -25,7 +26,12 @@ export class ClimbersService {
     return this.httpclient.get(this.url2 + value);
   }
 
-  // a faire la methode put
+  public getTestWithUserId(): Observable<any> {
+    const userId = new HttpParams().set('userId', '1');
+    return this.httpclient.get(this.url3, {params: userId});
+  }
+
+  // a faire la methode post
   public put(): Observable<any> {
     return null;
   }
