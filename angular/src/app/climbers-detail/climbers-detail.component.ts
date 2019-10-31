@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ClimbersService} from '../api/climbers.service';
-import {FriendsService} from '../api/friends.service';
-import {ClimbersApi} from '../api/climber-api';
+import {ClimbersService} from '../api/service/climbers.service';
+import {FriendsService} from '../api/service/friends.service';
+import {ClimberApi} from '../api/climber-api';
 
 @Component({
   selector: 'app-climbers-detail',
@@ -9,24 +9,21 @@ import {ClimbersApi} from '../api/climber-api';
   styleUrls: ['./climbers-detail.component.css']
 })
 export class ClimbersDetailComponent implements OnInit {
-
-  public climbersApi = [];
+  public ClimberApi: ClimberApi[];
   public friendsApi = [];
-
-
   private friendsNames = [];
   private firstName = '';
   private message = '';
   public index = 0;
 
-  constructor(private climbersApiService: ClimbersService, private friendsApiService: FriendsService) {
+  constructor(private ClimberApiService: ClimbersService, private friendsApiService: FriendsService) {
   }
 
   ngOnInit() {
-    this.climbersApiService.getApiClimbers()
+    this.ClimberApiService.getApiClimbers()
       .subscribe(
         data => {
-          this.climbersApi = data;
+          this.ClimberApi = data;
         }
       );
     this.friendsApiService.getApiFriends()
@@ -35,7 +32,6 @@ export class ClimbersDetailComponent implements OnInit {
           this.friendsApi = data;
         }
       );
-
   }
 
   searchClimbers() {
@@ -51,7 +47,7 @@ export class ClimbersDetailComponent implements OnInit {
   //   this.friendsApi.map(obj => {
   //     if (index === obj.userId) {
   //       const num = obj.climberId;
-  //       this.climbersApi.map(climber => {
+  //       this.ClimberApi.map(climber => {
   //         if (climber.id === num) {
   //           this.friendsNames.push(climber.firstName);
   //         }
@@ -60,14 +56,11 @@ export class ClimbersDetailComponent implements OnInit {
   //   });
   //   return this.friendsNames;
   // }
-
-
   getFirstNameByClimberId(index) {
-
-    if (this.climbersApi[index] !== '') {
-      return 'null';
-    }
-    return this.climbersApi[index].firstName;
+    // if (this.ClimberApi[index] !== '') {
+    //   return 'null';
+    // }
+    return this.ClimberApi[index].firstName;
   }
 }
 

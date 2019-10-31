@@ -18,8 +18,8 @@ import java.util.List;
 // pour ajouter api dans url avant chaque requete
 @RequestMapping("api")
 //information affichée dans swagger
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @Api(value = "Climber", tags = {"Api Climber: (findAll, AddUser, DeleteUser)"})
-
 public class ClimberApiController {
     Logger logger = LoggerFactory.getLogger(ClimberApiController.class);
 
@@ -27,7 +27,8 @@ public class ClimberApiController {
     @ModelAttribute
     public void setResponseHeader(HttpServletResponse response) {
         response.setHeader("Cache-Control", "no-cache");
-        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+        response.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
     }
 
     //lie au service du climber
@@ -55,14 +56,15 @@ public class ClimberApiController {
 
     //ajoute un nouvel utilisateur
     @ApiOperation(value = "Ajoute un nouvel Utilisateur (prenom, nom, date: jour, mois, année)")
-    @PostMapping("/Climber")
+//    @PostMapping("/Climber/post")
+    @RequestMapping(value = "/Climber/post", method = RequestMethod.POST)
+//    @CrossOrigin(origins = "http://localhost:4200")
 //    @CrossOrigin(origins = "http://localhost:3000")
     public Long addUser(@RequestParam("firstName") String firstName,
                         @RequestParam("lastName") String lastName,
                         @RequestParam("day") int day,
                         @RequestParam("month") int month,
-                        @RequestParam("year") int year){
-
+                        @RequestParam("year") int year) {
         return climberService.addClimber(firstName, lastName, day, month, year);
     }
 
@@ -85,12 +87,10 @@ public class ClimberApiController {
     //affiche la liste des grimpeur par prenom
     @ApiOperation(value = "Affiche la liste des utilisateurs par id", response = List.class)
     @GetMapping("/Climber/{IdClimber}")
-    public Climber findClimberByIdClimber(@PathVariable("IdClimber")  Long IdClimber) {
+    public Climber findClimberByIdClimber(@PathVariable("IdClimber") Long IdClimber) {
         logger.info("affichage de tous les utilisateurs");
         return climberService.findClimberByIdClimber(IdClimber);
     }
-
-
 
     //affiche la liste des grimpeur par nom
     @ApiOperation(value = "Affiche la liste des utilisateurs par nom", response = List.class)
@@ -99,8 +99,6 @@ public class ClimberApiController {
         logger.info("affichage de tous les utilisateurs par prenom");
         return climberService.findAllByLastName(lastName);
     }
-
-
 }
 
 

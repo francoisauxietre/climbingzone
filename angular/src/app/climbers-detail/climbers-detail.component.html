@@ -3,7 +3,7 @@
 <!--<button (click)="searchClimbers()">Search</button>-->
 
 <!--<ul class="items">-->
-<!--  <li *ngFor="let climber of climbersApi">-->
+<!--  <li *ngFor="let climber of ClimberApi">-->
 <!--    <span class="badge">{{climber.idClimber}}</span>{{climber.firstName}}-->
 <!--  </li>-->
 <!--</ul>-->
@@ -11,13 +11,13 @@
 <!--  &lt;!&ndash;  {{getFriendsNameById(2)}}&ndash;&gt;-->
 <!--  {{message}}</div>-->
 
-<table>
+<table border="1px">
   <tr>
-    <th>Id</th>
-    <th>firstName</th>
-    <th>lastName</th>
+    <th>Climber</th>
+    <th>first name</th>
+    <th>last name</th>
     <th>birth</th>
- <tr *ngFor="let climber of climbersApi">-->
+ <tr *ngFor="let climber of ClimberApi">
     <td>{{climber.idClimber}}</td>
     <td>{{climber.firstName}}</td>
     <td>{{climber.lastName}}</td>

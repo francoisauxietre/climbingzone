@@ -7,7 +7,7 @@
   display: grid;
   /*on cree plusieurs colonne ici*/
   grid-template-columns: 0.15fr 0.15fr 0.15fr 0.15fr 0.15fr 0.15fr 0.15fr;
-  grid-template-rows: 1fr 10fr 0.3fr;
+  grid-template-rows: 30px 10fr 0.3fr;
   grid-gap: 0.1em;
   /*justify-content: center;*/
   align-content: center;

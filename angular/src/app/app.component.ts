@@ -1,7 +1,5 @@
 import {Component} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-
-
 // metadata sous forme de decorateur de la classe
 // templateURL est url de la vue represente la vue
 // selector = dans le fichier coorespodant en html tag pour representer le component
@@ -13,8 +11,6 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AppComponent {
   title = 'ClimbingZone1';
-  public id1 = 'testId';
-  public date = new Date();
   public firstName = 'test1------------------';
   public lastName = 'test1';
   public message = '';
@@ -27,12 +23,10 @@ export class AppComponent {
     'text-succes': !this.hasError,
     'text-danger': this.hasError,
     'text-special': this.isItalic
-
   };
 
   constructor() {
   }
-
 
   refresh(): void {
     window.location.reload();

@@ -18,9 +18,14 @@ import {GpsComponent} from './gps/gps.component';
 import {PageErrorComponent} from './page-error/page-error.component';
 import {ClimberAddComponent} from './climber-add/climber-add.component';
 import {ClimberFindComponent} from './climber-find/climber-find.component';
+import {UsersComponent} from './users/users.component';
+import {UsersListComponent} from './users-list/users-list.component';
+import {ClimbersComponent} from './climbers/climbers.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/climbers/list', pathMatch: 'full'},
+  {path: '', redirectTo: '/users', pathMatch: 'full'},
+  {path: 'users', component: UsersComponent},
+  {path: 'users/list', component: UsersListComponent},
   {path: 'climbers/detail', component: ClimbersDetailComponent},
   {path: 'climbers/list', component: ClimbersListComponent},
   {path: 'climbers/add', component: ClimberAddComponent},
@@ -49,8 +54,8 @@ const routes: Routes = [
 export class AppRoutingModule {
 }
 
-export const routingComponent = [ClimbersDetailComponent, FriendsComponent, ClimbersListComponent,
+export const routingComponent = [ClimbersComponent, ClimbersDetailComponent, FriendsComponent, ClimbersListComponent,
   ClimbingRouteAddComponent, ClimbingRouteListComponent, ClimbingRouteAroundComponent, ClimbingRouteListComponent,
   ClimbingRouteOutdoorComponent, ClimbingRouteIndoorComponent, CardAddComponent, CardsListComponent,
   BouldersIndoorComponent, BouldersOutdoorComponent, ContactUsComponent, ContactRequestComponent, GpsComponent, PageErrorComponent,
-  ClimberAddComponent, ClimberFindComponent];
+  ClimberAddComponent, ClimberFindComponent, UsersComponent, UsersListComponent];

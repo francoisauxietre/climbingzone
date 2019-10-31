@@ -1,4 +1,4 @@
-export class ClimberPost {
+export class ClimberApiPost {
 
   firstName: string;
   lastName: string;

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ClimbersApi} from '../api/climber-api';
+import {ClimberApi} from '../api/climber-api';
 
 
 @Component({

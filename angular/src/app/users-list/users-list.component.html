@@ -1,0 +1,18 @@
+<p>users-list works!</p>
+<table border="1px">
+  <div *ngIf="showUser; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+    <tr>
+      <th>userId</th>
+      <th>id</th>
+      <th>title</th>
+      <th>body</th>
+    <tr *ngFor="let user of userTests">
+      <td>{{user.userId}}</td>
+      <td>{{user.id}}</td>
+      <td>{{user.title}}</td>
+      <td>{{user.body}}</td>
+    </tr>
+  </ng-template>
+  <ng-template #elseBlock>There is no climber with this id.</ng-template>
+</table>

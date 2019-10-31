@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ClimbersService} from '../api/climbers.service';
-import {FriendsService} from '../api/friends.service';
+import {ClimbersService} from '../api/service/climbers.service';
+import {FriendsService} from '../api/service/friends.service';
+import {ClimberApi} from '../api/climber-api';
 
 @Component({
   selector: 'app-climbers-list',
@@ -10,7 +11,7 @@ import {FriendsService} from '../api/friends.service';
 
 export class ClimbersListComponent implements OnInit {
 
-  public climbersApi = [];
+  public ClimberApi: ClimberApi[];
   public friendsApi = [];
   public color = 'blue';
   public name = '';
@@ -29,13 +30,14 @@ export class ClimbersListComponent implements OnInit {
     fontStyle: 'italic'
   };
 
-  constructor(private climbersApiService: ClimbersService, private friendsApiService: FriendsService) {
+  constructor(private ClimberApiService: ClimbersService, private friendsApiService: FriendsService) {
   }
+  // TODO verification si data ou il y a une erreur hhtp
   ngOnInit() {
-    this.climbersApiService.getApiClimbers()
+    this.ClimberApiService.getApiClimbers()
       .subscribe(
         data => {
-          this.climbersApi = data;
+          this.ClimberApi = data;
         }
       );
     this.friendsApiService.getApiFriends()
