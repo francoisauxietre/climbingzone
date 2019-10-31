@@ -34,12 +34,6 @@ export class AppComponent {
   }
 
 
-  foo() {
-    // this.http.get('/api/Friends').subscribe(e => this.friends = e as Array<any>);
-    // this.response = 'http://localhost:8080/api/Climber'.subscribe(e => this.foo());
-  }
-
-
   refresh(): void {
     window.location.reload();
   }

@@ -24,8 +24,8 @@ public class ClimberService {
      * @return 1
      * TODO voir avec le session du grimpeur
      */
-    public Climber findClimberById(Long idClimber) {
-       return climberRepository.findByIdClimber(idClimber);
+    public Climber findClimberByIdClimber(Long idClimber) {
+       return climberRepository.findClimberByIdClimber(idClimber);
     }
 
 

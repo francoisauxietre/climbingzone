@@ -16,35 +16,32 @@ import {ContactUsComponent} from './contact-us/contact-us.component';
 import {ContactRequestComponent} from './contact-request/contact-request.component';
 import {GpsComponent} from './gps/gps.component';
 import {PageErrorComponent} from './page-error/page-error.component';
-
+import {ClimberAddComponent} from './climber-add/climber-add.component';
+import {ClimberFindComponent} from './climber-find/climber-find.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/climbers/list', pathMatch: 'full'},
   {path: 'climbers/detail', component: ClimbersDetailComponent},
   {path: 'climbers/list', component: ClimbersListComponent},
+  {path: 'climbers/add', component: ClimberAddComponent},
+  {path: 'climbers/find', component: ClimberFindComponent},
   {path: 'climbers/friends', component: FriendsComponent},
-
   {path: 'climbing-routes/add', component: ClimbingRouteAddComponent},
   {path: 'climbing-routes/list', component: ClimbingRouteListComponent},
   {path: 'climbing-routes/around', component: ClimbingRouteAroundComponent},
   {path: 'climbing-routes/indoor', component: ClimbingRouteIndoorComponent},
   {path: 'climbing-routes/outdoor', component: ClimbingRouteOutdoorComponent},
-
   {path: 'card/add', component: CardAddComponent},
   {path: 'cards/list', component: CardsListComponent},
-
   {path: 'boulders/indoor', component: BouldersIndoorComponent},
   {path: 'boulders/outdoor', component: BouldersOutdoorComponent},
   {path: 'contact/us', component: ContactUsComponent},
   {path: 'contact/request', component: ContactRequestComponent},
   {path: 'gps', component: GpsComponent},
   {path: '**', component: PageErrorComponent}
-
 ];
 
 // creation des routes pour passer d'un bouton a l'autre
-
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
@@ -55,4 +52,5 @@ export class AppRoutingModule {
 export const routingComponent = [ClimbersDetailComponent, FriendsComponent, ClimbersListComponent,
   ClimbingRouteAddComponent, ClimbingRouteListComponent, ClimbingRouteAroundComponent, ClimbingRouteListComponent,
   ClimbingRouteOutdoorComponent, ClimbingRouteIndoorComponent, CardAddComponent, CardsListComponent,
-  BouldersIndoorComponent, BouldersOutdoorComponent, ContactUsComponent, ContactRequestComponent, GpsComponent, PageErrorComponent];
+  BouldersIndoorComponent, BouldersOutdoorComponent, ContactUsComponent, ContactRequestComponent, GpsComponent, PageErrorComponent,
+  ClimberAddComponent, ClimberFindComponent];

@@ -1,0 +1,22 @@
+<p>climber-find works!</p>
+<input type="number" #id id.value=''>
+<button (click)="search(id.value)">Search by Id</button>
+<input type="text" #firstName firstName.value=''>
+<button (click)="searchFirstName(firstName.value)">Search by First Name</button>
+<table>
+  <div *ngIf="show; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+    <tr>
+      <th>Id</th>
+      <th>firstName</th>
+      <th>lastName</th>
+      <th>birth</th>
+    <tr *ngFor="let climber of climbersApi2">-->
+      <td>{{climber.idClimber}}</td>
+      <td>{{climber.firstName}}</td>
+      <td>{{climber.lastName}}</td>
+      <td>{{climber.birth}}</td>
+    </tr>
+  </ng-template>
+  <ng-template #elseBlock>There is no climber with this id.</ng-template>
+</table>

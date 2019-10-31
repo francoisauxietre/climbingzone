@@ -52,14 +52,14 @@ public class ClimberClimbingrouteApiController {
 
     public List<Climbingroute> findClimbingrouteByIdClimber(@RequestParam("id") Long idClimber) {
         logger.info("affichage de tous les voies faites par le grimpeur");
-        Climber climber = climberService.findClimberById(idClimber);
+        Climber climber = climberService.findClimberByIdClimber(idClimber);
         return climberClimbingrouteService.findClimbingrouteByIdClimber(climber);
     }
 
     public Long addRelation(@RequestParam("idClimber") Long idClimber,
                             @RequestParam("idClimbingroute") Long idClimberoute,
                             @RequestParam("info") String info){
-        Climber climber = climberService.findClimberById(idClimber);
+        Climber climber = climberService.findClimberByIdClimber(idClimber);
 //        Climbingroute climbingroute = climberClimbingrouteService.findClimberById(idClimber);
         return new Long(0) ;
     }

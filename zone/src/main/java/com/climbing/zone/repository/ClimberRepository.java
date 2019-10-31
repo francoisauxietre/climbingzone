@@ -10,7 +10,7 @@ import java.util.List;
 public interface ClimberRepository extends CrudRepository<Climber, Long> {
 
 //    Long findId();
-    Climber findByIdClimber(Long idClimber);
+    Climber findClimberByIdClimber(Long idClimber);
     List<Climber> findAll();
 
     void deleteClimberByIdClimber(Long idClimber);//Dmoain Specific Language

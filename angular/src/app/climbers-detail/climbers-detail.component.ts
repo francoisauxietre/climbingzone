@@ -71,7 +71,4 @@ export class ClimbersDetailComponent implements OnInit {
   }
 }
 
-//    // this.getClimbers();
-//     this.climbersService.getClimbers().subscribe(data => this.climbers = data);
-//     console.log('apres_______________');
-//     console.log(this.climbers);
+

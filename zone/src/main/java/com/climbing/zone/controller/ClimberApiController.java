@@ -82,9 +82,19 @@ public class ClimberApiController {
         return climberService.findAllByFirstName(firstName);
     }
 
+    //affiche la liste des grimpeur par prenom
+    @ApiOperation(value = "Affiche la liste des utilisateurs par id", response = List.class)
+    @GetMapping("/Climber/{IdClimber}")
+    public Climber findClimberByIdClimber(@PathVariable("IdClimber")  Long IdClimber) {
+        logger.info("affichage de tous les utilisateurs");
+        return climberService.findClimberByIdClimber(IdClimber);
+    }
+
+
+
     //affiche la liste des grimpeur par nom
     @ApiOperation(value = "Affiche la liste des utilisateurs par nom", response = List.class)
-    @GetMapping("/Climber/lastName/{lastName}")
+    @GetMapping("/Climber/lastName?{lastName}")
     public List<Climber> findAllByLastName(@PathVariable("lastName") String lastName) {
         logger.info("affichage de tous les utilisateurs par prenom");
         return climberService.findAllByLastName(lastName);
