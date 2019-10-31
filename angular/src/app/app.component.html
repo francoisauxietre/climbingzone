@@ -1,4 +1,64 @@
-<app-navigation></app-navigation>
+<div class="grid-container">
+  <div class="grid-item grid-item-1">10</div>
+  <div class="grid-item grid-item-2">
+    <button class="button-center" [matMenuTriggerFor]="climbersMenu">Climbers</button>
+    <mat-menu #climbersMenu="matMenu">
+      <button mat-menu-item routerLink="/climbers/detail">Climbers details</button>
+      <button mat-menu-item routerLink="/climbers/list" routerLinkActive='active'>Climbers list</button>
+      <button mat-menu-item routerLink="climbers/friends">Friends</button>
+    </mat-menu>
+  </div>
+  <div class="grid-item grid-item-3">
+    <button class="button-center" [matMenuTriggerFor]="routesMenu">Routes</button>
+    <mat-menu #routesMenu="matMenu">
+      <button mat-menu-item routerLink="/climbing-routes/add">Add New</button>
+      <button mat-menu-item routerLink="/climbing-routes/list">List</button>
+      <button mat-menu-item routerLink="/climbing-routes/around">Around You</button>
+      <button mat-menu-item routerLink="/climbing-routes/indoor">Indoor</button>
+      <button mat-menu-item routerLink="/climbing-routes/outdoor">Outdoor</button>
+    </mat-menu>
+  </div>
+
+  <div class="grid-item grid-item-4">
+    <button class="button-center" [matMenuTriggerFor]="cardsMenu">Cards</button>
+    <mat-menu #cardsMenu="matMenu">
+      <button mat-menu-item routerLink="/card/add">Add New</button>
+      <button mat-menu-item routerLink="/cards/list">Cards List</button>
+    </mat-menu>
+  </div>
+  <div class="grid-item grid-item-5">
+    <button class="button-center" [matMenuTriggerFor]="afterMenu">Boulders</button>
+    <mat-menu #afterMenu="matMenu">
+      <button mat-menu-item routerLink="/boulders/indoor">Indoor</button>
+      <button mat-menu-item routerLink="/boulders/outdoor">Outdoor</button>
+    </mat-menu>
+  </div>
+  <div class="grid-item grid-item-6">
+    <button class="button-center" [matMenuTriggerFor]="contactMenu">Contact</button>
+    <mat-menu #contactMenu="matMenu">
+      <button mat-menu-item routerLink="/contact/us">Contact Us</button>
+      <button mat-menu-item routerLink="/contact/request">Request features</button>
+    </mat-menu>
+  </div>
+  <div class="grid-item grid-item-7">
+    <button class="button-center" [matMenuTriggerFor]="gpsMenu">GPS</button>
+    <mat-menu #gpsMenu="matMenu">
+      <button mat-menu-item routerLink="/gps">Indoor</button>
+    </mat-menu>
+  </div>
+  <div class="grid-item grid-item-8">
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+  </div>
+  <div class="grid-item grid-item-9">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="grid-item grid-item-10">9</div>
+
+
+</div>
+
 <!--<div> {{"welcome to " +title}} {{firstName}} {{lastName}}</div>-->
 <!--&lt;!&ndash;{{greatUser()}}&ndash;&gt;-->
 <!--<div>-->
@@ -32,7 +92,7 @@
 <!--  {{date | date:'short'}}-->
 
 <div>
-<!--  <app-climbers-detail></app-climbers-detail>-->
-<!--    <app-climbers-list [parentData]="firstName"></app-climbers-list>-->
+  <!--  <app-climbers-detail></app-climbers-detail>-->
+  <!--    <app-climbers-list [parentData]="firstName"></app-climbers-list>-->
 </div>
-  <router-outlet></router-outlet>
+

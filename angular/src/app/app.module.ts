@@ -6,7 +6,6 @@ import {AppRoutingModule, routingComponent} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ClimbersComponent} from './climbers/climbers.component';
 import {UsersComponent} from './users/users.component';
-import {NavigationComponent} from './navigation/navigation.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {_MatMenuDirectivesModule, MatIconModule, MatMenuModule} from '@angular/material';
 import {DemoMaterialModule} from '../material-module';
@@ -22,7 +21,6 @@ import { PageErrorComponent } from './page-error/page-error.component';
     AppComponent,
     ClimbersComponent,
     UsersComponent,
-    NavigationComponent,
     FriendsComponent,
     ClimbingRouteComponent,
     routingComponent,
