@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-// @restController pour generer les API
+
 @RestController
 @Api(value = "ClimberClimbingroute", tags = {"Api ClimberClimbingroute: ()"})
 public class ClimberClimbingrouteApiController {

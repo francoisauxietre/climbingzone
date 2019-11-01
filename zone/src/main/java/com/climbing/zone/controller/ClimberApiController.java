@@ -1,7 +1,7 @@
 package com.climbing.zone.controller;
+
 import com.climbing.zone.domain.Climber;
 import com.climbing.zone.domain.Topic;
-import com.climbing.zone.repository.UserRepository;
 import com.climbing.zone.service.ClimberService;
 
 import io.swagger.annotations.Api;
@@ -14,11 +14,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
-
 
 // @restController pour generer les API
 // pour ajouter api dans url avant chaque requete
@@ -35,8 +34,7 @@ public class ClimberApiController {
     @Autowired
     ClimberService climberService;
 
-
-//-----------------------------------------GREETING---------------------------------------------------------------
+    //-----------------------------------------GREETING---------------------------------------------------------------
     @RequestMapping("/greeting")
     public Greeting greeting(@RequestParam(required = false, defaultValue = "World") String name) {
         logger.info("==== in greeting ====");
@@ -95,13 +93,10 @@ public class ClimberApiController {
         return climberService.findClimbersByLastName(lastName);
     }
 
-
-
     @RequestMapping(method = RequestMethod.GET, value = "/climbers")
     public List<Climber> findAll() {
         return climberService.findAll();
     }
-
 
 //-----------------------------------------FRIENDS---------------------------------------------------------------
 

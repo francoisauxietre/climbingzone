@@ -17,51 +17,25 @@ public class ClimbingrouteService {
     @Autowired
     ClimbingrouteRepository climbingrouteRepository;
 
-
-    /**
-     * liste de toutes les voies
-     * @return liste des voies
-     */
     public List<Climbingroute> findAll() {
         return climbingrouteRepository.findAll();
     }
 
-    public void deleteClimbingrouteById(Long id){
+    public void deleteClimbingrouteById(Long id) {
         climbingrouteRepository.deleteClimbingrouteById(id);
-
     }
 
-
-    public Long addRouteClimbing(String name, Place place, RouteType routeType, ZoneType zoneType, float latitude, float longitude){
+    public Long addRouteClimbing(String name, RouteType routeType, ZoneType zoneType, float latitude, float longitude, String info) {
         Climbingroute climbingRoute = new Climbingroute();
-
         climbingRoute.setName(name);
-        climbingRoute.setPlace(place);
         climbingRoute.setRouteType(routeType);
         climbingRoute.setZoneType(zoneType);
         climbingRoute.setLatitude(latitude);
         climbingRoute.setLongitude(longitude);
+        climbingRoute.setInfo(info);
         climbingrouteRepository.save(climbingRoute);
         return climbingRoute.getId();
     }
-
-
-//    public List<Climbingroute>findAllByLatitudeGreaterThanEqualAndLatitudeLessThanEqualAndLongitudeIsGreaterThanEqualAndLongitudeIsLessThanEqual(float lat1, float lat2, float long1, float long2){
-//      return  climbingrouteRepository.findAllByLatitudeGreaterThan(:lat1)EqualAndLatitudeLessThanEqualAndLongitudeIsGreaterThanEqualAndLongitudeIsLessThanEqual(lat1, lat2, long1, long2);
-//    }
-
-//    public List<Parking> findAllByName(String name){
-//       return climbingrouteRepository.findAllByName(name);
-//    }
-//
-//    public List<Climbingroute> findAllByRouteType(RouteType routeType){
-//        return climbingrouteRepository.findAllByRouteType(routeType);
-//    }
-//
-//    public List<Climbingroute> findAllByZoneType(ZoneType zoneType){
-//        return climbingrouteRepository.findAllByZoneType(zoneType);
-//    }
-
 }
 
 

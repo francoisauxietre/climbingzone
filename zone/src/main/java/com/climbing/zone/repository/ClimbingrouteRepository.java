@@ -12,9 +12,5 @@ public interface ClimbingrouteRepository extends CrudRepository<Climbingroute, L
     List<Climbingroute> findAll();
     void deleteClimbingrouteById(Long id);
 
-  //  List<Climbingroute>findAllByLatitudeGreaterThanEqualAndLatitudeLessThanEqualAndLongitudeIsGreaterThanEqualAndLongitudeIsLessThanEqual(float lat1, float lat2, float long1, float long2);
-//    List<Parking> findAllByName(String name);
-//    List<Climbingroute> findAllByRouteType(RouteType routeType);
-//    List<Climbingroute> findAllByZoneType(ZoneType zoneType);
 }
 

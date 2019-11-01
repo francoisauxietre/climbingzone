@@ -15,9 +15,7 @@ import java.util.List;
 
 // @restController pour generer les API
 @RestController
-// pour ajouter api dans url avant chaque requete
-@RequestMapping("api")
-//information affichée dans swagger
+@CrossOrigin(origins = "http://localhost:4200")
 @Api(value = "Climbingroute", tags = {"Api Climbingroute: (findAll, AddClimbingRoute, DeleteClimbingRoute)"})
 
 public class ClimbingrouteApiController {
@@ -28,37 +26,33 @@ public class ClimbingrouteApiController {
     @ModelAttribute
     public void setResponseHeader(HttpServletResponse response) {
         response.setHeader("Cache-Control", "no-cache");
-        response.setHeader("Access-Control-Allow-Origin", "*");
     }
 
-    //lie au service du climbingRoute
     @Autowired
     ClimbingrouteService climbingrouteService;
 
-    @Autowired
-    PlaceService placeService;
-
+    //-----------------------------------------CLIMBING-ROUTE---------------------------------------------------------------
     //recherche la liste de tous les voies
     @ApiOperation(value = "Affiche la liste des voies", response = List.class)
-    @GetMapping("/Climbingroute")
+    @RequestMapping(method = RequestMethod.GET, value = "/climbingroute")
     public List<Climbingroute> findAll() {
         logger.info("affichage de tous les voies");
         return climbingrouteService.findAll();
     }
 
     //ajoute une nouvelle voie
-    @ApiOperation(value = "Ajoute une nouvelle voie (nom, endroit, TypeDeVoie, TypeDeZone, latitude, longitude)")
+    @ApiOperation(value = "Ajoute une nouvelle voie (nom, TypeDeVoie, TypeDeZone, latitude, longitude)")
     @PostMapping("/Climbingroute")
-    public Long addRoute(@RequestParam("name") String name,
-                         @RequestParam("idPlace") Long idPlace,
-                         @RequestParam("routeType") RouteType routeType,
-                         @RequestParam("zoneType") ZoneType zoneType,
-                         @RequestParam("latitude") float latitude,
-                         @RequestParam("longitude") float longitude
-    ) {
-
-        return climbingrouteService.addRouteClimbing(name, placeService.findAllById(idPlace), routeType, zoneType, latitude, longitude);
+    public Long addRoute(@RequestParam(required = true, defaultValue = "buis les barronies orpierre ceuse") String name,
+                         @RequestParam(required = true, defaultValue = "BOULDER") RouteType routeType,
+                         @RequestParam(required = true, defaultValue = "INTERIOR") ZoneType zoneType,
+                         @RequestParam(required = true, defaultValue = "48.117266") float latitude,
+                         @RequestParam(required = true, defaultValue = "-1.6777926") float longitude,
+                         @RequestParam(required = true, defaultValue = "sans") String info){
+        return climbingrouteService.addRouteClimbing(name, routeType, zoneType, latitude, longitude, info);
     }
+
+
 
     //efface un utilisateur par son npm
     @ApiOperation(value = "supprime une voie depuis son id")
