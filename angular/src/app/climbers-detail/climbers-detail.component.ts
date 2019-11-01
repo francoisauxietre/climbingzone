@@ -62,7 +62,7 @@ export class ClimbersDetailComponent implements OnInit {
     // if (this.ClimberApi[index] !== '') {
     //   return 'null';
     // }
-    return this.ClimberApi[index].first_name;
+    return this.ClimberApi[index].firstName;
   }
 }
 
