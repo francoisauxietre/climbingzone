@@ -75,7 +75,9 @@ public class ClimberService {
         return climberRepository.findAll();
     }
 
-
+    public List<Climber> findClimbersByLastName(String lastName) {
+        return climberRepository.findClimbersByLastName(lastName);
+    }
 
 //    public Page<Climber> findAll(Pageable pageable) {
 //        return null;

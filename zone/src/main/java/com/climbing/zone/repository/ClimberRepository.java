@@ -14,7 +14,12 @@ public interface ClimberRepository extends CrudRepository<Climber, Long> {
 
     // normalement ca suffit si on met bien les Noms pour que spring fasse le lien
     List<Climber>findClimbersByFirstName(String firstName);
+    List<Climber> findClimbersByLastName(String lastName);
     List<Climber> findAll();
+
+//    ---------------------------------VERSION ADMIN-------------------------------------------------
+
+    Climber findClimberById(int id);
 
 //    List<Climber> findAllFriends();
 

@@ -85,11 +85,17 @@ public class ClimberApiController {
         return climberService.addClimber(firstName, lastName, day, month, year, info);
     }
 
-
-    @RequestMapping(method = RequestMethod.GET, value = "/climbers/{firstName}")
+    @RequestMapping(method = RequestMethod.GET, value = "/climbers/firstName/{firstName}")
     public List<Climber> findClimbersByFirstName(@PathVariable String firstName) {
         return climberService.findClimbersByFirstName(firstName);
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/climbers/lastName/{lastName}")
+    public List<Climber> findClimbersByLastName(@PathVariable String lastName) {
+        return climberService.findClimbersByLastName(lastName);
+    }
+
+
 
     @RequestMapping(method = RequestMethod.GET, value = "/climbers")
     public List<Climber> findAll() {
