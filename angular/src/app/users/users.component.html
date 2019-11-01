@@ -29,4 +29,33 @@
       </div>
     </div>
   </div>
+  <div>
+    <form action="#" th:action="@{/adduser}" th:object="${user}" method="post">
+      <label for="name">Name</label>
+      <input type="text" th:field="** {name}" id="name" placeholder="Name">
+      <span th:if="${#fields.hasErrors('name')}" th:errors="** {name}"></span>
+      <label for="email">Email</label>
+      <input type="text" th:field="** {email}" id="email" placeholder="Email">
+      <span th:if="${#fields.hasErrors('email')}" th:errors="** {email}"></span>
+      <input type="submit" value="Add User">
+    </form>
+  </div>
+  <div>
+    <form action="#" th:action="@{/update/{id}(id=${user.id})}" th:object="${user}" method="post">
+      <label for="name">Name</label>
+      <input type="text" th:field="** {name}" id="name" placeholder="Name">
+      <span th:if="${#fields.hasErrors('name')}" th:errors="** {name}"></span>
+      <label for="email">Email</label>
+      <input type="text" th:field="** {email}" id="email" placeholder="Email">
+      <span th:if="${#fields.hasErrors('email')}" th:errors="** {email}"></span>
+      <input type="submit" value="Update User">
+    </form>
+  </div>
+
+<!--  <h3>User Registered Successfully.</h3>-->
+
+<!--  <strong>User Email: ${user.email}</strong><br>-->
+<!--  <strong>User Age: ${user.age}</strong><br>-->
+<!--  <strong>User Birthday: <div value="${user.birthday}" type="date" pattern="dd.MM.yyyy"/></strong><br>-->
+
 </div>

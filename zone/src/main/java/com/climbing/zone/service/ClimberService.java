@@ -3,10 +3,13 @@ package com.climbing.zone.service;
 import com.climbing.zone.domain.Climber;
 import com.climbing.zone.domain.ClimberClimbingroute;
 import com.climbing.zone.domain.Topic;
+import com.climbing.zone.domain.User;
 import com.climbing.zone.repository.ClimberRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -24,12 +27,12 @@ public class ClimberService {
             new Topic((long) 4, "a", "b")
     );
 
+
+
     @Autowired
     ClimberRepository climberRepository;
+//-----------------------------------------TOPICS---------------------------------------------------------------
 
-    public Climber findClimberById(int id) {
-        return climberRepository.findClimberById(id);
-    }
 
     public List<Topic> getAllTopic() {
         return topics;
@@ -48,8 +51,28 @@ public class ClimberService {
     }
 
     public void addTopic(Topic topic) {
-
         topics.add(topic);
+    }
+
+//-----------------------------------------CLIMBER---------------------------------------------------------------
+
+
+    public List<Climber> findClimbersByFirstName(String firstName) {
+        return climberRepository.findClimbersByFirstName(firstName);
+    }
+
+    public Climber addClimber(Climber climber) {
+        return new Climber(
+                climber.getFirstName(),
+                climber.getLastName(),
+                climber.getDay(),
+                climber.getMonth(),
+                climber.getYear(),
+        climber.getInfo());
+    }
+
+    public Page<Climber> findAll(Pageable pageable) {
+        return climberRepository.findAll();
     }
 
 //

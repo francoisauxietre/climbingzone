@@ -2,16 +2,23 @@ package com.climbing.zone.controller;
 
 import com.climbing.zone.domain.Climber;
 import com.climbing.zone.domain.Topic;
+import com.climbing.zone.domain.User;
+import com.climbing.zone.repository.UserRepository;
 import com.climbing.zone.service.ClimberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -26,50 +33,76 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 // @restController pour generer les API
 // pour ajouter api dans url avant chaque requete
-//information affichée dans swagger
-// @CrossOrigin(origins = "*")
 
 @RestController
 //@RequestMapping("api")
 @Api(value = "Climber", tags = {"Api Climber: (findAll, AddUser, DeleteUser)"})
 public class ClimberApiController {
-
+    //pour les logs
     Logger logger = LoggerFactory.getLogger(ClimberApiController.class);
-    //injecte le climberService sous forme de singleton patttern
 
+    //injecte le climberService sous forme de singleton patttern
     @Autowired
     ClimberService climberService;
 
+    @Autowired
+    UserRepository userRepository;
+
+    //pour CORS
+//-----------------------------------------GREETING---------------------------------------------------------------
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping("/greeting")
     public Greeting greeting(@RequestParam(required = false, defaultValue = "World") String name) {
-        System.out.println("==== in greeting ====");
+        logger.info("==== in greeting ====");
         return new Greeting(1, name);
     }
 
+//-----------------------------------------TOPICS---------------------------------------------------------------
+    @ApiOperation(value = "Topics", response = List.class) //show api in swagger
     @RequestMapping("/topics")
-    public List<Topic> getAllTopics(){
+    public List<Topic> getAllTopics() {
         return climberService.getAllTopic();
     }
 
     @RequestMapping("/topics/{id}")
-    public Topic getTopic(@PathVariable Long id){
+    public Topic getTopic(@PathVariable Long id) {
         return climberService.getFirstTopic(id);
     }
 
     @RequestMapping("/topics/name/{name}")
-    public Topic getTopicByName(@PathVariable String name){
+    public Topic getTopicByName(@PathVariable String name) {
         return climberService.getFirstTopicByName(name);
     }
 
     @RequestMapping("/topics/info/{info}")
-    public Topic getTopicByInfo(@PathVariable String info){
+    public Topic getTopicByInfo(@PathVariable String info) {
         return climberService.getFirstTopicByInfo(info);
     }
-    @RequestMapping(method=RequestMethod.POST, value = "/topics")
-    public void addTopic(@RequestBody Topic topic){
+    //annotation RequestBody on lui passe l'object en direct
+    @RequestMapping(method = RequestMethod.POST, value = "/topics")
+    public void addTopic(@RequestBody Topic topic) {
         climberService.addTopic(topic);
+    }
 
+//-----------------------------------------CLIMBER---------------------------------------------------------------
+
+
+
+
+    @RequestMapping(method = RequestMethod.POST, value = "/climbers")
+    public Climber addClimber(@RequestBody Climber climber){
+        return climberService.addClimber(climber);
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET, value = "/climbers/{firstName}")
+    public List<Climber> findClimbersByFirstName(@PathVariable String firstName){
+          return climberService.findClimbersByFirstName(firstName);
+    }
+
+    @GetMapping("/climbers")
+    public Page<Climber> findAllUsers(Pageable pageable) {
+        return climberService.findAll(pageable);
     }
 
     //    //dans le path /climbers la variable de ce path est id
@@ -78,7 +111,6 @@ public class ClimberApiController {
 //    public Climber findClimberById(@PathVariable Long id) {
 //        return climberService.findClimberById(id);
 //    }
-
 
 //
 //

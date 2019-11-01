@@ -2,9 +2,12 @@ package com.climbing.zone.domain;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.annotation.PreDestroy;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,9 +20,18 @@ import java.util.List;
 @Entity
 public class Climber {
     Logger logger = LoggerFactory.getLogger(Climber.class);
+
+    //autoIncrementation de la clé
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long Id; //id autogenerer
+
+    @NotBlank(message = "FirstName is mantatory")
     String firstName; //prenom
+
+    @NotBlank(message = "lastName is mantatory")
     String lastName; // Nom
+
     int day;
     int month;
     int year;
@@ -69,8 +81,6 @@ public class Climber {
     public void destroy() {
         logger.info("destruction de " + this.info);
     }
-
-
 
     //creation d'un Id pour la base de donne auto generer
     //ATTENTION BIEN METTRE LES @ SUR LES GETTERS
