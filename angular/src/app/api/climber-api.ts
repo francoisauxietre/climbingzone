@@ -1,10 +1,12 @@
 export interface ClimberApi {
-// ajouter les climbingClimberRoute avec un autre ngfor
-  firstName: string;
-  lastName: string;
+  id: number;
+  createAt: Date;
   day: number;
+  deleteAt: Date;
+  firstName: string;
+  info: string;
+  lastName: string;
+  modifyAt: Date;
   month: number;
   year: number;
-  // climberClimbingroutes: [];
-   idClimber: number;
 }

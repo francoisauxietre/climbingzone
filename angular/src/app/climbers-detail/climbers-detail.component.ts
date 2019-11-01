@@ -24,6 +24,8 @@ export class ClimbersDetailComponent implements OnInit {
       .subscribe(
         data => {
           this.ClimberApi = data;
+          console.log(data);
+          console.log(this.ClimberApi);
         }
       );
     this.friendsApiService.getApiFriends()
@@ -60,7 +62,7 @@ export class ClimbersDetailComponent implements OnInit {
     // if (this.ClimberApi[index] !== '') {
     //   return 'null';
     // }
-    return this.ClimberApi[index].firstName;
+    return this.ClimberApi[index].first_name;
   }
 }
 

@@ -1,4 +1,4 @@
-<p>users works!</p>
+<p xmlns:th="http://www.w3.org/1999/xhtml">users works!</p>
 <div class="container">
   <div class="row">
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -29,28 +29,28 @@
       </div>
     </div>
   </div>
-  <div>
-    <form action="#" th:action="@{/adduser}" th:object="${user}" method="post">
-      <label for="name">Name</label>
-      <input type="text" th:field="** {name}" id="name" placeholder="Name">
-      <span th:if="${#fields.hasErrors('name')}" th:errors="** {name}"></span>
-      <label for="email">Email</label>
-      <input type="text" th:field="** {email}" id="email" placeholder="Email">
-      <span th:if="${#fields.hasErrors('email')}" th:errors="** {email}"></span>
-      <input type="submit" value="Add User">
-    </form>
-  </div>
-  <div>
-    <form action="#" th:action="@{/update/{id}(id=${user.id})}" th:object="${user}" method="post">
-      <label for="name">Name</label>
-      <input type="text" th:field="** {name}" id="name" placeholder="Name">
-      <span th:if="${#fields.hasErrors('name')}" th:errors="** {name}"></span>
-      <label for="email">Email</label>
-      <input type="text" th:field="** {email}" id="email" placeholder="Email">
-      <span th:if="${#fields.hasErrors('email')}" th:errors="** {email}"></span>
-      <input type="submit" value="Update User">
-    </form>
-  </div>
+<!--  <div>-->
+<!--    <form action="#" th:action="@{/adduser}" th:object="${user}" method="post">-->
+<!--      <label for="name">Name</label>-->
+<!--      <input type="text" th:field="** {name}" id="name" placeholder="Name">-->
+<!--      <span th:if="${#fields.hasErrors('name')}" th:errors="** {name}"></span>-->
+<!--      <label for="email">Email</label>-->
+<!--      <input type="text" th:field="** {email}" id="email" placeholder="Email">-->
+<!--      <span th:if="${#fields.hasErrors('email')}" th:errors="** {email}"></span>-->
+<!--      <input type="submit" value="Add User">-->
+<!--    </form>-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <form action="#" th:action="@{/update/{id}(id=${user.id})}" th:object="${user}" method="post">-->
+<!--      <label for="name">Name</label>-->
+<!--      <input type="text" th:field="** {name}" id="name" placeholder="Name">-->
+<!--      <span th:if="${#fields.hasErrors('name')}" th:errors="** {name}"></span>-->
+<!--      <label for="email">Email</label>-->
+<!--      <input type="text" th:field="** {email}" id="email" placeholder="Email">-->
+<!--      <span th:if="${#fields.hasErrors('email')}" th:errors="** {email}"></span>-->
+<!--      <input type="submit" value="Update User">-->
+<!--    </form>-->
+<!--  </div>-->
 
 <!--  <h3>User Registered Successfully.</h3>-->
 

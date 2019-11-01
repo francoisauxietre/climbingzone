@@ -3,12 +3,3 @@
     <filter-name>logFilter</filter-name>
     <filter-class>org.o7planning.tutorial.servletfilter.LogFilter</filter-class>
 </filter>
-
-        <!--
-          Declare the path (of the page) will have the effect of logFilter
-         /* for all paths
-        -->
-<filter-mapping>
-<filter-name>logFilter</filter-name>
-<url-pattern>/*</url-pattern>
-</filter-mapping>
