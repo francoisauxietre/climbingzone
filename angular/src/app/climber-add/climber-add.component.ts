@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Post} from '../api/post';
 import {Observable} from 'rxjs';
-import {HttpClient} from '@angular/common/http'; // marche comme un service
+import {HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
+import {ClimberApi} from '../api/climber-api'; // marche comme un service
 @Component({
   selector: 'app-climber-add',
   templateUrl: './climber-add.component.html',
@@ -10,16 +11,41 @@ import {HttpClient} from '@angular/common/http'; // marche comme un service
 export class ClimberAddComponent {
 // export class ClimberAddComponent implements OnInit {
   private url1 = 'https://jsonplaceholder.typicode.com';
-  private url3 = 'http://localhost:8080/api/Climber/post';
-  // public posts: Observable<Post[]>;
-  public posts: any;
+  private url2 = 'https://jsonplaceholder.typicode.com/test';
+  private url3 = 'https://jsonplaceholder.typicode.com/posts?userId=2';
+  private url4 = 'http://localhost:8080/api/Climber/test';
+  private posts: Observable<any>;
+  private newPost: Observable<any>;
+  private climberPost: Observable<any>;
 
+  // public posts: Observalble <Post[]>; avant
   constructor(private httpclient: HttpClient) {
   }
 
   public getPosts() {
+    const params = new HttpParams().set('userId', '2');
+    const headers = new HttpHeaders().set('Authorization', 'auth-token');
     console.log('pos');
-    this.posts = this.httpclient.get(this.url1 + '/posts');
+    // bien faire attention que le get du http client correpondent au type de retour
+    // this.posts = this.httpclient.get<Post[]>(this.url2, {params});
+    this.posts = this.httpclient.get<Post[]>(this.url2, {headers});
+  }
+
+  public createPost() {
+    const data: Post = {
+      id: null,
+      userId: 23,
+      title: 'my test ',
+      body: 'test'
+    };
+    this.newPost = this.httpclient.post(this.url2, data);
+  }
+
+  public createClimber() {
+    const data1 = {
+      id: '1'
+    };
+    this.climberPost = this.httpclient.post(this.url4, {});
   }
 
   // constructor(private climberApiService: ClimbersService, private usersApiService: UsersService) {
@@ -38,7 +64,7 @@ export class ClimberAddComponent {
   // }
   //
   // createPost() {
-  //   const data: Post = {
+  //   const data: Post1 = {
   //     firstName: 'fa',
   //     lastName: 'te',
   //     day: 12,

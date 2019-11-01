@@ -1,8 +1,10 @@
-export class ClimberApi {
+export interface ClimberApi {
 // ajouter les climbingClimberRoute avec un autre ngfor
   firstName: string;
   lastName: string;
-  birth: string;
-  climberClimbingroutes: [];
-  idClimber: number;
+  day: number;
+  month: number;
+  year: number;
+  // climberClimbingroutes: [];
+   idClimber: number;
 }

@@ -19,13 +19,10 @@ import java.util.List;
 
 // @restController pour generer les API
 @RestController
-// pour ajouter api dans url avant chaque requete
-@RequestMapping("api")
-//information affichée dans swagger
 @Api(value = "ClimberClimbingroute", tags = {"Api ClimberClimbingroute: ()"})
-
 public class ClimberClimbingrouteApiController {
-
+    @Autowired
+    ClimberClimbingrouteService climberClimbingrouteService;
     Logger logger = LoggerFactory.getLogger(ClimberApiController.class);
 
     //pour eviter le cache dans chrome et etre obliger d'aller le vider a la main
@@ -34,33 +31,23 @@ public class ClimberClimbingrouteApiController {
         response.setHeader("Cache-Control", "no-cache");
         response.setHeader("Access-Control-Allow-Origin", "*");
     }
-
     //lie au service du card
-    @Autowired
-    ClimberClimbingrouteService climberClimbingrouteService ;
-
-    @Autowired
-    ClimberService climberService;
-
-//    @Autowired
-//    ClimberClimbingroute climberClimbingroute;
-
-
-    //recherche la liste de tous les voies
-    @ApiOperation(value = "Affiche le nombre de grimpeur ayant fait la voie", response = List.class)
-    @GetMapping("/ClimberClimbingroute")
-
-    public List<Climbingroute> findClimbingrouteByIdClimber(@RequestParam("id") Long idClimber) {
-        logger.info("affichage de tous les voies faites par le grimpeur");
-        Climber climber = climberService.findClimberByIdClimber(idClimber);
-        return climberClimbingrouteService.findClimbingrouteByIdClimber(climber);
-    }
-
-    public Long addRelation(@RequestParam("idClimber") Long idClimber,
-                            @RequestParam("idClimbingroute") Long idClimberoute,
-                            @RequestParam("info") String info){
-        Climber climber = climberService.findClimberByIdClimber(idClimber);
-//        Climbingroute climbingroute = climberClimbingrouteService.findClimberById(idClimber);
-        return new Long(0) ;
-    }
+//
+//    //recherche la liste de tous les voies
+//    @ApiOperation(value = "Affiche le nombre de grimpeur ayant fait la voie", response = List.class)
+//    @GetMapping("/ClimberClimbingroute")
+//
+//    public List<Climbingroute> findClimbingrouteByIdClimber(@RequestParam("id") Long idClimber) {
+//        logger.info("affichage de tous les voies faites par le grimpeur");
+//        Climber climber = climberService.findClimberByIdClimber(idClimber);
+//        return climberClimbingrouteService.findClimbingrouteByIdClimber(climber);
+//    }
+//
+//    public Long addRelation(@RequestParam("idClimber") Long idClimber,
+//                            @RequestParam("idClimbingroute") Long idClimberoute,
+//                            @RequestParam("info") String info){
+//        Climber climber = climberService.findClimberByIdClimber(idClimber);
+////        Climbingroute climbingroute = climberClimbingrouteService.findClimberById(idClimber);
+//        return new Long(0) ;
+//    }
 }

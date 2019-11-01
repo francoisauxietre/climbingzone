@@ -3,9 +3,14 @@
 <input type="text" #lastName value=''>
 <input type="date" #birth value='10-10-2020'>
 <!--<button (click)="add(firstName.value, lastName.value, birth.value)">Add</button>-->
-<button (click)="getPosts()">Post</button>
+<button (click)="getPosts()">Post1</button>
 
 <div class="te"*ngFor="let post of posts | async">
 
   {{post | json}}
 </div>
+<button (click)="createPost()">Create Post</button>
+{{ newPost | async | json}}
+
+<button (click)="createClimber()">Create Climber</button>
+{{ climberPost | async | json}}

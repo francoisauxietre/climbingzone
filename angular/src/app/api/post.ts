@@ -1,7 +1,9 @@
 export interface Post {
-  firstName: string;
-  lastName: string;
-  birth: Date;
+id: number;
+userId: number;
+title: string;
+body: string;
+
   // climberClimbingroutes: [];
   // idClimber: number;
 }

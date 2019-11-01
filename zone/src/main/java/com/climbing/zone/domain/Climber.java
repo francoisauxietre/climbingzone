@@ -1,6 +1,5 @@
 package com.climbing.zone.domain;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,45 +14,43 @@ import java.util.List;
  * Climber: les grimpeurs (nom, prenom, date de naissance, liste d amis, date de creation
  * date de modification, date de suppression
  */
-
 @Entity
 public class Climber {
     Logger logger = LoggerFactory.getLogger(Climber.class);
-
-    Long IdClimber; //id autogenerer
-    Long Id;
+    Long Id; //id autogenerer
     String firstName; //prenom
     String lastName; // Nom
-    Date birth; //anniversaire
-
-    List<Climber> friendsList = new ArrayList<>(); //liste d'amis
-    List<ClimberClimbingroute> climberClimbingroutes;
-
+    int day;
+    int month;
+    int year;
     Date createAt; //date de creation
     Date modifyAt; //date de modification
     Date deleteAt; //date de supression
     String info = "";
-
+//    List<Climber> friendsList = new ArrayList<>(); //liste d'amis
+//    List<ClimberClimbingroute> climberClimbingroutes;
 
     // constructeur vide par default obligatoire
     public Climber() {
         java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
         this.createAt = date;
         logger.info("creation d'un nouveau grimpeur vide");
-
     }
 
-    //constructeur avec nom prenom et date de naissance
-    public Climber(String firstName, String lastName, java.sql.Date birth) {
+    public Climber(String firstName, String lastName, int day, int month, int year, String info) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birth = birth;
-        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        this.createAt = date;
-        this.info = "nom:" + lastName + "prenom" + firstName + "  " + lastName + " " + birth;
-        this.Id = getIdClimber();
-        logger.info(info);
+        this.day = day;
+        this.month = month;
+        this.year = year;
+        this.info = info;
     }
+
+
+//    @OneToMany(mappedBy = "climber")
+//    public List<ClimberClimbingroute> getClimberClimbingroutes() {
+//        return climberClimbingroutes;
+//    }
 
     // a chaque fois qu'on fera un nouvel ajout d'un grimpeur on aura cette merthode qui ajoutera des infos
     @PrePersist
@@ -73,19 +70,20 @@ public class Climber {
         logger.info("destruction de " + this.info);
     }
 
+
+
     //creation d'un Id pour la base de donne auto generer
     //ATTENTION BIEN METTRE LES @ SUR LES GETTERS
     @javax.persistence.Id
     @GeneratedValue
-    public Long getIdClimber() {
-        return IdClimber;
+    public Long getId() {
+        return Id;
     }
 
 //    <---------------SETTERS---------------->
 
-
-    public void setIdClimber(Long idClimber) {
-        IdClimber = idClimber;
+    public void setId(Long id) {
+        Id = id;
     }
 
     public void setFirstName(String firstName) {
@@ -96,8 +94,16 @@ public class Climber {
         this.lastName = lastName;
     }
 
-    public void setBirth(Date birth) {
-        this.birth = birth;
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 
     public void setCreateAt(Date createAt) {
@@ -112,13 +118,14 @@ public class Climber {
         this.deleteAt = deleteAt;
     }
 
-    public void setFriendsList(List<Climber> friendsList) {
-        this.friendsList = friendsList;
+    public void setInfo(String info) {
+        this.info = info;
     }
 
-
-    //    <---------------GETTERS---------------->
-
+//    public void setFriendsList(List<Climber> friendsList) {
+//        this.friendsList = friendsList;
+//    }
+//    <---------------GETTERS---------------->
 //    @ManyToMany
 //    @JsonBackReference // pour pas que il y ait un appel d'ami a un ami qui est un ami ....
 //    @JoinTable(lastName = "friendsList")
@@ -134,31 +141,39 @@ public class Climber {
         return lastName;
     }
 
-    // pour ne pas avoir des erreurs sur les dates de java
-    @Basic
-    @Temporal(value = TemporalType.DATE)
-    public Date getBirth() {
-        return birth;
+    public int getDay() {
+        return day;
     }
 
-
-    @Override
-    public String toString() {
-        return "Climber{" +
-                "IdClimber=" + IdClimber +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birth=" + birth +
-                '}';
+    public int getMonth() {
+        return month;
     }
 
-
-    @OneToMany(mappedBy = "climber")
-    public List<ClimberClimbingroute> getClimberClimbingroutes() {
-        return climberClimbingroutes;
+    public int getYear() {
+        return year;
     }
 
-    public void setClimberClimbingroutes(List<ClimberClimbingroute> climberClimbingroutes) {
-        this.climberClimbingroutes = climberClimbingroutes;
+    public Date getCreateAt() {
+        return createAt;
     }
+
+    public Date getModifyAt() {
+        return modifyAt;
+    }
+
+    public Date getDeleteAt() {
+        return deleteAt;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+//    public List<Climber> getFriendsList() {
+//        return friendsList;
+//    }
+//
+//    public List<ClimberClimbingroute> getClimberClimbingroutes() {
+//        return climberClimbingroutes;
+//    }
 }

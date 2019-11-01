@@ -4,7 +4,7 @@ import {Observable, of} from 'rxjs'; // pour le retour du hhtp.get
 import {map, catchError} from 'rxjs/operators'; // pour la gestion des erreur des url
 import {ClimberApi} from '../climber-api';
 import {UserApi} from '../user-api';
-import {Post} from '../post';
+import {Post1} from '../post1';
 
 @Injectable({
   providedIn: 'root'
