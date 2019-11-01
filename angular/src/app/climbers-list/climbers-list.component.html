@@ -1,51 +1,38 @@
-<p [style.color]="hasError ? 'black' : 'red'">climbers-list works!</p>
-<p [style.color]="hightLightColor">climbers-list works!</p>
-<p [ngStyle]="titleStyles">climbers-list works!</p>
-<button [class]="hasError" (click)="onClick($event)">PRESS ME</button>
-{{name}}
+<p>climbers-detail works!</p>
+<input type="text" label="Search">
+<button (click)="searchClimbers()">Search</button>
 
-<!--reference avec # et un methode -->
-<input #mail type="text" label="Mail">
-<button (click)="logMessage(mail)">Mail</button>
+<ul class="items">
+  <li *ngFor="let climber of ClimberApi">
+    <span class="badge">{{climber.id}}</span>{{climber.firstName}}
+  </li>
+</ul>
+<div> Ami de moi :{{getFriendsNameById(2)}}
+  {{message}}</div>
 
-<!--2 way binding-->
-<input [(ngModel)]="lastName" type="text" label="test">{{lastName}}
-
-<!--bloc if then else en deux lignes -->
-<h2 *ngIf="displayName; else else1Block">AFFICHAGE</h2>
-<ng-template #else1Block><h2>ICI SINON </h2></ng-template>
-
-<!--bloc if then else en trois lignes -->
-<div *ngIf="displayName; then thenBlock; else elseBlock"></div>
-<ng-template #thenBlock><h1>then1 </h1></ng-template>
-<ng-template #elseBlock><h1>else1</h1></ng-template>
-
-<!--le switch case default-->
-<div [ngSwitch]="color">
-  <div *ngSwitchCase="'red'">red chose</div>
-  <div *ngSwitchCase="'blue'">blue chose</div>
-  <div *ngSwitchCase="'yellow'">yellow chose</div>
-  <div *ngSwitchDefault>Pick again</div>
-</div>
-<!--on peut faire first as first last as last odd as odd even as even etc-->
-<!--<ul class="items">-->
-<!--  <li *ngFor="let climber of climbers">-->
-<!--    <span class="badge"> {{climber.id}}</span>{{climber.firstName}}-->
-<!--  </li>-->
-<!--</ul>-->
-<h3>hello {{parentData}}</h3>
-<button (click)="sentEvent()">Send event</button>
-
-<table>
+<table border="1px">
   <tr>
-    <th>Id</th>
-    <th>mental</th>
-    <th>physical</th>
-    <th>tactical</th>
-  <tr *ngFor="let card of friendsApi">-->
-  <td>{{card.idCard}}</td>
-    <td>{{card.mental}}</td>
-    <td>{{card.physique}}</td>
-    <td>{{card.tactique}}</td>
+    <th>id</th>
+    <th>created at</th>
+    <th>modified at</th>
+    <th>deleted at</th>
+    <th>first name</th>
+    <th>last name</th>
+    <th>info</th>
+    <th>day</th>
+    <th>month</th>
+    <th>year</th>
+
+  <tr *ngFor="let climber of ClimberApi">
+    <td>{{climber.id}}</td>
+    <td>{{climber.createAt}}</td>
+    <td>{{climber.modifyAt}}</td>
+    <td>{{climber.deleteAt}}</td>
+    <td>{{climber.firstName}}</td>
+    <td>{{climber.lastName}}</td>
+    <td>{{climber.info}}</td>
+    <td>{{climber.day}}</td>
+    <td>{{climber.month}}</td>
+    <td>{{climber.year}}</td>
   </tr>
 </table>

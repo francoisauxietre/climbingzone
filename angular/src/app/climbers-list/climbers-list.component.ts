@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ClimbersService} from '../api/service/climbers.service';
 import {FriendsService} from '../api/service/friends.service';
 import {ClimberApi} from '../api/climber-api';
@@ -8,36 +8,24 @@ import {ClimberApi} from '../api/climber-api';
   templateUrl: './climbers-list.component.html',
   styleUrls: ['./climbers-list.component.css']
 })
-
 export class ClimbersListComponent implements OnInit {
-
   public ClimberApi: ClimberApi[];
   public friendsApi = [];
-  public color = 'blue';
-  public name = '';
-  // deux formes d'ecriture possible ici 1 et 2
-  @Input() public parentData;
-  // @Input('parentData') public parentText;
-  // quand on veut envoyer du fils a un parent on le fait sous forme d'event
-  @Output() public sentParentEvent = new EventEmitter();
-
-  public lastName = '';
-  public hasError = true;
-  public displayName = true;
-  public hightLightColor = 'orange';
-  public titleStyles = {
-    color: 'blue',
-    fontStyle: 'italic'
-  };
+  private friendsNames = [];
+  private firstName = '';
+  private message = '';
+  public index = 0;
 
   constructor(private ClimberApiService: ClimbersService, private friendsApiService: FriendsService) {
   }
-  // TODO verification si data ou il y a une erreur hhtp
+
   ngOnInit() {
     this.ClimberApiService.getApiClimbers()
       .subscribe(
         data => {
           this.ClimberApi = data;
+          console.log(data);
+          console.log(this.ClimberApi);
         }
       );
     this.friendsApiService.getApiFriends()
@@ -46,21 +34,31 @@ export class ClimbersListComponent implements OnInit {
           this.friendsApi = data;
         }
       );
-
   }
 
-  onClick(event) {
-    this.name = event.type;
-    console.log(event);
+  searchClimbers() {
+    console.log('search climbers');
   }
 
-  logMessage(mail) {
-    console.log(mail.value);
+  messageError(message) {
+    this.message = message;
+    console.log(message);
   }
 
-  sentEvent() {
-    this.sentParentEvent.emit('test de retour depsui ENFANT');
-    console.log('envoi depuis FILS');
+  getFriendsNameById(index) {
+    this.friendsApi.map(obj => {
+      if (index === obj.userId) {
+        const num = obj.climberId;
+        this.ClimberApi.map(climber => {
+          if (climber.id === num) {
+            this.friendsNames.push(climber.firstName);
+          }
+        });
+      }
+    });
+    return this.friendsNames;
   }
 
 }
+
+

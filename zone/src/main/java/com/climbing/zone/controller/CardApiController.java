@@ -16,10 +16,8 @@ import java.util.List;
 
 // @restController pour generer les API
 @RestController
-// pour ajouter api dans url avant chaque requete
-@RequestMapping("api")
-//information affichée dans swagger
-@Api(value = "card", tags = {"Api Card: (findAll, AddCard, Deletecard)"})
+@CrossOrigin(origins = "http://localhost:4200")
+@Api(value = "card", tags = {"Api Card: (findAll, AddCard, DeleteCard)"})
 public class CardApiController {
 
     Logger logger = LoggerFactory.getLogger(ClimberApiController.class);
@@ -37,7 +35,7 @@ public class CardApiController {
 
     //recherche la liste de tous les cartes
     @ApiOperation(value = "Affiche la liste des cartes", response = List.class)
-    @GetMapping("/Card")
+    @GetMapping("/cards")
     public List<Card> findAll() {
         logger.info("affichage de tous les grimpeurs");
         return cardService.findAll();
@@ -45,35 +43,30 @@ public class CardApiController {
 
     //ajoute un nouvelle carte
     @ApiOperation(value = "Ajoute un nouvelle carte (...)")
-    @PostMapping("/Card")
-    public Long addUser(
-            @RequestParam("star") int star,
-            @RequestParam("level") int level,
-            @RequestParam("qrcode") String qrcode,
-            @RequestParam("place") String place,
-            @RequestParam("photo") String photo,
-            @RequestParam("climbingRouteName") String climbingRouteName,
-                        @RequestParam("physical") int physical,
-                        @RequestParam("technical") int technical,
-                        @RequestParam("tactical") int tactical,
-                        @RequestParam("mental") int mental,
-            @RequestParam("bonus") String bonus,
-            @RequestParam("climberFirstName") String climberFirstName,
-            @RequestParam("climberLastName") String climberLastName,
-            @RequestParam("info") String info)
-
-    {
-
-        return cardService.addCard(star, level, qrcode, place, photo, climbingRouteName,physical, technical, tactical, mental, bonus, climberFirstName, climberLastName, info);
+    @RequestMapping(method = RequestMethod.POST, value = "/cards")
+    public Long addCard(
+            @RequestParam(required = true, defaultValue = "1") int star,
+            @RequestParam(required = true, defaultValue = "7a") String level,
+            @RequestParam(required = true, defaultValue = "qrcode_") String qrcode,
+            @RequestParam(required = true, defaultValue = "buis") String place,
+            @RequestParam(required = true, defaultValue = "photo_")String photo,
+            @RequestParam(required = true, defaultValue = "buis") String climbingRouteName,
+            @RequestParam(required = true, defaultValue = "1")int physical,
+            @RequestParam(required = true, defaultValue = "1")int technical,
+            @RequestParam(required = true, defaultValue = "0")int tactical,
+            @RequestParam(required = true, defaultValue = "1") int mental,
+            @RequestParam(required = true, defaultValue = "Continuite resistance force endurance") String bonus,
+            @RequestParam(required = true, defaultValue = "fafa")String climberFirstName,
+            @RequestParam(required = true, defaultValue = "auxietre") String climberLastName,
+            @RequestParam(required = true, defaultValue = "pas de bloc, gros toit, reta")String info) {
+        return cardService.addCard(star, level, qrcode, place, photo, climbingRouteName, physical, technical, tactical, mental, bonus, climberFirstName, climberLastName, info);
     }
-
 
     //efface une carte par son id
     @ApiOperation(value = "supprime une carte")
     @DeleteMapping("/Card")
-    public void deleteClimberByIdClimber(@RequestParam("IdCard") Long idCard) {
+    public void deleteClimberByIdClimber(@RequestParam("Id") Long id) {
         logger.info("Admin :efface une carte par son id");
-        cardService.deleteCardByIdCard(idCard);
+        cardService.deleteCardById(id);
     }
-
 }

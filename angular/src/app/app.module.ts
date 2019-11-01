@@ -13,6 +13,8 @@ import {ClimbingRouteComponent} from './climbing-route/climbing-route.component'
 import {ClimbersService} from './api/service/climbers.service';
 import {FriendsService} from './api/service/friends.service';
 import {PageErrorComponent} from './page-error/page-error.component';
+import { InTestComponent } from './in-test/in-test.component';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import {PageErrorComponent} from './page-error/page-error.component';
     ClimbingRouteComponent,
     routingComponent,
     PageErrorComponent,
+    InTestComponent,
   ],
   imports: [
     BrowserModule,

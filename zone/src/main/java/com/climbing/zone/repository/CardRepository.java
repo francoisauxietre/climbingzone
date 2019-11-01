@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface CardRepository extends CrudRepository<Card, Long> {
     List<Card> findAll();
-    void deleteCardByIdCard(Long idCard);
+    void deleteCardById(Long id);
     List<Card>findCardsByClimbingRouteName(String climbingRouteName);
 }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ClimbersService} from '../api/service/climbers.service';
 import {UserTest} from '../api/user-test';
-import {ClimberApi} from "../api/climber-api";
+import {ClimberApi} from '../api/climber-api';
 
 @Component({
   selector: 'app-climber-find',
@@ -13,10 +13,8 @@ export class ClimberFindComponent implements OnInit {
   }
 
   public ClimberApi2: ClimberApi[];
-  public userTests: UserTest[]; // test en castant la liste
   public value = 0;
   private show = false;
-  private showUser = false;
   private firstName = '';
 
   ngOnInit() {
@@ -34,7 +32,6 @@ export class ClimberFindComponent implements OnInit {
           }
         }
       );
-
   }
 
   ngOnInit1() {
@@ -46,7 +43,6 @@ export class ClimberFindComponent implements OnInit {
             this.ClimberApi2 = data;
             this.show = true;
             console.log(data);
-
           }
           if (data.length > 1) {
             this.ClimberApi2 = data;
@@ -60,9 +56,9 @@ export class ClimberFindComponent implements OnInit {
       );
   }
 
-  search(idClimber) {
-    console.log(idClimber);
-    this.value = Number(idClimber);
+  search(id) {
+    console.log(id);
+    this.value = Number(id);
     this.ngOnInit();
   }
 

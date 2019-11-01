@@ -12,10 +12,9 @@
       <th>last name</th>
       <th>birth</th>
     <tr *ngFor="let climber of ClimberApi2">
-      <td>{{climber.idClimber}}</td>
+      <td>{{climber.id}}</td>
       <td>{{climber.firstName}}</td>
       <td>{{climber.lastName}}</td>
-      <td>{{climber.birth}}</td>
     </tr>
   </ng-template>
   <ng-template #elseBlock>There is no climber with this id.</ng-template>

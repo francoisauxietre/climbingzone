@@ -35,8 +35,6 @@ public class ClimberApiController {
     @Autowired
     ClimberService climberService;
 
-    @Autowired
-    UserRepository userRepository;
 
 //-----------------------------------------GREETING---------------------------------------------------------------
     @RequestMapping("/greeting")
@@ -76,23 +74,43 @@ public class ClimberApiController {
 //-----------------------------------------CLIMBER---------------------------------------------------------------
 
     @RequestMapping(method = RequestMethod.POST, value = "/climbers")
-    public Climber addClimber(@RequestBody Climber climber) {
-        return climberService.addClimber(climber);
+    public Climber AddClimber(
+            @RequestParam(required = true, defaultValue = "francois luc theotime") String firstName,
+            @RequestParam(required = true, defaultValue = "auxietre guesdon") String lastName,
+            @RequestParam(required = true, defaultValue = "18") int day,
+            @RequestParam(required = true, defaultValue = "10") int month,
+            @RequestParam(required = true, defaultValue = "200") int year,
+            @RequestParam(required = false, defaultValue = "bloc") String info) {
+        logger.info("==== create new climber ====");
+        return climberService.addClimber(firstName, lastName, day, month, year, info);
     }
+
 
     @RequestMapping(method = RequestMethod.GET, value = "/climbers/{firstName}")
     public List<Climber> findClimbersByFirstName(@PathVariable String firstName) {
         return climberService.findClimbersByFirstName(firstName);
     }
 
-    @GetMapping("/climbers")
+    @RequestMapping(method = RequestMethod.GET, value = "/climbers")
     public List<Climber> findAll() {
         return climberService.findAll();
     }
 
+
+//-----------------------------------------FRIENDS---------------------------------------------------------------
+
+//    @GetMapping("/friends")
+//    public List<Climber> findAllFriends() {
+//        return climberService.findAllFriends();
+//    }
+
 //    @GetMapping("/climbers/test")
 //    public Page<Climber> findAllClimbers(Pageable pageable) {
 //        return climberService.findAll(pageable);
+//    }
+//        @RequestMapping(method = RequestMethod.POST, value = "/climbers")
+//    public Climber addClimber(@RequestBody Climber climber) {
+//        return climberService.addClimber(climber);
 //    }
 
     //    //dans le path /climbers la variable de ce path est id

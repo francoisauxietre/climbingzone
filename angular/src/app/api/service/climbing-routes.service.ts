@@ -1,20 +1,17 @@
-import {Injectable} from '@angular/core';
-import {ClimbersService} from './climbers.service';
+import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FriendsService {
-
-  private url = 'http://localhost:8080/friends';
+export class ClimbingRoutesService {
+  private url = 'http://localhost:8080/cards/';
 
   constructor(private httpclient: HttpClient) {
   }
 
-  public getApiFriends(): Observable<any> {
+  public getApiClimbingRoutes(): Observable<any> {
     return this.httpclient.get(this.url);
-
   }
 }

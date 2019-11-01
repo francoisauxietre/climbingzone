@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.PreDestroy;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -13,10 +14,19 @@ public class Card {
 
     Logger logger = LoggerFactory.getLogger(Climber.class);
 
-    Long IdCard; //id auto-generer
+    //autoIncrementation de la clé
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long Id; //id autogenerer
+
+    @NotBlank(message = "FirstName is mantatory")
+    String climberFirstName;
+
+    @NotBlank(message = "lastName is mantatory")
+    String climberLastName;
 
     int star;
-    int level;
+    String level;
     String qrcode;
     int climberPlace;
     int climberTotal;
@@ -28,8 +38,6 @@ public class Card {
     int tactical;
     int mental;
     String bonus;
-    String climberFirstName;
-    String climberLastName;
 
     Date createAt; //date de creation
     Date modifyAt; //date de modification
@@ -43,8 +51,7 @@ public class Card {
         logger.info("creation d'une nouvelle carte vide");
     }
 
-    public Card(Long idCard, int star, int level, String qrcode, int climberPlace, int climberTotal, String place, String photo, String climbingRouteName, int physical, int technical, int tactical, int mental, String bonus, String climberFirstName, String climberLastName, Date createAt, String info) {
-        IdCard = idCard;
+    public Card(int star, String level, String qrcode, int climberPlace, int climberTotal, String place, String photo, String climbingRouteName, int physical, int technical, int tactical, int mental, String bonus, String climberFirstName, String climberLastName, Date createAt, String info) {
         this.star = star;
         this.level = level;
         this.qrcode = qrcode;
@@ -61,10 +68,9 @@ public class Card {
         this.climberFirstName = climberFirstName;
         this.climberLastName = climberLastName;
         this.createAt = createAt;
-        this.info = "nom:" + climberLastName + physical + "  " + technical + " " + tactical + " "+  mental;
+        this.info = "nom:" + climberLastName + physical + "  " + technical + " " + tactical + " " + mental;
         logger.info(info);
     }
-
 
     // a chaque fois qu'on fera un nouvel ajout d'un grimpeur on aura cette merthode qui ajoutera des infos
     @PrePersist
@@ -88,12 +94,12 @@ public class Card {
     //ATTENTION BIEN METTRE LES @ SUR LES GETTERS
     @javax.persistence.Id
     @GeneratedValue
-    public Long getIdCard() {
-        return IdCard;
+    public Long getId() {
+        return Id;
     }
 
-    public void setIdCard(Long idCard) {
-        IdCard = idCard;
+    public void setId(Long id) {
+        this.Id = id;
     }
 
     public int getStar() {
@@ -104,11 +110,11 @@ public class Card {
         this.star = star;
     }
 
-    public int getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 

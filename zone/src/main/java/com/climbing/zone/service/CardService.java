@@ -18,16 +18,11 @@ public class CardService {
     @Autowired
     CardRepository cardRepository;
 
-
-    /**
-     * liste de tous les cartes
-     * @return liste des cartes enregistrées
-     */
     public List<Card> findAll() {
         return cardRepository.findAll();
     }
 
-    public Long addCard( int star, int level, String qrcode, String place, String photo, String climbingRouteName, int physical, int technical, int tactical, int mental, String bonus, String climberFirstName, String climberLastName, String info) {
+    public Long addCard(int star, String level, String qrcode, String place, String photo, String climbingRouteName, int physical, int technical, int tactical, int mental, String bonus, String climberFirstName, String climberLastName, String info) {
         Card card = new Card();
         card.setStar(star);
         card.setLevel(level);
@@ -44,20 +39,15 @@ public class CardService {
         card.setClimberLastName(climberLastName);
         card.setInfo(info);
         cardRepository.save(card);
-        return card.getIdCard();
+        return card.getId();
     }
 
-    /**
-     * Admin : efface une carte depuis son id
-     * @param idCard : id de la carte
-     */
-    public void deleteCardByIdCard(Long idCard) {
-        cardRepository.deleteCardByIdCard(idCard);
+    public void deleteCardById(Long id) {
+        cardRepository.deleteCardById(id);
     }
 
-    public List<Card>findCardsByClimbingRouteName(String name){
+    public List<Card> findCardsByClimbingRouteName(String name) {
 
-       return cardRepository.findCardsByClimbingRouteName(name);
+        return cardRepository.findCardsByClimbingRouteName(name);
     }
-
 }

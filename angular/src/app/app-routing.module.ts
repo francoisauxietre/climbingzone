@@ -21,12 +21,14 @@ import {ClimberFindComponent} from './climber-find/climber-find.component';
 import {UsersComponent} from './users/users.component';
 import {UsersListComponent} from './users-list/users-list.component';
 import {ClimbersComponent} from './climbers/climbers.component';
+import {TopicsComponent} from './topics/topics.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/users', pathMatch: 'full'},
   {path: 'users', component: UsersComponent},
   {path: 'users/list', component: UsersListComponent},
   {path: 'climbers/detail', component: ClimbersDetailComponent},
+  {path: 'climbers/topics', component: TopicsComponent},
   {path: 'climbers/list', component: ClimbersListComponent},
   {path: 'climbers/add', component: ClimberAddComponent},
   {path: 'climbers/find', component: ClimberFindComponent},
@@ -58,4 +60,4 @@ export const routingComponent = [ClimbersComponent, ClimbersDetailComponent, Fri
   ClimbingRouteAddComponent, ClimbingRouteListComponent, ClimbingRouteAroundComponent, ClimbingRouteListComponent,
   ClimbingRouteOutdoorComponent, ClimbingRouteIndoorComponent, CardAddComponent, CardsListComponent,
   BouldersIndoorComponent, BouldersOutdoorComponent, ContactUsComponent, ContactRequestComponent, GpsComponent, PageErrorComponent,
-  ClimberAddComponent, ClimberFindComponent, UsersComponent, UsersListComponent];
+  ClimberAddComponent, ClimberFindComponent, UsersComponent, UsersListComponent, TopicsComponent];

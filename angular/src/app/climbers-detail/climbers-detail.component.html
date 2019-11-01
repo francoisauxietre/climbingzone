@@ -1,15 +1,19 @@
 <p>climbers-detail works!</p>
-<!--<input type="text" label="Search">-->
-<!--<button (click)="searchClimbers()">Search</button>-->
 
-<!--<ul class="items">-->
-<!--  <li *ngFor="let climber of ClimberApi">-->
-<!--    <span class="badge">{{climber.idClimber}}</span>{{climber.firstName}}-->
-<!--  </li>-->
-<!--</ul>-->
-<!--<div> Ami de {{getFirstNameByClimberId(2)}}-->
-<!--  &lt;!&ndash;  {{getFriendsNameById(2)}}&ndash;&gt;-->
-<!--  {{message}}</div>-->
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>mental</th>
+    <th>physical</th>
+    <th>tactical</th>
+  <tr *ngFor="let card of friendsApi">-->
+    <td>{{card.idCard}}</td>
+    <td>{{card.mental}}</td>
+    <td>{{card.physique}}</td>
+    <td>{{card.tactique}}</td>
+  </tr>
+</table>
 
 <table border="1px">
   <tr>

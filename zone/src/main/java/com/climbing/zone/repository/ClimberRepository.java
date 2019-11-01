@@ -16,6 +16,8 @@ public interface ClimberRepository extends CrudRepository<Climber, Long> {
     List<Climber>findClimbersByFirstName(String firstName);
     List<Climber> findAll();
 
+//    List<Climber> findAllFriends();
+
 //    Climber findClimberById(int id);
 
 //    Climber addClimber(Climber climber);

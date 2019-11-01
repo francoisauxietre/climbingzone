@@ -1,3 +1,5 @@
+Qaund on se fait jete par un CORS sa peut juste etre aussi l url demande qui n'ets pas la bonne$
+
 pour cree un nouveau composant 
 ng g c nomDuComposant
  ng g c pageError -it -is // pas de creation de css ni de html

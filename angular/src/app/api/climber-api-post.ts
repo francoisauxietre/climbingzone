@@ -1,5 +1,5 @@
 export class ClimberApiPost {
-
+  // id: number;
   firstName: string;
   lastName: string;
   day: number;

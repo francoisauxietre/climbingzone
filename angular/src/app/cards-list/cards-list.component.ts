@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CardsService} from '../api/service/cards.service';
+import {CardsApi} from '../api/cards-api';
 
 @Component({
   selector: 'app-cards-list',
@@ -9,7 +10,7 @@ import {CardsService} from '../api/service/cards.service';
 export class CardsListComponent implements OnInit {
 
 
-  public cardsApi = [];
+  public cardsApi: CardsApi[];
   constructor(private cardsApiService: CardsService) {
 
 }

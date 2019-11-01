@@ -14,25 +14,23 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class ClimberService {
     Logger logger = LoggerFactory.getLogger(Climber.class);
-    private List<Topic> topics = Arrays.asList(
+    private List<Topic> topics = new ArrayList<>(Arrays.asList(
             new Topic((long) 1, "test", "java"),
             new Topic((long) 2, "a", "b"),
             new Topic((long) 3, "test", "java2"),
-            new Topic((long) 4, "a", "b")
+            new Topic((long) 4, "a", "b"))
     );
-
-
 
     @Autowired
     ClimberRepository climberRepository;
 //-----------------------------------------TOPICS---------------------------------------------------------------
-
 
     public List<Topic> getAllTopic() {
         return topics;
@@ -56,24 +54,28 @@ public class ClimberService {
 
 //-----------------------------------------CLIMBER---------------------------------------------------------------
 
-
     public List<Climber> findClimbersByFirstName(String firstName) {
         return climberRepository.findClimbersByFirstName(firstName);
     }
 
-    public Climber addClimber(Climber climber) {
-        return new Climber(
-                climber.getFirstName(),
-                climber.getLastName(),
-                climber.getDay(),
-                climber.getMonth(),
-                climber.getYear(),
-        climber.getInfo());
+    public Climber addClimber(String firstName, String lastName, int day, int month, int year, String info) {
+
+        Climber climber = new Climber();
+        climber.setFirstName(firstName);
+        climber.setLastName(lastName);
+        climber.setInfo(info);
+        climber.setDay(day);
+        climber.setMonth(month);
+        climber.setYear(year);
+        climberRepository.save(climber);
+        return climber;
     }
 
-    public List<Climber>findAll(){
-        return  climberRepository.findAll();
+    public List<Climber> findAll() {
+        return climberRepository.findAll();
     }
+
+
 
 //    public Page<Climber> findAll(Pageable pageable) {
 //        return null;
