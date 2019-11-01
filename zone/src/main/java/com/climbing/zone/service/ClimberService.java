@@ -71,9 +71,13 @@ public class ClimberService {
         climber.getInfo());
     }
 
-    public Page<Climber> findAll(Pageable pageable) {
-        return climberRepository.findAll();
+    public List<Climber>findAll(){
+        return  climberRepository.findAll();
     }
+
+//    public Page<Climber> findAll(Pageable pageable) {
+//        return null;
+//    }
 
 //
 //    public Climber findClimberByIdClimber(Long idClimber) {

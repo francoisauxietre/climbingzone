@@ -10,9 +10,9 @@ import {Post1} from '../post1';
   providedIn: 'root'
 })
 export class ClimbersService {
-  private url = 'http://localhost:8080/api/Climber';
-  private url1 = 'http://localhost:8080/api/Climber/';
-  private url2 = 'http://localhost:8080/api/Climber/firstName/';
+  private url = 'http://localhost:8080/climbers';
+  private url1 = 'http://localhost:8080/climbers/';
+  private url2 = 'http://localhost:8080/climbers/firstName/';
 
 
   constructor(private httpclient: HttpClient) {

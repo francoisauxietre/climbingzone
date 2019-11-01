@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class CardsService {
-  private url = 'http://localhost:8080/api/Card';
+  private url = 'http://localhost:8080/climbers';
 
   constructor(private httpclient: HttpClient) {
   }

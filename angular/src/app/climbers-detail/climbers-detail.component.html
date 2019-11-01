@@ -13,15 +13,28 @@
 
 <table border="1px">
   <tr>
-    <th>Climber</th>
+    <th>id</th>
+    <th>created at</th>
+    <th>modified at</th>
+    <th>deleted at</th>
     <th>first name</th>
     <th>last name</th>
-    <th>birth</th>
- <tr *ngFor="let climber of ClimberApi">
-    <td>{{climber.idClimber}}</td>
+    <th>info</th>
+    <th>day</th>
+    <th>month</th>
+    <th>year</th>
+
+  <tr *ngFor="let climber of ClimberApi">
+    <td>{{climber.id}}</td>
+    <td>{{climber.createAt}}</td>
+    <td>{{climber.modifyAt}}</td>
+    <td>{{climber.deleteAt}}</td>
     <td>{{climber.firstName}}</td>
     <td>{{climber.lastName}}</td>
-    <td>{{climber.birth}}</td>
+    <td>{{climber.info}}</td>
+    <td>{{climber.day}}</td>
+    <td>{{climber.month}}</td>
+    <td>{{climber.year}}</td>
   </tr>
 </table>
 
