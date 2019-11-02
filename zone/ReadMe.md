@@ -3,6 +3,64 @@ lancée en independant en port 3009 grace au docker compose
 lancement: dans le repertoire zone
 docker-compose up (le docker-compose gere la base de donnee en msql)
 
+### MOTS CLES
+A:
+ANGULAR 2 framework basé sur de Javascript
+ANGULAR JS autre 
+B:
+BACK-END programme traitant les données (ex avec spring boot java)
+C:
+CLASS comment seront fait les objets que l'on créera (MOULE)
+D:
+DOM Document Object Model interface normalise qui permet de modifier le navigateur web avec des script
+DOM virtuel dans vuejs et react on a un dom virtuel qui est une copie virtuel du dom actuel
+DAO Data Acces Object  object qui peuvent dialoguer en java avec une base de donnée directement
+DTO Data Transfer acces  pour les transfer des données par exemple entre angular et react 
+F:
+FRAMEWORK infrastructure logicielle, socle d'applications, infrastructure de développement
+FRONT-END la partie qu code qui sera generé dans le Browser pour les vues..
+G:
+H:
+Http HyperText Transfer Protocol  protocol de transfert de données en texte
+I:
+INSTANCE une representation d'un object un instance
+J:
+JAVA  language de prog (Objet)
+JPA java persistance Acces  (couche relation mapping entre un objet java et une base de donnee)
+JDBC
+M:
+MYSQL Style de base de donnee comme mongoDB, PostGrel
+O:
+OBJECT objet cree grace à une classe 
+ORM object relation mapping object pour lier 
+OBSERVABLE un objet que l'on peut ecouter  PATTERN OBSERVER
+OBSERVER celui qui suit l'état d'un objet
+P:
+POSTMAN client pour faire des requetes et aussi des rendu d'API bien belle (script curl pour tester les requetes)
+POSGREL Postgrel base donnée
+PROMISE promesse de retour lors d'une demande
+PROVIDER
+Q
+QUERY requete pour acceder a des données
+R:
+REACT un autre framework front end
+REDUX un store permettant de sauvegarder l'ensemble des STATES des objets
+REL DB relation avec une database (keys, tables, relations entre les données)
+S:
+SWAGGER UI interaction avec API
+SQL language pour acceder a des tables, dans les bases de données
+SPRING sur couche de java utilisant
+T:
+TABLE une table correspond a un objet (un ligne coorspodant à une instance)
+U:
+URL:uniform ressource locator, localisateur des données (souvent dit adresse du web) Ou sont les données à acceder
+V:
+VUEjs framework en javascript pour le FRONT END
+
+
+
+ 
+
 
 ##API avec swagger 
    GET-- Add Climber : ajoute un grimpeur
