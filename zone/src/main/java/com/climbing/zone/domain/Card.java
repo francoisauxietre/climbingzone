@@ -320,7 +320,6 @@ public class Card implements Serializable {
     public void setClimbers(Set<Climber> climbers) {
         this.climbers = climbers;
     }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
     public boolean equals(Object o) {

@@ -25,8 +25,7 @@ public class Country implements Serializable {
     @JsonIgnoreProperties("countries")
     private Climber climbers;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public Long getId() {
+     public Long getId() {
         return id;
     }
 
@@ -59,7 +58,6 @@ public class Country implements Serializable {
     public void setClimbers(Climber climber) {
         this.climbers = climber;
     }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
     public boolean equals(Object o) {

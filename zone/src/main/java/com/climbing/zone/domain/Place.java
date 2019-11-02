@@ -1,85 +1,138 @@
 package com.climbing.zone.domain;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
+import java.io.Serializable;
+
+/**
+ * Endroit ou sont faites les voies
+ */
 @Entity
-public class Place {
+@Table(name = "place")
+public class Place implements Serializable {
 
-    Long IdPlace;
-    String name;
-    float latitude;
-    float longitude;
-
-    Logger logger = LoggerFactory.getLogger(Place.class);
-
-    // a chaque fois qu'on mettra un persist on va faire un log
-    @PrePersist
-    public void startLog(){
-        logger.info("creation du place en cours " + this.name);
-    }
-
-    @PostPersist
-    public void stopLog(){
-        logger.info("creation faite de " + this.name);
-    }
-
-
-    public Place() {
-    }
-
-    public Place(String name, float latitude, float longitude) {
-        this.name = name;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue
-//     getters et setters
-    public Long getIdPlace() {
-        return IdPlace;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "latitude")
+    private Float latitude;
+
+    @Column(name = "longitude")
+    private Float longitude;
+
+    @ManyToOne
+    @JsonIgnoreProperties("places")
+    private Parking parkings;
+
+    @ManyToOne
+    @JsonIgnoreProperties("places")
+    private Climbingroute located;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setIdPlace(Long idPlace) {
-        IdPlace = idPlace;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-
-    public void setName(String nom) {
-        this.name = nom;
+    public Place name(String name) {
+        this.name = name;
+        return this;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
-
-    public float getLatitude() {
+    public Float getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(float latitude) {
+    public Place latitude(Float latitude) {
+        this.latitude = latitude;
+        return this;
+    }
+
+    public void setLatitude(Float latitude) {
         this.latitude = latitude;
     }
 
-    public float getLongitude() {
+    public Float getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(float longitude) {
+    public Place longitude(Float longitude) {
+        this.longitude = longitude;
+        return this;
+    }
+
+    public void setLongitude(Float longitude) {
         this.longitude = longitude;
     }
 
-//    @OneToMany(mappedBy = "place")
-//    public List<Route> getRoutesList() {
-//        return routesList;
-//    }
-//
-//    public void setRoutesList(List<Route> routesList) {
-//        this.routesList = routesList;
-//    }
+    public Parking getParkings() {
+        return parkings;
+    }
+
+    public Place parkings(Parking parking) {
+        this.parkings = parking;
+        return this;
+    }
+
+    public void setParkings(Parking parking) {
+        this.parkings = parking;
+    }
+
+    public Climbingroute getLocated() {
+        return located;
+    }
+
+    public Place located(Climbingroute climbingroute) {
+        this.located = climbingroute;
+        return this;
+    }
+
+    public void setLocated(Climbingroute climbingroute) {
+        this.located = climbingroute;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Place)) {
+            return false;
+        }
+        return id != null && id.equals(((Place) o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
+
+    @Override
+    public String toString() {
+        return "Place{" +
+                "id=" + getId() +
+                ", name='" + getName() + "'" +
+                ", latitude=" + getLatitude() +
+                ", longitude=" + getLongitude() +
+                "}";
+    }
 }

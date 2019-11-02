@@ -68,7 +68,6 @@ public class Climber implements Serializable {
     @JsonIgnore
     private Set<Climber> fromFriends = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
     }
@@ -268,7 +267,6 @@ public class Climber implements Serializable {
     public void setFromFriends(Set<Climber> climbers) {
         this.fromFriends = climbers;
     }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
     public boolean equals(Object o) {
