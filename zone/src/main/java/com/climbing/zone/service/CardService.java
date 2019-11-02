@@ -27,7 +27,7 @@ public class CardService {
     // add<T>(...)
     public ResponseEntity<String> add(Card card) {
         cardRepository.save(card);
-        return new ResponseEntity<>("a brand new card N°" + card.getId() + "has been created", HttpStatus.OK);
+        return new ResponseEntity<>("a brand new card N°" + card.getId() + " has been created", HttpStatus.OK);
     }
 
 

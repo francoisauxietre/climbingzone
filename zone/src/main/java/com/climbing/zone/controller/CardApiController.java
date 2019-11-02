@@ -1,14 +1,19 @@
 package com.climbing.zone.controller;
 
 import com.climbing.zone.domain.Card;
+import com.climbing.zone.dto.CardDto;
 import com.climbing.zone.service.CardService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import javassist.NotFoundException;
+import org.aspectj.apache.bcel.classfile.Code;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,13 +39,34 @@ public class CardApiController {
     @Autowired
     CardService cardService;
 
+
+
     //recherche la liste de tous les cartes
-    @ApiOperation(value = "Affiche la liste des cartes", response = List.class)
+    @ApiOperation(value = "demande une carte a partir de son id",notes = "retourne la carte si elle existe", response = List.class)
+    @ApiResponse(code=404, message = "No Cards Founded")
+    @RequestMapping(value ="cards", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<CardDto>> findAllCard() throws NotFoundException {
+        logger.info("requete Get sur findAllCard :demande de la liste des grimpeurs");
+        List<CardDto> cardDtos = cardService.findAllCard();
+        if(!cardDtos.isEmpty()){
+            return ResponseEntity.ok().body(cardDtos);
+        }
+        else{
+            logger.info("No Cards Founded");
+            throw new NotFoundException("No Cards Founded");
+        }
+    }
+
+
+
+    @ApiOperation(value = "Affiche la liste des cartes",notes = "retourne une collection de cartes", response = List.class)
     @GetMapping("/cards")
     public ResponseEntity<String> findAll() {
         logger.info("requete Get sur findAll :demande de la liste des grimpeurs");
         return new ResponseEntity<String>(""+cardService.findAll(), HttpStatus.OK);
     }
+
+
 
     //ajoute un nouvelle carte
     @ApiOperation(value = "Ajoute un nouvelle carte (...)")

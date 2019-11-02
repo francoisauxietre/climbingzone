@@ -4,6 +4,8 @@
 
 lancement: dans le repertoire zone (le docker-compose gere la base de donnee en msql sur le  port 3009 grace au docker compose 
 <pre><code>docker-compose up</code></pre>
+**Lombok** 
+*pourrais simplifier beaucoup de code sur getter et setters pour voir les classes generee des intelij onglet structure a gauche et sinon quand on build javap nomdufichierclass pour voir ce qui est reelment generer.*
 
 -----------------
 ### MOTS CLES
@@ -93,7 +95,7 @@ en faisant juste @Entity et @Id on peut avoir nos objet en base
 * @CrossOrigin(origins = "http://localhost:4200")
 * @ID
 * @ENTITY
-* @
+* @LOB   pour els champs depassant 255 caractere 
 ---------------------
 
 ![hello](https://user-images.githubusercontent.com/55358842/68070665-66d6dd80-fd71-11e9-92b9-22d91cd29f4b.jpg)
