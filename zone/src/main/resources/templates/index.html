@@ -1,26 +1,77 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:font-family="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Spring Boot Session Example</title>
+    <title>ClimbingZone</title>
 </head>
 <body>
 <div>
-    <form th:action="@{/persistMessage}" method="post">
-        <textarea name="msg" cols="40" rows="2"></textarea>
-        <br> <input type="submit" value="Save Message" />
-    </form>
-</div>
-<div>
-    <h2>Messages</h2>
-    <ul th:each="message : ${sessionMessages}">
-        <li th:text="">msg</li>
+    <h1><p tex><b>Demarrage de mon projet ultra simple :</b></p></h1>
+    <i>Cloner le git </i>
+    <a href="https://github.com/francoisauxietre/climbingzone.git">https://github.com/francoisauxietre/climbingzone.git</a>
+    <div ba><p>Demarrage des dockers "spring"</p>
+        <code {
+              font-family: monospace;
+              }>docker-compose up</code>
+        <p>et lancer soit le react soit angular soit vues pour les front"</p>
+    </div>
+    <b>UN GRAND MERCI POUR TOUT CE QUE J'AI APPRIS MêME SI J'AI PRIS BEAUCOUP DE TEMPS POUR ESSAYER DE FAIRE LE MAX
+       par contre je n'ai pas tout implémenter car ça aurait été très long
+       En te Remerciant Olivier et Luc pour tous vos conseils
+       Amicalement François</b>
+
+    <p>Pas eu le temps de faire complètement l'intégration continue avec travis</p>
+    <p>Site en production sur :</p>
+    <img src="hello_Min.jpg" height="80" width="80">
+
+    ----------------------------------------------------------------------------------
+    <a href="http:localhost:8080">LOCAL HOST</a>
+
+    <h2>API:</h2>
+    <a href="swagger-ui.html">Swagger</a>
+    <a href="swagger-ui.html">Postman</a>
+    <h2>Documentation</h2>
+    <ul>
+        <li>
+            <a href="/v2/api-docs">docs api</a>
+        </li>
+        <li>
+            <a href="documentation ">autre docs</a>
+        </li>
     </ul>
-</div>
-<div>
-    <form th:action="@{/destroy}" method="post">
-        <input type="submit" value="Destroy Session" />
-    </form>
+
+    <p>FRONT WITH ANGULAR:
+    <p> lancer le projet angular et l'acces à la base de données dans docker-compose up du spring
+        <a href="http:localhost:4200/">ANGULAR FRONT</a>
+        <input type="submit" value="Go to Angular"/>
+
+
+    <p>FRONT WITH REACT:
+    <p> lancer le projet angular et l'acces à la base de données dans docker-compose up du spring
+        <a href="http:localhost:8081/">REACT FRONT</a>
+        <input type="submit" value="Go to React"/>
+
+
+    <p>FRONT WITH VUE JS:
+    <p> lancer le projet angular et l'acces à la base de données dans docker-compose up du spring
+        <a href="http:localhost:8080/">VUES-JS FRONT</a>
+        <input type="submit" value="Go to Vues-js"/>
+    </p>
+    <p>Projet complet sur le gitHub</p>
+    <p>Version Complete Sous <a href="https://github.com/francoisauxietre/climbingzone">Climbingzone</a></p>
+    <p> Dans ce projet on trouvera Les 3 Front minimaliste </p>
+    <p> Dans les dossiers Angular <a href="https://github.com/francoisauxietre/climbingzone/tree/master/angular">Angular
+                                                                                                                 git</a>
+    </p>
+    <p> Dans les dossiers React <a href="https://github.com/francoisauxietre/climbingzone/tree/master/react">React
+                                                                                                             git</a></p>
+    <p> Dans les dossiers Vue-JS <a href="https://github.com/francoisauxietre/climbingzone/tree/master/vue">Vues-Js
+                                                                                                            git</a></p>
+    <p>Autre version juste générée pour tester Jhipster sous ClimbingZone5 avec un front angular</p>
+    <a href="https://github.com/francoisauxietre/climbingzone5">Climbing Zone by jhipster </a>
+    <p>Autre version juste générée pour tester Jhipster sous ClimbingZone3 avec un front react</p>
+    <a href="https://github.com/francoisauxietre/climbingzone3">Climbing Zone by jhipster </a>
+
 </div>
 </body>
 </html>
