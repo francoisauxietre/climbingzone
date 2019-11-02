@@ -101,7 +101,7 @@ en faisant juste @Entity et @Id on peut avoir nos objet en base
 <li>Une puce</li>
 <li>Une autre <p>2</p><strong>2</strong> puce</li>
 ![alt text][logo]
-[logo]: (https://github.com/francoisauxietre/climbingzone/blob/master/zone/assets/hello.jpg "Hello")
+[logo]: (climbingzone/assets/hello.jpg "Hello")
 
 
 </ol>
