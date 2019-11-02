@@ -36,12 +36,12 @@ public class PlaceApiController {
     PlaceService placeService;
 
     //recherche la liste de tous les utilisateurs
-    @ApiOperation(value = "Affiche la liste des lieux", response = List.class)
-    @GetMapping("/Place")
-    public List<Place> findAll() {
-        logger.info("affichage de tous les lieux");
-        return placeService.findAll();
-    }
+//    @ApiOperation(value = "Affiche la liste des lieux", response = List.class)
+//    @GetMapping("/Place")
+//    public List<Place> findAll() {
+//        logger.info("affichage de tous les lieux");
+//        return placeService.findAll();
+//    }
 
 
 //  add @PostMapping("/Place") autre nommage mais moi clair pour moi
@@ -55,12 +55,12 @@ public class PlaceApiController {
     }
 
     //efface un utilisateur par son id
-    @ApiOperation(value = "supprime un lieu")
-    @DeleteMapping("/Place")
-    public void deleteClimberByIdClimber(@RequestParam("IdPlace") Long idPlace) {
-        logger.info("Admin :efface un lieu par son id");
-        placeService.deletePlaceByIdPlace(idPlace);
-    }
+//    @ApiOperation(value = "supprime un lieu")
+//    @DeleteMapping("/Place")
+//    public void deleteClimberByIdClimber(@RequestParam("IdPlace") Long idPlace) {
+//        logger.info("Admin :efface un lieu par son id");
+//        placeService.deletePlaceByIdPlace(idPlace);
+//    }
 }
 
 

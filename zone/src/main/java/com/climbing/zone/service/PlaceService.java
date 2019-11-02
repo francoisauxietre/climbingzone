@@ -22,9 +22,9 @@ public class PlaceService {
     PlaceRepository placeRepository;
 
 
-    public List<Place> findAll() {
-        return placeRepository.findAll();
-    }
+//    public List<Place> findAll() {
+//        return placeRepository.findAll();
+//    }
 
     public Long addPlace(String name, float latitude, float longitude) {
         Place place = new Place();
@@ -32,18 +32,18 @@ public class PlaceService {
         place.setLatitude(latitude);
         place.setLongitude(longitude);
         placeRepository.save(place);
-        return place.getIdPlace();
+        return place.getId();
     }
 
-    public void deletePlaceByIdPlace(Long idPlace) {
-        placeRepository.deletePlaceByIdPlace(idPlace);
+//    public void deletePlaceByIdPlace(Long idPlace) {
+//        placeRepository.deletePlaceByIdPlace(idPlace);
+//
+//    }
 
-    }
 
-
-    public List<Place> findAllByName(String name) {
-        return placeRepository.findAllByName(name);
-    }
+//    public List<Place> findAllByName(String name) {
+//        return placeRepository.findAllByName(name);
+//    }
 
     public Place findAllById(Long idPlace) {
         return placeRepository.findById(idPlace).get();

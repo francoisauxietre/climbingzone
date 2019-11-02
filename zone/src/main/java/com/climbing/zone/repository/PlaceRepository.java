@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface PlaceRepository extends CrudRepository<Place, Long> {
 
-    List<Place> findAll();
-    void deletePlaceByIdPlace(Long idPlace);
-    List<Place>findAllByName(String name);
+//    List<Place> findAll();
+//    void deletePlaceByIdPlace(Long idPlace);
+//    List<Place>findAllByName(String name);
 
 }
