@@ -38,6 +38,9 @@ lancement: dans le repertoire zone (le docker-compose gere la base de donnee en 
 * JAVA  language de prog (Objet)
 * JPA java persistance Acces  (couche relation mapping entre un objet java et une base de donnee)
 * JDBC
+
+####L:
+LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et setters et Hashcode et toString
 ####M:
 * MAP mapper les donner les mettre en relation
 * MYSQL Style de base de donnee comme mongoDB, PostGrel
@@ -87,6 +90,9 @@ exemple utilisateur avec postman
 // get<T>ById(Long id)
 // update<T>(<t> t)
 // delete<T>()
+
+## liste de plugIn installés pour ce projet en Intelij
+    lombox
 
 ###@ANNOTATION UTILES 
 en faisant juste @Entity et @Id on peut avoir nos objet en base
