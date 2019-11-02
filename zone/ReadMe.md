@@ -100,7 +100,7 @@ en faisant juste @Entity et @Id on peut avoir nos objet en base
 <ol>
 <li>Une puce</li>
 <li>Une autre <p>2</p><strong>2</strong> puce</li>
-![Hello](..//resources/images/hello.png)
+![Hello](https://github.com/francoisauxietre/climbingzone/blob/master/zone/assets/hello.jpg)
 
 
 </ol>
