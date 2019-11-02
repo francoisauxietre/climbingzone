@@ -45,9 +45,9 @@ public class CardApiController {
     @ApiOperation(value = "demande une carte a partir de son id",notes = "retourne la carte si elle existe", response = List.class)
     @ApiResponse(code=404, message = "No Cards Founded")
     @RequestMapping(value ="cards", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<CardDto>> findAllCard() throws NotFoundException {
+    public ResponseEntity<List<Card>> findAllCard() throws NotFoundException {
         logger.info("requete Get sur findAllCard :demande de la liste des grimpeurs");
-        List<CardDto> cardDtos = cardService.findAllCard();
+        List<Card> cardDtos = cardService.findAll();
         if(!cardDtos.isEmpty()){
             return ResponseEntity.ok().body(cardDtos);
         }
@@ -57,14 +57,14 @@ public class CardApiController {
         }
     }
 
-
-
-    @ApiOperation(value = "Affiche la liste des cartes",notes = "retourne une collection de cartes", response = List.class)
-    @GetMapping("/cards")
-    public ResponseEntity<String> findAll() {
-        logger.info("requete Get sur findAll :demande de la liste des grimpeurs");
-        return new ResponseEntity<String>(""+cardService.findAll(), HttpStatus.OK);
-    }
+//
+//
+//    @ApiOperation(value = "Affiche la liste des cartes",notes = "retourne une collection de cartes", response = List.class)
+//    @GetMapping("/cards")
+//    public ResponseEntity<String> findAll() {
+//        logger.info("requete Get sur findAll :demande de la liste des grimpeurs");
+//        return new ResponseEntity<String>(""+cardService.findAll(), HttpStatus.OK);
+//    }
 
 
 
@@ -85,7 +85,7 @@ public class CardApiController {
             @RequestParam(required = true, defaultValue = "1") int technical,
             @RequestParam(required = true, defaultValue = "0") int tactical,
             @RequestParam(required = true, defaultValue = "1") int mental) {
-        Card card = new Card(climberFirstName, climberLastName, star, level, qrcode, photo, climbingRouteName, info, bonus, physical, technical, tactical, mental);
+        Card card = new Card();
         return cardService.add(card);
     }
 

@@ -10,8 +10,8 @@ import java.util.List;
 public interface CardRepository extends CrudRepository<Card, Long> {
 
 //@Query("SELECT t FROM climber t WHERE first_name = :firstName and name = :name")
-    List<Card> findAll();
+//    List<Card> findAll();
     void deleteCardById(Long id);
     List<Card>findCardsByClimbingRouteName(String climbingRouteName);
-    List<CardDto> findAll();
+    List<Card> findAll();
 }

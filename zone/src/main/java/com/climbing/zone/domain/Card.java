@@ -5,112 +5,122 @@ import org.slf4j.LoggerFactory;
 
 import javax.annotation.PreDestroy;
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.util.Calendar;
-import java.util.Date;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * A Card.
+ */
 @Entity
-public class Card {
+@Table(name = "card")
+public class Card implements Serializable {
 
-    Logger logger = LoggerFactory.getLogger(Climber.class);
+    private static final long serialVersionUID = 1L;
 
-    //autoIncrementation de la clé
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Long Id; //id autogenerer
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @NotBlank(message = "FirstName is mantatory")
-    private String climberFirstName;
+    @Column(name = "card_id")
+    private Long cardId;
 
-    @NotBlank(message = "lastName is mantatory")
-    private String climberLastName;
+    @Column(name = "star")
+    private Integer star;
 
-    private int star;
+    @Column(name = "level")
     private String level;
+
+    @Column(name = "qrcode")
     private String qrcode;
+
+    @Column(name = "climber_place")
+    private Integer climberPlace;
+
+    @Column(name = "climber_total")
+    private Integer climberTotal;
+
+    @Column(name = "place")
     private String place;
+
+    @Column(name = "photo")
     private String photo;
+
+    @Column(name = "climbing_route_name")
     private String climbingRouteName;
-    private String info = "";
+
+    @Column(name = "physical")
+    private Integer physical;
+
+    @Column(name = "technical")
+    private Integer technical;
+
+    @Column(name = "tactical")
+    private Integer tactical;
+
+    @Column(name = "mental")
+    private Integer mental;
+
+    @Column(name = "bonus")
     private String bonus;
 
-    private int physical;
-    private int technical;
-    private int tactical;
-    private int mental;
+    @Column(name = "info")
+    private String info;
 
-    //calculee par app
-    private int climberPlace;
-    private int climberTotal;
-    private Date createAt; //date de creation
-    private Date modifyAt; //date de modification
-    private Date deleteAt; //date de supression
+    @Column(name = "climber_first_name")
+    private String climberFirstName;
 
-    // constructeur vide par default obligatoire
-    public Card() {
-        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        this.createAt = date;
-        logger.info("creation d'une nouvelle carte vide");
-    }
+    @Column(name = "climber_last_name")
+    private String climberLastName;
 
-    public Card(String climberFirstName, String climberLastName, int star, String level, String qrcode, String photo, String climbingRouteName, String info, String bonus,
-                int physical, int technical, int tactical, int mental) {
-        this.star = star;
-        this.level = level;
-        this.qrcode = qrcode;
-        this.photo = photo;
-        this.climbingRouteName = climbingRouteName;
-        this.physical = physical;
-        this.technical = technical;
-        this.tactical = tactical;
-        this.mental = mental;
-        this.bonus = bonus;
-        this.climberFirstName = climberFirstName;
-        this.climberLastName = climberLastName;
-        this.createAt = createAt;
-        this.info = info;
-    }
-
-    // a chaque fois qu'on fera un nouvel ajout d'un grimpeur on aura cette merthode qui ajoutera des infos
-    @PrePersist
-    public void startLog() {
-        logger.info("Création d'une nouvelle carte en cours ");
-    }
-
-    // a la fin de la creation
-    @PostPersist
-    public void stopLog() {
-        logger.info("création terminée " + this.info);
-    }
-
-    //en cas de destruction
-    @PreDestroy
-    public void destroy() {
-        logger.info("destruction de " + this.info);
-    }
+    @OneToMany(mappedBy = "cards")
+    private Set<Climber> climbers = new HashSet<>();
 
     //creation d'un Id pour la base de donne auto generer
     //ATTENTION BIEN METTRE LES @ SUR LES GETTERS
-    @javax.persistence.Id
-    @GeneratedValue
+//    @Id
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        this.Id = id;
+        this.id = id;
     }
 
-    public int getStar() {
+    public Long getCardId() {
+        return cardId;
+    }
+
+    public Card cardId(Long cardId) {
+        this.cardId = cardId;
+        return this;
+    }
+
+    public void setCardId(Long cardId) {
+        this.cardId = cardId;
+    }
+
+    public Integer getStar() {
         return star;
     }
 
-    public void setStar(int star) {
+    public Card star(Integer star) {
+        this.star = star;
+        return this;
+    }
+
+    public void setStar(Integer star) {
         this.star = star;
     }
 
     public String getLevel() {
         return level;
+    }
+
+    public Card level(String level) {
+        this.level = level;
+        return this;
     }
 
     public void setLevel(String level) {
@@ -121,28 +131,48 @@ public class Card {
         return qrcode;
     }
 
+    public Card qrcode(String qrcode) {
+        this.qrcode = qrcode;
+        return this;
+    }
+
     public void setQrcode(String qrcode) {
         this.qrcode = qrcode;
     }
 
-    public int getClimberPlace() {
+    public Integer getClimberPlace() {
         return climberPlace;
     }
 
-    public void setClimberPlace(int climberPlace) {
+    public Card climberPlace(Integer climberPlace) {
+        this.climberPlace = climberPlace;
+        return this;
+    }
+
+    public void setClimberPlace(Integer climberPlace) {
         this.climberPlace = climberPlace;
     }
 
-    public int getClimberTotal() {
+    public Integer getClimberTotal() {
         return climberTotal;
     }
 
-    public void setClimberTotal(int climberTotal) {
+    public Card climberTotal(Integer climberTotal) {
+        this.climberTotal = climberTotal;
+        return this;
+    }
+
+    public void setClimberTotal(Integer climberTotal) {
         this.climberTotal = climberTotal;
     }
 
     public String getPlace() {
         return place;
+    }
+
+    public Card place(String place) {
+        this.place = place;
+        return this;
     }
 
     public void setPlace(String place) {
@@ -153,6 +183,11 @@ public class Card {
         return photo;
     }
 
+    public Card photo(String photo) {
+        this.photo = photo;
+        return this;
+    }
+
     public void setPhoto(String photo) {
         this.photo = photo;
     }
@@ -161,44 +196,74 @@ public class Card {
         return climbingRouteName;
     }
 
+    public Card climbingRouteName(String climbingRouteName) {
+        this.climbingRouteName = climbingRouteName;
+        return this;
+    }
+
     public void setClimbingRouteName(String climbingRouteName) {
         this.climbingRouteName = climbingRouteName;
     }
 
-    public int getPhysical() {
+    public Integer getPhysical() {
         return physical;
     }
 
-    public void setPhysical(int physical) {
+    public Card physical(Integer physical) {
+        this.physical = physical;
+        return this;
+    }
+
+    public void setPhysical(Integer physical) {
         this.physical = physical;
     }
 
-    public int getTechnical() {
+    public Integer getTechnical() {
         return technical;
     }
 
-    public void setTechnical(int technical) {
+    public Card technical(Integer technical) {
+        this.technical = technical;
+        return this;
+    }
+
+    public void setTechnical(Integer technical) {
         this.technical = technical;
     }
 
-    public int getTactical() {
+    public Integer getTactical() {
         return tactical;
     }
 
-    public void setTactical(int tactical) {
+    public Card tactical(Integer tactical) {
+        this.tactical = tactical;
+        return this;
+    }
+
+    public void setTactical(Integer tactical) {
         this.tactical = tactical;
     }
 
-    public int getMental() {
+    public Integer getMental() {
         return mental;
     }
 
-    public void setMental(int mental) {
+    public Card mental(Integer mental) {
+        this.mental = mental;
+        return this;
+    }
+
+    public void setMental(Integer mental) {
         this.mental = mental;
     }
 
     public String getBonus() {
         return bonus;
+    }
+
+    public Card bonus(String bonus) {
+        this.bonus = bonus;
+        return this;
     }
 
     public void setBonus(String bonus) {
@@ -209,6 +274,11 @@ public class Card {
         return climberFirstName;
     }
 
+    public Card climberFirstName(String climberFirstName) {
+        this.climberFirstName = climberFirstName;
+        return this;
+    }
+
     public void setClimberFirstName(String climberFirstName) {
         this.climberFirstName = climberFirstName;
     }
@@ -217,59 +287,124 @@ public class Card {
         return climberLastName;
     }
 
+    public Card climberLastName(String climberLastName) {
+        this.climberLastName = climberLastName;
+        return this;
+    }
+
     public void setClimberLastName(String climberLastName) {
         this.climberLastName = climberLastName;
     }
 
-    public String getInfo() {
-        return info;
+    public Set<Climber> getClimbers() {
+        return climbers;
     }
 
-    public void setInfo(String info) {
-        this.info = info;
+    public Card climbers(Set<Climber> climbers) {
+        this.climbers = climbers;
+        return this;
     }
 
-    @Basic
-    @Temporal(value = TemporalType.DATE)
-    public Date getCreateAt() {
-        return createAt;
+    public Card addClimber(Climber climber) {
+        this.climbers.add(climber);
+        climber.setCards(this);
+        return this;
     }
 
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
+    public Card removeClimber(Climber climber) {
+        this.climbers.remove(climber);
+        climber.setCards(null);
+        return this;
     }
 
-    @Basic
-    @Temporal(value = TemporalType.DATE)
-    public Date getModifyAt() {
-        return modifyAt;
+    public void setClimbers(Set<Climber> climbers) {
+        this.climbers = climbers;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Card)) {
+            return false;
+        }
+        return id != null && id.equals(((Card) o).id);
     }
 
-    public void setModifyAt(Date modifyAt) {
-        this.modifyAt = modifyAt;
-    }
-
-    @Basic
-    @Temporal(value = TemporalType.DATE)
-    public Date getDeleteAt() {
-        return deleteAt;
-    }
-
-    public void setDeleteAt(Date deleteAt) {
-        this.deleteAt = deleteAt;
+    @Override
+    public int hashCode() {
+        return 31;
     }
 
     @Override
     public String toString() {
         return "Card{" +
-                "name='" + climberLastName + '\'' +
-                ", physique=" + physical +
-                ", technique=" + technical +
-                ", tactique=" + tactical +
-                ", mental=" + mental +
-                ", createAt=" + createAt +
-                ", modifyAt=" + modifyAt +
-                ", deleteAt=" + deleteAt +
-                '}';
+                "id=" + getId() +
+                ", cardId=" + getCardId() +
+                ", star=" + getStar() +
+                ", level='" + getLevel() + "'" +
+                ", qrcode='" + getQrcode() + "'" +
+                ", climberPlace=" + getClimberPlace() +
+                ", climberTotal=" + getClimberTotal() +
+                ", place='" + getPlace() + "'" +
+                ", photo='" + getPhoto() + "'" +
+                ", climbingRouteName='" + getClimbingRouteName() + "'" +
+                ", physical=" + getPhysical() +
+                ", technical=" + getTechnical() +
+                ", tactical=" + getTactical() +
+                ", mental=" + getMental() +
+                ", bonus='" + getBonus() + "'" +
+                ", climberFirstName='" + getClimberFirstName() + "'" +
+                ", climberLastName='" + getClimberLastName() + "'" +
+                "}";
     }
+//
+//    Logger logger = LoggerFactory.getLogger(Climber.class);
+//
+//    // a chaque fois qu'on fera un nouvel ajout d'un grimpeur on aura cette merthode qui ajoutera des infos
+//    @PrePersist
+//    public void startLog() {
+//        logger.info("Création d'une nouvelle carte en cours ");
+//    }
+//
+//    // a la fin de la creation
+//    @PostPersist
+//    public void stopLog() {
+//        logger.info("création terminée " + this.info);
+//    }
+//
+//    //en cas de destruction
+//    @PreDestroy
+//    public void destroy() {
+//        logger.info("destruction de " + this.info);
+//    }
+
+
+
+    //autoIncrementation de la clé
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id", nullable = false, updatable = false)
+//    Long Id; //id autogenerer
+//
+//    @NotBlank(message = "FirstName is mantatory")
+//    @Column(name = "climber_first_Name", nullable = false)
+//    private String climberFirstName;
+//
+//    @NotBlank(message = "lastName is mantatory")
+//    @Column(name = "climber_last_Name", nullable = false)
+//    private String climberLastName;
+
+
+
 }
+
+
+
+
+
+
+
+

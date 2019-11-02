@@ -63,10 +63,10 @@ public class ClimberService {
         Climber climber = new Climber();
         climber.setFirstName(firstName);
         climber.setLastName(lastName);
-        climber.setInfo(info);
-        climber.setDay(day);
-        climber.setMonth(month);
-        climber.setYear(year);
+//        climber.setInfo(info);
+//        climber.setDay(day);
+//        climber.setMonth(month);
+//        climber.setYear(year);
         climberRepository.save(climber);
         return climber;
     }

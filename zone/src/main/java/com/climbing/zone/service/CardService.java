@@ -1,6 +1,7 @@
 package com.climbing.zone.service;
 
 import com.climbing.zone.domain.Card;
+import com.climbing.zone.dto.CardDto;
 import com.climbing.zone.repository.CardRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +21,9 @@ public class CardService {
     CardRepository cardRepository;
 
     // findAll<T>()
-    public String findAll() {
+    public List<Card> findAll() {
 
-        return cardRepository.findAll().toString();
+        return cardRepository.findAll();
     }
     // add<T>(...)
     public ResponseEntity<String> add(Card card) {

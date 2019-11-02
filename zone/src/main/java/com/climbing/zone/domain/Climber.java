@@ -1,189 +1,302 @@
 package com.climbing.zone.domain;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.annotation.PreDestroy;
+import com.climbing.zone.enumeration.Language;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 
-import java.util.Date;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.io.Serializable;
+import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * Climber: les grimpeurs (nom, prenom, date de naissance, liste d amis, date de creation
- * date de modification, date de suppression
+ * A Climber.
  */
 @Entity
-public class Climber {
-    Logger logger = LoggerFactory.getLogger(Climber.class);
+@Table(name = "climber")
+public class Climber implements Serializable {
 
-    //autoIncrementation de la clé
+    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Long Id; //id autogenerer
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @NotBlank(message = "FirstName is mantatory")
-    String firstName; //prenom
+    @Column(name = "first_name")
+    private String firstName;
 
-    @NotBlank(message = "lastName is mantatory")
-    String lastName; // Nom
+    @Column(name = "last_name")
+    private String lastName;
 
-    int day;
-    int month;
-    int year;
-    Date createAt; //date de creation
-    Date modifyAt; //date de modification
-    Date deleteAt; //date de supression
-    String info = "";
-//    List<Climber> friendsList = new ArrayList<>(); //liste d'amis
-//    List<ClimberClimbingroute> climberClimbingroutes;
+    @Column(name = "birth")
+    private Instant birth;
 
-    // constructeur vide par default obligatoire
-    public Climber() {
-        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        this.createAt = date;
-        logger.info("creation d'un nouveau grimpeur vide");
-    }
+    @Column(name = "created_at")
+    private Instant createdAt;
 
-    public Climber(String firstName, String lastName, int day, int month, int year, String info) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.day = day;
-        this.month = month;
-        this.year = year;
-        this.info = info;
-    }
+    @Column(name = "modified_at")
+    private Instant modifiedAt;
 
+    @Column(name = "deleted_at")
+    private Instant deletedAt;
 
-//    @OneToMany(mappedBy = "climber")
-//    public List<ClimberClimbingroute> getClimberClimbingroutes() {
-//        return climberClimbingroutes;
-//    }
+    @Enumerated(EnumType.STRING)
+    @Column(name = "language")
+    private Language language;
 
-    // a chaque fois qu'on fera un nouvel ajout d'un grimpeur on aura cette merthode qui ajoutera des infos
-    @PrePersist
-    public void startLog() {
-        logger.info("Création de l'utilisateur en cours ");
-    }
+    @OneToMany(mappedBy = "climbers")
+    private Set<Country> countries = new HashSet<>();
 
-    // a la fin de la creation
-    @PostPersist
-    public void stopLog() {
-        logger.info("création terminée " + this.info);
-    }
+    @ManyToOne
+    @JsonIgnoreProperties("climbers")
+    private Card cards;
 
-    //en cas de destruction
-    @PreDestroy
-    public void destroy() {
-        logger.info("destruction de " + this.info);
-    }
+    @ManyToOne
+    @JsonIgnoreProperties("openers")
+    private Climbingroute openBy;
 
-    //creation d'un Id pour la base de donne auto generer
-    //ATTENTION BIEN METTRE LES @ SUR LES GETTERS
-    @javax.persistence.Id
-    @GeneratedValue
+    @ManyToMany
+    @JoinTable(name = "climber_friends",
+            joinColumns = @JoinColumn(name = "climber_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "friends_id", referencedColumnName = "id"))
+    private Set<Climber> friends = new HashSet<>();
+
+    @ManyToMany(mappedBy = "friends")
+    @JsonIgnore
+    private Set<Climber> fromFriends = new HashSet<>();
+
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
-        return Id;
+        return id;
     }
-
-//    <---------------SETTERS---------------->
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public Climber firstName(String firstName) {
+        this.firstName = firstName;
+        return this;
     }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setDay(int day) {
-        this.day = day;
-    }
-
-    public void setMonth(int month) {
-        this.month = month;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
-    }
-
-    public void setModifyAt(Date modifyAt) {
-        this.modifyAt = modifyAt;
-    }
-
-    public void setDeleteAt(Date deleteAt) {
-        this.deleteAt = deleteAt;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
-
-//    public void setFriendsList(List<Climber> friendsList) {
-//        this.friendsList = friendsList;
-//    }
-//    <---------------GETTERS---------------->
-//    @ManyToMany
-//    @JsonBackReference // pour pas que il y ait un appel d'ami a un ami qui est un ami ....
-//    @JoinTable(lastName = "friendsList")
-//    public List<Climber> getFriendsList() {
-//        return friendsList;
-//    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
     public String getLastName() {
         return lastName;
     }
 
-    public int getDay() {
-        return day;
+    public Climber lastName(String lastName) {
+        this.lastName = lastName;
+        return this;
     }
 
-    public int getMonth() {
-        return month;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public int getYear() {
-        return year;
+    public Instant getBirth() {
+        return birth;
     }
 
-    public Date getCreateAt() {
-        return createAt;
+    public Climber birth(Instant birth) {
+        this.birth = birth;
+        return this;
     }
 
-    public Date getModifyAt() {
-        return modifyAt;
+    public void setBirth(Instant birth) {
+        this.birth = birth;
     }
 
-    public Date getDeleteAt() {
-        return deleteAt;
+    public Instant getCreatedAt() {
+        return createdAt;
     }
 
-    public String getInfo() {
-        return info;
+    public Climber createdAt(Instant createdAt) {
+        this.createdAt = createdAt;
+        return this;
     }
 
-//    public List<Climber> getFriendsList() {
-//        return friendsList;
-//    }
-//
-//    public List<ClimberClimbingroute> getClimberClimbingroutes() {
-//        return climberClimbingroutes;
-//    }
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Instant getModifiedAt() {
+        return modifiedAt;
+    }
+
+    public Climber modifiedAt(Instant modifiedAt) {
+        this.modifiedAt = modifiedAt;
+        return this;
+    }
+
+    public void setModifiedAt(Instant modifiedAt) {
+        this.modifiedAt = modifiedAt;
+    }
+
+    public Instant getDeletedAt() {
+        return deletedAt;
+    }
+
+    public Climber deletedAt(Instant deletedAt) {
+        this.deletedAt = deletedAt;
+        return this;
+    }
+
+    public void setDeletedAt(Instant deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public Climber language(Language language) {
+        this.language = language;
+        return this;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
+    public Set<Country> getCountries() {
+        return countries;
+    }
+
+    public Climber countries(Set<Country> countries) {
+        this.countries = countries;
+        return this;
+    }
+
+    public Climber addCountry(Country country) {
+        this.countries.add(country);
+        country.setClimbers(this);
+        return this;
+    }
+
+    public Climber removeCountry(Country country) {
+        this.countries.remove(country);
+        country.setClimbers(null);
+        return this;
+    }
+
+    public void setCountries(Set<Country> countries) {
+        this.countries = countries;
+    }
+
+    public Card getCards() {
+        return cards;
+    }
+
+    public Climber cards(Card card) {
+        this.cards = card;
+        return this;
+    }
+
+    public void setCards(Card card) {
+        this.cards = card;
+    }
+
+    public Climbingroute getOpenBy() {
+        return openBy;
+    }
+
+    public Climber openBy(Climbingroute climbingRoute) {
+        this.openBy = climbingRoute;
+        return this;
+    }
+
+    public void setOpenBy(Climbingroute climbingroute) {
+        this.openBy = climbingroute;
+    }
+
+    public Set<Climber> getFriends() {
+        return friends;
+    }
+
+    public Climber friends(Set<Climber> climbers) {
+        this.friends = climbers;
+        return this;
+    }
+
+    public Climber addFriends(Climber climber) {
+        this.friends.add(climber);
+        climber.getFromFriends().add(this);
+        return this;
+    }
+
+    public Climber removeFriends(Climber climber) {
+        this.friends.remove(climber);
+        climber.getFromFriends().remove(this);
+        return this;
+    }
+
+    public void setFriends(Set<Climber> climbers) {
+        this.friends = climbers;
+    }
+
+    public Set<Climber> getFromFriends() {
+        return fromFriends;
+    }
+
+    public Climber fromFriends(Set<Climber> climbers) {
+        this.fromFriends = climbers;
+        return this;
+    }
+
+    public Climber addFromFriends(Climber climber) {
+        this.fromFriends.add(climber);
+        climber.getFriends().add(this);
+        return this;
+    }
+
+    public Climber removeFromFriends(Climber climber) {
+        this.fromFriends.remove(climber);
+        climber.getFriends().remove(this);
+        return this;
+    }
+
+    public void setFromFriends(Set<Climber> climbers) {
+        this.fromFriends = climbers;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Climber)) {
+            return false;
+        }
+        return id != null && id.equals(((Climber) o).id);
+    }
+
+    @Override
+    public int hashCode() {
+        return 31;
+    }
+
+    @Override
+    public String toString() {
+        return "Climber{" +
+                "id=" + getId() +
+                ", firstName='" + getFirstName() + "'" +
+                ", lastName='" + getLastName() + "'" +
+                ", birth='" + getBirth() + "'" +
+                ", createdAt='" + getCreatedAt() + "'" +
+                ", modifiedAt='" + getModifiedAt() + "'" +
+                ", deletedAt='" + getDeletedAt() + "'" +
+                ", language='" + getLanguage() + "'" +
+                "}";
+    }
 }
