@@ -100,4 +100,20 @@ en faisant juste @Entity et @Id on peut avoir nos objet en base
 
 ![hello](https://user-images.githubusercontent.com/55358842/68070665-66d6dd80-fd71-11e9-92b9-22d91cd29f4b.jpg)
 
-(# 1  ## 2 ### 3 <ol> <li>Une puce</li> <li>Une autre <p>2</p><strong>2</strong> puce</li></ol>
+
+    // a chaque fois qu'on mettra un persist on va faire un log
+    @PrePersist
+    public void logDebut() {
+        logger.info("creation d'une voie en cours " + this.name);
+    }
+
+    @PostPersist
+    public void logFin() {
+        logger.info("creation faite de " + this.name);
+    }
+
+    //en cas de destruction
+    @PreDestroy
+    public void destroy() {
+        logger.info("destruction de " + this.info);
+    }

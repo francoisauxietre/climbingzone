@@ -25,16 +25,16 @@ public class ClimbingrouteService {
         climbingrouteRepository.deleteClimbingrouteById(id);
     }
 
-    public Long addRouteClimbing(String name, RouteType routeType, ZoneType zoneType, float latitude, float longitude, String info) {
-        Climbingroute climbingRoute = new Climbingroute();
-        climbingRoute.setName(name);
-        climbingRoute.setRouteType(routeType);
-        climbingRoute.setZoneType(zoneType);
-        climbingRoute.setLatitude(latitude);
-        climbingRoute.setLongitude(longitude);
-        climbingRoute.setInfo(info);
-        climbingrouteRepository.save(climbingRoute);
-        return climbingRoute.getId();
+    public Long addRouteClimbing(String name, RouteType routeType, ZoneType zoneType, float latitude, float longitude) {
+        Climbingroute climbingroute = new Climbingroute();
+        climbingroute.setName(name);
+        climbingroute.setRouteType(routeType);
+        climbingroute.setZoneType(zoneType);
+        climbingroute.setLatitude(latitude);
+        climbingroute.setLongitude(longitude);
+
+        climbingrouteRepository.save(climbingroute);
+        return climbingroute.getId();
     }
 }
 

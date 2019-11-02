@@ -1,73 +1,260 @@
 package com.climbing.zone.domain;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.annotation.PreDestroy;
 import javax.persistence.*;
-import java.util.Calendar;
-import java.util.Date;
+
+import java.io.Serializable;
+import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-public class Climbingroute {
+@Table(name = "climbing_route")
+public class Climbingroute implements Serializable {
 
-    Logger logger = LoggerFactory.getLogger(Climbingroute.class);
+    private static final long serialVersionUID = 1L;
 
-    //autoIncrementation de la clé
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "bonus")
+    private String bonus;
+
+    @Column(name = "latitude")
+    private Float latitude;
+
+    @Column(name = "longitude")
+    private Float longitude;
+
+    @Column(name = "difficuty")
+    private String difficuty;
+
+    @Column(name = "star")
+    private Integer star;
+
+    @Column(name = "physical")
+    private Integer physical;
+
+    @Column(name = "technical")
+    private Integer technical;
+
+    @Column(name = "tactical")
+    private Integer tactical;
+
+    @Column(name = "mental")
+    private Integer mental;
+
+    @Column(name = "created_at")
+    private Instant createdAt;
+
+    @Column(name = "modified_at")
+    private Instant modifiedAt;
+
+    @Column(name = "deleted_at")
+    private Instant deletedAt;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "route_type")
     private RouteType routeType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "zone_type")
     private ZoneType zoneType;
-    private float latitude;
-    private float longitude;
-    private Date createAt;
-    private Date modifyAt;
-    private Date deleteAt;
-    private String info = "";
 
-    //private List<ClimberClimbingroute> climberClimbingrouteList;
+    @OneToMany(mappedBy = "located")
+    private Set<Place> places = new HashSet<>();
 
-    public Climbingroute() {
-        java.sql.Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-        this.createAt = date;
-        logger.info("creation d'une nuovelle voie vide");
-    }
+    @OneToMany(mappedBy = "openBy")
+    private Set<Climber> openers = new HashSet<>();
 
-    public Climbingroute(String name, RouteType routeType, ZoneType zoneType, float latitude, float longitude, String info) {
-        this.name = name;
-        this.routeType = routeType;
-        this.zoneType = zoneType;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.info = info;
-    }
-
-    //creation d'un Id pour la base de donne auto generer
-    //ATTENTION BIEN METTRE LES @ SUR LES GETTERS
-    @javax.persistence.Id
-    @GeneratedValue
+    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
-        return Id;
+        return id;
     }
-
-    //    <---------------SETTERS---------------->
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
+    public Climbingroute name(String name) {
+        this.name = name;
+        return this;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getBonus() {
+        return bonus;
+    }
+
+    public Climbingroute bonus(String bonus) {
+        this.bonus = bonus;
+        return this;
+    }
+
+    public void setBonus(String bonus) {
+        this.bonus = bonus;
+    }
+
+    public Float getLatitude() {
+        return latitude;
+    }
+
+    public Climbingroute latitude(Float latitude) {
+        this.latitude = latitude;
+        return this;
+    }
+
+    public void setLatitude(Float latitude) {
+        this.latitude = latitude;
+    }
+
+    public Float getLongitude() {
+        return longitude;
+    }
+
+    public Climbingroute longitude(Float longitude) {
+        this.longitude = longitude;
+        return this;
+    }
+
+    public void setLongitude(Float longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getDifficuty() {
+        return difficuty;
+    }
+
+    public Climbingroute difficuty(String difficuty) {
+        this.difficuty = difficuty;
+        return this;
+    }
+
+    public void setDifficuty(String difficuty) {
+        this.difficuty = difficuty;
+    }
+
+    public Integer getStar() {
+        return star;
+    }
+
+    public Climbingroute star(Integer star) {
+        this.star = star;
+        return this;
+    }
+
+    public void setStar(Integer star) {
+        this.star = star;
+    }
+
+    public Integer getPhysical() {
+        return physical;
+    }
+
+    public Climbingroute physical(Integer physical) {
+        this.physical = physical;
+        return this;
+    }
+
+    public void setPhysical(Integer physical) {
+        this.physical = physical;
+    }
+
+    public Integer getTechnical() {
+        return technical;
+    }
+
+    public Climbingroute technical(Integer technical) {
+        this.technical = technical;
+        return this;
+    }
+
+    public void setTechnical(Integer technical) {
+        this.technical = technical;
+    }
+
+    public Integer getTactical() {
+        return tactical;
+    }
+
+    public Climbingroute tactical(Integer tactical) {
+        this.tactical = tactical;
+        return this;
+    }
+
+    public void setTactical(Integer tactical) {
+        this.tactical = tactical;
+    }
+
+    public Integer getMental() {
+        return mental;
+    }
+
+    public Climbingroute mental(Integer mental) {
+        this.mental = mental;
+        return this;
+    }
+
+    public void setMental(Integer mental) {
+        this.mental = mental;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
+    public Climbingroute createdAt(Instant createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Instant getModifiedAt() {
+        return modifiedAt;
+    }
+
+    public Climbingroute modifiedAt(Instant modifiedAt) {
+        this.modifiedAt = modifiedAt;
+        return this;
+    }
+
+    public void setModifiedAt(Instant modifiedAt) {
+        this.modifiedAt = modifiedAt;
+    }
+
+    public Instant getDeletedAt() {
+        return deletedAt;
+    }
+
+    public Climbingroute deletedAt(Instant deletedAt) {
+        this.deletedAt = deletedAt;
+        return this;
+    }
+
+    public void setDeletedAt(Instant deletedAt) {
+        this.deletedAt = deletedAt;
+    }
+
     public RouteType getRouteType() {
         return routeType;
+    }
+
+    public Climbingroute routeType(RouteType routeType) {
+        this.routeType = routeType;
+        return this;
     }
 
     public void setRouteType(RouteType routeType) {
@@ -78,72 +265,101 @@ public class Climbingroute {
         return zoneType;
     }
 
+    public Climbingroute zoneType(ZoneType zoneType) {
+        this.zoneType = zoneType;
+        return this;
+    }
+
     public void setZoneType(ZoneType zoneType) {
         this.zoneType = zoneType;
     }
 
-    public float getLatitude() {
-        return latitude;
+    public Set<Place> getPlaces() {
+        return places;
     }
 
-    public void setLatitude(float latitude) {
-        this.latitude = latitude;
+    public Climbingroute places(Set<Place> places) {
+        this.places = places;
+        return this;
     }
 
-    public float getLongitude() {
-        return longitude;
+    public Climbingroute addPlace(Place place) {
+        this.places.add(place);
+        place.setLocated(this);
+        return this;
     }
 
-    public void setLongitude(float longitude) {
-        this.longitude = longitude;
+    public Climbingroute removePlace(Place place) {
+        this.places.remove(place);
+        place.setLocated(null);
+        return this;
     }
 
-    public Date getCreateAt() {
-        return createAt;
+    public void setPlaces(Set<Place> places) {
+        this.places = places;
     }
 
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
+    public Set<Climber> getOpeners() {
+        return openers;
     }
 
-    public Date getModifyAt() {
-        return modifyAt;
+    public Climbingroute openers(Set<Climber> climbers) {
+        this.openers = climbers;
+        return this;
     }
 
-    public void setModifyAt(Date modifyAt) {
-        this.modifyAt = modifyAt;
+    public Climbingroute addOpener(Climber climber) {
+        this.openers.add(climber);
+        climber.setOpenBy(this);
+        return this;
     }
 
-    public Date getDeleteAt() {
-        return deleteAt;
+    public Climbingroute removeOpener(Climber climber) {
+        this.openers.remove(climber);
+        climber.setOpenBy(null);
+        return this;
     }
 
-    public void setDeleteAt(Date deleteAt) {
-        this.deleteAt = deleteAt;
+    public void setOpeners(Set<Climber> climbers) {
+        this.openers = climbers;
+    }
+    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Climbingroute)) {
+            return false;
+        }
+        return id != null && id.equals(((Climbingroute) o).id);
     }
 
-    public String getInfo() {
-        return info;
+    @Override
+    public int hashCode() {
+        return 31;
     }
 
-    public void setInfo(String info) {
-        this.info = info;
-    }
-
-    // a chaque fois qu'on mettra un persist on va faire un log
-    @PrePersist
-    public void logDebut() {
-        logger.info("creation d'une voie en cours " + this.name);
-    }
-
-    @PostPersist
-    public void logFin() {
-        logger.info("creation faite de " + this.name);
-    }
-
-    //en cas de destruction
-    @PreDestroy
-    public void destroy() {
-        logger.info("destruction de " + this.info);
+    @Override
+    public String toString() {
+        return "Climbingroute{" +
+                "id=" + getId() +
+                ", name='" + getName() + "'" +
+                ", bonus='" + getBonus() + "'" +
+                ", latitude=" + getLatitude() +
+                ", longitude=" + getLongitude() +
+                ", difficuty='" + getDifficuty() + "'" +
+                ", star=" + getStar() +
+                ", physical=" + getPhysical() +
+                ", technical=" + getTechnical() +
+                ", tactical=" + getTactical() +
+                ", mental=" + getMental() +
+                ", createdAt='" + getCreatedAt() + "'" +
+                ", modifiedAt='" + getModifiedAt() + "'" +
+                ", deletedAt='" + getDeletedAt() + "'" +
+                ", routeType='" + getRouteType() + "'" +
+                ", zoneType='" + getZoneType() + "'" +
+                "}";
     }
 }

@@ -47,9 +47,8 @@ public class ClimbingrouteApiController {
                          @RequestParam(required = true, defaultValue = "BOULDER") RouteType routeType,
                          @RequestParam(required = true, defaultValue = "INTERIOR") ZoneType zoneType,
                          @RequestParam(required = true, defaultValue = "48.117266") float latitude,
-                         @RequestParam(required = true, defaultValue = "-1.6777926") float longitude,
-                         @RequestParam(required = true, defaultValue = "sans") String info){
-        return climbingrouteService.addRouteClimbing(name, routeType, zoneType, latitude, longitude, info);
+                         @RequestParam(required = true, defaultValue = "-1.6777926") float longitude){
+        return climbingrouteService.addRouteClimbing(name, routeType, zoneType, latitude, longitude);
     }
 
 
