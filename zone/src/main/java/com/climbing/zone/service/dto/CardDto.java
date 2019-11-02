@@ -11,9 +11,8 @@ import java.io.Serializable;
 @AllArgsConstructor //génère le constructeur avec tous les arguments
 @Getter //génère tous les getters sur les champs ;
 @Setter //génère tous les setters sur les champs ;
-@EqualsAndHashCode(of = {"climberLastName", "climberLastName", "star", "level"})
+@EqualsAndHashCode(of = {"id", "cardId", "climberFirstName", "climberLastName"})
 // génère equals et hashCode (et d'autres méthodes) sur les champs donnés ;
-@ToString(of = {"climberFirstName", "climberLastName", "star", "level"}) //To String
 public class CardDto implements Serializable {
 
     private Long id;
