@@ -43,6 +43,7 @@ lancement: dans le repertoire zone (le docker-compose gere la base de donnee en 
 LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et setters et Hashcode et toString
 ####M:
 * MAP mapper les donner les mettre en relation
+* mapping entre les objets Dto et les Dao avec MAPSTRUCT https://mapstruct.org/
 * MYSQL Style de base de donnee comme mongoDB, PostGrel
 ####O:
 * OBJECT objet cree grace à une classe 
@@ -103,6 +104,7 @@ en faisant juste @Entity et @Id on peut avoir nos objet en base
 * @ENTITY
 * @LOB   pour els champs depassant 255 caractere 
 ---------------------
+![realiteDonnees](https://user-images.githubusercontent.com/55358842/68078285-46d80600-fdd3-11e9-886d-483cebd003ee.png)
 
 ![hello](https://user-images.githubusercontent.com/55358842/68070665-66d6dd80-fd71-11e9-92b9-22d91cd29f4b.jpg)
 
