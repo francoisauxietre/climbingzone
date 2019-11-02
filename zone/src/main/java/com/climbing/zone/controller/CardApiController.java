@@ -1,14 +1,15 @@
 package com.climbing.zone.controller;
 
 import com.climbing.zone.domain.Card;
-import com.climbing.zone.domain.Climber;
 import com.climbing.zone.service.CardService;
-import com.climbing.zone.service.ClimberService;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -36,30 +37,30 @@ public class CardApiController {
     //recherche la liste de tous les cartes
     @ApiOperation(value = "Affiche la liste des cartes", response = List.class)
     @GetMapping("/cards")
-    public List<Card> findAll() {
-        logger.info("affichage de tous les grimpeurs");
-        return cardService.findAll();
+    public ResponseEntity<String> findAll() {
+        logger.info("requete Get sur findAll :demande de la liste des grimpeurs");
+        return new ResponseEntity<String>(""+cardService.findAll(), HttpStatus.OK);
     }
 
     //ajoute un nouvelle carte
     @ApiOperation(value = "Ajoute un nouvelle carte (...)")
     @RequestMapping(method = RequestMethod.POST, value = "/cards")
-    public Long addCard(
+    public ResponseEntity<String> addCard(
+            @RequestParam(required = true, defaultValue = "fafa") String climberFirstName,
+            @RequestParam(required = true, defaultValue = "auxietre") String climberLastName,
             @RequestParam(required = true, defaultValue = "1") int star,
             @RequestParam(required = true, defaultValue = "7a") String level,
             @RequestParam(required = true, defaultValue = "qrcode_") String qrcode,
-            @RequestParam(required = true, defaultValue = "buis") String place,
-            @RequestParam(required = true, defaultValue = "photo_")String photo,
+            @RequestParam(required = true, defaultValue = "photo_") String photo,
             @RequestParam(required = true, defaultValue = "buis") String climbingRouteName,
-            @RequestParam(required = true, defaultValue = "1")int physical,
-            @RequestParam(required = true, defaultValue = "1")int technical,
-            @RequestParam(required = true, defaultValue = "0")int tactical,
-            @RequestParam(required = true, defaultValue = "1") int mental,
             @RequestParam(required = true, defaultValue = "Continuite resistance force endurance") String bonus,
-            @RequestParam(required = true, defaultValue = "fafa")String climberFirstName,
-            @RequestParam(required = true, defaultValue = "auxietre") String climberLastName,
-            @RequestParam(required = true, defaultValue = "pas de bloc, gros toit, reta")String info) {
-        return cardService.addCard(star, level, qrcode, place, photo, climbingRouteName, physical, technical, tactical, mental, bonus, climberFirstName, climberLastName, info);
+            @RequestParam(required = true, defaultValue = "pas de bloc, gros toit, reta") String info,
+            @RequestParam(required = true, defaultValue = "1") int physical,
+            @RequestParam(required = true, defaultValue = "1") int technical,
+            @RequestParam(required = true, defaultValue = "0") int tactical,
+            @RequestParam(required = true, defaultValue = "1") int mental) {
+        Card card = new Card(climberFirstName, climberLastName, star, level, qrcode, photo, climbingRouteName, info, bonus, physical, technical, tactical, mental);
+        return cardService.add(card);
     }
 
     //efface une carte par son id

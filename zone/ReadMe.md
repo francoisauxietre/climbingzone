@@ -1,7 +1,8 @@
-##Base de donnée 
-lancée en independant en port 3009 grace au docker compose 
-lancement: dans le repertoire zone (le docker-compose gere la base de donnee en msql)
+![hello_Min](https://user-images.githubusercontent.com/55358842/68070716-06946b80-fd72-11e9-94bb-4e06b9f30141.jpg)
 
+##Base de donnée 
+
+lancement: dans le repertoire zone (le docker-compose gere la base de donnee en msql sur le  port 3009 grace au docker compose 
 <pre><code>docker-compose up</code></pre>
 
 -----------------
@@ -94,14 +95,7 @@ en faisant juste @Entity et @Id on peut avoir nos objet en base
 * @ENTITY
 * @
 ---------------------
-# 1
-## 2
-### 3
-<ol>
-<li>Une puce</li>
-<li>Une autre <p>2</p><strong>2</strong> puce</li>
-![alt text][logo]
-[logo]: (climbingzone/assets/hello.jpg "Hello")
 
+![hello](https://user-images.githubusercontent.com/55358842/68070665-66d6dd80-fd71-11e9-92b9-22d91cd29f4b.jpg)
 
-</ol>
+(# 1  ## 2 ### 3 <ol> <li>Une puce</li> <li>Une autre <p>2</p><strong>2</strong> puce</li></ol>

@@ -20,29 +20,31 @@ public class Card {
     Long Id; //id autogenerer
 
     @NotBlank(message = "FirstName is mantatory")
-    String climberFirstName;
+    private String climberFirstName;
 
     @NotBlank(message = "lastName is mantatory")
-    String climberLastName;
+    private String climberLastName;
 
-    int star;
-    String level;
-    String qrcode;
-    int climberPlace;
-    int climberTotal;
-    String place;
-    String photo;
-    String climbingRouteName;
-    int physical;
-    int technical;
-    int tactical;
-    int mental;
-    String bonus;
+    private int star;
+    private String level;
+    private String qrcode;
+    private String place;
+    private String photo;
+    private String climbingRouteName;
+    private String info = "";
+    private String bonus;
 
-    Date createAt; //date de creation
-    Date modifyAt; //date de modification
-    Date deleteAt; //date de supression
-    String info = "";
+    private int physical;
+    private int technical;
+    private int tactical;
+    private int mental;
+
+    //calculee par app
+    private int climberPlace;
+    private int climberTotal;
+    private Date createAt; //date de creation
+    private Date modifyAt; //date de modification
+    private Date deleteAt; //date de supression
 
     // constructeur vide par default obligatoire
     public Card() {
@@ -51,13 +53,11 @@ public class Card {
         logger.info("creation d'une nouvelle carte vide");
     }
 
-    public Card(int star, String level, String qrcode, int climberPlace, int climberTotal, String place, String photo, String climbingRouteName, int physical, int technical, int tactical, int mental, String bonus, String climberFirstName, String climberLastName, Date createAt, String info) {
+    public Card(String climberFirstName, String climberLastName, int star, String level, String qrcode, String photo, String climbingRouteName, String info, String bonus,
+                int physical, int technical, int tactical, int mental) {
         this.star = star;
         this.level = level;
         this.qrcode = qrcode;
-        this.climberPlace = climberPlace;
-        this.climberTotal = climberTotal;
-        this.place = place;
         this.photo = photo;
         this.climbingRouteName = climbingRouteName;
         this.physical = physical;
@@ -68,8 +68,7 @@ public class Card {
         this.climberFirstName = climberFirstName;
         this.climberLastName = climberLastName;
         this.createAt = createAt;
-        this.info = "nom:" + climberLastName + physical + "  " + technical + " " + tactical + " " + mental;
-        logger.info(info);
+        this.info = info;
     }
 
     // a chaque fois qu'on fera un nouvel ajout d'un grimpeur on aura cette merthode qui ajoutera des infos
