@@ -1,18 +1,15 @@
 package com.climbing.zone.controller;
 
 import com.climbing.zone.domain.Card;
-import com.climbing.zone.dto.CardDto;
 import com.climbing.zone.service.CardService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import javassist.NotFoundException;
-import org.aspectj.apache.bcel.classfile.Code;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,6 @@
 package com.climbing.zone.repository;
 
 import com.climbing.zone.domain.Card;
-import com.climbing.zone.dto.CardDto;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

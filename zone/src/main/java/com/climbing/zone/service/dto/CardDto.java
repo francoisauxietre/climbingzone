@@ -1,9 +1,6 @@
-package com.climbing.zone.dto;
+package com.climbing.zone.service.dto;
 
 import lombok.*;
-import lombok.experimental.FieldDefaults;
-
-import javax.persistence.Entity;
 
 // lombox
 
