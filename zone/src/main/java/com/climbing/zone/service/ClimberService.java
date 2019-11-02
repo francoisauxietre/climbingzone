@@ -79,6 +79,14 @@ public class ClimberService {
         return climberRepository.findClimbersByLastName(lastName);
     }
 
+    public void update(String firstName,String lastName,int day,int month,int year,String info) {
+        update(firstName, lastName, day, month, year, info);
+    }
+
+    public void delete(int value) {
+        climberRepository.deleteById((long)value);
+    }
+
 //    public Page<Climber> findAll(Pageable pageable) {
 //        return null;
 //    }

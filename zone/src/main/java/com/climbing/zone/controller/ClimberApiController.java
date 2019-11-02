@@ -70,7 +70,7 @@ public class ClimberApiController {
     }
 
 //-----------------------------------------CLIMBER---------------------------------------------------------------
-
+    //post
     @RequestMapping(method = RequestMethod.POST, value = "/climbers")
     public Climber AddClimber(
             @RequestParam(required = true, defaultValue = "francois luc theotime") String firstName,
@@ -83,20 +83,46 @@ public class ClimberApiController {
         return climberService.addClimber(firstName, lastName, day, month, year, info);
     }
 
+    //get
     @RequestMapping(method = RequestMethod.GET, value = "/climbers/firstName/{firstName}")
     public List<Climber> findClimbersByFirstName(@PathVariable String firstName) {
         return climberService.findClimbersByFirstName(firstName);
     }
 
+    //get
     @RequestMapping(method = RequestMethod.GET, value = "/climbers/lastName/{lastName}")
     public List<Climber> findClimbersByLastName(@PathVariable String lastName) {
         return climberService.findClimbersByLastName(lastName);
     }
 
+    //get
     @RequestMapping(method = RequestMethod.GET, value = "/climbers")
     public List<Climber> findAll() {
         return climberService.findAll();
     }
+
+    //update
+    @RequestMapping(method = RequestMethod.PUT, value = "/climbers/{value}")
+    public void updateClimber(
+            @RequestParam(required = true, defaultValue = "") String firstName,
+            @RequestParam(required = true, defaultValue = "") String lastName,
+            @RequestParam(required = true, defaultValue = "") int day,
+            @RequestParam(required = true, defaultValue = "") int month,
+            @RequestParam(required = true, defaultValue = "") int year,
+            @RequestParam(required = false, defaultValue = "") String info) {
+        climberService.update(firstName, lastName, day, month, year, info);
+    }
+
+    //delete
+    @RequestMapping(method = RequestMethod.DELETE, value = "/climbers/{value}")
+    public void delete(@PathVariable int value) {
+
+        climberService.delete(value);
+    }
+
+
+
+
 
 //-----------------------------------------FRIENDS---------------------------------------------------------------
 
