@@ -10,27 +10,42 @@
     </parent>
     <groupId>com.climbing</groupId>
     <artifactId>zone</artifactId>
-<!--    ajout pour creer un war aulieu d un jar-->
-<!--    <packaging>war</packaging>-->
-
     <version>0.0.1-SNAPSHOT</version>
     <name>zone</name>
     <description>Demo project for Spring Boot</description>
 
+    <!--    ajout pour creer un war au lieu d un jar-->
+    <!--    <packaging>war</packaging>-->
+
+    <!--      JAVA      -->
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
+    <!--       Spring Boot           -->
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+
+<!--        pour la sortie web-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-<!--        ajout pour session-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--        ajout pour session     -->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-core</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
@@ -41,23 +56,16 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.session</groupId>
-            <artifactId>spring-session-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-jdbc</artifactId>
         </dependency>
-
-
-
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-<!--hibernate dependance pour @Entity-->
+
+        <!--hibernate dependence pour @Entity-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
@@ -92,12 +100,6 @@
             <version>2.9.2</version>
         </dependency>
 
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
         <!--version de depart au dessus-->
         <!--        ajout pour sortir un war avec tomcat pour creer le docker-->
         <dependency>
@@ -106,7 +108,7 @@
             <scope>provided</scope>
         </dependency>
 
-<!--        ajout pour les CORS -->
+        <!--        ajout pour les CORS -->
         <dependency>
             <groupId>com.thetransactioncompany</groupId>
             <artifactId>cors-filter</artifactId>

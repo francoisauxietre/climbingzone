@@ -43,14 +43,15 @@ public class PlaceApiController {
         return placeService.findAll();
     }
 
-    //ajoute un nouvel utilisateur
-    @ApiOperation(value = "Ajoute un nouveau lieu (nom, latitude, logitude)")
-    @PostMapping("/Place")
-    public Long addUser(@RequestParam("name") String name,
-                        @RequestParam("latitude") float latitude,
-                        @RequestParam("longitude") float longitude){
 
-        return placeService.addPlace(name, latitude, longitude);
+//  add @PostMapping("/Place") autre nommage mais moi clair pour moi
+    @ApiOperation(value = "Ajoute un nouveau lieu (nom, latitude, logitude)")
+    @RequestMapping(method = RequestMethod.POST, value = "/places")
+    public void addPlace(
+            @RequestParam(required = true, defaultValue = "rodellar") String name,
+            @RequestParam(required = true, defaultValue = "42.282282") float latitude,
+            @RequestParam(required = true, defaultValue = "-0.078619") float longitude){
+        placeService.addPlace(name, latitude, longitude);
     }
 
     //efface un utilisateur par son id
