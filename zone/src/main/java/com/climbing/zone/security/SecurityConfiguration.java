@@ -15,7 +15,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-//    definition des utilisateurs et de leurs roles 
+//    definition des utilisateurs et de leurs roles
     @Override
     protected void configure(AuthenticationManagerBuilder authentification) throws Exception {
         authentification
@@ -31,15 +31,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws  Exception{
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
+//                .antMatchers("/", "/home").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
+                .httpBasic();
+
+//                .formLogin()
+//                .loginPage("/login")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .permitAll();
 
 //
 //    @Override
