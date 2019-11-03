@@ -5,12 +5,16 @@
 lancement: dans le repertoire zone (le docker-compose gere la base de donnee en msql sur le  port 3009 grace au docker compose 
 <pre><code>docker-compose up</code></pre>
 **Lombok** 
-*pourrais simplifier beaucoup de code sur getter et setters pour voir les classes generee des intelij onglet structure a gauche et sinon quand on build javap nomdufichierclass pour voir ce qui est reelment generer.*
+tres utile pour alléger les classes sans devoir réecrire sans cesse tous les getters and setters.
+
+Différents ReadMe: https://github.com/francoisauxietre/climbingzone/tree/master/zone
+
 
 -----------------
 ###  MOTS CLES
 ###  A:
-* ANGULAR 2 framework basé sur de Javascript
+* ANGULAR 2 framework basé sur de Javascript ![5847ea22cef1014c0b5e4833](https://user-images.githubusercontent.com/55358842/68078425-a505e880-fdd5-11e9-873b-82825bc774d9.png)
+
 * ANGULAR JS autre 
 ###  B:
 * BACK-END programme traitant les données (ex avec spring boot java)
@@ -43,7 +47,8 @@ lancement: dans le repertoire zone (le docker-compose gere la base de donnee en 
 LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et setters et Hashcode et toString
 ### M:
 * MAP mapper les donner les mettre en relation
-* mapping entre les objets Dto et les Dao avec MAPSTRUCT https://mapstruct.org/
+* mapping entre les objets Dto et les Dao avec MAPSTRUCT https://mapstruct.org/ ![download](https://user-images.githubusercontent.com/55358842/68078376-50fb0400-fdd5-11e9-81bc-95ca159e0f8a.png)
+
 * MYSQL Style de base de donnee comme mongoDB, PostGrel
 ### O:
 * OBJECT objet cree grace à une classe 
@@ -60,7 +65,8 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
 * QUERY requete pour acceder a des données
 ### R:
 * REPOSITORY classe avec methodes standards requise CRUD create Read Update Delete
-* REACT un autre framework front end
+* REACT un autre framework front end ![download](https://user-images.githubusercontent.com/55358842/68078429-b18a4100-fdd5-11e9-932e-23094296b630.png)
+
 * REDUX un store permettant de sauvegarder l'ensemble des STATES des objets
 * REL DB relation avec une database (keys, tables, relations entre les données)
 ### S:
@@ -74,7 +80,9 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
 ### U:
 * URL:uniform ressource locator, localisateur des données (souvent dit adresse du web) Ou sont les données à acceder
 ### V:
-* VUEjs framework en javascript pour le FRONT END
+* VUEjs framework en javascript pour le FRONT END 
+![58482acecef1014c0b5e4a1e](https://user-images.githubusercontent.com/55358842/68078433-d1ba0000-fdd5-11e9-98d7-ca37d3166262.png)
+
 
 ##API avec swagger 
 *    GET-- Add Climber : ajoute un grimpeur
@@ -106,7 +114,6 @@ en faisant juste @Entity et @Id on peut avoir nos objet en base
 ---------------------
 ![realiteDonnees](https://user-images.githubusercontent.com/55358842/68078285-46d80600-fdd3-11e9-886d-483cebd003ee.png)
 
-![hello](https://user-images.githubusercontent.com/55358842/68070665-66d6dd80-fd71-11e9-92b9-22d91cd29f4b.jpg)
 
 
     // a chaque fois qu'on mettra un persist on va faire un log
