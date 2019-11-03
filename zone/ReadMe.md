@@ -13,8 +13,7 @@ Différents ReadMe: https://github.com/francoisauxietre/climbingzone/tree/master
 -----------------
 ###  MOTS CLES
 ###  A:
-* ANGULAR 2 framework basé sur de Javascript ![5847ea22cef1014c0b5e4833](https://user-images.githubusercontent.com/55358842/68078425-a505e880-fdd5-11e9-873b-82825bc774d9.png)
-
+* ANGULAR 2 framework basé sur de Javascript 
 * ANGULAR JS autre 
 ###  B:
 * BACK-END programme traitant les données (ex avec spring boot java)
