@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
@@ -20,11 +22,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder authentification) throws Exception {
         authentification
                 .inMemoryAuthentication()
-                .withUser("admin").password("admin").roles("ADMIN")
+                .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN")
                 .and()
-                .withUser("fa").password("fa").roles("USER")
+                .withUser("fa").password(passwordEncoder().encode("fa")).roles("USER")
                 .and()
-                .withUser("video").password("video").roles("VIDEO");
+                .withUser("video").password(passwordEncoder().encode("video")).roles("VIDEO");
     }
 
     @Override
@@ -35,21 +37,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
-
-//                .formLogin()
-//                .loginPage("/login")
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .permitAll();
-
-//
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception {
-
-//
-//
-//        http
 //                .authorizeRequests()
 //                .antMatchers("/", "/home").permitAll()
 //                .anyRequest().authenticated()
@@ -63,15 +50,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    @Override
-    public UserDetailsService userDetailsService() {
-        UserDetails user =
-                User.withDefaultPasswordEncoder()
-                        .username("user")
-                        .password("password")
-                        .roles("USER")
-                        .build();
-
-        return new InMemoryUserDetailsManager(user);
+    PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
+
+
+//
+//    @Override
+//    public UserDetailsService userDetailsService() {
+//        UserDetails user =
+//                User.withDefaultPasswordEncoder()
+//                        .username("user")
+//                        .password("password")
+//                        .roles("USER")
+//                        .build();
+//
+//        return new InMemoryUserDetailsManager(user);
+//    }
 }
