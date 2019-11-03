@@ -1,4 +1,4 @@
-package com.climbing.zone.controller;
+//package com.climbing.zone.controller;
 //
 //import com.climbing.zone.domain.User;
 //import com.climbing.zone.repository.UserRepository;
@@ -67,5 +67,5 @@ package com.climbing.zone.controller;
 //        model.addAttribute("users", userRepository.findAll());
 //        return "index";
 //    }
-
+//
 //}

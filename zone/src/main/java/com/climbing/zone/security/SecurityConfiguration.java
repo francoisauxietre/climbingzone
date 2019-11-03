@@ -17,24 +17,28 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-//    definition des utilisateurs et de leurs roles
+    //    definition des utilisateurs et de leurs roles
     @Override
     protected void configure(AuthenticationManagerBuilder authentification) throws Exception {
         authentification
                 .inMemoryAuthentication()
                 .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN")
                 .and()
-                .withUser("fa").password(passwordEncoder().encode("fa")).roles("USER")
+                .withUser("video").password(passwordEncoder().encode("video")).roles("VIDEO")
                 .and()
-                .withUser("video").password(passwordEncoder().encode("video")).roles("VIDEO");
+                .withUser("management").password(passwordEncoder().encode("management")).roles("MANAGEMENT")
+        ;
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws  Exception{
+    protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-//                .antMatchers("/", "/documentation/").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/index.html").permitAll()
+                .antMatchers("/profile/index").authenticated()
+                .antMatchers("/admin/index").hasRole("ADMIN")
+                .antMatchers("/video/index").hasRole("VIDEO")
+                .antMatchers("/management/index").hasAnyRole("ADMIN", "MANAGER")
                 .and()
                 .httpBasic();
 //                .authorizeRequests()
@@ -50,10 +54,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    PasswordEncoder passwordEncoder(){
+    PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 
 //
 //    @Override
