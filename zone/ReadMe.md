@@ -47,8 +47,7 @@ Différents ReadMe: https://github.com/francoisauxietre/climbingzone/tree/master
 LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et setters et Hashcode et toString
 ### M:
 * MAP mapper les donner les mettre en relation
-* mapping entre les objets Dto et les Dao avec MAPSTRUCT https://mapstruct.org/ ![download](https://user-images.githubusercontent.com/55358842/68078376-50fb0400-fdd5-11e9-81bc-95ca159e0f8a.png)
-
+* mapping entre les objets Dto et les Dao avec MAPSTRUCT https://mapstruct.org/ 
 * MYSQL Style de base de donnee comme mongoDB, PostGrel
 ### O:
 * OBJECT objet cree grace à une classe 
@@ -65,8 +64,7 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
 * QUERY requete pour acceder a des données
 ### R:
 * REPOSITORY classe avec methodes standards requise CRUD create Read Update Delete
-* REACT un autre framework front end ![download](https://user-images.githubusercontent.com/55358842/68078429-b18a4100-fdd5-11e9-932e-23094296b630.png)
-
+* REACT un autre framework front end 
 * REDUX un store permettant de sauvegarder l'ensemble des STATES des objets
 * REL DB relation avec une database (keys, tables, relations entre les données)
 ### S:
@@ -81,7 +79,6 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
 * URL:uniform ressource locator, localisateur des données (souvent dit adresse du web) Ou sont les données à acceder
 ### V:
 * VUEjs framework en javascript pour le FRONT END 
-![58482acecef1014c0b5e4a1e](https://user-images.githubusercontent.com/55358842/68078433-d1ba0000-fdd5-11e9-98d7-ca37d3166262.png)
 
 
 ##API avec swagger 
@@ -113,6 +110,11 @@ en faisant juste @Entity et @Id on peut avoir nos objet en base
 * @LOB   pour els champs depassant 255 caractere 
 ---------------------
 ![realiteDonnees](https://user-images.githubusercontent.com/55358842/68078285-46d80600-fdd3-11e9-886d-483cebd003ee.png)
+![download](https://user-images.githubusercontent.com/55358842/68078376-50fb0400-fdd5-11e9-81bc-95ca159e0f8a.png)
+![angular](https://user-images.githubusercontent.com/55358842/68078507-2f9b1780-fdd7-11e9-8b0a-341e52c95e64.png)
+![react](https://user-images.githubusercontent.com/55358842/68078508-388be900-fdd7-11e9-80f1-ab8880882357.png)
+![vue](https://user-images.githubusercontent.com/55358842/68078516-417cba80-fdd7-11e9-95e3-b0fcbf2aeed6.png)
+
 
 
 
