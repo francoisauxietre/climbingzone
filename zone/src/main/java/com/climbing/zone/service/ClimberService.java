@@ -3,7 +3,7 @@ package com.climbing.zone.service;
 import com.climbing.zone.domain.Climber;
 import com.climbing.zone.domain.ClimberClimbingroute;
 import com.climbing.zone.domain.Topic;
-import com.climbing.zone.domain.User;
+//import com.climbing.zone.domain.User;
 import com.climbing.zone.repository.ClimberRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
