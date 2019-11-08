@@ -14,6 +14,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 import javax.annotation.PostConstruct;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,51 +22,57 @@ import java.util.Set;
 @SpringBootApplication
 public class ZoneApplication {
 
-	@Autowired private ClimbingrouteRepository climbingrouteRepository;
-	@Autowired private ClimberRepository climberRepository;
-	@Autowired private CardRepository cardRepository;
-//
+    @Autowired
+    private ClimbingrouteRepository climbingrouteRepository;
+    @Autowired
+    private ClimberRepository climberRepository;
+    @Autowired
+    private CardRepository cardRepository;
+    private int nombre;
+
+    //
 //	@Override
 //	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 //		return builder.sources(ZoneApplication.class);
 //	}
-	public static void main(String[] args) {
-		SpringApplication.run(ZoneApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ZoneApplication.class, args);
+    }
 
-	@PostConstruct
-	public void init(){
+    @PostConstruct
+    public void init() {
 
+        Set<Climber> climbers = new HashSet<>();
+        Set<Climbingroute> climbingroutes = new HashSet<>();
 
-		Climber fa = new Climber();
-		fa.setFirstName("fa");
-		Climber fa1 = new Climber();
-		fa1.setFirstName("fa1");
+        for (int i = 0; i < 10; i++) {
+            this.nombre = (int) (Math.random() * 100);
+            System.out.println(nombre);
+            Climber climber = new Climber();
+            climber.setLastName("aux" + (int) (Math.random() * 10000));
+            climber.setFirstName("fa" + this.nombre);
+            Date date = new Date(System.currentTimeMillis());
+            climber.setBirth(date);
+            Climbingroute climbingroute = new Climbingroute();
+            climbingroute.setName("cl" + (int) (Math.random() * 100));
 
-		Climbingroute climbingroute = new Climbingroute();
-		climbingroute.setName("cl");
-		Climbingroute climbingroute1 = new Climbingroute();
-		climbingroute.setName("cl1");
+            climbers.add(climber);
+            climbingroutes.add(climbingroute);
+            climberRepository.save(climber);
+            climbingrouteRepository.save(climbingroute);
+            Card card = new Card();
+            CardPk cardPk = new CardPk();
+            cardPk.setClimber(climber);
+            cardPk.setClimbingroute(climbingroute);
+            card.setId(cardPk);
+            card.setBonus("Jeté");
+            card.setTactical((int) (Math.random() * 5));
+            card.setTechnical((int) (Math.random() * 5));
+            card.setPhysical((int) (Math.random() * 5));
+            card.setMental((int) (Math.random() * 5));
 
-		Set<Climber> climbers = new HashSet<>();
-		climbers.add(fa);
-		climbers.add(fa1);
-
-		Set<Climbingroute> climbingroutes = new HashSet<>();
-		climbingroutes.add(climbingroute);
-		climbingroutes.add(climbingroute1);
-
-		climberRepository.save(fa);
-		climberRepository.save(fa1);
-		climbingrouteRepository.save(climbingroute);
-		climbingrouteRepository.save(climbingroute1);
-
-		Card card = new Card();
-		CardPk id = new CardPk();
-		id.setClimber(fa);
-		id.setClimbingroute(climbingroute);
-		card.setId(id);
-		cardRepository.save(card);
+            cardRepository.save(card);
+        }
 
 //
 //        System.out.println(climberList.size());
@@ -76,6 +83,5 @@ public class ZoneApplication {
 //
 //        System.out.println("===================Students info:==================");
 
-	}
-
+    }
 }

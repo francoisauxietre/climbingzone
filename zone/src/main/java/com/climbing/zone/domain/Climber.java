@@ -11,6 +11,7 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -36,7 +37,7 @@ public class Climber implements Serializable {
     private String lastName;
 
     @Column(name = "birth")
-    private Instant birth;
+    private Date birth;
 
     @Column(name = "created_at")
     private Instant createdAt;
