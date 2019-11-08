@@ -1,5 +1,8 @@
 package com.climbing.zone.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Data;
+
 import javax.persistence.*;
 
 import java.io.Serializable;
@@ -9,12 +12,14 @@ import java.util.Set;
 
 @Entity
 @Table(name = "climbing_route")
+@Data
 public class Climbingroute implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "climbing_route_id")
     private Long id;
 
     @Column(name = "name")
@@ -35,7 +40,7 @@ public class Climbingroute implements Serializable {
     @Column(name = "star")
     private Integer star;
 
-    @Column(name = "physical")
+    @Column(name = "physical_avg")
     private Integer physical;
 
     @Column(name = "technical")
@@ -70,296 +75,7 @@ public class Climbingroute implements Serializable {
     @OneToMany(mappedBy = "openBy")
     private Set<Climber> openers = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Climbingroute name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getBonus() {
-        return bonus;
-    }
-
-    public Climbingroute bonus(String bonus) {
-        this.bonus = bonus;
-        return this;
-    }
-
-    public void setBonus(String bonus) {
-        this.bonus = bonus;
-    }
-
-    public Float getLatitude() {
-        return latitude;
-    }
-
-    public Climbingroute latitude(Float latitude) {
-        this.latitude = latitude;
-        return this;
-    }
-
-    public void setLatitude(Float latitude) {
-        this.latitude = latitude;
-    }
-
-    public Float getLongitude() {
-        return longitude;
-    }
-
-    public Climbingroute longitude(Float longitude) {
-        this.longitude = longitude;
-        return this;
-    }
-
-    public void setLongitude(Float longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getDifficuty() {
-        return difficuty;
-    }
-
-    public Climbingroute difficuty(String difficuty) {
-        this.difficuty = difficuty;
-        return this;
-    }
-
-    public void setDifficuty(String difficuty) {
-        this.difficuty = difficuty;
-    }
-
-    public Integer getStar() {
-        return star;
-    }
-
-    public Climbingroute star(Integer star) {
-        this.star = star;
-        return this;
-    }
-
-    public void setStar(Integer star) {
-        this.star = star;
-    }
-
-    public Integer getPhysical() {
-        return physical;
-    }
-
-    public Climbingroute physical(Integer physical) {
-        this.physical = physical;
-        return this;
-    }
-
-    public void setPhysical(Integer physical) {
-        this.physical = physical;
-    }
-
-    public Integer getTechnical() {
-        return technical;
-    }
-
-    public Climbingroute technical(Integer technical) {
-        this.technical = technical;
-        return this;
-    }
-
-    public void setTechnical(Integer technical) {
-        this.technical = technical;
-    }
-
-    public Integer getTactical() {
-        return tactical;
-    }
-
-    public Climbingroute tactical(Integer tactical) {
-        this.tactical = tactical;
-        return this;
-    }
-
-    public void setTactical(Integer tactical) {
-        this.tactical = tactical;
-    }
-
-    public Integer getMental() {
-        return mental;
-    }
-
-    public Climbingroute mental(Integer mental) {
-        this.mental = mental;
-        return this;
-    }
-
-    public void setMental(Integer mental) {
-        this.mental = mental;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public Climbingroute createdAt(Instant createdAt) {
-        this.createdAt = createdAt;
-        return this;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Instant getModifiedAt() {
-        return modifiedAt;
-    }
-
-    public Climbingroute modifiedAt(Instant modifiedAt) {
-        this.modifiedAt = modifiedAt;
-        return this;
-    }
-
-    public void setModifiedAt(Instant modifiedAt) {
-        this.modifiedAt = modifiedAt;
-    }
-
-    public Instant getDeletedAt() {
-        return deletedAt;
-    }
-
-    public Climbingroute deletedAt(Instant deletedAt) {
-        this.deletedAt = deletedAt;
-        return this;
-    }
-
-    public void setDeletedAt(Instant deletedAt) {
-        this.deletedAt = deletedAt;
-    }
-
-    public RouteType getRouteType() {
-        return routeType;
-    }
-
-    public Climbingroute routeType(RouteType routeType) {
-        this.routeType = routeType;
-        return this;
-    }
-
-    public void setRouteType(RouteType routeType) {
-        this.routeType = routeType;
-    }
-
-    public ZoneType getZoneType() {
-        return zoneType;
-    }
-
-    public Climbingroute zoneType(ZoneType zoneType) {
-        this.zoneType = zoneType;
-        return this;
-    }
-
-    public void setZoneType(ZoneType zoneType) {
-        this.zoneType = zoneType;
-    }
-
-    public Set<Place> getPlaces() {
-        return places;
-    }
-
-    public Climbingroute places(Set<Place> places) {
-        this.places = places;
-        return this;
-    }
-
-    public Climbingroute addPlace(Place place) {
-        this.places.add(place);
-        place.setLocated(this);
-        return this;
-    }
-
-    public Climbingroute removePlace(Place place) {
-        this.places.remove(place);
-        place.setLocated(null);
-        return this;
-    }
-
-    public void setPlaces(Set<Place> places) {
-        this.places = places;
-    }
-
-    public Set<Climber> getOpeners() {
-        return openers;
-    }
-
-    public Climbingroute openers(Set<Climber> climbers) {
-        this.openers = climbers;
-        return this;
-    }
-
-    public Climbingroute addOpener(Climber climber) {
-        this.openers.add(climber);
-        climber.setOpenBy(this);
-        return this;
-    }
-
-    public Climbingroute removeOpener(Climber climber) {
-        this.openers.remove(climber);
-        climber.setOpenBy(null);
-        return this;
-    }
-
-    public void setOpeners(Set<Climber> climbers) {
-        this.openers = climbers;
-    }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof Climbingroute)) {
-            return false;
-        }
-        return id != null && id.equals(((Climbingroute) o).id);
-    }
-
-    @Override
-    public int hashCode() {
-        return 31;
-    }
-
-    @Override
-    public String toString() {
-        return "Climbingroute{" +
-                "id=" + getId() +
-                ", name='" + getName() + "'" +
-                ", bonus='" + getBonus() + "'" +
-                ", latitude=" + getLatitude() +
-                ", longitude=" + getLongitude() +
-                ", difficuty='" + getDifficuty() + "'" +
-                ", star=" + getStar() +
-                ", physical=" + getPhysical() +
-                ", technical=" + getTechnical() +
-                ", tactical=" + getTactical() +
-                ", mental=" + getMental() +
-                ", createdAt='" + getCreatedAt() + "'" +
-                ", modifiedAt='" + getModifiedAt() + "'" +
-                ", deletedAt='" + getDeletedAt() + "'" +
-                ", routeType='" + getRouteType() + "'" +
-                ", zoneType='" + getZoneType() + "'" +
-                "}";
-    }
+    @OneToMany(mappedBy = "id.climber")//, cascade = CascadeType.ALL
+    @JsonManagedReference
+    private Set<Card> cards = new HashSet<>();
 }
