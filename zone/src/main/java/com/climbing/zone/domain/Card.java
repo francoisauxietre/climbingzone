@@ -24,7 +24,8 @@ public class Card implements Serializable {
     private String info;
 
     @Column(name = "photo")
-    private Blob photo;
+//    private Blob photo;
+    private String photo;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "date")
@@ -46,7 +47,7 @@ public class Card implements Serializable {
     private Integer mental;
 
     @Column(name= "qrcode" )
-    private Blob qrcode;
-
+//    private Blob qrcode;
+    private String qrcode;
 
 }
