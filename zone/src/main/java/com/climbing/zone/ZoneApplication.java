@@ -69,10 +69,6 @@ public class ZoneApplication {
         SpringApplication.run(ZoneApplication.class, args);
     }
 
-
-
-
-
     public int fill(int number) {
         return (int) (Math.random() * number);
     }
@@ -135,6 +131,7 @@ public class ZoneApplication {
             Climber climber = new Climber();
             climber.setLastName("" + firstName.random());
             climber.setFirstName("" + firstName.random());
+//            climber.setId((long) fill(40));
             Date date = new Date(System.currentTimeMillis());
             climber.setBirth(date);
             climber.setCreatedAt(date);
@@ -142,14 +139,12 @@ public class ZoneApplication {
             climbers.add(climber);
             climberRepository.save(climber);
 
-
 //-----------------------------------CLIMBING ROUTE-----------------------------------
 
             Climbingroute climbingroute = new Climbingroute();
-            climbingroute.setName(getName(2) + fill(1000));
+            climbingroute.setClimbingRouteName(getText(20));
             climbingroute.setCreatedAt(date);
             climbingroutes.add(climbingroute);
-            climbingroute.setName(getText(20));
             climbingroute.setLatitude(getLatitude(100));
             climbingroute.setLongitude(getLongitude(20) + 100);
             climbingroute.setRouteType((RouteType) routeType.random());
@@ -166,28 +161,25 @@ public class ZoneApplication {
 
             climbingrouteRepository.save(climbingroute);
 //-----------------------------------CARD-----------------------------------
-//            for (int j = 0; j < 4; j++) {
-//            Card card = new Card();
-//            CardPk cardPk = new CardPk();
-//            cardPk.setClimber(climber);
-//            cardPk.setClimbingroute(climbingroute);
-//            card.setId(cardPk);
-//            card.setBonus("" + bonus.random());
-//            card.setDate(date);
-//            card.setDifficuty("" + fill(40));
-//            card.setInfo(getText(50));
-//            card.setTactical(fill(6));
-//            card.setTechnical(fill(6));
-//            card.setPhysical(fill(6));
-//            card.setMental(fill(6));
-//            card.setQrcode("qrcode_" + fill(1000) + ".jpg");
-//            card.setPhoto("photo_" + fill(1000) + ".jpg");
-//            cardRepository.save(card);}
-
-            //climber.addCard(card);
-//            climber.setCards(essai);
-
-
+            for (int j = 0; j < 4; j++) {
+                Card card = new Card();
+                CardPk cardPk = new CardPk();
+                cardPk.setClimber(climber);
+                cardPk.setClimbingroute(climbingroute);
+                card.setId(cardPk);
+                card.setBonus("" + bonus.random());
+                card.setDate(date);
+                card.setDifficuty("" + fill(40));
+                card.setInfo(getText(50));
+                card.setTactical(fill(6));
+                card.setTechnical(fill(6));
+                card.setPhysical(fill(6));
+                card.setMental(fill(6));
+                card.setQrcode("qrcode_" + fill(1000) + ".jpg");
+                card.setPhoto("photo_" + fill(1000) + ".jpg");
+                card.setClimbingRouteName(getText(20));
+                cardRepository.save(card);
+            }
         }
 
 //

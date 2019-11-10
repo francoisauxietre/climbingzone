@@ -23,8 +23,8 @@ public class Climbingroute implements Serializable {
     @Column(name = "climbing_route_id")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "climbing_route_name")
+    private String climbingRouteName;
 
     @Column(name = "bonus")
     private String bonus;

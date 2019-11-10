@@ -21,7 +21,8 @@ import java.util.List;
 public class ClimbingrouteDto  implements Serializable {
 
     private Long id;
-    private String name;
+    private String climbingRouteName;
+    private String info;
     private String bonus;
     private Float latitude;
     private Float longitude;
@@ -51,7 +52,7 @@ public class ClimbingrouteDto  implements Serializable {
 
     public void toDTO(Climbingroute climbingroute) {
         this.id = climbingroute.getId();
-        this.name = climbingroute.getName();
+        this.climbingRouteName = climbingroute.getClimbingRouteName();
         this.bonus= climbingroute.getBonus();
         this.latitude = climbingroute.getLatitude();
         this.longitude = climbingroute.getLongitude();
@@ -62,12 +63,14 @@ public class ClimbingrouteDto  implements Serializable {
         this.tactical = climbingroute.getTactical();
         this.mental = climbingroute.getMental();
         this.createdAt = climbingroute.getCreatedAt();
+        this.info = climbingroute.getInfo();
     }
 
     public Climbingroute fromDTO(ClimbingrouteDto climbingrouteDto){
         Date date = new Date(System.currentTimeMillis());
         Climbingroute climbingroute = new Climbingroute();
-        climbingroute.setName( climbingrouteDto.getName());
+        climbingroute.setInfo(climbingrouteDto.getInfo());
+        climbingroute.setClimbingRouteName( climbingrouteDto.getClimbingRouteName());
         climbingroute.setBonus(climbingrouteDto.getBonus());
         climbingroute.setLatitude(climbingrouteDto.getLatitude());
         climbingroute.setLongitude(climbingrouteDto.getLongitude());

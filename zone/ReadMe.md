@@ -117,44 +117,29 @@ en faisant juste @Entity et @Id on peut avoir nos objet en base
 
 
 
-exemple de model de climbingroute
+* <span style=“color:green”>example de model de climbingroute</span>
+* <span style="color:red">red</span>
+* <span style="color:blue">blue</span>
+
 <pre><code>
 {
   "bonus": "SLOPE",
-  "createdAt": "2019-11-10T16:31:46.214Z",
-  "deletedAt": "2019-11-10T16:31:46.214Z",
-  "difficulty": "26",
+  "climbingRouteName": "la voie du sud",
+  "createdAt": "2019-11-10T18:28:15.334Z",
+  "deletedAt": "2019-11-10T18:28:15.334Z",
+  "difficulty": "56",
   "id": 0,
-  "latitude": 4.2365465,
-  "longitude": -2.356554,
-  "mental": 4,
-  "modifiedAt": "2019-11-10T16:31:46.214Z",
-  "name": "premiere voie",
-  "physical": 4,
+  "info": "string",
+  "latitude": 2.3654,
+  "longitude": 4.326565,
+  "mental": 1,
+  "modifiedAt": "2019-11-10T18:28:15.334Z",
+  "name": "Test",
+  "physical": 1,
   "routeType": "BOULDER",
-  "star": 3,
-  "tactical": 2,
-  "technical": 4,
-  "zoneType": "INTERIOR"
-}
-</code></pre>
-<pre><code>
-{
-  "bonus": "JUMP",
-  "createdAt": "2019-11-10T17:54:35.508Z",
-  "deletedAt": "2019-11-10T17:54:35.508Z",
-  "difficulty": "23",
-  "id": 0,
-  "latitude": 4.5,
-  "longitude": 2.365,
-  "mental": 3,
-  "modifiedAt": "2019-11-10T17:54:35.509Z",
-  "name": "fa",
-  "physical": 2,
-  "routeType": "BOULDER",
-  "star": 4,
+  "star": 1,
   "tactical": 1,
-  "technical": 5,
+  "technical": 1,
   "zoneType": "INTERIOR"
 }
 </code></pre>

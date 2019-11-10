@@ -22,7 +22,8 @@ public class CardDto implements Serializable {
 
     private CardPk id;
     private Integer star;
-    private String level;
+    private String info;
+    private String difficulty;
     private String qrcode;
     private Integer climberPlace;
     private Integer climberTotal;
@@ -50,16 +51,19 @@ public class CardDto implements Serializable {
         return cardDtoList;
     }
 
+    //TODO  voir tous les champs necessaire pour faire une carte entiere
     public void toDTO(Card card) {
         this.id = card.getId();
         this.star = card.getStar();
-        this.level = card.getLevel();
+        this.info = card.getInfo();
+        this.difficulty = card.getDifficuty();
         this.qrcode= card.getQrcode();
         this.bonus = card.getBonus();
         this.mental = card.getMental();
         this.technical = card.getTechnical();
         this.tactical = card.getTactical();
         this.physical = card.getPhysical();
+        this.climbingRouteName = card.getClimbingRouteName();
 
     }
 }

@@ -51,7 +51,9 @@ public class ClimbingrouteService {
         cardPk.setClimber(climber);
         cardPk.setClimbingroute(climbingroute);
         card.setId(cardPk);
+        card.setClimbingRouteName(climbingroute.getClimbingRouteName());
         card.setBonus(climbingroute.getBonus());
+        card.setInfo(climbingroute.getInfo());
         card.setDate(climbingroute.getCreatedAt());
         card.setDifficuty(climbingroute.getDifficulty());
         card.setInfo(climbingroute.getInfo());
@@ -59,6 +61,8 @@ public class ClimbingrouteService {
         card.setTechnical(climbingroute.getTechnical());
         card.setPhysical(climbingroute.getPhysical());
         card.setMental(climbingroute.getMental());
+        card.setStar(climbingroute.getStar());
+        card.setDifficuty(climbingroute.getDifficulty());
         card.setQrcode("qrcode_"+(int)(Math.random()*1000)+".jpg");
         card.setPhoto("photo_"+(int)(Math.random()*1000)+".jpg");
         System.out.println(cardPk);
