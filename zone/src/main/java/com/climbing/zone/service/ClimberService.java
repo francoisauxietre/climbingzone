@@ -4,6 +4,7 @@ import com.climbing.zone.domain.Climber;
 import com.climbing.zone.domain.Topic;
 //import com.climbing.zone.domain.User;
 import com.climbing.zone.repository.ClimberRepository;
+import com.climbing.zone.service.dto.ClimberDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,10 @@ import java.util.Date;
 
 @Service
 public class ClimberService {
-    Logger logger = LoggerFactory.getLogger(Climber.class);
+    @Autowired
+    Logger logger;
+//    Logger logger = LoggerFactory.getLogger(Climber.class);
+
     private List<Topic> topics = new ArrayList<>(Arrays.asList(
             new Topic((long) 1, "test", "java"),
             new Topic((long) 2, "a", "b"),
@@ -29,6 +33,7 @@ public class ClimberService {
 
     @Autowired
     ClimberRepository climberRepository;
+
 //-----------------------------------------TOPICS---------------------------------------------------------------
 
     public List<Topic> getAllTopic() {
@@ -53,37 +58,41 @@ public class ClimberService {
 
 //-----------------------------------------CLIMBER---------------------------------------------------------------
 
-    public List<Climber> findClimbersByFirstName(String firstName) {
-        return climberRepository.findClimbersByFirstName(firstName);
+    public List<ClimberDto> findAll() {
+        return ClimberDto.toDTO(climberRepository.findAll());
     }
 
-    public Climber addClimber(String firstName, String lastName, Date birth, String info) {
+        public Climber addClimber(String firstName, String lastName, Date birth, String info) {
 
         Climber climber = new Climber();
         climber.setFirstName(firstName);
         climber.setLastName(lastName);
         climber.setBirth(birth);
 
-
         climberRepository.save(climber);
         return climber;
     }
 
-    public List<Climber> findAll() {
-        return climberRepository.findAll();
-    }
 
-    public List<Climber> findClimbersByLastName(String lastName) {
-        return climberRepository.findClimbersByLastName(lastName);
-    }
 
-    public void update(String firstName,String lastName,int day,int month,int year,String info) {
-        update(firstName, lastName, day, month, year, info);
-    }
 
-    public void delete(int value) {
-        climberRepository.deleteById((long)value);
-    }
+//    public List<Climber> findClimbersByFirstName(String firstName) {
+//        return climberRepository.findClimbersByFirstName(firstName);
+//    }
+
+
+//
+//    public List<Climber> findClimbersByLastName(String lastName) {
+//        return climberRepository.findClimbersByLastName(lastName);
+//    }
+//
+//    public void update(String firstName, String lastName, int day, int month, int year, String info) {
+//        update(firstName, lastName, day, month, year, info);
+//    }
+//
+//    public void delete(int value) {
+//        climberRepository.deleteById((long) value);
+//    }
 
 //    public Page<Climber> findAll(Pageable pageable) {
 //        return null;

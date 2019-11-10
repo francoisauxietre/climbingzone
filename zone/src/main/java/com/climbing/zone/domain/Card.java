@@ -53,6 +53,9 @@ public class Card implements Serializable {
     @Column(name= "star")
     private  int star;
 
+    @Column(name = "level")
+    private String level;
+
 
 
 }

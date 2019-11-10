@@ -139,6 +139,8 @@ public class ZoneApplication {
             climber.setBirth(date);
             climber.setCreatedAt(date);
             climber.setLanguage((Language) language.random());
+            climbers.add(climber);
+            climberRepository.save(climber);
 
 
 //-----------------------------------CLIMBING ROUTE-----------------------------------
@@ -178,13 +180,12 @@ public class ZoneApplication {
             card.setMental(fill(6));
             card.setQrcode("qrcode_" + fill(1000) + ".jpg");
             card.setPhoto("photo_" + fill(1000) + ".jpg");
-            //cardRepository.save(card);
+            cardRepository.save(card);
 
             //climber.addCard(card);
 //            climber.setCards(essai);
 
-            climbers.add(climber);
-            climberRepository.save(climber);
+
         }
 
 //

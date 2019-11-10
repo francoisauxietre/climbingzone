@@ -2,6 +2,7 @@ package com.climbing.zone.service;
 
 import com.climbing.zone.domain.Card;
 import com.climbing.zone.repository.CardRepository;
+import com.climbing.zone.service.dto.CardDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +15,8 @@ public class CardService {
     @Autowired
     CardRepository cardRepository;
 
-     public List<Card> findAll() {
-        return cardRepository.findAll();
+     public List<CardDto> findAll() {
+        return CardDto.toDTO(cardRepository.findAll());
     }
 //    // add<T>(...)
 //    public ResponseEntity<String> add(Card card) {
