@@ -14,8 +14,7 @@ public class CardService {
     @Autowired
     CardRepository cardRepository;
 
-    // findAll<T>()
-    public List<Card> findAll() {
+     public List<Card> findAll() {
         return cardRepository.findAll();
     }
 //    // add<T>(...)
