@@ -2,18 +2,17 @@ package com.climbing.zone.controller;
 
 import com.climbing.zone.domain.*;
 import com.climbing.zone.service.ClimbingrouteService;
-import com.climbing.zone.service.PlaceService;
 import com.climbing.zone.service.dto.ClimbingrouteDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
+import java.security.Principal;
 import java.util.List;
 
 @RestController(value = "/climbingroutes")
@@ -44,6 +43,14 @@ public class ClimbingrouteController {
         return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAll(), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Creation d'une nouvelle climbing Route")
+    @RequestMapping(method = RequestMethod.POST, value = "/")
+    public ResponseEntity<String> createActivity(@RequestBody ClimbingrouteDto climbingrouteDto, Principal principal) {
+
+        Climbingroute climbingroute = climbingrouteDto.fromDTO(climbingrouteDto);
+        climbingrouteService.save(climbingroute);
+        return new ResponseEntity<String>(new String(climbingroute.getId() + ""), HttpStatus.OK);
+    }
 
     //
 //    //ajoute une nouvelle voie

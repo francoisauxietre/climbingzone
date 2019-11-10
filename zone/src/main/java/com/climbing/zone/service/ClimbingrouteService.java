@@ -6,7 +6,6 @@ import com.climbing.zone.repository.ClimberRepository;
 import com.climbing.zone.repository.ClimbingrouteRepository;
 import com.climbing.zone.service.dto.ClimbingrouteDto;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +27,13 @@ public class ClimbingrouteService {
     public List<ClimbingrouteDto> findAll() {
 
         return ClimbingrouteDto.toDTO(climbingrouteRepository.findAll());
+    }
+
+
+    public Climbingroute save(Climbingroute climbingroute){
+
+
+        return climbingrouteRepository.save(climbingroute);
     }
 
     public void deleteClimbingrouteById(Long id) {

@@ -116,6 +116,26 @@ en faisant juste @Entity et @Id on peut avoir nos objet en base
 
 
 
+exemple de model de climbingroute
+{
+  "bonus": "SLOPE",
+  "createdAt": "2019-11-10T16:31:46.214Z",
+  "deletedAt": "2019-11-10T16:31:46.214Z",
+  "difficulty": "26",
+  "id": 0,
+  "latitude": 4.2365465,
+  "longitude": -2.356554,
+  "mental": 4,
+  "modifiedAt": "2019-11-10T16:31:46.214Z",
+  "name": "premiere voie",
+  "physical": 4,
+  "routeType": "BOULDER",
+  "star": 3,
+  "tactical": 2,
+  "technical": 4,
+  "zoneType": "INTERIOR"
+}
+
 
     // a chaque fois qu'on mettra un persist on va faire un log
     @PrePersist

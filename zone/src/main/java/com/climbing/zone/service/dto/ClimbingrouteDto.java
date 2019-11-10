@@ -63,4 +63,23 @@ public class ClimbingrouteDto  implements Serializable {
         this.mental = climbingroute.getMental();
         this.createdAt = climbingroute.getCreatedAt();
     }
+
+    public Climbingroute fromDTO(ClimbingrouteDto climbingrouteDto){
+        Date date = new Date(System.currentTimeMillis());
+        Climbingroute climbingroute = new Climbingroute();
+        climbingroute.setName( climbingrouteDto.getName());
+        climbingroute.setBonus(climbingrouteDto.getBonus());
+        climbingroute.setLatitude(climbingrouteDto.getLatitude());
+        climbingroute.setLongitude(climbingrouteDto.getLongitude());
+        climbingroute.setDifficulty(climbingrouteDto.getDifficulty());
+        climbingroute.setStar(climbingrouteDto.getStar());
+        climbingroute.setPhysical(climbingrouteDto.getPhysical());
+        climbingroute.setTechnical(climbingrouteDto.getTechnical());
+        climbingroute.setTactical(climbingrouteDto.getTactical());
+        climbingroute.setMental(climbingrouteDto.getMental());
+        climbingroute.setCreatedAt(date);
+
+        return climbingroute;
+    }
+
 }
