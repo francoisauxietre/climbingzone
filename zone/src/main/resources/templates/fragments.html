@@ -41,10 +41,10 @@
 						Climbers
 					</button>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="http://localhost:8080/swagger-ui.html#/"><i class="fas fa-book"></i>
-							Swagger</a>
-						<a class="dropdown-item" href="documentation/index.html"><i class="fas fa-book"></i>Documentation</a>
-						<a class="dropdown-item" href="http://localhost:8080/v2/api-docs"><i class="fas fa-quit"></i>Api-docs</a>
+						<a class="dropdown-item" href="/climbers/"><i class="fas fa-book"></i>
+							All Climbers</a>
+						<a class="dropdown-item" href="/climbers/search"><i class="fas fa-book"></i>Search</a>
+						<a class="dropdown-item" href="/friends/"><i class="fas fa-quit"></i>Friends</a>
 					</div>
 				</div>
 				<div></div>
@@ -54,10 +54,13 @@
 						Climbing Route
 					</button>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="http://localhost:8080/swagger-ui.html#/"><i class="fas fa-book"></i>
-							Swagger</a>
-						<a class="dropdown-item" href="documentation/index.html"><i class="fas fa-book"></i>Documentation</a>
-						<a class="dropdown-item" href="http://localhost:8080/v2/api-docs"><i class="fas fa-quit"></i>Api-docs</a>
+						<a class="dropdown-item" href="/climbingroutes/"><i class="fas fa-book"></i>
+							Climbing routes</a>
+						<a class="dropdown-item" href="/climbingroutes/search"><i class="fas fa-book"></i>Search</a>
+						<a class="dropdown-item" href="/climbingroutes/name/"><i class="fas fa-quit"></i>Find by name</a>
+						<a class="dropdown-item" href="/climbingroutes/place/"><i class="fas fa-quit"></i>Find by place</a>
+						<a class="dropdown-item" href="/climbingroutes/around/"><i class="fas fa-quit"></i>Around Me</a>
+
 					</div>
 				</div>
 				<div></div>
@@ -67,10 +70,10 @@
 						Cards
 					</button>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<a class="dropdown-item" href="http://localhost:8080/swagger-ui.html#/"><i class="fas fa-book"></i>
-							Hall of fame</a>
-						<a class="dropdown-item" href="documentation/index.html"><i class="fas fa-book"></i>My Cards</a>
-						<a class="dropdown-item" href="http://localhost:8080/v2/api-docs"><i class="fas fa-quit"></i>My
+						<a class="dropdown-item" href="/cards/"><i class="far fa-file-chart-pie"></i>
+							All Cards</a>
+						<a class="dropdown-item" href="/cards/alloffame"><i class="fas fa-medal"></i>best Cards</a>
+						<a class="dropdown-item" href="/cards/maps"><i class="fas fa-map"></i></i>My
 																																					Friends
 																																					Cards</a>
 					</div>
@@ -88,6 +91,22 @@
 						<a class="dropdown-item" href="http://localhost:8080/v2/api-docs"><i class="fas fa-quit"></i>Api-docs</a>
 					</div>
 				</div>
+
+				<div class="dropdown">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton5"
+							  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Management
+					</button>
+					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" href="/admin/"><i class="fas fa-user-lock"></i>Admin</a>
+						<a class="dropdown-item" href="/management/"><i class="fas fa-user-lock"></i>management</a>
+						<a class="dropdown-item" href="/video/"><i class="fas fa-user-lock"></i>Video</a>
+						<a class="dropdown-item" href="/profile/"><i class="fas fa-user-lock"></i>Profile</a>
+					</div>
+				</div>
+
+
+				<i class="fab fa-android"></i>
 				<li class="nav-item">
 					<a class="nav-link disabled" href="#">Disabled</a>
 				</li>

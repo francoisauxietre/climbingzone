@@ -3,7 +3,6 @@
 ////import com.climbingzone5.config.Constants;
 //
 //import com.fasterxml.jackson.annotation.JsonIgnore;
-//import org.apache.commons.lang3.StringUtils;
 //import org.hibernate.annotations.BatchSize;
 //
 //import javax.persistence.*;
@@ -22,7 +21,7 @@
 // */
 //@Entity
 //@Table(name = "jhi_user")
-//public class User extends AbstractAuditingEntity implements Serializable {
+//public class User implements Serializable {
 //
 //    private static final long serialVersionUID = 1L;
 //

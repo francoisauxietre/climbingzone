@@ -41,6 +41,7 @@ Différents ReadMe: https://github.com/francoisauxietre/climbingzone/tree/master
 * JAVA  language de prog (Objet)
 * JPA java persistance Acces  (couche relation mapping entre un objet java et une base de donnee)
 * JDBC
+* JWT jason web token  (le token utile pour l'authentification d'un utilisateur)(header, payload, signature)
 
 ### L:
 LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et setters et Hashcode et toString
@@ -89,7 +90,6 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
 * The documentation is private, so only people you share the collection with can view it.
 -----------------
 exemple utilisateur avec postman
-{"firstName": "toto","lastName": "toto","day": 1,"month": 1,"year": 1,"info": "test"}
 -----------------
 // getAll<t>()
 // get<T>ById(Long id)
