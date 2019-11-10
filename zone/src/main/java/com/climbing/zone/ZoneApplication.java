@@ -166,23 +166,23 @@ public class ZoneApplication {
 
             climbingrouteRepository.save(climbingroute);
 //-----------------------------------CARD-----------------------------------
-            for (int j = 0; j < 4; j++) {
-            Card card = new Card();
-            CardPk cardPk = new CardPk();
-            cardPk.setClimber(climber);
-            cardPk.setClimbingroute(climbingroute);
-            card.setId(cardPk);
-            card.setBonus("" + bonus.random());
-            card.setDate(date);
-            card.setDifficuty("" + fill(40));
-            card.setInfo(getText(50));
-            card.setTactical(fill(6));
-            card.setTechnical(fill(6));
-            card.setPhysical(fill(6));
-            card.setMental(fill(6));
-            card.setQrcode("qrcode_" + fill(1000) + ".jpg");
-            card.setPhoto("photo_" + fill(1000) + ".jpg");
-            cardRepository.save(card);}
+//            for (int j = 0; j < 4; j++) {
+//            Card card = new Card();
+//            CardPk cardPk = new CardPk();
+//            cardPk.setClimber(climber);
+//            cardPk.setClimbingroute(climbingroute);
+//            card.setId(cardPk);
+//            card.setBonus("" + bonus.random());
+//            card.setDate(date);
+//            card.setDifficuty("" + fill(40));
+//            card.setInfo(getText(50));
+//            card.setTactical(fill(6));
+//            card.setTechnical(fill(6));
+//            card.setPhysical(fill(6));
+//            card.setMental(fill(6));
+//            card.setQrcode("qrcode_" + fill(1000) + ".jpg");
+//            card.setPhoto("photo_" + fill(1000) + ".jpg");
+//            cardRepository.save(card);}
 
             //climber.addCard(card);
 //            climber.setCards(essai);

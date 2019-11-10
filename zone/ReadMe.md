@@ -16,7 +16,7 @@ Différents ReadMe: https://github.com/francoisauxietre/climbingzone/tree/master
 * ANGULAR 2 framework basé sur de Javascript 
 * ANGULAR JS autre 
 ###  B:
-* BACK-END programme traitant les données (ex avec spring boot java)
+* BACK-END programme traitant les données et par exemple accès à une base de donnee(ex avec spring boot java)
 ###  C:
 * CLASS comment seront fait les objets que l'on créera (MOULE) un cllass est une table en database
 * CRUD create Read Update Delete
@@ -101,12 +101,13 @@ exemple utilisateur avec postman
 
 ###  @ANNOTATION UTILES 
 en faisant juste @Entity et @Id on peut avoir nos objet en base
+* @Entity : pour cree une entite en base
+* @RestController : pour cree le controlleur avec les acces a l'Api
+* @CrossOrigin(origins = "http://localhost:4200") 
+* @ID : index souvent autogenere pour etre unique
+* @Override : pour redefinir une methode d'une classe parente 
 
-* @RestController
-* @CrossOrigin(origins = "http://localhost:4200")
-* @ID
-* @ENTITY
-* @LOB   pour els champs depassant 255 caractere 
+* @LOB   pour les champs depassant 255 caractere 
 ---------------------
 ![realiteDonnees](https://user-images.githubusercontent.com/55358842/68078285-46d80600-fdd3-11e9-886d-483cebd003ee.png)
 ![download](https://user-images.githubusercontent.com/55358842/68078376-50fb0400-fdd5-11e9-81bc-95ca159e0f8a.png)
@@ -117,6 +118,7 @@ en faisant juste @Entity et @Id on peut avoir nos objet en base
 
 
 exemple de model de climbingroute
+<pre><code>
 {
   "bonus": "SLOPE",
   "createdAt": "2019-11-10T16:31:46.214Z",
@@ -135,6 +137,27 @@ exemple de model de climbingroute
   "technical": 4,
   "zoneType": "INTERIOR"
 }
+</code></pre>
+<pre><code>
+{
+  "bonus": "JUMP",
+  "createdAt": "2019-11-10T17:54:35.508Z",
+  "deletedAt": "2019-11-10T17:54:35.508Z",
+  "difficulty": "23",
+  "id": 0,
+  "latitude": 4.5,
+  "longitude": 2.365,
+  "mental": 3,
+  "modifiedAt": "2019-11-10T17:54:35.509Z",
+  "name": "fa",
+  "physical": 2,
+  "routeType": "BOULDER",
+  "star": 4,
+  "tactical": 1,
+  "technical": 5,
+  "zoneType": "INTERIOR"
+}
+</code></pre>
 
 
     // a chaque fois qu'on mettra un persist on va faire un log

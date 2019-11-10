@@ -33,7 +33,7 @@ public class ClimberDto implements Serializable {
     public ClimberDto(Climber climber) {
         toDTO(climber);
     }
-
+    private Long sessionId;
 
     public static List<ClimberDto> toDTO(Iterable<Climber> all) {
         List<ClimberDto> climberDtoList = new ArrayList<>();
@@ -50,7 +50,19 @@ public class ClimberDto implements Serializable {
         this.birth= climber.getBirth();
         this.createdAt = climber.getCreatedAt();
 //        this.friends = climber.getFriends();
+    }
 
 
+    public Climber fromDTO(ClimberDto climberDto){
+        sessionId = (long) (Math.random()*100);
+        Date date = new Date(System.currentTimeMillis());
+        Climber climber = new Climber();
+        climber.setFirstName( climberDto.getFirstName());
+        climber.setLastName(climberDto.getLastName());
+        climber.setBirth(climberDto.getBirth());
+        climber.setLanguage(climberDto.getLanguage());
+        climber.setCreatedAt(date);
+
+        return climber;
     }
 }

@@ -62,6 +62,10 @@ public class ClimberService {
         return ClimberDto.toDTO(climberRepository.findAll());
     }
 
+    public Climber save(Climber climber) {
+        return climberRepository.save(climber);
+    }
+
     public Climber addClimber(String firstName, String lastName, Date birth, String info) {
 
         Climber climber = new Climber();

@@ -15,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Date;
 import java.util.List;
 
@@ -74,19 +75,16 @@ public class ClimberController {
         return new ResponseEntity<List<ClimberDto>>(climberService.findAll(), HttpStatus.OK);
     }
 
+
     //post
+    @ApiOperation(value = "Creation d'un nouveau grimpeur")
     @RequestMapping(method = RequestMethod.POST, value = "/")
-    public Climber AddClimber(
-            @RequestParam(required = true, defaultValue = "francois luc theotime") String firstName,
-            @RequestParam(required = true, defaultValue = "auxietre guesdon") String lastName,
-            @RequestParam(required = true, defaultValue = "18") Date date,
-            @RequestParam(required = false, defaultValue = "bloc") String info) {
-        logger.info("==== create new climber ====");
-        return climberService.addClimber(firstName, lastName, date, info);
+    public ResponseEntity<String> createActivity(@RequestBody ClimberDto climberDto, Principal principal) {
+
+        Climber climber = climberDto.fromDTO(climberDto);
+        climberService.save(climber);
+        return new ResponseEntity<String>(new String(climber.getId() + ""), HttpStatus.OK);
     }
-
-
-
 
 
 
