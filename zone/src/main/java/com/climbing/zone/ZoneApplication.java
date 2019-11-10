@@ -7,6 +7,7 @@ import com.climbing.zone.enumeration.Language;
 import com.climbing.zone.repository.CardRepository;
 import com.climbing.zone.repository.ClimberRepository;
 import com.climbing.zone.repository.ClimbingrouteRepository;
+import com.climbing.zone.repository.UserRepository;
 import com.fasterxml.classmate.TypeResolver;
 import net.bytebuddy.utility.RandomString;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -16,6 +17,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
@@ -25,10 +28,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.sql.Blob;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.lang.Object;
 
 // modification pour le docker de public class ZoneApplication extends SpringBootServletInitializer
@@ -56,6 +56,9 @@ public class ZoneApplication {
     private ClimberRepository climberRepository;
     @Autowired
     private CardRepository cardRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     public static final String CONSONANT = "bcdfghklmnpqrstvwxz"; //20
     public static final String CONSONANT1 = "bcd fg hklm npqr stvw x z"; //24
@@ -181,15 +184,47 @@ public class ZoneApplication {
                 cardRepository.save(card);
             }
         }
+        //-----------------------------------USER-----------------------------------
 
-//
-//        System.out.println(climberList.size());
-//        System.out.println(climbingrouteList.size());
-//
-//        System.out.println("===================Students info:==================");
-//        climberList.forEach(student -> System.out.println(student.toString()));
-//
-//        System.out.println("===================Students info:==================");
+        User admin = new User();
+        admin.setEmail("" + getName(6) + "@" + "gmail.com");
+        admin.setUsername("francois");
+        admin.setPassword("francois");
+        admin.setAuthorities("ACCESS_ADMIN");
+        admin.setRoles("ADMIN");
 
+        User yannael = new User();
+        yannael.setEmail("" + getName(6) + "@" + "gmail.com");
+        yannael.setUsername("yannael");
+        yannael.setPassword("yannael");
+        yannael.setAuthorities("ACCESS_MANAGER");
+        yannael.setRoles("MANAGER");
+
+        User adrien = new User();
+        adrien.setEmail("" + getName(6) + "@" + "gmail.com");
+        adrien.setUsername("adrien");
+        adrien.setPassword("adrien");
+        adrien.setAuthorities("ACCESS_MANAGER");
+        adrien.setRoles("MANAGER");
+
+        User florian = new User();
+        florian.setEmail("" + getName(6) + "@" + "gmail.com");
+        florian.setUsername("florian");
+        florian.setPassword("florian");
+        florian.setAuthorities("ACCESS_MANAGER");
+        florian.setRoles("MANAGER");
+
+        List<User> users = Arrays.asList(admin, adrien, florian, yannael);
+        userRepository.saveAll(users);
+
+        for (int k = 0; k < 20; k++) {
+            User user1 = new User();
+            user1.setEmail("" + getName(6) + "@" + "gmail.com");
+            user1.setUsername(getName((10)) + fill(4));
+            user1.setPassword(getName(8));
+            user1.setAuthorities("");
+            user1.setRoles("USER");
+            userRepository.save(user1);
+        }
     }
 }

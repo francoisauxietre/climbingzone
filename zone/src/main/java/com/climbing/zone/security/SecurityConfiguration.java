@@ -23,7 +23,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder authentication) throws Exception {
         authentication
                 .inMemoryAuthentication()
-                .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN").authorities("ACCESS_ADMIN")
+                .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN")
                 .and()
                 .withUser("video").password(passwordEncoder().encode("video")).roles("VIDEO").authorities("ACCES_VIDEO", "ACCES_MANAGER")
                 .and()
@@ -49,15 +49,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
 
                 .authorizeRequests()
-
                 .antMatchers("/video/**").hasAnyRole("ADMIN", "VIDEO")
                 .antMatchers("/manager/**").hasAnyRole("ADMIN", "MANAGER")
-                .antMatchers("/profile/**").hasAnyRole("ADMIN", "MANAGER")
-                .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**").hasAnyRole("ADMIN", "PROFILE")
+                .antMatchers("/profile/**", "/users/**").hasAnyRole("ADMIN", "MANAGER")
+//                .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**").hasAnyRole("ADMIN", "PROFILE")
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/log").hasRole("ADMIN")
                 .antMatchers("/management/**").hasAnyRole("ADMIN", "PROFILE")
-                .antMatchers("/swagger-ui.html#/**").authenticated()
+//                .antMatchers("/swagger-ui.html#/**").authenticated()
                 .antMatchers("/climbingroutes/**").authenticated()
                 .antMatchers("/cards/**").authenticated()
                 .antMatchers("/climbers/**").authenticated()
