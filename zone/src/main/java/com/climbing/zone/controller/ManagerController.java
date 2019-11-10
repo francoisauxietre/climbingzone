@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("management")
-public class ManagementController {
+public class ManagerController {
 
     //@ApiOperation(value = "index")
     @RequestMapping(method = RequestMethod.GET, value = "/")
