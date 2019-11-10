@@ -147,6 +147,7 @@ public class ZoneApplication {
 
             Climbingroute climbingroute = new Climbingroute();
             climbingroute.setName(getName(2) + fill(1000));
+            climbingroute.setCreatedAt(date);
             climbingroutes.add(climbingroute);
             climbingroute.setName(getText(20));
             climbingroute.setLatitude(getLatitude(100));
@@ -155,7 +156,7 @@ public class ZoneApplication {
             climbingroute.setZoneType((ZoneType) zoneType.random());
             climbingroute.setBonus("" + bonus.random());
             climbingroute.setCreatedAt(date);
-            climbingroute.setDifficuty("" + fill(40));
+            climbingroute.setDifficulty("" + fill(40));
             climbingroute.setInfo(getText(50));
             climbingroute.setTactical(fill(6));
             climbingroute.setTechnical(fill(6));
@@ -165,6 +166,7 @@ public class ZoneApplication {
 
             climbingrouteRepository.save(climbingroute);
 //-----------------------------------CARD-----------------------------------
+            for (int j = 0; j < 4; j++) {
             Card card = new Card();
             CardPk cardPk = new CardPk();
             cardPk.setClimber(climber);
@@ -180,7 +182,7 @@ public class ZoneApplication {
             card.setMental(fill(6));
             card.setQrcode("qrcode_" + fill(1000) + ".jpg");
             card.setPhoto("photo_" + fill(1000) + ".jpg");
-            cardRepository.save(card);
+            cardRepository.save(card);}
 
             //climber.addCard(card);
 //            climber.setCards(essai);

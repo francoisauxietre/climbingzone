@@ -47,10 +47,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/cards").permitAll()
+                .antMatchers("/climbingroutes").permitAll()
+                .antMatchers("/climbers").permitAll()
                 .antMatchers("/swagger-ui.html#/").permitAll()
                 .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**").permitAll()
-                .antMatchers("/climbers*").permitAll()
-                .antMatchers("/swagger-ui.html#").permitAll()
                 .antMatchers("/index.html").permitAll()
                 .antMatchers("/profile/index").authenticated()
                 .antMatchers("/admin/index.html").hasRole("ADMIN")

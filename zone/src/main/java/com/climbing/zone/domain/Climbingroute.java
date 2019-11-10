@@ -38,8 +38,8 @@ public class Climbingroute implements Serializable {
     @Column(name = "longitude")
     private Float longitude;
 
-    @Column(name = "difficuty")
-    private String difficuty;
+    @Column(name = "difficulty")
+    private String difficulty;
 
     @Column(name = "star")
     private Integer star;

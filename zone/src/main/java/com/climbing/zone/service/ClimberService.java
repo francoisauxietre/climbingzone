@@ -62,7 +62,7 @@ public class ClimberService {
         return ClimberDto.toDTO(climberRepository.findAll());
     }
 
-        public Climber addClimber(String firstName, String lastName, Date birth, String info) {
+    public Climber addClimber(String firstName, String lastName, Date birth, String info) {
 
         Climber climber = new Climber();
         climber.setFirstName(firstName);
@@ -73,13 +73,9 @@ public class ClimberService {
         return climber;
     }
 
-
-
-
 //    public List<Climber> findClimbersByFirstName(String firstName) {
 //        return climberRepository.findClimbersByFirstName(firstName);
 //    }
-
 
 //
 //    public List<Climber> findClimbersByLastName(String lastName) {

@@ -68,14 +68,14 @@ public class ClimberController {
     //-----------------------------------------CLIMBER---------------------------------------------------------------
     //get
     @ApiOperation(value = "Climbers DTO")
-    @RequestMapping(method = RequestMethod.GET, value = "/climbers")
+    @RequestMapping(method = RequestMethod.GET, value = "/")
     public ResponseEntity<List<ClimberDto>> findAll() {
         logger.info("liste des cartes demandee");
         return new ResponseEntity<List<ClimberDto>>(climberService.findAll(), HttpStatus.OK);
     }
 
     //post
-    @RequestMapping(method = RequestMethod.POST, value = "/climbers")
+    @RequestMapping(method = RequestMethod.POST, value = "/")
     public Climber AddClimber(
             @RequestParam(required = true, defaultValue = "francois luc theotime") String firstName,
             @RequestParam(required = true, defaultValue = "auxietre guesdon") String lastName,

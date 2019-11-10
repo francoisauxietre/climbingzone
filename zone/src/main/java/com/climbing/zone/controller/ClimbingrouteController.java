@@ -3,43 +3,49 @@ package com.climbing.zone.controller;
 import com.climbing.zone.domain.*;
 import com.climbing.zone.service.ClimbingrouteService;
 import com.climbing.zone.service.PlaceService;
+import com.climbing.zone.service.dto.ClimbingrouteDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-// @restController pour generer les API
-@RestController
+@RestController(value = "/climbingroutes")
 @CrossOrigin(origins = "http://localhost:4200")
-@Api(value = "Climbingroute", tags = {"Api Climbingroute: (findAll, AddClimbingRoute, DeleteClimbingRoute)"})
+@Api(value = "Climbingroute", tags = {"Api Climbing Routes"})
+@RequestMapping("/climbingroutes")
 
-public class ClimbingrouteApiController {
+public class ClimbingrouteController {
 
-//    Logger logger = LoggerFactory.getLogger(ClimbingrouteApiController.class);
-//
-//    //pour eviter le cache dans chrome et etre obliger d'aller le vider a la main
+    @Autowired
+    Logger logger;  //    Logger logger = LoggerFactory.getLogger(ClimbingrouteApiController.class);
+
+//pour eviter le cache dans chrome et etre obliger d'aller le vider a la main
 //    @ModelAttribute
 //    public void setResponseHeader(HttpServletResponse response) {
 //        response.setHeader("Cache-Control", "no-cache");
 //    }
-//
-//    @Autowired
-//    ClimbingrouteService climbingrouteService;
-//
-//    //-----------------------------------------CLIMBING-ROUTE---------------------------------------------------------------
-//    //recherche la liste de tous les voies
-//    @ApiOperation(value = "Affiche la liste des voies", response = List.class)
-//    @RequestMapping(method = RequestMethod.GET, value = "/climbingroutes")
-//    public List<Climbingroute> findAll() {
-//        logger.info("affichage de tous les voies");
-//        return climbingrouteService.findAll();
-//    }
-//
+
+    @Autowired
+    ClimbingrouteService climbingrouteService;
+
+    //-----------------------------------------CLIMBINGROUTE---------------------------------------------------------------
+    //get
+    @ApiOperation(value = "ClimingRoutes DTO")
+    @RequestMapping(method = RequestMethod.GET, value = "/")
+    public ResponseEntity<List<ClimbingrouteDto>> findAll() {
+        logger.info("liste des voies demandee");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAll(), HttpStatus.OK);
+    }
+
+
+    //
 //    //ajoute une nouvelle voie
 //    @ApiOperation(value = "Ajoute une nouvelle voie (nom, TypeDeVoie, TypeDeZone, latitude, longitude)")
 //    @PostMapping("/Climbingroute")
@@ -95,6 +101,4 @@ public class ClimbingrouteApiController {
 //        logger.info("affichage de tous les voies de zone");
 //        return climbingrouteService.findAllByZoneType(zoneType);
 //    }
-
-
 }
