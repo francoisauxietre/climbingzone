@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,6 +28,9 @@ public class Climbingroute implements Serializable {
 
     @Column(name = "bonus")
     private String bonus;
+
+    @Column(name = "info")
+    private String info;
 
     @Column(name = "latitude")
     private Float latitude;
@@ -53,13 +57,13 @@ public class Climbingroute implements Serializable {
     private Integer mental;
 
     @Column(name = "created_at")
-    private Instant createdAt;
+    private Date createdAt;
 
     @Column(name = "modified_at")
-    private Instant modifiedAt;
+    private Date modifiedAt;
 
     @Column(name = "deleted_at")
-    private Instant deletedAt;
+    private Date deletedAt;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "route_type")

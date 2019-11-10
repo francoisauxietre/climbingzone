@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
@@ -20,28 +21,43 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     //    definition des utilisateurs et de leurs roles
     @Override
     protected void configure(AuthenticationManagerBuilder authentification) throws Exception {
-        authentification
-                .inMemoryAuthentication()
-                .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN")
-                .and()
-                .withUser("video").password(passwordEncoder().encode("video")).roles("VIDEO")
-                .and()
-                .withUser("management").password(passwordEncoder().encode("management")).roles("MANAGEMENT")
-        ;
+//        authentification
+//                .inMemoryAuthentication()
+//                .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN")
+//                .and()
+//                .withUser("video").password(passwordEncoder().encode("video")).roles("VIDEO")
+//                .and()
+//                .withUser("management").password(passwordEncoder().encode("management")).roles("MANAGEMENT")
+//        ;
     }
+
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web.ignoring().antMatchers("/v2/api-docs",
+//                "/configuration/ui",
+//                "/swagger-resources/**",
+//                "/configuration/security",
+//                "/swagger-ui.html",
+//                "/webjars/**");
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
         http
                 .authorizeRequests()
                 .antMatchers("/cards").permitAll()
+                .antMatchers("/swagger-ui.html#/").permitAll()
+                .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**").permitAll()
+                .antMatchers("/climbers").permitAll()
+                .antMatchers("/swagger-ui.html#").permitAll()
                 .antMatchers("/index.html").permitAll()
                 .antMatchers("/profile/index").authenticated()
                 .antMatchers("/admin/index").hasRole("ADMIN")
                 .antMatchers("/video/index").hasRole("VIDEO")
-                .antMatchers("/management/index").hasAnyRole("ADMIN", "MANAGER")
-                .and()
-                .httpBasic();
+                .antMatchers("/management/index").hasAnyRole("ADMIN", "MANAGER");
+//                .and()
+//                .httpBasic();
 //                .authorizeRequests()
 //                .antMatchers("/", "/home").permitAll()
 //                .anyRequest().authenticated()
@@ -54,10 +70,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .permitAll();
     }
 
-    @Bean
-    PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+
+//    @Bean
+//    PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
 //
 //    @Override

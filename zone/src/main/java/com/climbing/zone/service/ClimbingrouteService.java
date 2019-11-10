@@ -1,6 +1,8 @@
 package com.climbing.zone.service;
 
 import com.climbing.zone.domain.*;
+import com.climbing.zone.repository.CardRepository;
+import com.climbing.zone.repository.ClimberRepository;
 import com.climbing.zone.repository.ClimbingrouteRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,8 +18,11 @@ public class ClimbingrouteService {
 
     @Autowired
     ClimbingrouteRepository climbingrouteRepository;
+    CardRepository cardRepository;
+    ClimberRepository climberRepository;
 
     public List<Climbingroute> findAll() {
+
         return climbingrouteRepository.findAll();
     }
 
@@ -32,8 +37,20 @@ public class ClimbingrouteService {
         climbingroute.setZoneType(zoneType);
         climbingroute.setLatitude(latitude);
         climbingroute.setLongitude(longitude);
-
         climbingrouteRepository.save(climbingroute);
+
+       Climber climber= climberRepository.findClimberById(1);
+
+
+
+        Card card = new Card();
+        CardPk cardPk = new CardPk();
+        cardPk.setClimber(climber);
+        cardPk.setClimbingroute(climbingroute);
+        card.setId(cardPk);
+
+        cardRepository.save(card);
+
         return climbingroute.getId();
     }
 }

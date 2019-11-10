@@ -36,17 +36,21 @@ public class Climber implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "birth")
     private Date birth;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "created_at")
-    private Instant createdAt;
+    private Date createdAt;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "modified_at")
-    private Instant modifiedAt;
+    private Date modifiedAt;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "deleted_at")
-    private Instant deletedAt;
+    private Date deletedAt;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "language")
@@ -62,6 +66,10 @@ public class Climber implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties("openers")
     private Climbingroute openBy;
+
+    public void addCard(Card card){
+        cards.add(card);
+    }
 
 //    @ManyToMany
 //    @JoinTable(name = "climber_friends",

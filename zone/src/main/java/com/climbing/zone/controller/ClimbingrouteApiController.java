@@ -20,46 +20,46 @@ import java.util.List;
 
 public class ClimbingrouteApiController {
 
-    Logger logger = LoggerFactory.getLogger(ClimbingrouteApiController.class);
-
-    //pour eviter le cache dans chrome et etre obliger d'aller le vider a la main
-    @ModelAttribute
-    public void setResponseHeader(HttpServletResponse response) {
-        response.setHeader("Cache-Control", "no-cache");
-    }
-
-    @Autowired
-    ClimbingrouteService climbingrouteService;
-
-    //-----------------------------------------CLIMBING-ROUTE---------------------------------------------------------------
-    //recherche la liste de tous les voies
-    @ApiOperation(value = "Affiche la liste des voies", response = List.class)
-    @RequestMapping(method = RequestMethod.GET, value = "/climbingroute")
-    public List<Climbingroute> findAll() {
-        logger.info("affichage de tous les voies");
-        return climbingrouteService.findAll();
-    }
-
-    //ajoute une nouvelle voie
-    @ApiOperation(value = "Ajoute une nouvelle voie (nom, TypeDeVoie, TypeDeZone, latitude, longitude)")
-    @PostMapping("/Climbingroute")
-    public Long addRoute(@RequestParam(required = true, defaultValue = "buis les barronies orpierre ceuse") String name,
-                         @RequestParam(required = true, defaultValue = "BOULDER") RouteType routeType,
-                         @RequestParam(required = true, defaultValue = "INTERIOR") ZoneType zoneType,
-                         @RequestParam(required = true, defaultValue = "48.117266") float latitude,
-                         @RequestParam(required = true, defaultValue = "-1.6777926") float longitude){
-        return climbingrouteService.addRouteClimbing(name, routeType, zoneType, latitude, longitude);
-    }
-
-
-
-    //efface un utilisateur par son npm
-    @ApiOperation(value = "supprime une voie depuis son id")
-    @DeleteMapping("/Climbingroute/id")
-    public void deleteClimbingroute(@RequestParam("name") Long id) {
-        logger.info("Admin :efface une voie");
-        climbingrouteService.deleteClimbingrouteById(id);
-    }
+//    Logger logger = LoggerFactory.getLogger(ClimbingrouteApiController.class);
+//
+//    //pour eviter le cache dans chrome et etre obliger d'aller le vider a la main
+//    @ModelAttribute
+//    public void setResponseHeader(HttpServletResponse response) {
+//        response.setHeader("Cache-Control", "no-cache");
+//    }
+//
+//    @Autowired
+//    ClimbingrouteService climbingrouteService;
+//
+//    //-----------------------------------------CLIMBING-ROUTE---------------------------------------------------------------
+//    //recherche la liste de tous les voies
+//    @ApiOperation(value = "Affiche la liste des voies", response = List.class)
+//    @RequestMapping(method = RequestMethod.GET, value = "/climbingroutes")
+//    public List<Climbingroute> findAll() {
+//        logger.info("affichage de tous les voies");
+//        return climbingrouteService.findAll();
+//    }
+//
+//    //ajoute une nouvelle voie
+//    @ApiOperation(value = "Ajoute une nouvelle voie (nom, TypeDeVoie, TypeDeZone, latitude, longitude)")
+//    @PostMapping("/Climbingroute")
+//    public Long addRoute(@RequestParam(required = true, defaultValue = "buis les barronies orpierre ceuse") String name,
+//                         @RequestParam(required = true, defaultValue = "BOULDER") RouteType routeType,
+//                         @RequestParam(required = true, defaultValue = "INTERIOR") ZoneType zoneType,
+//                         @RequestParam(required = true, defaultValue = "48.117266") float latitude,
+//                         @RequestParam(required = true, defaultValue = "-1.6777926") float longitude){
+//        return climbingrouteService.addRouteClimbing(name, routeType, zoneType, latitude, longitude);
+//    }
+//
+//
+//
+//    //efface un utilisateur par son npm
+//    @ApiOperation(value = "supprime une voie depuis son id")
+//    @DeleteMapping("/Climbingroute/id")
+//    public void deleteClimbingroute(@RequestParam("name") Long id) {
+//        logger.info("Admin :efface une voie");
+//        climbingrouteService.deleteClimbingrouteById(id);
+//    }
 //(@PathVariable("firstName") String firstName)
 //
 //    //affiche la liste des voies par latitudes et longitudes

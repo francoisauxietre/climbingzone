@@ -50,4 +50,9 @@ public class Card implements Serializable {
 //    private Blob qrcode;
     private String qrcode;
 
+    @Column(name= "star")
+    private  int star;
+
+
+
 }

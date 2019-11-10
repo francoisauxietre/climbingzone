@@ -16,11 +16,11 @@ import java.util.List;
 @Api(value = "card", tags = {"Api Card: (findAll, AddCard, DeleteCard)"})
 public class CardController {
 
-    @Autowired private CardService cardService;
-
-    @RequestMapping(method = RequestMethod.GET)
-    public List<Card>getCards(){
-        return  this.cardService.findAll();
-    }
+//    @Autowired private CardService cardService;
+//
+//    @RequestMapping(method = RequestMethod.GET)
+//    public List<Card>getCards(){
+//        return  this.cardService.findAll();
+//    }
 
 }
