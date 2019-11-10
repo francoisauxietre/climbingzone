@@ -11,11 +11,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Date;
 
 @Service
 public class ClimberService {
@@ -57,15 +57,14 @@ public class ClimberService {
         return climberRepository.findClimbersByFirstName(firstName);
     }
 
-    public Climber addClimber(String firstName, String lastName, int day, int month, int year, String info) {
+    public Climber addClimber(String firstName, String lastName, Date birth, String info) {
 
         Climber climber = new Climber();
         climber.setFirstName(firstName);
         climber.setLastName(lastName);
-//        climber.setInfo(info);
-//        climber.setDay(day);
-//        climber.setMonth(month);
-//        climber.setYear(year);
+        climber.setBirth(birth);
+
+
         climberRepository.save(climber);
         return climber;
     }

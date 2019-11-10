@@ -13,8 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
 
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 //@RequestMapping("api")
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-@Api(value = "Climber", tags = {"Api Climber: (findAll, AddUser, DeleteUser)"})
+@CrossOrigin(origins = "http://localhost:*")
+@Api(value = "Climber", tags = {"Api Climbers"})
 public class ClimberApiController {
     //pour les logs
     Logger logger = LoggerFactory.getLogger(ClimberApiController.class);
@@ -70,19 +70,24 @@ public class ClimberApiController {
         climberService.addTopic(topic);
     }
 
-//-----------------------------------------CLIMBER---------------------------------------------------------------
-//    //post
-//    @RequestMapping(method = RequestMethod.POST, value = "/climbers")
-//    public Climber AddClimber(
-//            @RequestParam(required = true, defaultValue = "francois luc theotime") String firstName,
-//            @RequestParam(required = true, defaultValue = "auxietre guesdon") String lastName,
-//            @RequestParam(required = true, defaultValue = "18") int day,
-//            @RequestParam(required = true, defaultValue = "10") int month,
-//            @RequestParam(required = true, defaultValue = "200") int year,
-//            @RequestParam(required = false, defaultValue = "bloc") String info) {
-//        logger.info("==== create new climber ====");
-//        return climberService.addClimber(firstName, lastName, day, month, year, info);
-//    }
+    //-----------------------------------------CLIMBER---------------------------------------------------------------
+//get
+    @RequestMapping(method = RequestMethod.GET, value = "/climbers")
+    public List<Climber> findAll() {
+        logger.info("liste des grimpuers");
+        return climberService.findAll();
+    }
+
+    //post
+    @RequestMapping(method = RequestMethod.POST, value = "/climbers")
+    public Climber AddClimber(
+            @RequestParam(required = true, defaultValue = "francois luc theotime") String firstName,
+            @RequestParam(required = true, defaultValue = "auxietre guesdon") String lastName,
+            @RequestParam(required = true, defaultValue = "18") Date date,
+            @RequestParam(required = false, defaultValue = "bloc") String info) {
+        logger.info("==== create new climber ====");
+        return climberService.addClimber(firstName, lastName, date, info);
+    }
 //
 //    //get
 //    @RequestMapping(method = RequestMethod.GET, value = "/climbers/firstName/{firstName}")
@@ -96,14 +101,7 @@ public class ClimberApiController {
 //        return climberService.findClimbersByLastName(lastName);
 //    }
 //
-//    //get
-//    @RequestMapping(method = RequestMethod.GET, value = "/climbers")
-//    public List<Climber> findAll() {
-//        List test = new ArrayList();
-//        test =climberService.findClimbersByFirstName("test");
-//        System.out.println("passe ici");
-//        return climberService.findAll();
-//    }
+
 //
 //    //update
 //    @RequestMapping(method = RequestMethod.PUT, value = "/climbers/{value}")
@@ -125,8 +123,6 @@ public class ClimberApiController {
 //    }
 //
 //
-
-
 
 //-----------------------------------------FRIENDS---------------------------------------------------------------
 

@@ -21,14 +21,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     //    definition des utilisateurs et de leurs roles
     @Override
     protected void configure(AuthenticationManagerBuilder authentification) throws Exception {
-//        authentification
-//                .inMemoryAuthentication()
-//                .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN")
-//                .and()
-//                .withUser("video").password(passwordEncoder().encode("video")).roles("VIDEO")
-//                .and()
-//                .withUser("management").password(passwordEncoder().encode("management")).roles("MANAGEMENT")
-//        ;
+        authentification
+                .inMemoryAuthentication()
+                .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN")
+                .and()
+                .withUser("video").password(passwordEncoder().encode("video")).roles("VIDEO")
+                .and()
+                .withUser("management").password(passwordEncoder().encode("management")).roles("MANAGEMENT")
+        ;
     }
 
 //    @Override
@@ -43,13 +43,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
+        http.cors().and().csrf().disable(); // ajout car chaque methode post faisait une erreur 403
         http
                 .authorizeRequests()
                 .antMatchers("/cards").permitAll()
                 .antMatchers("/swagger-ui.html#/").permitAll()
                 .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**").permitAll()
-                .antMatchers("/climbers").permitAll()
+                .antMatchers("/climbers*").permitAll()
                 .antMatchers("/swagger-ui.html#").permitAll()
                 .antMatchers("/index.html").permitAll()
                 .antMatchers("/profile/index").authenticated()
@@ -71,10 +71,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
 
-//    @Bean
-//    PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+    @Bean
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 //
 //    @Override

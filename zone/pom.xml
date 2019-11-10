@@ -83,7 +83,7 @@
             <scope>runtime</scope>
         </dependency>
 
-
+        <!--SWAGGER-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -100,31 +100,7 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.9.2</version>
         </dependency>
-        <!--SWAGGER-->
-        <!--        <dependency>-->
-        <!--            <groupId>io.springfox</groupId>-->
-        <!--            <artifactId>springfox-swagger-ui</artifactId>-->
-        <!--            <version>2.9.2</version>-->
-        <!--        </dependency>-->
 
-        <!--        <dependency>-->
-        <!--        <groupId>io.springfox</groupId>-->
-        <!--        <artifactId>springfox-swagger-ui</artifactId>-->
-        <!--        <version>2.9.2</version>-->
-        <!--        <scope>compile</scope>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>io.swagger</groupId>-->
-        <!--            <artifactId>swagger-annotations</artifactId>-->
-        <!--            <version>1.5.0</version>-->
-
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>io.springfox</groupId>-->
-        <!--            <artifactId>springfox-swagger2</artifactId>-->
-        <!--            <version>2.9.2</version>-->
-        <!--            <scope>compile</scope>-->
-        <!--        </dependency>-->
 
         <!--version de depart au dessus-->
         <!--        ajout pour sortir un war avec tomcat pour creer le docker-->
