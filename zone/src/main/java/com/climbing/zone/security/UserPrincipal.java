@@ -64,13 +64,13 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        log.info(user.getUsername() +" is locked");
+        log.info(user.getUsername() +" is log in ");
         return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        log.info(user.getUsername() +" is locked");
+        log.info(user.getUsername() +" is log in also");
         return true;
     }
 

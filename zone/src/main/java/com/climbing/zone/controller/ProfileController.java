@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("profile")
 public class ProfileController {
 
-    //@ApiOperation(value = "index")
     @RequestMapping(method = RequestMethod.GET, value = "/")
     public String index(){
         return "profile/index";

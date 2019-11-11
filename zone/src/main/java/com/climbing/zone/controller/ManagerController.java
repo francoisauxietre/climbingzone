@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("management")
 public class ManagerController {
 
-    //@ApiOperation(value = "index")
     @RequestMapping(method = RequestMethod.GET, value = "/")
     public String index() {
         return "management/index";
