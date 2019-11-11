@@ -11,6 +11,7 @@ import com.climbing.zone.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.annotation.PostConstruct;
@@ -56,6 +57,12 @@ public class ZoneApplication {
 //	}
     public static void main(String[] args) {
         SpringApplication.run(ZoneApplication.class, args);
+    }
+
+    private PasswordEncoder passwordEncoder;
+
+    public ZoneApplication(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
     }
 
     public int fill(int number) {
@@ -119,7 +126,7 @@ public class ZoneApplication {
         Set<Climbingroute> climbingroutes = new HashSet<>();
         Date date = new Date(System.currentTimeMillis());
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 5; i++) {
 //--------------------------------CLIMBER-----------------------------
             Climber climber = new Climber();
             climber.setLastName("" + firstName.random());
@@ -152,7 +159,7 @@ public class ZoneApplication {
 
             climbingrouteRepository.save(climbingroute);
 //-----------------------------------CARD-----------------------------------
-            for (int j = 0; j < 10; j++) {
+            for (int j = 0; j < 5; j++) {
                 Card card = new Card();
                 CardPk cardPk = new CardPk();
                 cardPk.setClimber(climber);
@@ -173,50 +180,49 @@ public class ZoneApplication {
             }
         }
         //-----------------------------------USER-----------------------------------
+        //delete all user
+        userRepository.deleteAll();
 
-        User admin = new User();
+
+        String email = "" + getName(6) + "@" + "gmail.com";
+        String userName = "admin";
+        String password =  passwordEncoder.encode("admin");
+        String roles = "ADMIN";
+        String permissions = "ACCES_ADMIN";
+        User admin = new User(userName, password, roles, permissions);
         admin.setEmail("" + getName(6) + "@" + "gmail.com");
-        admin.setUsername("francois");
-        admin.setPassword("francois");
-        admin.setAuthorities("ACCESS_ADMIN");
-        admin.setCreatedAt(date = new Date(System.currentTimeMillis()));
-        admin.setRoles("ADMIN");
+        admin.setCreatedAt(new Date(System.currentTimeMillis()));
+        userRepository.save(admin);
 
-        User yannael = new User();
-        yannael.setEmail("" + getName(6) + "@" + "gmail.com");
-        yannael.setUsername("yannael");
-        yannael.setPassword("yannael");
-        yannael.setAuthorities("ACCESS_MANAGER");
-        yannael.setCreatedAt(date = new Date(System.currentTimeMillis()));
-        yannael.setRoles("MANAGER");
 
-        User adrien = new User();
-        adrien.setEmail("" + getName(6) + "@" + "gmail.com");
-        adrien.setUsername("adrien");
-        adrien.setPassword("adrien");
-        adrien.setAuthorities("ACCESS_MANAGER");
-        adrien.setCreatedAt(date = new Date(System.currentTimeMillis()));
-        adrien.setRoles("MANAGER");
+        userName = "francois";
+        password =  passwordEncoder.encode("francois");
+        roles = "ADMIN";
+        permissions = "ACCES_ADMIN, ACCES_MANAGER";
+        User admin1 = new User(userName, password, roles, permissions);
+        admin1.setEmail("froxworld@gmail.com");
+        admin1.setCreatedAt(new Date(System.currentTimeMillis()));
+        userRepository.save(admin1);
 
-        User florian = new User();
-        florian.setEmail("" + getName(6) + "@" + "gmail.com");
-        florian.setUsername("florian");
-        florian.setPassword("florian");
-        florian.setAuthorities("ACCESS_MANAGER");
-        florian.setCreatedAt(date = new Date(System.currentTimeMillis()));
-        florian.setRoles("MANAGER");
-
-        List<User> users = Arrays.asList(admin, adrien, florian, yannael);
-        userRepository.saveAll(users);
+        email = "" + getName(6) + "@" + "gmail.com";
+        userName = "luc";
+        password =  passwordEncoder.encode("luc");
+        roles = "MANAGER";
+        permissions = "ACCES_MANAGER";
+        User luc = new User(userName, password, roles, permissions);
+        luc.setEmail(email);
+        luc.setCreatedAt(new Date(System.currentTimeMillis()));
+        userRepository.save(luc);
 
         for (int k = 0; k < 10; k++) {
-            User user1 = new User();
-            user1.setEmail("" + getName(6) + "@" + "gmail.com");
-            user1.setUsername(getName((10)) + fill(4));
-            user1.setPassword(getName(8));
-            user1.setAuthorities("");
-            user1.setCreatedAt(date = new Date(System.currentTimeMillis()));
-            user1.setRoles("USER");
+            email = "" + getName(6) + "@" + "gmail.com";
+            userName = (getName((10)) + fill(4));
+            password =  passwordEncoder.encode(getName(8));
+            roles = "USER";
+            permissions = "";
+            User user1 = new User(userName, password, roles, permissions);
+            user1.setCreatedAt(new Date(System.currentTimeMillis()));
+            user1.setEmail(email);
             userRepository.save(user1);
         }
     }

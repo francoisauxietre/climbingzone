@@ -3,51 +3,51 @@ package com.climbing.zone.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.time.Instant;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
-///**
-// * A user.
-// */
 @Data
 @Entity
 @Table(name = "user")
 public class User implements Serializable {
-//
-//    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
+
+    @NotNull
+//    @Pattern(regexp = Constants.LOGIN_REGEX)
+    @Size(min = 3, max = 50)
+    @Column(length = 50, unique = true, nullable = false)
+    private String username;
+
+    @Column(nullable = false)
+    private String password;
 
     private Date createdAt;
     private Date modifiedAt;
 
-    @NotNull
-//    @Pattern(regexp = Constants.LOGIN_REGEX)
-    @Size(min = 4, max = 50)
-    @Column(length = 50, unique = true, nullable = false)
-    private String username;
+    private int active;
 
-    //@JsonIgnore
-    @NotNull
-    @Size(min = 5, max = 20)
-    @Column(name = "password_hash", length = 20, nullable = false)
-    private String password;
+    private String roles = "";
 
-    private boolean blocked;
-    private Boolean active;
+    private String permissions = "";
 
-    private String roles;
-    private String authorities;
+    public User(String username, String password, String roles, String permissions) {
+        this.username = username;
+        this.password = password;
+        this.roles = roles;
+        this.permissions = permissions;
+        this.active = 1;
+    }
 
     @Email
     @Size(min = 5, max = 254)
@@ -62,51 +62,51 @@ public class User implements Serializable {
     @Column(name = "image_url", length = 256)
     private String imageUrl;
 
-    public List<String> getRolesList() {
-        if (this.roles.length() > 0) {
-            return Arrays.asList(this.roles.split(","));
-        } else {
-            return new ArrayList<>();
-        }
+    protected User() {
     }
 
-    public List<String> getAuthoritiesList() {
-        if (this.roles.length() > 0) {
-            return Arrays.asList(this.roles.split(","));
-        } else {
-            return new ArrayList<>();
-        }
+    public long getId() {
+        return id;
     }
 
+    public String getUsername() {
+        return username;
+    }
 
-//
-//    @Size(max = 20)
-//    @Column(name = "activation_key", length = 20)
-//    @JsonIgnore
-//    private String activationKey;
-//
-//    @Size(max = 20)
-//    @Column(name = "reset_key", length = 20)
-//    @JsonIgnore
-//    private String resetKey;
-//
-//    @Column(name = "reset_date")
-//    private Instant resetDate = null;
-//
-//    @JsonIgnore
-//    @ManyToMany
-//    @JoinTable(
-//            name = "authority",
-//            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-//            inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
-//
-//    @BatchSize(size = 20)
-//    private Set<Authority> authorities = new HashSet<>();
-//
-//    @JsonIgnore
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
-//    private Set<PersistentToken> persistentTokens = new HashSet<>();
-//
+    @JsonIgnore
+    @NotNull
+    @Size(min = 4, max = 256)
+    @Column(name = "password_hash", length = 256, nullable = false)
+    public String getPassword() {
+        return password;
+    }
 
+    public int getActive() {
+        return active;
+    }
 
+    public String getRoles() {
+        return roles;
+    }
+
+    public String getPermissions() {
+        return permissions;
+    }
+
+    public List<String> getRoleList() {
+        if (this.roles.length() > 0) {
+            return Arrays.asList(this.roles.split(","));
+        }
+        return new ArrayList<>();
+    }
+
+    public List<String> getPermissionList() {
+        if (this.permissions.length() > 0) {
+            return Arrays.asList(this.permissions.split(","));
+        }
+        return new ArrayList<>();
+    }
 }
+
+
+

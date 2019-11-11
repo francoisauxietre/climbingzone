@@ -18,7 +18,6 @@ import java.util.*;
 //import java.util.Set;
 //import java.util.stream.Collectors;
 
-
 @NoArgsConstructor //génère le constructeur sans argument et public ;
 @AllArgsConstructor //génère le constructeur avec tous les arguments
 @Getter //génère tous les getters sur les champs ;
@@ -26,51 +25,55 @@ import java.util.*;
 @EqualsAndHashCode(of = {"id", "username"})
 // génère equals et hashCode (et d'autres méthodes) sur les champs donnés ;
 @ToString(of = {"id", "username", "language"}) //To String
-public class UserDto  implements Serializable  {
-
+public class UserDto implements Serializable {
 
     private Long id;
     private String username;
     private String email;
+    private String password;
     private Date createdAt;
     private Date modifiedAt;
     private Date deletedAt;
     private Language language;
 
-        public UserDto(User user) {
-            toDto(user);
+    public UserDto(User user) {
+        toDto(user);
+    }
+
+    private Long sessionId;
+
+    public static List<UserDto> toDTO(Iterable<User> all) {
+        List<UserDto> userDtoList = new ArrayList<>();
+        for (User user : all) {
+            userDtoList.add(new UserDto(user));
         }
+        return userDtoList;
+    }
 
-        private Long sessionId;
+    public void toDto(User user) {
+        Date date = new Date(System.currentTimeMillis());
+        this.id = user.getId();
+        this.username = user.getUsername();
+        this.email = user.getEmail();
+        this.createdAt = user.getCreatedAt();
+        this.modifiedAt = date;
+    }
 
-        public static List<UserDto> toDTO(Iterable<User> all) {
-            List<UserDto> userDtoList = new ArrayList<>();
-            for (User user : all) {
-                userDtoList.add(new UserDto(user));
-            }
-            return userDtoList;
-        }
+    public User fromDTO(UserDto userDto) {
+        Date date = new Date(System.currentTimeMillis());
+        String username = userDto.getUsername();
+        String email = userDto.getEmail();
+        String password = userDto.getPassword();
+        String roles = "USER";
+        String permissions = "";
 
-        public void toDto(User user) {
-            Date date = new Date(System.currentTimeMillis());
-            this.id = user.getId();
-            this.username = user.getUsername();
-            this.email = user.getEmail();
-            this.createdAt = user.getCreatedAt();
-            this.modifiedAt = date;
-        }
+        User user = new User(username, password, roles, permissions);
+        user.setEmail(email);
+        user.setCreatedAt(userDto.getCreatedAt());
+        user.setModifiedAt(date);
 
-
-        public User fromDTO(UserDto userDto){
-            Date date = new Date(System.currentTimeMillis());
-            User user = new User();
-            user.setUsername( userDto.getUsername());
-            user.setEmail(user.getEmail());
-            user.setCreatedAt(userDto.getCreatedAt());
-            user.setModifiedAt(date);
-
-            return user;
-        }
+        return user;
+    }
 }
 
 //
