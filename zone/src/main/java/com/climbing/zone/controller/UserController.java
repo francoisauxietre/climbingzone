@@ -34,11 +34,23 @@ public class UserController {
     @ApiOperation(value = "User DTO")
     @RequestMapping(method = RequestMethod.GET, value = "/")
     public ResponseEntity<List<UserDto>> findAll() {
-        logger.info("liste des cartes demandee");
+        logger.info("liste des des utilisateurs");
         return new ResponseEntity<List<UserDto>>(userService.findAll(), HttpStatus.OK);
     }
-}
 
+    //get
+    @ApiOperation(value = "User DTO by username")
+    @RequestMapping(method = RequestMethod.GET, value = "/{username}")
+    public ResponseEntity<UserDto> findByUsername(@PathVariable("username") String username) {
+        logger.info("utilisateur par son nom");
+        if (userService.findByUsername(username)==null) {
+            return new ResponseEntity<UserDto>(HttpStatus.NO_CONTENT);
+            }
+        else {
+            return new ResponseEntity<UserDto>(userService.findByUsername(username), HttpStatus.OK);
+        }
+    }
+}
 //
 //    @GetMapping("/signup")
 //    public String showSignUpForm(User user) {

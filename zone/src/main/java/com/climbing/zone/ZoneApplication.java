@@ -129,7 +129,7 @@ public class ZoneApplication {
         Set<Climber> climbers = new HashSet<>();
         Set<Climbingroute> climbingroutes = new HashSet<>();
 
-        for (int i = 0; i < 40; i++) {
+        for (int i = 0; i < 20; i++) {
 //--------------------------------CLIMBER-----------------------------
             Climber climber = new Climber();
             climber.setLastName("" + firstName.random());
@@ -164,7 +164,7 @@ public class ZoneApplication {
 
             climbingrouteRepository.save(climbingroute);
 //-----------------------------------CARD-----------------------------------
-            for (int j = 0; j < 4; j++) {
+            for (int j = 0; j < 10; j++) {
                 Card card = new Card();
                 CardPk cardPk = new CardPk();
                 cardPk.setClimber(climber);
@@ -217,7 +217,7 @@ public class ZoneApplication {
         List<User> users = Arrays.asList(admin, adrien, florian, yannael);
         userRepository.saveAll(users);
 
-        for (int k = 0; k < 20; k++) {
+        for (int k = 0; k < 10 ; k++) {
             User user1 = new User();
             user1.setEmail("" + getName(6) + "@" + "gmail.com");
             user1.setUsername(getName((10)) + fill(4));

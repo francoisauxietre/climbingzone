@@ -23,9 +23,9 @@ import java.util.*;
 @AllArgsConstructor //génère le constructeur avec tous les arguments
 @Getter //génère tous les getters sur les champs ;
 @Setter //génère tous les setters sur les champs ;
-@EqualsAndHashCode(of = {"id", "firstName"})
+@EqualsAndHashCode(of = {"id", "username"})
 // génère equals et hashCode (et d'autres méthodes) sur les champs donnés ;
-@ToString(of = {"firstName", "lastName"}) //To String
+@ToString(of = {"id", "username", "language"}) //To String
 public class UserDto  implements Serializable  {
 
 
@@ -37,8 +37,9 @@ public class UserDto  implements Serializable  {
     private Language language;
 
         public UserDto(User user) {
-            toDTO(user);
+            toDto(user);
         }
+
         private Long sessionId;
 
         public static List<UserDto> toDTO(Iterable<User> all) {
@@ -49,7 +50,8 @@ public class UserDto  implements Serializable  {
             return userDtoList;
         }
 
-        public void toDTO(User user) {
+        public void toDto(User user) {
+
             this.id = user.getId();
             this.username = user.getUsername();
             this.createdAt = user.getCreatedAt();
