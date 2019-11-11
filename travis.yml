@@ -1,8 +1,5 @@
-language: node_js
-
-node_js:
-  - '5'
-  - ‘4’
+language: java
+jdk: oraclejdk8
 
 # échoue dès qu'une erreur intervient
 matrix:
@@ -26,6 +23,7 @@ before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   cd /zone
+  echo pwd
 
 # si on veut utiliser autre chose que la commande par défaut
 script: npm run test-with-coverage
