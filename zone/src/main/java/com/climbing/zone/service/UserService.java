@@ -28,8 +28,9 @@ public class UserService {
         UserDto userDto = new UserDto();
         if (userRepository.findByUsername(username) == null) {
             logger.info("erreur cet utilisateur de nom" + username + " n'exite pas");
-        } else
-            userDto.setUsername(userRepository.findByUsername(username).getUsername());
+        } else {
+            userDto.toDto(userRepository.findByUsername(username));
+        }
         return userDto;
     }
 }

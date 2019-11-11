@@ -8,28 +8,14 @@ import com.climbing.zone.repository.CardRepository;
 import com.climbing.zone.repository.ClimberRepository;
 import com.climbing.zone.repository.ClimbingrouteRepository;
 import com.climbing.zone.repository.UserRepository;
-import com.fasterxml.classmate.TypeResolver;
-import net.bytebuddy.utility.RandomString;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.annotation.PostConstruct;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.sql.Blob;
+
 import java.util.*;
-import java.lang.Object;
 
 // modification pour le docker de public class ZoneApplication extends SpringBootServletInitializer
 
@@ -74,6 +60,10 @@ public class ZoneApplication {
 
     public int fill(int number) {
         return (int) (Math.random() * number);
+    }
+
+    public long fillLong(int number) {
+        return (long) (Math.random() * number);
     }
 
     public float getLatitude(int number) {
@@ -126,20 +116,18 @@ public class ZoneApplication {
         RandomEnum zoneType = new RandomEnum<ZoneType>(ZoneType.class);
         RandomEnum firstName = new RandomEnum<FirstName>(FirstName.class);
 
-        Set<Climber> climbers = new HashSet<>();
         Set<Climbingroute> climbingroutes = new HashSet<>();
+        Date date = new Date(System.currentTimeMillis());
 
         for (int i = 0; i < 20; i++) {
 //--------------------------------CLIMBER-----------------------------
             Climber climber = new Climber();
             climber.setLastName("" + firstName.random());
             climber.setFirstName("" + firstName.random());
-//            climber.setId((long) fill(40));
-            Date date = new Date(System.currentTimeMillis());
+            date = new Date(System.currentTimeMillis());
             climber.setBirth(date);
             climber.setCreatedAt(date);
             climber.setLanguage((Language) language.random());
-            climbers.add(climber);
             climberRepository.save(climber);
 
 //-----------------------------------CLIMBING ROUTE-----------------------------------
@@ -191,6 +179,7 @@ public class ZoneApplication {
         admin.setUsername("francois");
         admin.setPassword("francois");
         admin.setAuthorities("ACCESS_ADMIN");
+        admin.setCreatedAt(date = new Date(System.currentTimeMillis()));
         admin.setRoles("ADMIN");
 
         User yannael = new User();
@@ -198,6 +187,7 @@ public class ZoneApplication {
         yannael.setUsername("yannael");
         yannael.setPassword("yannael");
         yannael.setAuthorities("ACCESS_MANAGER");
+        yannael.setCreatedAt(date = new Date(System.currentTimeMillis()));
         yannael.setRoles("MANAGER");
 
         User adrien = new User();
@@ -205,6 +195,7 @@ public class ZoneApplication {
         adrien.setUsername("adrien");
         adrien.setPassword("adrien");
         adrien.setAuthorities("ACCESS_MANAGER");
+        adrien.setCreatedAt(date = new Date(System.currentTimeMillis()));
         adrien.setRoles("MANAGER");
 
         User florian = new User();
@@ -212,17 +203,19 @@ public class ZoneApplication {
         florian.setUsername("florian");
         florian.setPassword("florian");
         florian.setAuthorities("ACCESS_MANAGER");
+        florian.setCreatedAt(date = new Date(System.currentTimeMillis()));
         florian.setRoles("MANAGER");
 
         List<User> users = Arrays.asList(admin, adrien, florian, yannael);
         userRepository.saveAll(users);
 
-        for (int k = 0; k < 10 ; k++) {
+        for (int k = 0; k < 10; k++) {
             User user1 = new User();
             user1.setEmail("" + getName(6) + "@" + "gmail.com");
             user1.setUsername(getName((10)) + fill(4));
             user1.setPassword(getName(8));
             user1.setAuthorities("");
+            user1.setCreatedAt(date = new Date(System.currentTimeMillis()));
             user1.setRoles("USER");
             userRepository.save(user1);
         }

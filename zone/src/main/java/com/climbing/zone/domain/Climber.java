@@ -1,11 +1,13 @@
 package com.climbing.zone.domain;
 
-
 import com.climbing.zone.enumeration.Language;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 
@@ -18,12 +20,12 @@ import java.util.Set;
 /**
  * A Climber.
  */
+@Slf4j
 @Entity
 @Table(name = "climber")
 @Data
 public class Climber implements Serializable {
 
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -67,17 +69,32 @@ public class Climber implements Serializable {
     @JsonIgnoreProperties("openers")
     private Climbingroute openBy;
 
-    public void addCard(Card card){
+    public void addCard(Card card) {
         cards.add(card);
     }
 
-//    @ManyToMany
-//    @JoinTable(name = "climber_friends",
-//            joinColumns = @JoinColumn(name = "climber_id", referencedColumnName = "id"),
-//            inverseJoinColumns = @JoinColumn(name = "friends_id", referencedColumnName = "id"))
-//    private Set<Climber> friends = new HashSet<>();
-//
-//    @ManyToMany(mappedBy = "friends")
-//    @JsonIgnore
-//    private Set<Climber> fromFriends = new HashSet<>();
+    @ManyToMany
+    @JoinTable(name = "climber_friends",
+            joinColumns = @JoinColumn(name = "climber_id", referencedColumnName = "climber_id"),
+            inverseJoinColumns = @JoinColumn(name = "friends_id", referencedColumnName = "climber_id"))
+    private Set<Climber> friends = new HashSet<>();
+
+    @ManyToMany(mappedBy = "friends")
+    @JsonIgnore
+    private Set<Climber> fromFriends = new HashSet<>();
+
+    public void addFriends(Climber climber) {
+        this.friends.add(climber);
+    }
+
+    public void removeFriends(Climber climber) {
+        this.friends.forEach(climber1 -> {
+            if (climber1.getId() == climber.getId()) {
+                friends.remove(climber);
+                log.info("climber"+climber.getFirstName()+"was delete form your friends");
+
+            }
+        });
+    }
+
 }

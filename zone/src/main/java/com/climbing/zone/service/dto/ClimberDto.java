@@ -49,7 +49,11 @@ public class ClimberDto implements Serializable {
         this.lastName = climber.getLastName();
         this.birth= climber.getBirth();
         this.createdAt = climber.getCreatedAt();
-//        this.friends = climber.getFriends();
+        this.language = climber.getLanguage();
+//        this.openById = climber.getOpenBy().getId();
+//
+//  TODO FRIENDS and open by
+//  this.friends = climber.getFriends();
     }
 
 

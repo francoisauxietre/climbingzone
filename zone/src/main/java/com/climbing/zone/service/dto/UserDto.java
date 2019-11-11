@@ -31,6 +31,7 @@ public class UserDto  implements Serializable  {
 
     private Long id;
     private String username;
+    private String email;
     private Date createdAt;
     private Date modifiedAt;
     private Date deletedAt;
@@ -51,11 +52,12 @@ public class UserDto  implements Serializable  {
         }
 
         public void toDto(User user) {
-
+            Date date = new Date(System.currentTimeMillis());
             this.id = user.getId();
             this.username = user.getUsername();
+            this.email = user.getEmail();
             this.createdAt = user.getCreatedAt();
-            this.modifiedAt = user.getModifiedAt();
+            this.modifiedAt = date;
         }
 
 
@@ -63,8 +65,9 @@ public class UserDto  implements Serializable  {
             Date date = new Date(System.currentTimeMillis());
             User user = new User();
             user.setUsername( userDto.getUsername());
+            user.setEmail(user.getEmail());
             user.setCreatedAt(userDto.getCreatedAt());
-            user.setCreatedAt(date);
+            user.setModifiedAt(date);
 
             return user;
         }
