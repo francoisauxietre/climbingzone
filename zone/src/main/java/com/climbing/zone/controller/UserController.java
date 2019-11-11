@@ -1,25 +1,56 @@
-//package com.climbing.zone.controller;
-//
-//import com.climbing.zone.domain.User;
-//import com.climbing.zone.repository.UserRepository;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.validation.BindingResult;
-//import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.web.bind.annotation.PathVariable;
-//import org.springframework.web.bind.annotation.PostMapping;
-//
-//import javax.validation.Valid;
-//
-//@Controller
-//public class UserController {
-//
-//    @Autowired
-//    UserRepository userRepository;
-//
-//    //-----------------------------------------User---------------------------------------------------------------
-//
+package com.climbing.zone.controller;
+
+import com.climbing.zone.service.UserService;
+
+import com.climbing.zone.service.dto.UserDto;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
+
+@RestController(value = "/users")
+@CrossOrigin(origins = "http://localhost:4200")
+@Api(value = "User", tags = {"Api Users"})
+@RequestMapping("/users")
+public class UserController {
+
+    @Autowired
+    Logger logger;
+
+    @Autowired
+    UserService userService;
+
+    //-----------------------------------------User---------------------------------------------------------------
+
+    //get
+    @ApiOperation(value = "User DTO")
+    @RequestMapping(method = RequestMethod.GET, value = "/")
+    public ResponseEntity<List<UserDto>> findAll() {
+        logger.info("liste des des utilisateurs");
+        return new ResponseEntity<List<UserDto>>(userService.findAll(), HttpStatus.OK);
+    }
+
+    //get
+    @ApiOperation(value = "User DTO by username")
+    @RequestMapping(method = RequestMethod.GET, value = "/{username}")
+    public ResponseEntity<UserDto> findByUsername(@PathVariable("username") String username) {
+        logger.info("utilisateur par son nom");
+        if (userService.findByUsername(username)==null) {
+            return new ResponseEntity<UserDto>(HttpStatus.NO_CONTENT);
+            }
+        else {
+            return new ResponseEntity<UserDto>(userService.findByUsername(username), HttpStatus.OK);
+        }
+    }
+}
 //
 //    @GetMapping("/signup")
 //    public String showSignUpForm(User user) {

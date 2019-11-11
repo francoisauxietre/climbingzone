@@ -10,6 +10,8 @@ import java.util.List;
 public interface ClimbingrouteRepository extends CrudRepository<Climbingroute, Long> {
 
     List<Climbingroute> findAll();
+
+
     void deleteClimbingrouteById(Long id);
 
 }

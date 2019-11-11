@@ -1,4 +1,12 @@
-//package com.climbing.zone.service.dto;
+package com.climbing.zone.service.dto;
+
+import com.climbing.zone.domain.User;
+import com.climbing.zone.enumeration.Language;
+import lombok.*;
+
+import java.io.Serializable;
+import java.util.*;
+
 ////import com.climbing.zone.config.Constants;
 //import com.climbing.zone.domain.User;
 //
@@ -9,46 +17,62 @@
 //import java.time.Instant;
 //import java.util.Set;
 //import java.util.stream.Collectors;
-//public class UserDto {
-//
-//    private Long id;
-//
-//    @NotBlank
-////    @Pattern(regexp = Constants.LOGIN_REGEX)
-//    @Size(min = 1, max = 50)
-//    private String login;
-//
-//    @Size(max = 50)
-//    private String firstName;
-//
-//    @Size(max = 50)
-//    private String lastName;
-//
-//    @Email
-//    @Size(min = 5, max = 254)
-//    private String email;
-//
-//    @Size(max = 256)
-//    private String imageUrl;
-//
-//    private boolean activated = false;
-//
-//    @Size(min = 2, max = 10)
-//    private String langKey;
-//
-//    private String createdBy;
-//
-//    private Instant createdDate;
-//
-//    private String lastModifiedBy;
-//
-//    private Instant lastModifiedDate;
-//
-//    private Set<String> authorities;
-//
-//    public UserDto() {
-//        // Empty constructor needed for Jackson.
-//    }
+
+
+@NoArgsConstructor //génère le constructeur sans argument et public ;
+@AllArgsConstructor //génère le constructeur avec tous les arguments
+@Getter //génère tous les getters sur les champs ;
+@Setter //génère tous les setters sur les champs ;
+@EqualsAndHashCode(of = {"id", "username"})
+// génère equals et hashCode (et d'autres méthodes) sur les champs donnés ;
+@ToString(of = {"id", "username", "language"}) //To String
+public class UserDto  implements Serializable  {
+
+
+    private Long id;
+    private String username;
+    private String email;
+    private Date createdAt;
+    private Date modifiedAt;
+    private Date deletedAt;
+    private Language language;
+
+        public UserDto(User user) {
+            toDto(user);
+        }
+
+        private Long sessionId;
+
+        public static List<UserDto> toDTO(Iterable<User> all) {
+            List<UserDto> userDtoList = new ArrayList<>();
+            for (User user : all) {
+                userDtoList.add(new UserDto(user));
+            }
+            return userDtoList;
+        }
+
+        public void toDto(User user) {
+            Date date = new Date(System.currentTimeMillis());
+            this.id = user.getId();
+            this.username = user.getUsername();
+            this.email = user.getEmail();
+            this.createdAt = user.getCreatedAt();
+            this.modifiedAt = date;
+        }
+
+
+        public User fromDTO(UserDto userDto){
+            Date date = new Date(System.currentTimeMillis());
+            User user = new User();
+            user.setUsername( userDto.getUsername());
+            user.setEmail(user.getEmail());
+            user.setCreatedAt(userDto.getCreatedAt());
+            user.setModifiedAt(date);
+
+            return user;
+        }
+}
+
 //
 //    public UserDto(User user) {
 //        this.id = user.getId();

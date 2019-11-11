@@ -1,0 +1,7 @@
+language: java
+jdk: oraclejdk8
+ 
+script:
+  cd zone
+  pwd
+- ./mvnw clean install -B

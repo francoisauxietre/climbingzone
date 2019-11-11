@@ -4,16 +4,20 @@ import com.climbing.zone.domain.Climber;
 import com.climbing.zone.domain.Topic;
 import com.climbing.zone.service.ClimberService;
 
+import com.climbing.zone.service.dto.ClimberDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+import java.util.Date;
 import java.util.List;
-
 
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,16 +27,66 @@ import org.springframework.web.bind.annotation.RestController;
 // pour ajouter api dans url avant chaque requete
 //@RequestMapping("api")
 
-@RestController
+//@RestController(value = "/cards")
+//@CrossOrigin(origins = "http://localhost:4200")
+//@Api(value = "card", tags = {"Api Card: (findAll, AddCard, DeleteCard)"})
+//@RequestMapping("/cards")
+//public class CardController {
+//
+//    @Autowired
+//    CardService cardService;
+//
+//    @Autowired
+//    ClimberService climberService;
+//
+//    @Autowired
+//    ClimbingrouteService climbingrouteService;
+//
+//    @Autowired
+//    private Logger logger;
+//
+//    @ApiOperation(value = "Climbers DTO")
+//    @RequestMapping(method = RequestMethod.GET, value = "/")
+//    public ResponseEntity<List<CardDto>> findAll() {
+//        logger.info("liste des cartes demandee");
+//        return new ResponseEntity<List<CardDto>>(cardService.findAll(), HttpStatus.OK);
+
+
+@RestController(value = "/climbers")
 @CrossOrigin(origins = "http://localhost:4200")
-@Api(value = "Climber", tags = {"Api Climber: (findAll, AddUser, DeleteUser)"})
-public class ClimberApiController {
+@Api(value = "Climber", tags = {"Api Climbers"})
+@RequestMapping("/climbers")
+public class ClimberController {
     //pour les logs
-    Logger logger = LoggerFactory.getLogger(ClimberApiController.class);
+//    Logger logger = LoggerFactory.getLogger(ClimberController.class);
+    @Autowired
+    Logger logger;
 
     //injecte le climberService sous forme de singleton patttern
     @Autowired
     ClimberService climberService;
+
+    //-----------------------------------------CLIMBER---------------------------------------------------------------
+    //get
+    @ApiOperation(value = "Climbers DTO")
+    @RequestMapping(method = RequestMethod.GET, value = "/")
+    public ResponseEntity<List<ClimberDto>> findAll() {
+        logger.info("liste des cartes demandee");
+        return new ResponseEntity<List<ClimberDto>>(climberService.findAll(), HttpStatus.OK);
+    }
+
+
+    //post
+    @ApiOperation(value = "Creation d'un nouveau grimpeur")
+    @RequestMapping(method = RequestMethod.POST, value = "/")
+    public ResponseEntity<String> createActivity(@RequestBody ClimberDto climberDto, Principal principal) {
+
+        Climber climber = climberDto.fromDTO(climberDto);
+        climberService.save(climber);
+        return new ResponseEntity<String>(new String(climber.getId() + ""), HttpStatus.OK);
+    }
+
+
 
     //-----------------------------------------GREETING---------------------------------------------------------------
     @RequestMapping("/greeting")
@@ -69,60 +123,48 @@ public class ClimberApiController {
         climberService.addTopic(topic);
     }
 
-//-----------------------------------------CLIMBER---------------------------------------------------------------
-    //post
-    @RequestMapping(method = RequestMethod.POST, value = "/climbers")
-    public Climber AddClimber(
-            @RequestParam(required = true, defaultValue = "francois luc theotime") String firstName,
-            @RequestParam(required = true, defaultValue = "auxietre guesdon") String lastName,
-            @RequestParam(required = true, defaultValue = "18") int day,
-            @RequestParam(required = true, defaultValue = "10") int month,
-            @RequestParam(required = true, defaultValue = "200") int year,
-            @RequestParam(required = false, defaultValue = "bloc") String info) {
-        logger.info("==== create new climber ====");
-        return climberService.addClimber(firstName, lastName, day, month, year, info);
-    }
-
-    //get
-    @RequestMapping(method = RequestMethod.GET, value = "/climbers/firstName/{firstName}")
-    public List<Climber> findClimbersByFirstName(@PathVariable String firstName) {
-        return climberService.findClimbersByFirstName(firstName);
-    }
-
-    //get
-    @RequestMapping(method = RequestMethod.GET, value = "/climbers/lastName/{lastName}")
-    public List<Climber> findClimbersByLastName(@PathVariable String lastName) {
-        return climberService.findClimbersByLastName(lastName);
-    }
-
-    //get
-    @RequestMapping(method = RequestMethod.GET, value = "/climbers")
-    public List<Climber> findAll() {
-        return climberService.findAll();
-    }
-
-    //update
-    @RequestMapping(method = RequestMethod.PUT, value = "/climbers/{value}")
-    public void updateClimber(
-            @RequestParam(required = true, defaultValue = "") String firstName,
-            @RequestParam(required = true, defaultValue = "") String lastName,
-            @RequestParam(required = true, defaultValue = "") int day,
-            @RequestParam(required = true, defaultValue = "") int month,
-            @RequestParam(required = true, defaultValue = "") int year,
-            @RequestParam(required = false, defaultValue = "") String info) {
-        climberService.update(firstName, lastName, day, month, year, info);
-    }
-
-    //delete
-    @RequestMapping(method = RequestMethod.DELETE, value = "/climbers/{value}")
-    public void delete(@PathVariable int value) {
-
-        climberService.delete(value);
-    }
 
 
 
 
+
+
+
+//
+//    //get
+//    @RequestMapping(method = RequestMethod.GET, value = "/climbers/firstName/{firstName}")
+//    public List<Climber> findClimbersByFirstName(@PathVariable String firstName) {
+//        return climberService.findClimbersByFirstName(firstName);
+//    }
+//
+//    //get
+//    @RequestMapping(method = RequestMethod.GET, value = "/climbers/lastName/{lastName}")
+//    public List<Climber> findClimbersByLastName(@PathVariable String lastName) {
+//        return climberService.findClimbersByLastName(lastName);
+//    }
+//
+
+//
+//    //update
+//    @RequestMapping(method = RequestMethod.PUT, value = "/climbers/{value}")
+//    public void updateClimber(
+//            @RequestParam(required = true, defaultValue = "") String firstName,
+//            @RequestParam(required = true, defaultValue = "") String lastName,
+//            @RequestParam(required = true, defaultValue = "") int day,
+//            @RequestParam(required = true, defaultValue = "") int month,
+//            @RequestParam(required = true, defaultValue = "") int year,
+//            @RequestParam(required = false, defaultValue = "") String info) {
+//        climberService.update(firstName, lastName, day, month, year, info);
+//    }
+//
+//    //delete
+//    @RequestMapping(method = RequestMethod.DELETE, value = "/climbers/{value}")
+//    public void delete(@PathVariable int value) {
+//
+//        climberService.delete(value);
+//    }
+//
+//
 
 //-----------------------------------------FRIENDS---------------------------------------------------------------
 

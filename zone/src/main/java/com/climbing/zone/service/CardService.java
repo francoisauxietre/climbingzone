@@ -2,10 +2,10 @@ package com.climbing.zone.service;
 
 import com.climbing.zone.domain.Card;
 import com.climbing.zone.repository.CardRepository;
+import com.climbing.zone.service.dto.CardDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
@@ -15,31 +15,29 @@ public class CardService {
     @Autowired
     CardRepository cardRepository;
 
-    // findAll<T>()
-    public List<Card> findAll() {
-
-        return cardRepository.findAll();
+     public List<CardDto> findAll() {
+        return CardDto.toDTO(cardRepository.findAll());
     }
-    // add<T>(...)
-    public ResponseEntity<String> add(Card card) {
-        cardRepository.save(card);
-        return new ResponseEntity<>("a brand new card N°" + card.getId() + " has been created", HttpStatus.OK);
-    }
-
-
-
-    // get<T>ById(Long id)
-
-    // update<T>(<t> t)
-    // delete<T>()
-
-
-    public void deleteCardById(Long id) {
-        cardRepository.deleteCardById(id);
-    }
-
-    public List<Card> findCardsByClimbingRouteName(String name) {
-
-        return cardRepository.findCardsByClimbingRouteName(name);
-    }
+//    // add<T>(...)
+//    public ResponseEntity<String> add(Card card) {
+//        cardRepository.save(card);
+//        return new ResponseEntity<>("a brand new card N°" + card.getId() + " has been created", HttpStatus.OK);
+//    }
+//
+//
+//
+//    // get<T>ById(Long id)
+//
+//    // update<T>(<t> t)
+//    // delete<T>()
+//
+//
+//    public void deleteCardById(Long id) {
+//        cardRepository.deleteCardById(id);
+//    }
+//
+//    public List<Card> findCardsByClimbingRouteName(String name) {
+//
+//        return cardRepository.findCardsByClimbingRouteName(name);
+//    }
 }

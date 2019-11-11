@@ -16,7 +16,7 @@ Différents ReadMe: https://github.com/francoisauxietre/climbingzone/tree/master
 * ANGULAR 2 framework basé sur de Javascript 
 * ANGULAR JS autre 
 ###  B:
-* BACK-END programme traitant les données (ex avec spring boot java)
+* BACK-END programme traitant les données et par exemple accès à une base de donnee(ex avec spring boot java)
 ###  C:
 * CLASS comment seront fait les objets que l'on créera (MOULE) un cllass est une table en database
 * CRUD create Read Update Delete
@@ -41,6 +41,7 @@ Différents ReadMe: https://github.com/francoisauxietre/climbingzone/tree/master
 * JAVA  language de prog (Objet)
 * JPA java persistance Acces  (couche relation mapping entre un objet java et une base de donnee)
 * JDBC
+* JWT jason web token  (le token utile pour l'authentification d'un utilisateur)(header, payload, signature)
 
 ### L:
 LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et setters et Hashcode et toString
@@ -89,7 +90,6 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
 * The documentation is private, so only people you share the collection with can view it.
 -----------------
 exemple utilisateur avec postman
-{"firstName": "toto","lastName": "toto","day": 1,"month": 1,"year": 1,"info": "test"}
 -----------------
 // getAll<t>()
 // get<T>ById(Long id)
@@ -101,12 +101,13 @@ exemple utilisateur avec postman
 
 ###  @ANNOTATION UTILES 
 en faisant juste @Entity et @Id on peut avoir nos objet en base
+* @Entity : pour cree une entite en base
+* @RestController : pour cree le controlleur avec les acces a l'Api
+* @CrossOrigin(origins = "http://localhost:4200") 
+* @ID : index souvent autogenere pour etre unique
+* @Override : pour redefinir une methode d'une classe parente 
 
-* @RestController
-* @CrossOrigin(origins = "http://localhost:4200")
-* @ID
-* @ENTITY
-* @LOB   pour els champs depassant 255 caractere 
+* @LOB   pour les champs depassant 255 caractere 
 ---------------------
 ![realiteDonnees](https://user-images.githubusercontent.com/55358842/68078285-46d80600-fdd3-11e9-886d-483cebd003ee.png)
 ![download](https://user-images.githubusercontent.com/55358842/68078376-50fb0400-fdd5-11e9-81bc-95ca159e0f8a.png)
@@ -115,6 +116,33 @@ en faisant juste @Entity et @Id on peut avoir nos objet en base
 ![vue](https://user-images.githubusercontent.com/55358842/68078516-417cba80-fdd7-11e9-95e3-b0fcbf2aeed6.png)
 
 
+
+* <span style=“color:green”>example de model de climbingroute</span>
+* <span style="color:red">red</span>
+* <span style="color:blue">blue</span>
+
+<pre><code>
+{
+  "bonus": "SLOPE",
+  "climbingRouteName": "la voie du sud",
+  "createdAt": "2019-11-10T18:28:15.334Z",
+  "deletedAt": "2019-11-10T18:28:15.334Z",
+  "difficulty": "56",
+  "id": 0,
+  "info": "string",
+  "latitude": 2.3654,
+  "longitude": 4.326565,
+  "mental": 1,
+  "modifiedAt": "2019-11-10T18:28:15.334Z",
+  "name": "Test",
+  "physical": 1,
+  "routeType": "BOULDER",
+  "star": 1,
+  "tactical": 1,
+  "technical": 1,
+  "zoneType": "INTERIOR"
+}
+</code></pre>
 
 
     // a chaque fois qu'on mettra un persist on va faire un log

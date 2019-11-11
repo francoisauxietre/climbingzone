@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:insert="fragments.html :: headerfiles"></head>
+<head th:insert="fragments.html :: headerfiles"><title>ClimbingZone</title></head>
 <body>
 <header th:insert="fragments.html :: nav"></header>
-<!-- Page content goes here -->
 <div class="container">
-    <div class="jumbotron">
-        <h1 class="display-4">Climbing Zone V1.0</h1>
-        <p class="lead">Acces for anyone:
-        <hr class="my-4">
-    </div>
+	<div class="jumbotron">
+		<h1 class="display-4">Climbing Zone V1.0</h1>
+		<p class="lead">Acces for anyone:
+		<div><img src="http://localhost:63342/zone/templates/admin/1.png"
+					 alt="Error please, this url don't exist">
+		</div>
+		<hr class="my-4">
+	</div>
+	<a href="http://localhost:8080/swagger-ui.html#/"><i class="fas fa-book"></i> Documentation</a>
+	<a href="documentation/index.html"><i class="fas fa-book"></i> Swagger APi</a>
+	<a href="http://localhost:8080/v2/api-docs"><i class="fas fa-quit"></i>Api-docs</a>
+	<a href="profile/index.html"><i class="fas fa-tasks"></i> Management</a>
+	<a href="http://localhost:8080/swagger-ui.html#/"><i class="fas fa-tasks"></i> Swagger API</a>
+	<a href="video"><i class="fas fa-coffee"></i> Olivier Barais</a>
+	<a href="admin"><i class="fas fa-user-lock"></i> Admin</a>
+	<a href="/login"><i class="fas fa-user"></i> Login</a>
 
-
-
-    <!--                <a href="documentation/index.html"><i class="fas fa-book"></i> Documentation</a>-->
-    <!--                <a href="profile/index.html"><i class="fas fa-tasks"></i> Management</a>-->
-    <!--                <a href="video"><i class="fas fa-coffee"></i> Olivier Barais</a>-->
-    <!--                <a href="admin"><i class="fas fa-user-lock"></i> Admin</a>-->
-
-</div>
 </div>
 </body>
 </html>

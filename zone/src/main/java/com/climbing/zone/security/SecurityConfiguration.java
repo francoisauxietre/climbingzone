@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
@@ -19,31 +20,50 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     //    definition des utilisateurs et de leurs roles
     @Override
-    protected void configure(AuthenticationManagerBuilder authentification) throws Exception {
-        authentification
+    protected void configure(AuthenticationManagerBuilder authentication) throws Exception {
+        authentication
                 .inMemoryAuthentication()
                 .withUser("admin").password(passwordEncoder().encode("admin")).roles("ADMIN")
                 .and()
-                .withUser("video").password(passwordEncoder().encode("video")).roles("VIDEO")
+                .withUser("video").password(passwordEncoder().encode("video")).roles("VIDEO").authorities("ACCES_VIDEO", "ACCES_MANAGER")
                 .and()
-                .withUser("management").password(passwordEncoder().encode("management")).roles("MANAGEMENT")
+                .withUser("manager").password(passwordEncoder().encode("manager")).roles("MANAGER").authorities("ACCES_MANAGER")
+                .and()
+                .withUser("profile").password(passwordEncoder().encode("profile")).roles("PROFILE").authorities("ACCES_PROFILE")
         ;
     }
-
+//
+////    @Override
+////    public void configure(WebSecurity web) throws Exception {
+////        web.ignoring().antMatchers("/v2/api-docs",
+////                "/configuration/ui",
+////                "/swagger-resources/**",
+////                "/configuration/security",
+////                "/swagger-ui.html",
+////                "/webjars/**");
+////    }
+//
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        http.cors().and().csrf().disable(); // ajout car chaque methode post faisait une erreur 403
         http
+
                 .authorizeRequests()
-                .antMatchers("/index.html").permitAll()
-                .antMatchers("/profile/index").authenticated()
-                .antMatchers("/admin/index").hasRole("ADMIN")
-                .antMatchers("/video/index").hasRole("VIDEO")
-                .antMatchers("/management/index").hasAnyRole("ADMIN", "MANAGER")
+                .antMatchers("/video/**").hasAnyRole("ADMIN", "VIDEO")
+                .antMatchers("/manager/**").hasAnyRole("ADMIN", "MANAGER")
+                .antMatchers("/profile/**", "/users/**").hasAnyRole("ADMIN", "MANAGER")
+//                .antMatchers("/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**").hasAnyRole("ADMIN", "PROFILE")
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/log").hasRole("ADMIN")
+                .antMatchers("/management/**").hasAnyRole("ADMIN", "PROFILE")
+//                .antMatchers("/swagger-ui.html#/**").authenticated()
+                .antMatchers("/climbingroutes/**").authenticated()
+                .antMatchers("/cards/**").authenticated()
+                .antMatchers("/climbers/**").authenticated()
+                .antMatchers("/api/**").hasAuthority("ACCES_ADMIN")
+
                 .and()
                 .httpBasic();
-//                .authorizeRequests()
-//                .antMatchers("/", "/home").permitAll()
-//                .anyRequest().authenticated()
 //                .and()
 //                .formLogin()
 //                .loginPage("/login")
@@ -51,23 +71,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .and()
 //                .logout()
 //                .permitAll();
-    }
-
+   }
+//
+//
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
 //
-//    @Override
-//    public UserDetailsService userDetailsService() {
-//        UserDetails user =
-//                User.withDefaultPasswordEncoder()
-//                        .username("user")
-//                        .password("password")
-//                        .roles("USER")
-//                        .build();
-//
-//        return new InMemoryUserDetailsManager(user);
-//    }
+////
+////    @Override
+////    public UserDetailsService userDetailsService() {
+////        UserDetails user =
+////                User.withDefaultPasswordEncoder()
+////                        .username("user")
+////                        .password("password")
+////                        .roles("USER")
+////                        .build();
+////
+////        return new InMemoryUserDetailsManager(user);
+////    }
 }
