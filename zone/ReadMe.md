@@ -103,11 +103,19 @@ exemple utilisateur avec postman
 en faisant juste @Entity et @Id on peut avoir nos objet en base
 * @Entity : pour cree une entite en base
 * @RestController : pour cree le controlleur avec les acces a l'Api
+* @Controller   ne sont pas les meme 
 * @CrossOrigin(origins = "http://localhost:4200") 
 * @ID : index souvent autogenere pour etre unique
 * @Override : pour redefinir une methode d'une classe parente 
 
 * @LOB   pour les champs depassant 255 caractere 
+
+The job of @Controller is to create a Map of model object and find a view but @RestController simply 
+return the object and object data is directly written into HTTP response as JSON or XML.
+
+This can also be done with traditional @Controller and use @ResponseBody annotation but since this is 
+the default behavior of RESTful Web services, Spring introduced @RestController which combined the behavior 
+of @Controller and @ResponseBody together.
 ---------------------
 ![realiteDonnees](https://user-images.githubusercontent.com/55358842/68078285-46d80600-fdd3-11e9-886d-483cebd003ee.png)
 ![download](https://user-images.githubusercontent.com/55358842/68078376-50fb0400-fdd5-11e9-81bc-95ca159e0f8a.png)

@@ -1,20 +1,15 @@
 package com.climbing.zone.controller;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-
 
 @Controller
-@RequestMapping("admin")
-public class AdminController {
+@RequestMapping("management")
+public class ManagementController {
 
     @GetMapping("index")
     public String index() {
-        return "admin/index";
+        return "management/index";
     }
 }
-
