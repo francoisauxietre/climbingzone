@@ -169,3 +169,80 @@ of @Controller and @ResponseBody together.
     public void destroy() {
         logger.info("destruction de " + this.info);
     }
+ installation sur le serveur distant auxietre.com
+     1  sudo apt-get update
+        2  sudo apt-get dist-upgrade -y
+        3  hostname -f
+        4  vi sudo nano /etc/hosts
+        5  cd /etc/hosts
+        6  ls /etc
+        7  sudo vi /etc/hosts
+        8  wget https://software.virtualmin.com/gpl/scripts/install.sh
+        9  sudo /bin/sh ./install.sh
+       10  sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+       11  sudo systemctl start docker
+       12  service start docker
+       13  sudo apt-get remove docker docker-engine docker.io
+       14  sudo apt install docker.io
+       15  sudo systemctl start docker
+       16  sudo systemctl enable docker
+       17  exit
+       18  ls
+       19  pwd
+       20  cd root/
+       21  ls
+       22  exit
+       23  docker ps
+       24  cd francois/climbingzone/
+       26  cd zone
+       28  ./mvnw package && java -jar target/gs-spring-boot-docker-0.1.0.jar
+       29  mvn clean package
+       30  sudo apt-get install maven
+       50  git clone https://github.com/francoisauxietre/climbingzone.git
+       52  cd climbingzone/
+       54  cd zone
+       56  docker ps   // voir si les docker sont en route
+       58  mvn clean package
+       59  git pull
+       60  mvn clean package
+       61  docker buil -t climbingzone
+       62  docker build -t climbingzone
+       63  docker build -t climbingzone .
+       65  docker image ls
+       66  history
+
+
+a jouter et a tester pour mapstruct 
+<properties>
+    <org.mapstruct.version>1.3.1.Final</org.mapstruct.version>
+</properties>
+...
+<dependencies>
+    <dependency>
+        <groupId>org.mapstruct</groupId>
+        <artifactId>mapstruct</artifactId>
+        <version>${org.mapstruct.version}</version>
+    </dependency>
+</dependencies>
+...
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.5.1</version> <!-- or newer version -->
+            <configuration>
+                <source>1.8</source> <!-- depending on your project -->
+                <target>1.8</target> <!-- depending on your project -->
+                <annotationProcessorPaths>
+                    <path>
+                        <groupId>org.mapstruct</groupId>
+                        <artifactId>mapstruct-processor</artifactId>
+                        <version>${org.mapstruct.version}</version>
+                    </path>
+                    <!-- other annotation processors -->
+                </annotationProcessorPaths>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
