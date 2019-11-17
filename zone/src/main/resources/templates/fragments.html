@@ -19,19 +19,21 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#" th:href="@{~/index}"><i class="fa fa-home"></i>Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" th:href="@{~/profile/index}">Profile</a>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a  class="nav-link" href="#" th:href="@{~/profile/index}">Profile</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" th:href="@{~/admin/index}">Admin</a>
+                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a  class="nav-link" href="#" th:href="@{~/admin/index}">Admin</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')">
                     <a class="nav-link" href="#" th:href="@{~/management/index}">Management</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" form-method="post" th:action="@{/logout}">
 <!--                ajout si l'user est anthentifier on ajoute le bouton logout-->
+                <button sec:authorize="isAnonymous()" class="btn btn-outline-primary my-2 my-sm-0 btn-sm" type="submit" th:href="@{-/login}">login</button>
                 <button sec:authorize="isAuthenticated()" class="btn btn-outline-danger my-2 my-sm-0 btn-sm" type="submit">Logout</button>
+
             </form>
         </div>
     </nav>
