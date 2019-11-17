@@ -64,18 +64,23 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        log.info(user.getUsername() +" is log in ");
+        if(user!=null)
+        log.info(user.getUsername() +" is log in");
         return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        log.info(user.getUsername() +" is log in also");
+        if(user!=null)
+        log.info(user.getUsername() +" is log in");
         return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return this.user.getActive() == 1;
+        if(user!=null){
+            log.info(user.getUsername() +" is log in");
+            return this.user.getActive() == 1;}
+        else return false;
     }
 }
