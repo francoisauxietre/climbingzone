@@ -5,7 +5,7 @@ card games for climbers
 
 
 installé dans des docker sur la machine 
-chez ovh : vps541599.ovh.net
+chez ovh : 
 
 intsallation de différents docker
 le docker de mysql du fichier docker-compose ou la commande 
