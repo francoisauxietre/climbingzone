@@ -215,6 +215,8 @@ maj ctrl f pour trouver les occurences d'un mot
        63  docker build -t climbingzone .
        65  docker image ls
        66  history
+       
+       pour les log docker logs idcontainer 
 
 
 a jouter et a tester pour mapstruct 

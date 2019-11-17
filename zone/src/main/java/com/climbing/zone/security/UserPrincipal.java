@@ -2,19 +2,9 @@ package com.climbing.zone.security;
 
 import com.climbing.zone.domain.User;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -24,7 +14,7 @@ import java.util.List;
 public class UserPrincipal implements UserDetails {
     private User user;
 
-    public UserPrincipal(User user){
+    public UserPrincipal(User user) {
         this.user = user;
     }
 
@@ -64,23 +54,23 @@ public class UserPrincipal implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        if(user!=null)
-        log.info(user.getUsername() +" is log in");
+        if (user != null)
+            log.info(user.getUsername() + " is log in");
         return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        if(user!=null)
-        log.info(user.getUsername() +" is log in");
+        if (user != null)
+            log.info(user.getUsername() + " is log ?");
         return true;
     }
 
     @Override
     public boolean isEnabled() {
-        if(user!=null){
-            log.info(user.getUsername() +" is log in");
-            return this.user.getActive() == 1;}
-        else return false;
+        if (user != null) {
+            log.info(user.getUsername() + " is logged");
+            return this.user.getActive() == 1;
+        } else return false;
     }
 }
