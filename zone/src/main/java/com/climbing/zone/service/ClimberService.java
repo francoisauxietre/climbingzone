@@ -2,27 +2,20 @@ package com.climbing.zone.service;
 
 import com.climbing.zone.domain.Climber;
 import com.climbing.zone.domain.Topic;
-//import com.climbing.zone.domain.User;
 import com.climbing.zone.repository.ClimberRepository;
 import com.climbing.zone.service.dto.ClimberDto;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Date;
 
+@Slf4j
 @Service
 public class ClimberService {
-    @Autowired
-    Logger logger;
-//    Logger logger = LoggerFactory.getLogger(Climber.class);
 
     private List<Topic> topics = new ArrayList<>(Arrays.asList(
             new Topic((long) 1, "test", "java"),

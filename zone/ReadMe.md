@@ -106,7 +106,8 @@ en faisant juste @Entity et @Id on peut avoir nos objet en base
 * @Controller   ne sont pas les meme 
 * @CrossOrigin(origins = "http://localhost:4200") 
 * @ID : index souvent autogenere pour etre unique
-* @Override : pour redefinir une methode d'une classe parente 
+* @Override : pour redefinir une methode d'une classe parente
+* @sl4j : une nouvelle version du logger qui du cout est  par exemple log.info("GET on /places"); et plus logger 
 
 * @LOB   pour les champs depassant 255 caractere 
 
@@ -128,6 +129,10 @@ of @Controller and @ResponseBody together.
 * <span style=“color:green”>example de model de climbingroute</span>
 * <span style="color:red">red</span>
 * <span style="color:blue">blue</span>
+
+TOUCHE UTILES
+maj ctrl s pour voir les erreurs de codes
+maj ctrl f pour trouver les occurences d'un mot
 
 <pre><code>
 {
@@ -156,18 +161,18 @@ of @Controller and @ResponseBody together.
     // a chaque fois qu'on mettra un persist on va faire un log
     @PrePersist
     public void logDebut() {
-        logger.info("creation d'une voie en cours " + this.name);
+        log.info("creation d'une voie en cours " + this.name);
     }
 
     @PostPersist
     public void logFin() {
-        logger.info("creation faite de " + this.name);
+        log.info("creation faite de " + this.name);
     }
 
     //en cas de destruction
     @PreDestroy
     public void destroy() {
-        logger.info("destruction de " + this.info);
+        log.info("destruction de " + this.info);
     }
  installation sur le serveur distant auxietre.com
      1  sudo apt-get update

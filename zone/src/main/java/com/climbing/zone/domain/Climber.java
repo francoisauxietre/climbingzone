@@ -6,13 +6,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,7 +22,6 @@ import java.util.Set;
 @Table(name = "climber")
 @Data
 public class Climber implements Serializable {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -89,12 +85,10 @@ public class Climber implements Serializable {
 
     public void removeFriends(Climber climber) {
         this.friends.forEach(climber1 -> {
-            if (climber1.getId() == climber.getId()) {
+            if (climber1.getId().equals(climber.getId())) {
                 friends.remove(climber);
-                log.info("climber"+climber.getFirstName()+"was delete form your friends");
-
+                log.info("climber" + climber.getFirstName() + "was delete form your friends");
             }
         });
     }
-
 }

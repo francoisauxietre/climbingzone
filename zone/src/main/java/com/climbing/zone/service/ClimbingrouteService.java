@@ -6,20 +6,17 @@ import com.climbing.zone.repository.CardRepository;
 import com.climbing.zone.repository.ClimberRepository;
 import com.climbing.zone.repository.ClimbingrouteRepository;
 import com.climbing.zone.service.dto.ClimbingrouteDto;
-import org.slf4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
+@Slf4j
 @Service
 public class ClimbingrouteService {
 
-//    Logger logger = LoggerFactory.getLogger(Climber.class);
-
-    @Autowired
-    Logger logger;
 
     @Autowired
     ClimbingrouteRepository climbingrouteRepository;
@@ -40,7 +37,7 @@ public class ClimbingrouteService {
     public Climbingroute save(Climbingroute climbingroute) {
         Card card = new Card();
         Climber climber = new Climber();
-        climber.setId((long)20); // ici on mettra exactement la seesion quand on sera logger
+        climber.setId((long)20); // ici on mettra exactement la seesion quand on sera connecter
         climber.setLastName("toto");
         climber.setFirstName("1");
         Date date = new Date(System.currentTimeMillis());
@@ -65,7 +62,8 @@ public class ClimbingrouteService {
         card.setDifficuty(climbingroute.getDifficulty());
         card.setQrcode("qrcode_"+(int)(Math.random()*1000)+".jpg");
         card.setPhoto("photo_"+(int)(Math.random()*1000)+".jpg");
-        System.out.println(cardPk);
+        log.info("cardPk +"+ cardPk.toString());
+
         //mega bizarre on ne peut sauver la carte que si on a deja sauver le grimpeur et la voie
         climbingrouteRepository.save(climbingroute);
         climberRepository.save(climber);

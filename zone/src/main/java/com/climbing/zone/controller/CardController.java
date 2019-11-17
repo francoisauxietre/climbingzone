@@ -7,7 +7,7 @@ import com.climbing.zone.service.dto.CardDto;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.slf4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Slf4j
 @RestController(value = "/cards")
 @CrossOrigin(origins = "http://localhost:4200")
 @Api(value = "card", tags = {"Api Cards"})
@@ -34,13 +35,11 @@ public class CardController {
     @Autowired
     ClimbingrouteService climbingrouteService;
 
-    @Autowired
-    private Logger logger;
 
     @ApiOperation(value = "cards DTO")
     @RequestMapping(method = RequestMethod.GET, value = "/")
     public ResponseEntity<List<CardDto>> findAll() {
-        logger.info("liste des cartes demandee");
+        log.info("liste des cartes demandee");
         return new ResponseEntity<List<CardDto>>(cardService.findAll(), HttpStatus.OK);
     }
 }

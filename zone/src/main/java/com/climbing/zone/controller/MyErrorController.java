@@ -1,8 +1,6 @@
 //package com.climbing.zone.controller;
 //
 //import com.climbing.zone.domain.Climber;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
 //import org.springframework.boot.web.servlet.error.ErrorController;
 //import org.springframework.http.HttpStatus;
 //import org.springframework.stereotype.Controller;
@@ -14,7 +12,6 @@
 //@Controller
 //public class MyErrorController implements ErrorController {
 //
-//    Logger logger = LoggerFactory.getLogger(Climber.class);
 //
 //    @Override
 //    public String getErrorPath() {
