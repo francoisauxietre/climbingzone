@@ -2,7 +2,7 @@
 card games for climbers
 
 build tester sur Travis
-https://travis-ci.org/francoisauxietre/climbingzone.svg?branch=master
+![alt text](https://travis-ci.org/francoisauxietre/climbingzone.svg?branch=master)
 
 coveralls
 [![Coverage Status](https://coveralls.io/repos/github/francoisauxietre/climbingzone/badge.svg?branch=master)](https://coveralls.io/github/francoisauxietre/climbingzone?branch=master)
