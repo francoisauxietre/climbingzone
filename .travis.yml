@@ -10,7 +10,7 @@ script:
 #pour du angular
 # language: node_js
 #node_js:
-  - "12.4"
+#  - "12.4"
 #
 #script: 'true'
 
