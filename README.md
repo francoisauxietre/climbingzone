@@ -1,6 +1,13 @@
 # climbingzone
 card games for climbers
 
+pour entrer dans le mysql
+docker exec -it bc741579c535 bash
+acces dans mysql 
+mysql -u root -p (mot de passe du docker-compose)
+mysql> show databases;
+
+
 * some readme one in each project
 
 
