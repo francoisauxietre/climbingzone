@@ -1,5 +1,8 @@
 language: java
-jdk: oraclejdk8
+jdk:
+  - oraclejdk11
+  - openjdk10
+  - openjdk11
  
 script:
   cd zone
