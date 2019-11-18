@@ -1,11 +1,18 @@
 # climbingzone
 card games for climbers
 
+build tester sur Travis
+https://travis-ci.org/francoisauxietre/climbingzone.svg?branch=master
+
 pour entrer dans le mysql
 docker exec -it bc741579c535 bash
 acces dans mysql 
 mysql -u root -p (mot de passe du docker-compose)
 mysql> show databases;
+mysql> use climbing;
+mysql> select * from climber;
+verfification 
+
 
 
 * some readme one in each project
