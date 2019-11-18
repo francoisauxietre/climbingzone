@@ -6,8 +6,6 @@ services:
      restart: always
      networks:
       - api
-     ports:
-      - "3306:3306"
      environment:
        MYSQL_ROOT_PASSWORD: "fafa1"
        MYSQL_DATABASE: "climbing"
@@ -28,7 +26,6 @@ services:
       DB_USER: "root"
       DB_PASSWORD: "fafa1"
       DB_URL: db
-      DB_PORT: "3306"
       
 networks:
       api:
