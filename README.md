@@ -4,6 +4,9 @@ card games for climbers
 build tester sur Travis
 https://travis-ci.org/francoisauxietre/climbingzone.svg?branch=master
 
+coveralls
+[![Coverage Status](https://coveralls.io/repos/github/francoisauxietre/climbingzone/badge.svg?branch=master)](https://coveralls.io/github/francoisauxietre/climbingzone?branch=master)
+
 pour entrer dans le mysql
 docker exec -it bc741579c535 bash
 acces dans mysql 
