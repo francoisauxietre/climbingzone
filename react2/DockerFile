@@ -10,7 +10,7 @@ WORKDIR /app/directory/path
   #Go into the app folder by making it the working directory
 COPY package.json and COPY package-lock.json
   #Copy the local package.json and package-lock.json files into the container to install node modules
-RUN npm install install
+RUN npm install
   #the node modules that the project needs
 COPY . /app/directory/path #
   #Copy local code into the container
