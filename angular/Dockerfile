@@ -1,22 +1,42 @@
 ## base image
-FROM node:12.2.0-alpine
-#
-## set working directory
+FROM node:alpine AS builder
+
 WORKDIR /app
+
+COPY . .
+
+RUN npm install && \
+    npm run build
+
+FROM nginx:alpine
+
+COPY --from=builder /app/dist/* /usr/share/nginx/html/
+
+
+
 #
-## add `/app/node_modules/.bin` to $PATH
-ENV PATH /app/node_modules/.bin:$PATH
 #
-## install and cache app dependencies
-COPY package.json /app/package.json
-RUN npm update
-RUN npm install
-RUN npm install --save core-js@^3
-RUN ng update @angular/cli
-RUN npm install @vue/cli@3.7.0 -g
 #
-## start app
-CMD ng serve --port 8081 --host 0.0.0.0 --disableHostCheck true
+#
+#
+#FROM node:12.2.0-alpine
+##
+### set working directory
+#WORKDIR /app
+##
+### add `/app/node_modules/.bin` to $PATH
+#ENV PATH /app/node_modules/.bin:$PATH
+##
+### install and cache app dependencies
+#COPY package.json /app/package.json
+#RUN npm update
+#RUN npm install
+#RUN npm install --save core-js@^3
+#RUN ng update @angular/cli
+#RUN npm install @vue/cli@3.7.0 -g
+##
+### start app
+#CMD ng serve --port 8081 --host 0.0.0.0 --disableHostCheck true
 
 # exemple de docker file complet pour un jhipster a tester
 #
