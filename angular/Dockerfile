@@ -9,7 +9,9 @@ ENV PATH /app/node_modules/.bin:$PATH
 #
 ## install and cache app dependencies
 COPY package.json /app/package.json
+RUN npm update
 RUN npm install
+RUN npm install --save core-js@^3
 RUN npm install @vue/cli@3.7.0 -g
 #
 ## start app

@@ -68,3 +68,40 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+docker compose sur le server 
+version: '3.3'
+
+services:
+   db:
+     image: mysql:5.7
+     restart: always
+     networks:
+      - api
+     environment:
+       MYSQL_ROOT_PASSWORD: "fafa1"
+       MYSQL_DATABASE: "climbing"
+
+   spring:
+     depends_on:
+       - db
+     build: zone/
+     networks:
+      - api
+     ports:
+      - "8080:8080"
+      - "8081:8081"
+     expose:
+      - "8080"
+      - "8081"
+     restart: always
+     environment:
+      DB_NAME: "climbing"
+      DB_USER: "root"
+      DB_PASSWORD: "fafa1"
+      DB_URL: db
+networks:
+    api:
+      
+      
+
