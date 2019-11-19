@@ -1,16 +1,29 @@
 ## base image
-FROM node:alpine AS builder
-
+FROM node:latest as node
 WORKDIR /app
-
 COPY . .
+RUN npm install
+RUN npm run build --prod
 
-RUN npm install && \
-    npm run build
-
+# stage 2
 FROM nginx:alpine
+COPY --from=node /app/dist/angular-app /usr/share/nginx/html
 
-COPY --from=builder /app/dist/* /usr/share/nginx/html/
+#
+#
+#
+#FROM node:alpine AS builder
+#
+#WORKDIR /app
+#
+#COPY . .
+#
+#RUN npm install && \
+#    npm run build
+#
+#FROM nginx:alpine
+#
+#COPY --from=builder /app/dist/* /usr/share/nginx/html/
 
 
 
