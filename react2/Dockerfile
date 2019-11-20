@@ -3,7 +3,7 @@ FROM node:8.7.0-alpine
 WORKDIR /app
 # EXPOSE 3000
 COPY . ./
-COPY package.json and COPY package-lock.json
+# COPY package.json .
 RUN npm install
 # COPY . /app/directory/path #
 # CMD ["npm", "start"]
