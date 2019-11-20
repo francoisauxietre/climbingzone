@@ -50,7 +50,6 @@ services:
      expose:
      - "8081"
      restart: always
-     export DOCKER_HOST=127.0.0.1:2375
 
 networks:
   api:
