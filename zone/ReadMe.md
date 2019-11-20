@@ -253,3 +253,19 @@ a jouter et a tester pour mapstruct
         </plugin>
     </plugins>
 </build>
+
+***docker file Angular
+#base image
+FROM node:latest as node
+WORKDIR /app
+EXPOSE 4200
+COPY . .
+RUN npm install
+RUN npm run build --prod
+
+
+#stage 2
+FROM nginx:alpine
+COPY --from=node /app/dist/angular-escalade /usr/share/nginx/html
+
+

@@ -4,8 +4,7 @@ import Physical from "../classe/Physical";
 import Technical from "../classe/Technical";
 import Tactical from "../classe/Tactical";
 import Mental from "../classe/Mental";
-import './../css/style1.css'
-import './../css/style1.scss'
+
 
 class Card extends Component {
     constructor(props) {
