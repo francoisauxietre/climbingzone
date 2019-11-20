@@ -7,8 +7,7 @@ COPY . ./
 RUN npm install
 # COPY . /app/directory/path #
 # CMD ["npm", "start"]
-RUN npm build
-
+RUN npm run-script build
 
 COPY --from=react-build /app/build /usr/share/nginx/html
 EXPOSE 80
