@@ -1,16 +1,17 @@
-FROM node:8.7.0-alpine
+# The Node version that we'll be running for our version of React.
+# You may have to search the Node directory for a version that fits
+# the version of React you're using.
+FROM node:8.9-alpine
 
+# Create a work directory and copy over our dependency manifest files.
+RUN mkdir /app
 WORKDIR /app
-# EXPOSE 3000
-COPY . ./
-COPY package*.json ./
-RUN npm install
-# COPY . /app/directory/path #
-# CMD ["npm", "start"]
-RUN npm run-script build
+COPY /src /app/src
+COPY ["package.json", "package-lock.json*", "./"]
 
-FROM nginx:alpine
-COPY --from=react-build /app/build /usr/share/nginx/html
-EXPOSE 80
+# If you're using yarn:
+#  yarn build
+RUN npm install --production --silent && mv node_modules ../
 
-CMD ["nginx", "-g", "daemon off;"]
+# Expose PORT 3000 on our virtual machine so we can run our server
+EXPOSE 3000
