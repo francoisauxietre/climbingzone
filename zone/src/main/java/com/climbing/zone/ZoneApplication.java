@@ -126,7 +126,7 @@ public class ZoneApplication {
         Set<Climbingroute> climbingroutes = new HashSet<>();
         Date date = new Date(System.currentTimeMillis());
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 50; i++) {
 //--------------------------------CLIMBER-----------------------------
             Climber climber = new Climber();
             climber.setLastName("" + firstName.random());
@@ -159,7 +159,7 @@ public class ZoneApplication {
 
             climbingrouteRepository.save(climbingroute);
 //-----------------------------------CARD-----------------------------------
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 50; j++) {
                 Card card = new Card();
                 CardPk cardPk = new CardPk();
                 cardPk.setClimber(climber);
