@@ -3,13 +3,14 @@ FROM node:8.7.0-alpine
 WORKDIR /app
 # EXPOSE 3000
 COPY . ./
-# COPY package.json .
+COPY package*.json ./
 RUN npm install
 # COPY . /app/directory/path #
 # CMD ["npm", "start"]
 RUN npm run-script build
 
-COPY /app/build /usr/share/nginx/html
+FROM nginx:alpine
+COPY --from=react-build /app/build /usr/share/nginx/html
 EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
