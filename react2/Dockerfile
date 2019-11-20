@@ -19,15 +19,12 @@
 #CMD ["/bin/sh", "-c", "exec nginx -g 'daemon off;';"]
 #WORKDIR /var/www/localhost/htdocs
 
-FROM node:7.10 as build-deps
+FROM node:latest
 WORKDIR /usr/src/app
 COPY package.json ./
 RUN npm install
-COPY . ./
+ADD src /usr/app/src
+ADD public /usr/src/app/public
 RUN npm build
 
-# Stage 2 - the production environment
-FROM nginx:1.12-alpine
-COPY --from=build-deps /usr/src/app/build /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "start"]
