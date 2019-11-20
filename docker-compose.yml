@@ -46,9 +46,9 @@ services:
      networks:
       - api
      ports:
-     - "8081:8081"
+     - "4200:4200"
      expose:
-     - "8081"
+     - "4200"
      restart: always
 
 networks:
