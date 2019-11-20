@@ -1,10 +1,11 @@
 ## base image
 FROM node:latest as node
 WORKDIR /app
+EXPOSE 4200
 COPY . .
 RUN npm install
 RUN npm run build --prod
-EXPOSE 4200
+
 
 # stage 2
 FROM nginx:alpine
