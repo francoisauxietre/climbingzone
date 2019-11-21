@@ -16,11 +16,11 @@ export class ClimbersListComponent implements OnInit {
   private message = '';
   public index = 0;
 
-  constructor(private ClimberApiService: ClimbersService, private friendsApiService: FriendsService) {
+  constructor(private climbersService: ClimbersService, private friendsApiService: FriendsService) {
   }
 
   ngOnInit() {
-    this.ClimberApiService.getApiClimbers()
+    this.climbersService.getApiClimbers()
       .subscribe(
         data => {
           this.ClimberApi = data;

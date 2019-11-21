@@ -1,5 +1,13 @@
 # climbingzone
 card games for climbers
+*site Admin en spring
+http://vps541599.ovh.net:8080/
+*site Angular
+http://vps541599.ovh.net:4200/
+*site react
+http://vps541599.ovh.net:3000/
+site vuejs
+http://vps541599.ovh.net:8081/
 
 build tester sur Travis
 ![alt text](https://travis-ci.org/francoisauxietre/climbingzone.svg?branch=master)
