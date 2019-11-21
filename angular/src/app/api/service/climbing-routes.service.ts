@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ClimbingRoutesService {
-  private url = 'http://localhost:8080/cards/';
+  private url = 'http://vps541599.ovh.net:8080/climbingroutes/';
 
   constructor(private httpclient: HttpClient) {
   }
