@@ -9,7 +9,8 @@ RUN mkdir /run/nginx
 RUN apk add nodejs
 RUN apk add npm
 RUN ls -a
-CMD ["cd public"]
+WORKDIR /public
+RUN cd /public
 RUN ls -a
 RUN npm install
 RUN npm run build
@@ -17,7 +18,6 @@ RUN apk del nodejs
 RUN apk del npm
 
 CMD ["/bin/sh", "-c", "exec nginx -g 'daemon off;';"]
-WORKDIR /usr/share/nginx/html
 
 #FROM node:latest
 #WORKDIR /usr/src/app
