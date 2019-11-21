@@ -11,5 +11,8 @@ js javascript  jsx javascript et xml
  
  docker exec -it NOdedocker sh 
   docker exec -it NOdedocker bash 
+  
  pour voir les log error de nginx
  /var/log/nginx/error.log
+ pour voir les connection au site 
+ /var/log/nginx/acces.log

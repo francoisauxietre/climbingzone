@@ -15,3 +15,10 @@ A
 :
 
 Dockerfile,6/6/6651ddff6eb82c840ced7c1dddee15c6e1913dd4
+A
+public/index.html,f/4/f43ecdf8d666ee908aacce037b4cd72159e4741b
+:
+
+nginx.conf,e/d/ed8b45da44d73de79bd7c1c203a419d6ee7d6fde
+9
+	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
