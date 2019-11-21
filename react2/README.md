@@ -7,3 +7,9 @@ js javascript  jsx javascript et xml
  acces au shell  dans le docker-compose up
  docker-compose exec  bash
  exit pour sortir
+ 
+ 
+ docker exec -it NOdedocker sh 
+  docker exec -it NOdedocker bash 
+ pour voir les log error de nginx
+ /var/log/nginx/error.log
