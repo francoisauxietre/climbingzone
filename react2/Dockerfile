@@ -9,7 +9,7 @@ RUN mkdir /run/nginx
 RUN apk add nodejs
 RUN apk add npm
 RUN ls -a
-RUN cd /public
+CMD ["cd public"]
 RUN ls -a
 RUN npm install
 RUN npm run build
