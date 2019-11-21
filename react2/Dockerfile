@@ -10,6 +10,7 @@ RUN apk add nodejs
 RUN apk add npm
 RUN ls -a
 RUN cd /usr/share/nginx/html
+RUN ls -a
 RUN npm install
 RUN npm run build
 RUN apk del nodejs
