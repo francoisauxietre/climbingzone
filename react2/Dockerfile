@@ -1,6 +1,6 @@
 FROM alpine
 EXPOSE 3000
-RUN npm install
+
 COPY . /usr/share/nginx/html
 # copy le fichier et ecrase le default de nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
@@ -10,7 +10,7 @@ RUN apk add nodejs
 RUN apk add npm
 RUN ls -a
 RUN cd /usr/share/nginx/html
-
+RUN npm install
 RUN npm run build
 RUN apk del nodejs
 RUN apk del npm
