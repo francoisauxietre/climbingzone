@@ -13,7 +13,7 @@ export class ClimberAddComponent {
   private url1 = 'https://jsonplaceholder.typicode.com';
   private url2 = 'https://jsonplaceholder.typicode.com/test';
   private url3 = 'https://jsonplaceholder.typicode.com/posts?userId=2';
-  private url4 = 'http://localhost:8080/api/Climber/test';
+  private url4 = 'http://spring.auxietre.com/climbers/test';
   private posts: Observable<any>;
   private newPost: Observable<any>;
   private climberPost: Observable<any>;

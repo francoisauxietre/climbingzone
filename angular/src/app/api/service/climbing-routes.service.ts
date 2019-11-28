@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ClimbingRoutesService {
-  private url = 'http://vps541599.ovh.net:8080/climbingroutes/';
+  private url = 'http://spring.auxietre.com/climbingroutes/';
 
   constructor(private httpclient: HttpClient) {
   }

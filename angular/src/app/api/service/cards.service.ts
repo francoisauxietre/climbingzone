@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class CardsService {
-  private url = 'http://vps541599.ovh.net:8080/cards/';
+  private url = 'http://spring.auxietre.com/cards/';
 
   constructor(private httpclient: HttpClient) {
   }

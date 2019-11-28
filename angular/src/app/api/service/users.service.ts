@@ -8,7 +8,7 @@ import {UserApi} from '../user-api';
 })
 export class UsersService {
   private url = 'https://jsonplaceholder.typicode.com/posts?userId=1';
-  private url3 = 'http://localhost:8080/api/Climber/post';
+  private url3 = 'http://spring.auxietre.com/climbers/post';
 
   constructor(private httpclient: HttpClient) {
   }

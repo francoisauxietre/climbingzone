@@ -7,8 +7,8 @@ import {map, catchError} from 'rxjs/operators'; // pour la gestion des erreur de
   providedIn: 'root'
 })
 export class ClimbersService {
-  private url = 'http://vps541599.ovh.net:8080/climbers/';
-  private url1 = 'http://vps541599.ovh.net:8080/climbers/';
+  private url = '/climbers/';
+  private url1 = '/climbers/';
 
 
   constructor(private httpclient: HttpClient) {

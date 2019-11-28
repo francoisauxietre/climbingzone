@@ -47,6 +47,7 @@ import org.springframework.web.bind.annotation.RestController;
 //        log.info("liste des cartes demandee");
 //        return new ResponseEntity<List<CardDto>>(cardService.findAll(), HttpStatus.OK);
 
+//TODO CHANGER ICI
 @Slf4j
 @RestController(value = "/climbers")
 @CrossOrigin(origins = "http://localhost:4200")

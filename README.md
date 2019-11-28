@@ -9,6 +9,10 @@ http://vps541599.ovh.net:3000/
 site vuejs
 http://vps541599.ovh.net:8081/
 
+installation d'un nginx a la racine du principal
+/etc/nginx/sites-enabled
+
+
 build tester sur Travis
 ![alt text](https://travis-ci.org/francoisauxietre/climbingzone.svg?branch=master)
 

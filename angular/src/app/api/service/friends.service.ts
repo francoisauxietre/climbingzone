@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 })
 export class FriendsService {
 
-  private url = 'http://localhost:8080/friends';
+  private url = 'http://spring.auxietre.com/friends';
 
   constructor(private httpclient: HttpClient) {
   }
