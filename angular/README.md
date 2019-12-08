@@ -102,6 +102,9 @@ services:
       DB_URL: db
 networks:
     api:
+    
+//fin localisation de nginx 
+/etc/nginx/nginx. conf
       
       
 

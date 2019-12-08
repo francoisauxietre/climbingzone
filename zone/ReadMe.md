@@ -11,10 +11,13 @@ Différents ReadMe: https://github.com/francoisauxietre/climbingzone/tree/master
 
 
 -----------------
-###  MOTS CLES
+###  MOTS CLES APPRIS PENDANT LES ANNEES A L'ISTIC
 ###  A:
 * ANGULAR 2 framework basé sur de Javascript 
-* ANGULAR JS autre 
+* ANGULAR JS autre
+* ARCHITECTURE LOGICIELLE  desciption schematique ou symbolique des elements d'un ou plusieurs systeme informatique
+leurs interralations et leurs interactions. une analyse fonctionelle decrit quoi faire 
+une architecture decrit comment le faire
 ###  B:
 * BACK-END programme traitant les données et par exemple accès à une base de donnee(ex avec spring boot java)
 ###  C:
@@ -38,6 +41,11 @@ Différents ReadMe: https://github.com/francoisauxietre/climbingzone/tree/master
 * ID @id clé primaire
 * INSTANCE une representation d'un object un instance
 ### J:
+* JEE : serveur jEE permettent de mettre en place une application en la divisant en trois niveau
+***niveau présentation() interface graphique pour l'utilisateur
+***miveau metier logique metier ou logique aplicative (les classes representant les données)
+    faite ici en spring
+***niveau données (les données de l'application) (serveur bdd, documents xml...)
 * JAVA  language de prog (Objet)
 * JPA java persistance Acces  (couche relation mapping entre un objet java et une base de donnee)
 * JDBC
@@ -55,9 +63,54 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
 * OBSERVABLE un objet que l'on peut ecouter  PATTERN OBSERVER
 * OBSERVER celui qui suit l'état d'un objet
 ### P:
+* PATRON DE CONCEPTION ensemble de point de vue, arrangement de module reconnu comme bonne pratique
+    = une solution standard répodant a des problèmes récurents. (le nom du patron sert de vocabulaire entre les programmeurs)
+* P.ADAPTATEUR (adapter)convertir un interface d'une classe dans une autre intreface exploitee par une application
+* P.FARIQUE (factory)fournit un interface pour créer des familles d'objets, une fabrique retourne une instance d'une classe parmi plusieurs possiles.
+* P.FRABRIQUE ABSTRAITE (abstract factory)est utilisee pour obtenir un jeu d'objets connexes( ex chartre graphique  pour indows mac...)
+* P.PONT (bridge) divise une implementation en deux parties, une classe qui defini le problème à resoudre, une classe
+    qui fournit une implementation
+* P.MONTEUR (builder) separation du processus de construction d'un objet du resultat obtenu. 
+    très utile quand les objets on beaucoup de parametres plus ou moins optionnels
+* P.CHAINE DE RESPONSABILITE (chain of responsability) decoupler l'emmission d'un requete de la reception 
+    et le traitement de cette methode en permettant à plusieurs objets de la traiter susccessivement
+* P.COMMANDE (command) ce patron emboite une demande dans un objet, permettant de parametrer, mettre en file d'attente
+    journlaiser et annuler des demandes. une commande est une operation a effecter, l'interface de cet objet a une 
+    une methode execute
+* P.COMPOSITE permet de composer une hierachie d'objet et de manipuler de la meme manière une element, ue branche, tout un arbre.
+    (ex traitement de texte mot  paragraphe page..)
+* P.DECORATEUR (decorator) permet d'attacher dynamiquement des responsabilités à un objet.
+    (ex poupées russes un objet est caché dans un autre...) cette techno implique qu'un objet décoré es ses décorateur implement le meme interface (souvent une classe abstraite)
+* P.FACADE fournit une interface unifiée sur un exnsemble d'interfaces du systeme (permet de cacher des details techniques)
+* P.POIDSMOUCHE (flyweight) un type dobjet pour representer une gamme de petits objets (ex un jeu de caracteres) 
+* P.INTERPRETEUR (interpreter) comporte deux composants: contexte et expresssion: transforme une expression
+    ecrite dans un language en quelque chose de manipulable par programmation. Lobjet interpreteur est responsable
+    de transformer dun texte en objet.
+* P.ITERATEUR (iterator) ce patron permeet d'acceder aux elements d'un ensemble sans connaitre les details de fonctionnements
+    (next current, hasmoreelement..)
+* P.MEDIATEUR(mediator) ici il y a un objet qui defini comment plusieurs objets comuniquenet entre eux.
+* P.MEMENTO vise a externaliser l'état interne d'un objet sans perdre l'encapsulation.3 classes : Origine memento et gardien
+* P.OBSERVER etablit une relation entre un et plusieurs objets ; quand un change les autres sont avisés. quand un changement a lieu dans l'observateurs 
+       sont avertis du changement. methode notify
+* P.PROTOTYPE permet de definir un type d'objet  créer en dupliquant une instance qui sert d'exemple methode clone
+* P.PROXY nom du patron de conception: c'est un substitut d'un objet, qui permet de le controler
+    le proxy est créer pour proteger l'objet
+* P.SINGLETON assure qu'il n'y a qu'une seule instance d'une classe en fournissant un interface pour le manipuler
+* P.SATE permet a un objet de modifier son comportement lorsque son etat change. souvent utiliser pour implementer des machines à états.
+    il existe une classe par etats de la machine.
+* P.STRATEGIE dans ce pattern une famille d'algorythme est encapsulee de manière qu'ils soient interchangeables.
+    les algos peuvent changer independamment de l'appication.
+* P.TEMPLATE il definit la structure generale d'un algo en deleguant certains passages. permet a des sous classes de modifier tout en gardant la meme structure generale
+    il est utiliser quand on a par exemple plusieurs implementation d'un calcul
+   certaines methodes peuvent etre vide et les classe enfants les remplissants.
+* P.VISITOR il represente uen operation a effectuer sur un ensemble d'objets. on modifie l'operation sans modifier l'objet.
+    on passe les obets en parametre à un classe tierce qui effectue les actiosn sur celui-ci.
+
+
 * POSTMAN client pour faire des requetes et aussi des rendu d'API bien belle (script curl pour tester les requetes)
 * POSGREL Postgrel base donnée
 * PROMISE promesse de retour lors d'une demande
+
 * PROVIDER
 * PROPERTY ex String name  proprieté des classe
 ### Q
