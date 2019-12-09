@@ -120,7 +120,7 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
 * P.VISITOR il represente uen operation a effectuer sur un ensemble d'objets. on modifie l'operation sans modifier l'objet.
     on passe les obets en parametre à un classe tierce qui effectue les actiosn sur celui-ci.
 
-
+* POJo plain old java object un objet java.
 * POSTMAN client pour faire des requetes et aussi des rendu d'API bien belle (script curl pour tester les requetes)
 * POSGREL Postgrel base donnée
 * PROMISE promesse de retour lors d'une demande
@@ -195,6 +195,7 @@ en faisant juste @Entity et @Id on peut avoir nos objet en base
     @Table(name ="Employe") donne le nom a une table dans une entité
 * @Temporeal opur gerrer les time, date ou timestanp @Temporal(TemporalType.DATE) private Calendar dateEmb;
 * @Transient un attribut non persistent
+* @Version permet de versionner une entity mais ne pas modifier ala main cet attribut
 
 
 Retour sur les association 1:1 1:* *:1 *:* exemple *->1
@@ -294,6 +295,8 @@ clause group by) * order by : ordonne les données
 
 les clauses where et having peuvent avoir [NOT] LIKE, [NOT] BETWEEN, [NOT] IN AND, OR, NOT, [NOT] EXISTS – ALL, SOME/ANY – IS [NOT] EMPTY, [NOT] MEMBER OF
 select d.nom, avg(e.salaire) from Departement d join d.employes e group by d.nom having count(d.nom) > 3
+combo de requetes
+select e from Employe e where e.salaire >= ( select e2.salaire from Employe e2 where e2.departement = 10)
 The job of @Controller is to create a Map of model object and find a view but @RestController simply 
 return the object and object data is directly written into HTTP response as JSON or XML.
 
@@ -339,7 +342,16 @@ maj ctrl f pour trouver les occurences d'un mot
   "zoneType": "INTERIOR"
 }
 </code></pre>
-
+methode de callback apelée quand le persit a lieu 
+@PrePersist : quand persist (ou merge) s’est terminé
+avec succès
+• @PostPersist : après l’insertion dans la BD
+• @PreRemove : quand remove est appelé
+• @PostRemove : après suppression dans la BD
+• @PreUpdate : avant modification dans la BD
+• @PostUpdate : après modification dans la BD
+• @PostLoad : après la lecture des données de la BD
+pour construire une entité
 
     // a chaque fois qu'on mettra un persist on va faire un log
     @PrePersist
