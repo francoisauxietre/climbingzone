@@ -38,6 +38,7 @@ import { InTestComponent } from './in-test/in-test.component';
     DemoMaterialModule
   ],
   // All available for all components
+  // pour une injection de service
   providers: [ClimbersService, FriendsService],
   bootstrap: [AppComponent]
 })

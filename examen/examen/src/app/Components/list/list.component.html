@@ -1,0 +1,14 @@
+<div class="return">
+  <h1>File Browser <a (click)="onUp()">UP</a></h1>
+</div>
+<div class="list">
+  <ul>
+      <li *ngFor="let element of files">
+        <span></span>
+        <a (click)="onClick(element)">{{element.filename}}</a>
+        <button (click)="onDelete(element)">
+          Delete
+        </button>
+      </li>
+  </ul>
+</div>

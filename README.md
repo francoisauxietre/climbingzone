@@ -1,12 +1,16 @@
 # climbingzone
 card games for climbers
-*site Admin en spring
+*site Admin en spring 
+redirigé sur spring.auxietre.com
 http://vps541599.ovh.net:8080/
 *site Angular
+redirigé sur angular.auxietre.com
 http://vps541599.ovh.net:4200/
 *site react
+redirigé sur react.auxietre.com
 http://vps541599.ovh.net:3000/
 site vuejs
+redirigé sur vue.auxietre.com
 http://vps541599.ovh.net:8081/
 
 installation d'un nginx a la racine du principal

@@ -9,11 +9,15 @@ class CounterClass extends Component{
     }
 
     add(){
-        this.setState({count :this.state.count+1}, ()=> {console.log('callback value', this.state.count)})
+        this.setState(
+            {count :this.state.count+1},
+            ()=> {console.log('callback value', this.state.count)})
     }
 
     delete(){
-        this.setState({count :this.state.count-1}, ()=> {console.log('callback value', this.state.count)})
+        this.setState(
+            {count :this.state.count-1},
+            ()=> {console.log('callback value', this.state.count)})
     }
 
 

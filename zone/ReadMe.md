@@ -30,11 +30,15 @@ une architecture decrit comment le faire
 * DTO Data Transfer acces  pour les transfer des données par exemple entre angular et react
 ### E:
 * ENTITY en jpa @ENTITY permet a jpa de creer nos tables et colonnes (une colonne par propertie)
+    une ligne par instance d'un objet
+    une entite est une classe qui peut etre persistante, l'annotation est @Entity
 ### F:
 * FRAMEWORK infrastructure logicielle, socle d'applications, infrastructure de développement
 * FRONT-END la partie qu code qui sera generé dans le Browser pour les vues..
 ### G:
+* GLASSFISH est l'implementation de reférence pour EJB 3
 ### H:
+* HIBERNATE permet la persistence des données (des objets java).
 * Http HyperText Transfer Protocol  protocol de transfert de données en texte
 ### I:
 * ID index pour etre une clé primaire dans la table poue savoir comment indexer et trouver les donnes (rangements)
@@ -43,13 +47,21 @@ une architecture decrit comment le faire
 ### J:
 * JEE : serveur jEE permettent de mettre en place une application en la divisant en trois niveau
 ***niveau présentation() interface graphique pour l'utilisateur
-***miveau metier logique metier ou logique aplicative (les classes representant les données)
+***niveau metier logique metier ou logique aplicative (les classes representant les données)
     faite ici en spring
 ***niveau données (les données de l'application) (serveur bdd, documents xml...)
 * JAVA  language de prog (Objet)
+* JDBC JAVA DATABASE CONNECTIVITY java api pour se connecter grace a de requetes avec une base de donnees.
 * JPA java persistance Acces  (couche relation mapping entre un objet java et une base de donnee)
-* JDBC
+    on annote les objets, cela creee des tables en base, on cree des Entity, Le ENtityManager est en charge de ces entités.
+    Création d'un mapping (liens) transparent pour le developpeur entre les entitées et les tables.
+    Les annotations sont décrite dans le javax.persitence package ou dans des xml descriptors.
+    La classe javax.persistence.EntutyManager est responsable  de gerer les entité, suprimer ou ajouter en base, retrouver les valeurs..
+    La methode persit(objet) rendu un objet persistant . l'ensemble des objets creer et gerer s'appel le contexte de persistance. 
+    Condition pour creer un entité:
+* JPQL Le langage JPQL (Java Persistence Query  Language) permet de décrire ce que   l’application recherche    
 * JWT jason web token  (le token utile pour l'authentification d'un utilisateur)(header, payload, signature)
+
 
 ### L:
 LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et setters et Hashcode et toString
@@ -59,10 +71,12 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
 * MYSQL Style de base de donnee comme mongoDB, PostGrel
 ### O:
 * OBJECT objet cree grace à une classe 
-* ORM object relation mapping object pour lier 
+* ORM object relation mapping object pour lier (convertit un objet en groupe de valeurs pour etre stocker en base)
+    convertit elemements de base en objet en retour. creation d'une database virtuel RDBMS
 * OBSERVABLE un objet que l'on peut ecouter  PATTERN OBSERVER
 * OBSERVER celui qui suit l'état d'un objet
 ### P:
+* Persitent Objet: transforme un objet sous une forme stockable en base.(sans perte))
 * PATRON DE CONCEPTION ensemble de point de vue, arrangement de module reconnu comme bonne pratique
     = une solution standard répodant a des problèmes récurents. (le nom du patron sert de vocabulaire entre les programmeurs)
 * P.ADAPTATEUR (adapter)convertir un interface d'une classe dans une autre intreface exploitee par une application
@@ -114,7 +128,7 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
 * PROVIDER
 * PROPERTY ex String name  proprieté des classe
 ### Q
-* QUERY requete pour acceder a des données
+* QUERY requete pour acceder a des données ex IEnumerable<string> query = from s in names where s.lengh == 5 orderBy s select s.ToUpper();
 ### R:
 * REPOSITORY classe avec methodes standards requise CRUD create Read Update Delete
 * REACT un autre framework front end 
@@ -122,6 +136,7 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
 * REL DB relation avec une database (keys, tables, relations entre les données)
 ### S:
 * SERVICE rend un service
+* SERVEUR exemple Nginx appache, nodeJs, 
 * SWAGGER UI interaction avec API
 * SQL language pour acceder a des tables, dans les bases de données
 * SPRING sur couche de java utilisant
@@ -129,6 +144,7 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
 * TOPIC sujet
 * TABLE une table correspond a un objet (un ligne coorspodant à une instance)
 ### U:
+* UML langage permettant une representation de probleme.
 * URL:uniform ressource locator, localisateur des données (souvent dit adresse du web) Ou sont les données à acceder
 ### V:
 * VUEjs framework en javascript pour le FRONT END 
@@ -154,16 +170,130 @@ exemple utilisateur avec postman
 
 ###  @ANNOTATION UTILES 
 en faisant juste @Entity et @Id on peut avoir nos objet en base
-* @Entity : pour cree une entite en base
-* @RestController : pour cree le controlleur avec les acces a l'Api
-* @Controller   ne sont pas les meme 
+* @Basic un attribut persitent
+* @Controller   ne sont pas les meme ontroller
+
 * @CrossOrigin(origins = "http://localhost:4200") 
-* @ID : index souvent autogenere pour etre unique
+* @Entity : pour cree une entite en base (une classe en base)
+* @Enumerated(EnumType.STRING) un champ dont le type ens une énumération private TypeEmploye typeEmploye;
+* @Embeddable: un autre classe persistente incorporable ex:public class Adresse {private int numero;private String rue;}
+    @Embedded private Adresse adresse; dans une autre classe. on peut en faire une classe d'association lie à un champ
+* @ID : index pour faire une cle (primaire). le champ permettra de pouvoir indexer les instances de manière unique
+* @GeneratedValue pour la génrération automatique de notre cle primaire ou strategy comme parametre
+    souvent autogenere pour etre unique
+* @Pour une clé composite (ex clientId_prixId) on utilise IdClass @EmbeddedId ou @IdClass
+* @JoinColumn(name="Ecole_Id) joiture entre deux colonnes d'une table
+* @Lob private byte[] image  @LOB   pour les champs depassant 255 caractere 
+* @ManyToOne relation un a plusieurs 1 *, @ManyToOne..
+* @NamedQuery (name = "tous_les_employes", query ="SELECT p FROM Employee p")
 * @Override : pour redefinir une methode d'une classe parente
-* @sl4j : une nouvelle version du logger qui du cout est  par exemple log.info("GET on /places"); et plus logger 
+* @Param : les parametre que l'on passe souvent dans un controller @Controller
+* @RestController : pour cree le controlleur avec les acces a l'Api
 
-* @LOB   pour les champs depassant 255 caractere 
+* @sl4j : une nouvelle version du logger qui du cout est  par exemple log.info("GET on /places"); et plus logger
+* @Table : pour changer le nom de la table par default qui est le nom de l'entity
+    @Table(name ="Employe") donne le nom a une table dans une entité
+* @Temporeal opur gerrer les time, date ou timestanp @Temporal(TemporalType.DATE) private Calendar dateEmb;
+* @Transient un attribut non persistent
 
+
+Retour sur les association 1:1 1:* *:1 *:* exemple *->1
+* @ManyToOne
+public Departement getDepartement() {
+…
+}
+dans une association bidirectionnele, un des deux bout est le proprietaire de l'association
+on peut choisir arbitrairement le bout l'autre contenant @MappedBy pour creer le lien
+* Dans la classe Employe : @ManyToOne
+public Departement getDepartement() {
+return departement;
+}
+* Dans la classe Departement : @OneToMany(mappedBy="departement")
+public Collection<Employe> getEmployes() {
+return employes;
+}
+pour lapersistence et transitivite (cascade) , Ces opérations sont persist, remove, refresh et merge
+@OneToMany(
+cascade=CascadeType.PERSIST)
+@OneToMany(
+cascade={CascadeType.PERSIST,
+CascadeType.MERGE})+
+*  @OneToOne @OneToOne / public Adresse getAdresse() 
+* @ManyToMany avec reecriture des valeurs par defaut
+@JoinTable(
+name="EMP_PROJET"
+joinColumns=@JoinColumn(name="matr")
+inverseJoinColumns=
+@JoinColumn(name="codeProjet")
+)
+public Collection<Projet> getProjets() {
+@ManyToMany(mappedBy="projets")
+public Collection<Employe> getEmps() {
+
+pour requeter dans la base de donnee Jpa permet de faire des requetes query ou des find
+deux modes existe LAZY ou EAGER en mode lazy on attend la demande pour recup en mode manytoOne on la recupere en mode eager
+@OneToMany(mappedBy="departement",fetch=FetchType.EAGER) //force le mode ici
+pour les classes avec heritage voir poly
+
+# Methode de entity manager
+* void persist(Object entité)
+* <T> T merge(T entité)
+* void remove(Object entité)
+* <T> T find(Class<T> classeEntité, Object cléPrimaire)
+* <T> T getReference(Class<T> classeEntité, Object cléPrimaire)
+* void flush()
+* void setFlushMode(FlushModeType flushMode)
+* void lock(Object entité, LockModeType lockMode) //permet de gerer des modes coucurent d'acces au x données
+* void refresh()
+* void clear()
+* boolean contains(Object entité)
+* Query createQuery(String requête)
+* Query createNamedQuery(String nom)
+* Query createNativeQuery(String requête)
+* Query createNativeQuery(String requête, Class classeRésultat)
+* void joinTransaction()
+* void close()
+* boolean isOpen()
+* EntityTransaction getTransaction()
+
+pour recupere des entity utiliser find ou getReference
+exemple de requete JPQL est proche du sql mais * est souvent remplacee par une lettre
+Les valeurs des paramètres sont données par les méthodes setParameter
+select e from Employe as e
+select e.nom, e.salaire from Employe e
+select e from Employe e where e.departement.nom = ‘Direction’
+select d.nom, avg(e.salaire) from Departement d join d.employes e group by d.nom having count(d.nom) > 5
+@Temporal(TemporalType.DATE)
+private Calendar dateEmb;
+#exemple de query avec date et parametre numeroté depuis 1
+em.createQuery("select e from employe e"+ " where e.dateEmb between ?1 and ?2")
+.setParameter(1, debut,TemporalType.DATE)
+.setParameter(2, fin,TemporalType.DATE).getResultList();
+#exemple avec parametre nomme
+Query query = em.createQuery( "selecte from Employe as e where e.nom =:nom");
+query.setParameter("nom", "Dupond");
+#METHODE GETRESULTLIST
+texte = "select e.nom, e.salaire from
+Employe as e";
+query = em.createQuery(texte);
+List<Object[]> liste =
+(List<Object[]>)query.getResultList();
+for (Object[] info : liste) {
+System.out.println(info[0] + " gagne
+" + info[1]);
+}
+# JPQL language  (si on veu chainé plusieurs query il faut quelle ne retourne qu'une valeur)
+ex  e.departement.nom avec e alias pour employe
+* select distinct e.departement from Employe e  (on ne prends pas les doubles)
+* select : type des objets ou valeurs renvoyées
+* from : où les données sont récupérées
+* where : sélectionne les données
+* group by : regroupe des données
+* having : sélectionne les groupes (ne peut exister sans
+clause group by) * order by : ordonne les données
+
+les clauses where et having peuvent avoir [NOT] LIKE, [NOT] BETWEEN, [NOT] IN AND, OR, NOT, [NOT] EXISTS – ALL, SOME/ANY – IS [NOT] EMPTY, [NOT] MEMBER OF
+select d.nom, avg(e.salaire) from Departement d join d.employes e group by d.nom having count(d.nom) > 3
 The job of @Controller is to create a Map of model object and find a view but @RestController simply 
 return the object and object data is directly written into HTTP response as JSON or XML.
 
