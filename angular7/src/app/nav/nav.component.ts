@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  private appTitle: string; // format de code en typescript inverse par rapport a java et utiliser les :
+  appTitle: string; // format de code en typescript inverse par rapport a java et utiliser les :
 
   constructor() {
   }

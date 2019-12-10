@@ -19,4 +19,7 @@ export class DataService {
   getFriends() {
     return this.httpClient.get('http://spring.auxietre.com/climbers/');
   }
+  getClimbingRoutes() {
+    return this.httpClient.get('http://spring.auxietre.com/climbingroutes/');
+  }
 }

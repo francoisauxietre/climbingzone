@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-climbingroute',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClimbingrouteComponent implements OnInit {
 
-  constructor() { }
+  climbingroutes: Object;
+  constructor(private data: DataService) { }
 
   ngOnInit() {
+    this.data.getClimbingRoutes().subscribe(data => {
+      this.climbingroutes = data;
+      console.log(this.climbingroutes[0]);
+    });
   }
-
 }

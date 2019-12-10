@@ -1,1 +1,14 @@
-<p>climbingroute works!</p>
+<ul *ngIf="climbingroutes">
+  <li *ngFor="let climbingroute of climbingroutes">
+    <p>id:{{ climbingroute.id }} </p>
+    <p>level:{{ climbingroute.difficulty }}</p>
+    <p>technical:{{ climbingroute.technical }} physical: {{climbingroute.physical}} tactical:{{ climbingroute.tactical}} mental: {{climbingroute.mental}}</p>
+    <span>
+      <p> lat: {{climbingroute.latitude}} long: {{climbingroute.longitude}} </p>
+      <p> bonus: {{climbingroute.bonus}} long:</p>
+    </span>
+    <p>name: {{climbingroute.climbingRouteName}}</p>
+    <p>info: {{climbingroute.info}}</p>
+
+  </li>
+</ul>

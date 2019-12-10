@@ -8,7 +8,7 @@ import {DataService} from '../data.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  private h1StyleBool = false;
+  h1StyleBool = false;
   // tslint:disable-next-line:ban-types
    climbers: Object;
    friends: Object;

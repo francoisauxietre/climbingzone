@@ -50,4 +50,17 @@ creation d'un premier service
 <pre><code>ng g s dataService</code></pre>
 ensuite on le met dans le constructeur du composant qui veur souscrire au service
 <pre><code> constructor(private data: DataService) { }</code></pre>
-Debut des requete http 
+Debut des requete http vers Api spring.auxietre.com/climbers/
+et requete vers http climbingroute
+
+creation d'un formulaire de contact avec verification des champs dans le composant contact.
+
+pour finir et builder 
+<pre><code>
+ng build
+</code></pre>
+
+pour finir et builder en production
+<pre><code>
+ng build --prod
+</code></pre>
