@@ -124,3 +124,40 @@ public Customer findByFirstOrderDateGt(Date someDate);
 public Customer findByFirstOrderDateBetween(Date d1, Date d2);
 @Query(“SELECT c FROM Customer c WHERE c.email NOT LIKE '%@%'”)
 public List<Customer> findInvalidEmails();
+
+SERVEUR
+Plus de 80% des applications et des sites Web sont hébergés par des serveurs web open source. En voici 5 qui pourraient vous intéresser si vous voulez vous lancer sur ce secteur. Si les piles LAMP (Linux, Apache, MySQL, PHP) ou LEMP (Linux, Nginx, MySQL, PHP) sont certainement les plus faciles à utiliser au départ, d'autres solutions sont envisageables.
+
+ 
+
+ publicité 
+Apache HTTP Server, le leader
+Le logiciel HTTP Apache Server, nommé souvent httpd ou plus simplement Apache, à plus de 20 ans d'âge. Une pérennité qui s'explique par une popularité impressionnante : 52% des sites web dans le monde sont hébergés sur un serveur qui utilise Apache. Surtout, si l'on croise souvent Apache sur des distributions Linux, le produit est ,disponible sur OS X et Windows.
+
+Apache est disponible sous licence... Apache v2. Ce serveur Web utilise une architecture modulaire et évolutive, de manière à étendre les fonctionnalités en cas de besoin, comme l'équilibrage de charge par exemple. A noter que depuis la version 2.4, Apache prend en charge le protocole HTTP/2 grâce au module mod_http2. Enfin, il convient de dire que la longévité de ce logiciel lui confère une documentation importante tout comme l'intégration d'autres logiciels.
+
+Plus d'information sur Apache HTTP Server
+Nginx, le spécialiste des connexions simultanées
+Le développement de Nginx a débuté en 2002 sous les bons auspices d'Igor Sysoev, et la première version publique date de 2004. Nginx répond à la question de la prise en charge de multiples connexions simultanées sur un serveur web, dit problème C10K.
+
+Avec 30% des sites web qui tournent sur Nginx, nulle doute que cette mission est remplie. Dans ce but, Nginx repose sur une architecture événementielle asynchrone, ce qui permet de gérer des sessions simultanées massives. A noter que les administrateurs apprécient aussi Nginx en raison de son usage modéré des ressources tout comme sa capacité à monter facilement en charge. Nginx est publié sous une licence BSD, et peut être déployé en tant que serveur Web mais aussi comme serveur proxy ou comme équilibreur de charge.
+
+Plus d'information sur Nginx
+Apache Tomcat, origine Java
+Apache Tomcat est un conteneur servlet Java open source qui fonctionne comme serveur Web en étendant les capacités d'un serveur. Ce sont les alternatives Java aux technologies telles que PHP et ASP.NET. La base du code de Tomcat a été donnée par Sun Microsystems à l'Apache Software Foundation en 1999. Un peu moins de 1% de tous les sites web utilisent Apache Tomcat.
+
+Apache Tomcat est publié sous licence Apache v2, et est généralement utilisé pour exécuter des applications Java. Il peut cependant être étendu au rôle de serveur web normal en utilisant Coyote. Apache Tomcat est souvent classé parmi d'autres serveurs d'applications Java open source comme JBoss, Wildfly et Glassfish.
+
+Plus d'information sur Apache Tomcat
+Node.js, le rejeton de JavaScript
+Node.js est un environnement JavaScript côté serveur pour les applications réseau, et donc les serveurs web. Node.js est utilisé par 0,2% des sites web. Créé en 2009 par Ryan Dahl, le projet Node.js est administré par la Fondation Node.js, et supporté par la Fondation Linux.
+
+La différence entre Node.js et autres serveurs web est qu'il est avant tout un environnement d'exécution multi-plateforme pour créer des applications réseau. Node.js propose une architecture événementielle capable de gérer des entrées et des sorties asynchrones. Cela permet d'optimiser le débit et l'évolutivité des applications Web, des qualités idéales pour des applications de communication temps réel et des jeux vidéos en ligne.
+
+Node.js se distingue également des autres serveurs web par le fait que cet outil fait partie intégrante de la pile web, comme l'HTML, le CSS ou encore le JavaScript. Par opposition, Apache ou Nginx font partie de piles logicielles très différentes. Node.js est publié sous différentes licences.
+
+Plus d'information sur Node.js
+Lighttpd, le poids léger
+Lighttpd existe depuis 2003. Il est utilisé par environ 0,1% des sites Web et est distribué sous licence BSD.
+
+Lighttpd se distingue des autres serveurs web par sa faible empreinte mémoire, sa faible charge CPU, et ses optimisations de vitesse. Il utilise une architecture événementielle, est optimisé pour un grand nombre de connexions parallèles, et prend en charge FastCGI, SCGI, Auth, Output-compression, la réécriture d'URL entre autres. Lighttpd est un serveur web populaire pour Catalyst ou le framework Ruby on Rails.

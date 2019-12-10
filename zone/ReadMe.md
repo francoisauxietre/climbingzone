@@ -134,6 +134,11 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
 * REACT un autre framework front end 
 * REDUX un store permettant de sauvegarder l'ensemble des STATES des objets
 * REL DB relation avec une database (keys, tables, relations entre les données)
+* REST representational state transfert 
+    Identifier les ressources
+    Définir les URIs
+    Spécifier les méthodes des interfaces
+    Lier les ressources 
 ### S:
 * SERVICE rend un service
 * SERVEUR exemple Nginx appache, nodeJs, 
