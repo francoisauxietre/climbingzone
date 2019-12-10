@@ -9,16 +9,23 @@ import {DataService} from '../data.service';
 })
 export class HomeComponent implements OnInit {
   private h1StyleBool = false;
-   // users: Object;
+  // tslint:disable-next-line:ban-types
+   climbers: Object;
+   friends: Object;
 
   // on a donc acces aux methodes de dataService
   constructor(private data: DataService) { }
 
+  // cette methode est auto loadee quand le composant est apelle Angular life cycle hook
   ngOnInit() {
-    // this.data.getUsers().subscribe(data => {
-    //   this.users = data
-    //   console.log(this.users)
-    // })
+    this.data.getClimbers().subscribe(data => {
+     this.climbers = data;
+     console.log(this.climbers);
+    });
+    this.data.getFriends().subscribe(data => {
+      this.friends = data;
+    });
+
   }
 
   firstClick() {

@@ -8,10 +8,17 @@
 'color': h1StyleBool ? 'blue' : 'green',
 'font-size': !h1StyleBool ? '2em' : '4em'
 }">Test3</h1>
-<!--<ul *ngIf="users">-->
-<!--  <li *ngFor="let user of users.data">-->
-<!--    <img [src]="user.avatar">-->
-<!--    <p>{{ user.first_name }} {{ user.last_name }}</p>-->
-<!--  </li>-->
-<!--</ul>-->
+<!--si le climbers est non vide -->
+<ul *ngIf="climbers">
+  <li *ngFor="let climber of climbers">
+    <img [src]="climber.avatar">
+    <p>{{ climber.firstName }} {{ climber.lastName }} {{climber.birth}} {{climber.language}}</p>
+  </li>
+</ul>
+<ul *ngIf="friends">
+  <li *ngFor="let friend of friends.friend">
+    <p>{{ friend.firstName }} {{ friend.lastName }}</p>
+    <p>{{climbers}}</p>
+  </li>
+</ul>
 <button (click)="firstClick()">Click me</button>

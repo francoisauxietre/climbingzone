@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 // nouveau decorateur qui precise que le service sera injectable
 @Injectable({
@@ -6,10 +7,16 @@ import {Injectable} from '@angular/core';
 })
 export class DataService {
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
   }
 
   firstClickService() {
     console.log('service');
+  }
+  getClimbers() {
+    return this.httpClient.get('http://spring.auxietre.com/climbers/');
+  }
+  getFriends() {
+    return this.httpClient.get('http://spring.auxietre.com/climbers/');
   }
 }
