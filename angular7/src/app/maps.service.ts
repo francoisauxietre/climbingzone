@@ -1,0 +1,15 @@
+import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MapsService {
+
+  constructor(private httpClient: HttpClient) { }
+
+  getLocation(){
+    return this.httpClient.get('')
+  }
+
+}

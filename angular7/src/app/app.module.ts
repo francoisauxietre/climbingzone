@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ClimbingrouteComponent } from './climbingroute/climbingroute.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {AgmCoreModule} from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyDs_ZdPw4vFrV94b5T0T8IOxUAbD7d_198'})
   ],
   providers: [],
   bootstrap: [AppComponent]

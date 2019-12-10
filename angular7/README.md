@@ -64,3 +64,8 @@ pour finir et builder en production
 <pre><code>
 ng build --prod
 </code></pre>
+
+AJOUT DE API GOOGLE MAPS
+<pre><code>
+npm install --save @agm/core
+</code></pre>
