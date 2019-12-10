@@ -2,7 +2,12 @@
 <h1 [ngClass]="{
 'gray': h1StyleBool,
 'large': !h1StyleBool
-}">Test</h1>
+}">Test1</h1>
+<h1 [style.color]="h1StyleBool ? 'orange': 'black'" >Test2</h1>
+<h1 [ngStyle]="{
+'color': h1StyleBool ? 'blue' : 'green',
+'font-size': !h1StyleBool ? '2em' : '4em'
+}">Test3</h1>
 <!--<ul *ngIf="users">-->
 <!--  <li *ngFor="let user of users.data">-->
 <!--    <img [src]="user.avatar">-->

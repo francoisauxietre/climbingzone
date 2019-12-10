@@ -45,3 +45,9 @@ début de dynamisme avec utilisateur et un bouton et un listener
 creation d'un attribut de classe en mode binding d'ou [] on appliquerai le style rouge si le booleen vaut true
 <pre><code><h1 [class.gray]="h1StyleBool">Home</h1></code></pre>
 deuxieme test avec ngClass qui lui permet de passer plusieurs css par ligne 
+troisieme et quatrieme code dans home.component 
+creation d'un premier service 
+<pre><code>ng g s dataService</code></pre>
+ensuite on le met dans le constructeur du composant qui veur souscrire au service
+<pre><code> constructor(private data: DataService) { }</code></pre>
+Debut des requete http 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DataService} from '../data.service';
+
 
 @Component({
   selector: 'app-home',
@@ -9,7 +11,8 @@ export class HomeComponent implements OnInit {
   private h1StyleBool = false;
    // users: Object;
 
-  // constructor(private data: DataService) { }
+  // on a donc acces aux methodes de dataService
+  constructor(private data: DataService) { }
 
   ngOnInit() {
     // this.data.getUsers().subscribe(data => {
@@ -21,6 +24,7 @@ export class HomeComponent implements OnInit {
   firstClick() {
     console.log('clicked');
     this.h1StyleBool = (this.h1StyleBool === true) ? false : true;
+    this.data.firstClickService();
   }
 
 }
