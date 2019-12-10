@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
 })
 // logique du composant ici
 export class AppComponent {
-  title = 'angular7';
+ private title = 'ClimbingZone 2.0';
 }
