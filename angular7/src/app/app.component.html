@@ -314,6 +314,12 @@
 </div>
 <app-nav></app-nav>
 <section>
+  <h1>Your map</h1>
+  <div>
+    <agm-map [latitude]="latitude" [longitude]="longitude">
+      <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    </agm-map>
+  </div>
   <router-outlet></router-outlet>
 </section>
 

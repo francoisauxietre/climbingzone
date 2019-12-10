@@ -25,7 +25,7 @@ import {AgmCoreModule} from '@agm/core';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AgmCoreModule.forRoot({apiKey: 'AIzaSyDs_ZdPw4vFrV94b5T0T8IOxUAbD7d_198'})
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyBWYyHJd8a_m4DgrN4J5oEn_mZTg-QOI14'})
   ],
   providers: [],
   bootstrap: [AppComponent]
