@@ -8,20 +8,6 @@ import {MapsService} from './maps.service';
   styleUrls: ['./app.component.scss'] // le specifique style applique a ce template
 })
 // logique du composant ici
-export class AppComponent implements OnInit{
- title = 'ClimbingZone 2.0';
- latitude = '';
- longitude = '';
- location: Object;
- constructor(private mapService: MapsService) {
+export class AppComponent{
 
- }
-
-  ngOnInit() {
-   this.mapService.getLocation().subscribe(data => {
-     console.log(data);
-     this.latitude = data.latitude;
-     this.longitude = data.longitude;
-   });
-  }
 }

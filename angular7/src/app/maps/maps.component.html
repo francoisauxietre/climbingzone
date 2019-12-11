@@ -1,0 +1,24 @@
+<p>maps works!</p>
+<h1>Your map</h1>
+<div>
+  <agm-map [latitude]="latitude" [longitude]="longitude">
+    <agm-marker [latitude]="latitude" [longitude]="longitude">
+      <agm-info-window>
+        <h3><strong>Hello</strong></h3>
+        <p>you are here</p>
+      </agm-info-window>
+    </agm-marker>
+    <agm-marker [latitude]="chezMoiLat" [longitude]="chezMoiLong">
+      <agm-info-window>
+        <h3><strong>18 rue malaguti 35000 rennes</strong></h3>
+        <p>Mon appartement</p>
+      </agm-info-window>
+    </agm-marker>
+    <agm-marker [latitude]="isticLat" [longitude]="isticLong">
+      <agm-info-window>
+        <h3><strong>ISTIC rennes</strong></h3>
+        <p>Ma FAC</p>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+</div>

@@ -11,6 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ClimbingrouteComponent } from './climbingroute/climbingroute.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from '@agm/core';
+import { MapsComponent } from './maps/maps.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {AgmCoreModule} from '@agm/core';
     AboutComponent,
     ContactComponent,
     HomeComponent,
-    ClimbingrouteComponent  ],
+    ClimbingrouteComponent,
+    MapsComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
