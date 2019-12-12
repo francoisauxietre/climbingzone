@@ -1,3 +1,4 @@
+![builder](UML_DP_Monteur.png)
 Le monteur (builder) est un patron de conception utilisé pour la création d'une variété d'objets complexes 
 à partir d'un objet source. L'objet source peut consister en une variété de parties contribuant 
 individuellement à la création de chaque objet complet grâce à un ensemble d'appels à l'interface 
@@ -22,3 +23,12 @@ est passé à un objet directeur simple qui effectue une itération à travers c
 
 But : Séparer la construction d'un objet complexe de la représentation afin que le même processus de 
 construction puisse créer différentes représentations.
+Monteur
+interface abstraite pour construire des objets
+Monteur1 et Monteur2
+fournissent une implémentation de Monteur
+construisent et assemblent les différentes parties des objets
+Directeur
+construit un objet en appelant les différentes méthodes afin de construire chaque partie de l'objet complexe
+Objet
+l'objet complexe en cours de construction
