@@ -16,10 +16,18 @@ Différents ReadMe: https://github.com/francoisauxietre/climbingzone/tree/master
 * ANGULAR 2 framework basé sur de Javascript 
 * ANGULAR JS autre
 * ARCHITECTURE LOGICIELLE  desciption schematique ou symbolique des elements d'un ou plusieurs systeme informatique
-leurs interralations et leurs interactions. une analyse fonctionelle decrit quoi faire 
-une architecture decrit comment le faire
+    leurs interralations et leurs interactions. une analyse fonctionelle decrit quoi faire 
+    une architecture decrit comment le faire
+* AOP Aspect Oriented Programming programmation par aspect: L'AOP est un paradigme de programmation qui vise à accroître 
+    la modularité en permettant la séparation des préoccupations transversales. Il le fait en ajoutant un comportement 
+    supplémentaire au code existant sans modifier le code lui-même.
+* ASPECT Un aspect est la modularisation d'une préoccupation qui touche plusieurs classes. 
+    La journalisation unifiée peut être un exemple d'une telle préoccupation transversale.
 ###  B:
 * BACK-END programme traitant les données et par exemple accès à une base de donnee(ex avec spring boot java)
+* BEAN le JavaBean. Souvent raccourci en "bean", un JavaBean désigne tout simplement un composant réutilisable.
+    un classe java avec certaines contraintes (constructeur, serializable...)
+    Definition en bas
 ###  C:
 * CLASS comment seront fait les objets que l'on créera (MOULE) un cllass est une table en database
 * CRUD create Read Update Delete
@@ -27,7 +35,10 @@ une architecture decrit comment le faire
 * DOM Document Object Model interface normalise qui permet de modifier le navigateur web avec des script
 * DOM virtuel dans vuejs et react on a un dom virtuel qui est une copie virtuel du dom actuel
 * DAO Data Acces Object  object qui peuvent dialoguer en java avec une base de donnée directement
-* DTO Data Transfer acces  pour les transfer des données par exemple entre angular et react
+* DIP The Dependency Inversion Principle (DIP) states that high level modules should not depend on low level modules; 
+    both should depend on abstractions. 
+    Abstractions should not depend on details.  Details should depend upon abstractions.
+* DTO Data Transfer acces  pour les transfer des données par exemple entre angular et spring entre back et front souvent
 ### E:
 * ENTITY en jpa @ENTITY permet a jpa de creer nos tables et colonnes (une colonne par propertie)
     une ligne par instance d'un objet
@@ -39,13 +50,24 @@ une architecture decrit comment le faire
 * GLASSFISH est l'implementation de reférence pour EJB 3
 ### H:
 * HIBERNATE permet la persistence des données (des objets java).
+* HOLLIWOOD PRINCIPLE Don't call us, we'll call you
 * Http HyperText Transfer Protocol  protocol de transfert de données en texte
 ### I:
 * ID index pour etre une clé primaire dans la table poue savoir comment indexer et trouver les donnes (rangements)
 * ID @id clé primaire
+* INJECTION  Injection de Dépendances  – Les dépendances sont fournies par l’environnement
+l’injection permet d’établir de façon dynamique la relation entre plusieurs classes. 
+    Elle consiste à découper les responsabilités entres les différents modules, les différentes parties et facilite même 
+    la modification ultérieure des classes.
+* IOC inversion of controle L’IOC ce défini comme un conteneur qui détermine ce qui doit être instancié et retourné au client 
+    pour éviter que ce dernier appel explicitement le constructeur avec l’opérateur « new ».
+    En résumé, c’est un objet qui agit comme un cache pour les instances dont nous avons besoin dans diverses parties de 
+    nos applications.
 * INSTANCE une representation d'un object un instance
+* ISP The interface-segregation principle (ISP) states that no client should be forced to depend on methods it does not use.
+* INVERSION de Controle Inversion of Control: Don't call us, we'll call you
 ### J:
-* JEE : serveur jEE permettent de mettre en place une application en la divisant en trois niveau
+* JEE : serveur jEE permettent de mettre en place une application en la divisant en trois niveaux
 ***niveau présentation() interface graphique pour l'utilisateur
 ***niveau metier logique metier ou logique aplicative (les classes representant les données)
     faite ici en spring
@@ -64,23 +86,31 @@ une architecture decrit comment le faire
 
 
 ### L:
-LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et setters et Hashcode et toString
+* LSP Liskov Substitution Principle  si S est un sous-type de T, alors tout objet de type T peut être remplacé par
+ un objet de type S sans altérer les propriétés désirables du programme concerné.
+* LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et setters et Hashcode et toString
 ### M:
 * MAP mapper les donner les mettre en relation
 * mapping entre les objets Dto et les Dao avec MAPSTRUCT https://mapstruct.org/ 
 * MYSQL Style de base de donnee comme mongoDB, PostGrel
 ### O:
-* OBJECT objet cree grace à une classe 
+
+* OBJECT objet cree grace à une classe
+* OCP open close principe Un code doit être "ouvert à l'extension,évolution du logiciel doit se faire de façon incrémentale
+    mais fermé à la modification".
 * ORM object relation mapping object pour lier (convertit un objet en groupe de valeurs pour etre stocker en base)
     convertit elemements de base en objet en retour. creation d'une database virtuel RDBMS
 * OBSERVABLE un objet que l'on peut ecouter  PATTERN OBSERVER
 * OBSERVER celui qui suit l'état d'un objet
 ### P:
 * Persitent Objet: transforme un objet sous une forme stockable en base.(sans perte))
+     la sauvegarde des données contenues dans des objets. En réalité, vous connaissez donc déjà tous un moyen de 
+     persistance : le stockage dans une base de données relationnelle via JDBC
 * PATRON DE CONCEPTION ensemble de point de vue, arrangement de module reconnu comme bonne pratique
     = une solution standard répodant a des problèmes récurents. (le nom du patron sert de vocabulaire entre les programmeurs)
 * P.ADAPTATEUR (adapter)convertir un interface d'une classe dans une autre intreface exploitee par une application
-* P.FARIQUE (factory)fournit un interface pour créer des familles d'objets, une fabrique retourne une instance d'une classe parmi plusieurs possiles.
+* P.FARIQUE (factory)fournit un interface pour créer des familles d'objets, une fabrique retourne une instance d'une classe 
+    parmi plusieurs possiles.
 * P.FRABRIQUE ABSTRAITE (abstract factory)est utilisee pour obtenir un jeu d'objets connexes( ex chartre graphique  pour indows mac...)
 * P.PONT (bridge) divise une implementation en deux parties, une classe qui defini le problème à resoudre, une classe
     qui fournit une implementation
@@ -94,7 +124,8 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
 * P.COMPOSITE permet de composer une hierachie d'objet et de manipuler de la meme manière une element, ue branche, tout un arbre.
     (ex traitement de texte mot  paragraphe page..)
 * P.DECORATEUR (decorator) permet d'attacher dynamiquement des responsabilités à un objet.
-    (ex poupées russes un objet est caché dans un autre...) cette techno implique qu'un objet décoré es ses décorateur implement le meme interface (souvent une classe abstraite)
+    (ex poupées russes un objet est caché dans un autre...) cette techno implique qu'un objet décoré es ses décorateur implement 
+        le meme interface (souvent une classe abstraite)
 * P.FACADE fournit une interface unifiée sur un exnsemble d'interfaces du systeme (permet de cacher des details techniques)
 * P.POIDSMOUCHE (flyweight) un type dobjet pour representer une gamme de petits objets (ex un jeu de caracteres) 
 * P.INTERPRETEUR (interpreter) comporte deux composants: contexte et expresssion: transforme une expression
@@ -104,7 +135,8 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
     (next current, hasmoreelement..)
 * P.MEDIATEUR(mediator) ici il y a un objet qui defini comment plusieurs objets comuniquenet entre eux.
 * P.MEMENTO vise a externaliser l'état interne d'un objet sans perdre l'encapsulation.3 classes : Origine memento et gardien
-* P.OBSERVER etablit une relation entre un et plusieurs objets ; quand un change les autres sont avisés. quand un changement a lieu dans l'observateurs 
+* P.OBSERVER etablit une relation entre un et plusieurs objets ; quand un change les autres sont avisés. quand un changement
+    a lieu dans l'observateurs 
        sont avertis du changement. methode notify
 * P.PROTOTYPE permet de definir un type d'objet  créer en dupliquant une instance qui sert d'exemple methode clone
 * P.PROXY nom du patron de conception: c'est un substitut d'un objet, qui permet de le controler
@@ -114,13 +146,14 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
     il existe une classe par etats de la machine.
 * P.STRATEGIE dans ce pattern une famille d'algorythme est encapsulee de manière qu'ils soient interchangeables.
     les algos peuvent changer independamment de l'appication.
-* P.TEMPLATE il definit la structure generale d'un algo en deleguant certains passages. permet a des sous classes de modifier tout en gardant la meme structure generale
+* P.TEMPLATE il definit la structure generale d'un algo en deleguant certains passages. permet a des sous classes de 
+    modifier tout en gardant la meme structure generale
     il est utiliser quand on a par exemple plusieurs implementation d'un calcul
    certaines methodes peuvent etre vide et les classe enfants les remplissants.
 * P.VISITOR il represente uen operation a effectuer sur un ensemble d'objets. on modifie l'operation sans modifier l'objet.
     on passe les obets en parametre à un classe tierce qui effectue les actiosn sur celui-ci.
 
-* POJo plain old java object un objet java.
+* POJO plain old java object un objet java.
 * POSTMAN client pour faire des requetes et aussi des rendu d'API bien belle (script curl pour tester les requetes)
 * POSGREL Postgrel base donnée
 * PROMISE promesse de retour lors d'une demande
@@ -134,15 +167,19 @@ LOMBOX surcouhe avec annotation wui permet de reduire énormement les getters et
 * REACT un autre framework front end 
 * REDUX un store permettant de sauvegarder l'ensemble des STATES des objets
 * REL DB relation avec une database (keys, tables, relations entre les données)
-* REST representational state transfert 
-    Identifier les ressources
-    Définir les URIs
-    Spécifier les méthodes des interfaces
-    Lier les ressources 
+* REST representational state transfert (api REST en comparaison aux api soap)
+    Sans état,Cacheable (avec cache = mémoire),Orienté client-serveur,Avec une interface uniforme,avec un système de couche
+    Un code à la demande (optionnel)
+        Identifier les ressources
+        Définir les URIs
+        Spécifier les méthodes des interfaces
+        Lier les ressources 
 ### S:
 * SERVICE rend un service
 * SERVEUR exemple Nginx appache, nodeJs, 
 * SWAGGER UI interaction avec API
+* SRP single responsability  chaque methode est responsable de ce qu'elle fait, une classe ne doir offrir que des servie fortement lié
+
 * SQL language pour acceder a des tables, dans les bases de données
 * SPRING sur couche de java utilisant
 ### T:
@@ -298,7 +335,8 @@ ex  e.departement.nom avec e alias pour employe
 * having : sélectionne les groupes (ne peut exister sans
 clause group by) * order by : ordonne les données
 
-les clauses where et having peuvent avoir [NOT] LIKE, [NOT] BETWEEN, [NOT] IN AND, OR, NOT, [NOT] EXISTS – ALL, SOME/ANY – IS [NOT] EMPTY, [NOT] MEMBER OF
+les clauses where et having peuvent avoir [NOT] LIKE, [NOT] BETWEEN, [NOT] IN AND, OR, NOT, [NOT] EXISTS – ALL, 
+    SOME/ANY – IS [NOT] EMPTY, [NOT] MEMBER OF
 select d.nom, avg(e.salaire) from Departement d join d.employes e group by d.nom having count(d.nom) > 3
 combo de requetes
 select e from Employe e where e.salaire >= ( select e2.salaire from Employe e2 where e2.departement = 10)
@@ -325,28 +363,22 @@ TOUCHE UTILES
 maj ctrl s pour voir les erreurs de codes
 maj ctrl f pour trouver les occurences d'un mot
 
-<pre><code>
-{
-  "bonus": "SLOPE",
-  "climbingRouteName": "la voie du sud",
-  "createdAt": "2019-11-10T18:28:15.334Z",
-  "deletedAt": "2019-11-10T18:28:15.334Z",
-  "difficulty": "56",
-  "id": 0,
-  "info": "string",
-  "latitude": 2.3654,
-  "longitude": 4.326565,
-  "mental": 1,
-  "modifiedAt": "2019-11-10T18:28:15.334Z",
-  "name": "Test",
-  "physical": 1,
-  "routeType": "BOULDER",
-  "star": 1,
-  "tactical": 1,
-  "technical": 1,
-  "zoneType": "INTERIOR"
-}
-</code></pre>
+#L'injection de dépendance consiste à éviter une dépendance directe entre deux classes,
+ et définissant dynamiquement la dépendance plutôt que statiquement.
+ 
+ Une classe A dépend d'une autre classe B quand la classe A possède un attribut de type B, ou possède une méthode 
+ utilisant la classe B (type de paramètre, valeur de retour, variable locale, appel de méthode de la classe B).
+ 
+ Pour mettre en œuvre l'injection de dépendance :
+ 
+ Créer une interface I déclarant les méthodes de la classe B utilisées par la classe A ;
+ Déclarer la classe B comme implémentation de cette interface I ;
+ Remplacer toute référence à la classe B par des références à l'interface I ;
+ Si la classe A instancie des instances de B à son initialisation, alors remplacer l'instanciation par un passage 
+ d'une instance de l'interface I au(x) constructeur(s) de A ;
+ Si besoin, ajouter une méthode pour spécifier l'instance de l'interface I à utilise
+ 
+ 
 methode de callback apelée quand le persit a lieu 
 @PrePersist : quand persist (ou merge) s’est terminé
 avec succès
@@ -374,85 +406,9 @@ pour construire une entité
     public void destroy() {
         log.info("destruction de " + this.info);
     }
- installation sur le serveur distant auxietre.com
-     1  sudo apt-get update
-        2  sudo apt-get dist-upgrade -y
-        3  hostname -f
-        4  vi sudo nano /etc/hosts
-        5  cd /etc/hosts
-        6  ls /etc
-        7  sudo vi /etc/hosts
-        8  wget https://software.virtualmin.com/gpl/scripts/install.sh
-        9  sudo /bin/sh ./install.sh
-       10  sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
-       11  sudo systemctl start docker
-       12  service start docker
-       13  sudo apt-get remove docker docker-engine docker.io
-       14  sudo apt install docker.io
-       15  sudo systemctl start docker
-       16  sudo systemctl enable docker
-       17  exit
-       18  ls
-       19  pwd
-       20  cd root/
-       21  ls
-       22  exit
-       23  docker ps
-       24  cd francois/climbingzone/
-       26  cd zone
-       28  ./mvnw package && java -jar target/gs-spring-boot-docker-0.1.0.jar
-       29  mvn clean package
-       30  sudo apt-get install maven
-       50  git clone https://github.com/francoisauxietre/climbingzone.git
-       52  cd climbingzone/
-       54  cd zone
-       56  docker ps   // voir si les docker sont en route
-       58  mvn clean package
-       59  git pull
-       60  mvn clean package
-       61  docker buil -t climbingzone
-       62  docker build -t climbingzone
-       63  docker build -t climbingzone .
-       65  docker image ls
-       66  history
-       
-       pour les log docker logs idcontainer 
 
 
-a jouter et a tester pour mapstruct 
-<properties>
-    <org.mapstruct.version>1.3.1.Final</org.mapstruct.version>
-</properties>
-...
-<dependencies>
-    <dependency>
-        <groupId>org.mapstruct</groupId>
-        <artifactId>mapstruct</artifactId>
-        <version>${org.mapstruct.version}</version>
-    </dependency>
-</dependencies>
-...
-<build>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.5.1</version> <!-- or newer version -->
-            <configuration>
-                <source>1.8</source> <!-- depending on your project -->
-                <target>1.8</target> <!-- depending on your project -->
-                <annotationProcessorPaths>
-                    <path>
-                        <groupId>org.mapstruct</groupId>
-                        <artifactId>mapstruct-processor</artifactId>
-                        <version>${org.mapstruct.version}</version>
-                    </path>
-                    <!-- other annotation processors -->
-                </annotationProcessorPaths>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
+
 
 ***docker file Angular
 #base image
@@ -467,5 +423,27 @@ RUN npm run build --prod
 #stage 2
 FROM nginx:alpine
 COPY --from=node /app/dist/angular-escalade /usr/share/nginx/html
+# EXEMPLE DE BEAN 
+Un bean :
+doit être une classe publique ;
+doit avoir au moins un constructeur par défaut, public et sans paramètres. Java l'ajoutera de lui-même si aucun 
+constructeur n'est explicité ;
+peut implémenter l'interface Serializable, il devient ainsi persistant et son état peut être sauvegardé ;
+ne doit pas avoir de champs publics ;
+peut définir des propriétés (des champs non publics), qui doivent être accessibles via des méthodes publiques 
+getter et setter, suivant des règles de nommage.
 
-
+En réalité, un bean est un simple objet Java qui suit certaines contraintes, et représente généralement des données 
+du monde réel.Voici un récapitulatif des principaux concepts mis en jeu. Je vous donne ici des définitions plutôt 
+abstraites, mais il faut bien en passer par là. Les propriétés : un bean est conçu pour être paramétrable. 
+On appelle "propriétés" les champs non publics présents dans un bean. Qu'elles soient de type primitif ou objets, 
+les propriétés permettent de paramétrer le bean, en y stockant des données. La sérialisation : un bean est conçu pour 
+pouvoir être persistant. La sérialisation est un processus qui permet de sauvegarder l'état d'un bean, et donne ainsi 
+la possibilité de le restaurer par la suite. Ce mécanisme permet une persistance des données, voire de l'application 
+elle-même. La réutilisation : un bean est un composant conçu pour être réutilisable. Ne contenant que des données
+ ou du code métier, un tel composant n'a en effet pas de lien direct avec la couche de présentation, et peut également
+  être distant de la couche d'accès aux données (nous verrons cela avec le modèle de conception DAO). 
+  C'est cette indépendance qui lui donne ce caractère réutilisable. L'introspection : un bean est conçu pour être
+   paramétrable de manière dynamique. L'introspection est un processus qui permet de connaître le contenu d'un composant
+   (attributs, méthodes et événements) de manière dynamique, sans disposer de son code source. C'est ce processus, 
+   couplé à certaines règles de normalisation, qui rend possible une découverte et un paramétrage dynamique du bean !
