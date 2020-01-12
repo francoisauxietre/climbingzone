@@ -1,0 +1,4 @@
+
+1squid:S1220""Move this file to a named package.
+jsquid:S3008"SRename this field "INSTANCE" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğŸµÂ
+jsquid:ModifiersOrderCheck"EReorder the modifiers to comply with the Java Language Specification.(Óüô

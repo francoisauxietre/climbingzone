@@ -52,6 +52,36 @@ public class ClimbingrouteController {
     }
 
 
+
+
+
+
+    //affiche la liste des voies par latitudes et longitudes
+    @ApiOperation(value = "Affiche la liste des voies dans une boite de centre latitude, longitude et de rayon distance", response = List.class)
+    @GetMapping("/Climbingroute/{latitude}/{longitude}/{distance}")
+    public ResponseEntity<List<Climbingroute>> findRouteClimbingByBox(@PathVariable("latitude") float latitude)
+    {
+        log.info("affichage de toutes les voies à partir du point(lattitude, longitude, distance)");
+        return new ResponseEntity<List<Climbingroute>>(climbingrouteService.findAround(latitude), HttpStatus.OK);
+    }
+
+
+
+
+
+//
+//    //affiche la liste des voies par latitudes et longitudes
+//    @ApiOperation(value = "Affiche la liste des voies dans une boite de centre latitude, longitude et de rayon distance", response = List.class)
+//    @GetMapping("/Climbingroute/{latitude}/{longitude}/{distance}")
+//    public List<Climbingroute> findRouteClimbingByBox(@PathVariable("latitude") float latitude,
+//                                                      @PathVariable("longitude") float longitude,
+//                                                      @PathVariable("distance") float distance)
+//                                                      {
+//        log.info("affichage de toutes les voies à partir du point(lattitude, longitude, distance)");
+//        return (List<Climbingroute>) new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAround(latitude, longitude, distance), HttpStatus.OK);
+//    }
+
+
 //
 //
 //    //efface un utilisateur par son npm

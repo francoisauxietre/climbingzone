@@ -1,5 +1,6 @@
 package com.climbing.zone.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
@@ -74,12 +75,14 @@ public class Climbingroute implements Serializable {
     private ZoneType zoneType;
 
     @OneToMany(mappedBy = "located")
+    @JsonIgnore
     private Set<Place> places = new HashSet<>();
 
     @OneToMany(mappedBy = "openBy")
+    @JsonIgnore
     private Set<Climber> openers = new HashSet<>();
 
-    @OneToMany(mappedBy = "id.climber")//, cascade = CascadeType.ALL
-    @JsonManagedReference
-    private Set<Card> cards = new HashSet<>();
+//    @OneToMany(mappedBy = "id.climber")//, cascade = CascadeType.ALL
+//    @JsonManagedReference
+    //private Set<Card> cards = new HashSet<>();
 }

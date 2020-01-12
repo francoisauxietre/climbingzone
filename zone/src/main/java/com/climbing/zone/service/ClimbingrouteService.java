@@ -8,8 +8,15 @@ import com.climbing.zone.repository.ClimbingrouteRepository;
 import com.climbing.zone.service.dto.ClimbingrouteDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,11 +34,32 @@ public class ClimbingrouteService {
     @Autowired
     ClimberRepository climberRepository;
 
-    //ok
+      //ok
     public List<ClimbingrouteDto> findAll() {
 
         return ClimbingrouteDto.toDTO(climbingrouteRepository.findAll());
     }
+
+    public List<Climbingroute> findAround(@Param("lat")float lat){
+
+        List<Climbingroute> routes1 = new ArrayList<>();
+        List<Climbingroute> routes = new ArrayList<>();
+        routes = climbingrouteRepository.findAround(lat);
+
+        for (Climbingroute route: routes
+             ) {
+            routes1.add(route);
+            System.out.println(""+ route.getLatitude());
+        }
+
+        //return climbingrouteRepository.findAround(lat);
+
+//        Climbingroute test = new Climbingroute();
+//        routes1.add(test);
+        return routes1;
+    }
+
+
 
     //ok
     public Climbingroute save(Climbingroute climbingroute) {

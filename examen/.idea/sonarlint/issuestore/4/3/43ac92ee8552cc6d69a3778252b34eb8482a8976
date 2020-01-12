@@ -1,0 +1,5 @@
+
+Rsquid:EmptyStatementUsageCheck"Remove this empty statement.(ƒ΅Εκϋÿÿÿÿ8δ ½γο-
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(Ϊ­“…όÿÿÿÿ8δ ½γο-
+1squid:S1220""Move this file to a named package.
