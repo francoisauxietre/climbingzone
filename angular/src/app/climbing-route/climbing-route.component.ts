@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./climbing-route.component.css']
 })
 export class ClimbingRouteComponent implements OnInit {
+  ClimbingRouteApi: any;
 
   constructor() { }
 

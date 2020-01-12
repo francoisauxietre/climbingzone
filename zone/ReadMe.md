@@ -3,6 +3,15 @@
 Site en ligne APi Swagger http://spring.auxietre.com/swagger-ui.html#/Api_Climbing_Routes
 Acces Api /climbers/ sur http://spring.auxietre.com/climbers/
           /climbingroutes/ sur http://spring.auxietre.com/climbingroutes/
+Sur le serveur auxietre.com nettoyer les anciens image docker 
+<pre><code>//affiche les docker 
+docker image ls</code></pre>
+
+<pre><code>//suprime les anciennes versions des images
+docker image rm -f numerodesImages</code></pre>
+
+<pre><code>//build de tout 
+docker-compose up --build</code></pre>
           
           Site en ligne: administration sur 
           http://spring.auxietre.com/
@@ -20,6 +29,9 @@ Acces Api /climbers/ sur http://spring.auxietre.com/climbers/
           /security tout ce qui touche a l'authentification  (presque terminer)
           /service  tous les services dont le service DTO pour les envois par requêtes en body (en prévisions de clients)
           /resources le site pour l'admin avec certains droits.
+          
+          erreur react2_1   | nginx: [emerg] unexpected "}" in /etc/nginx/conf.d/default.conf:14
+
 
  depot git de l'ensemble des projets.
  https://github.com/francoisauxietre/climbingzone/
@@ -307,10 +319,10 @@ pour les classes avec heritage voir poly
 
 # Methode de entity manager
 * void persist(Object entité)
-* <T> T merge(T entité)
+* "<T> T merge(T entité)
 * void remove(Object entité)
-* <T> T find(Class<T> classeEntité, Object cléPrimaire)
-* <T> T getReference(Class<T> classeEntité, Object cléPrimaire)
+* "<T> T find(Class<T> classeEntité, Object cléPrimaire)
+* "<T> T getReference(Class<T> classeEntité, Object cléPrimaire)
 * void flush()
 * void setFlushMode(FlushModeType flushMode)
 * void lock(Object entité, LockModeType lockMode) //permet de gerer des modes coucurent d'acces au x données

@@ -10,7 +10,7 @@ import {ClimbingRoutesService} from '../api/service/climbing-routes.service';
 })
 export class ClimbingRouteListComponent implements OnInit {
 
-  public climbingRouteApis: ClimbingRouteApi[];
+  public climbingRouteApi: ClimbingRouteApi[];
 
   constructor(private climbingRoutesService: ClimbingRoutesService) {
   }
@@ -19,9 +19,9 @@ export class ClimbingRouteListComponent implements OnInit {
     this.climbingRoutesService.getApiClimbingRoutes()
       .subscribe(
         data => {
-          this.climbingRouteApis = data;
+          this.climbingRouteApi = data;
           console.log(data);
-          console.log(this.climbingRouteApis);
+          console.log(this.climbingRouteApi);
         }
       );
   }

@@ -28,12 +28,12 @@ export class ClimbersListComponent implements OnInit {
           console.log(this.ClimberApi);
         }
       );
-    this.friendsApiService.getApiFriends()
-      .subscribe(
-        data => {
-          this.friendsApi = data;
-        }
-      );
+    // this.friendsApiService.getApiFriends()
+    //   .subscribe(
+    //     data => {
+    //       this.friendsApi = data;
+    //     }
+    //   );
   }
 
   searchClimbers() {

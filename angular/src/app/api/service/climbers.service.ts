@@ -7,23 +7,23 @@ import {map, catchError} from 'rxjs/operators'; // pour la gestion des erreur de
   providedIn: 'root'
 })
 export class ClimbersService {
-  private url = '/climbers/';
-  private url1 = '/climbers/';
+  private url = 'http://spring.auxietre.com/climbers/';
 
 
   constructor(private httpclient: HttpClient) {
   }
 
+  // get all climbers
   public getApiClimbers(): Observable<any> {
     return this.httpclient.get(this.url);
   }
 
   public getApiClimbersByIdClimber(value): Observable<any> {
-    return this.httpclient.get(this.url1 + value);
+    return this.httpclient.get(this.url + value);
   }
 
   public getApiClimbersByFirstName(value): Observable<any> {
-    return this.httpclient.get(this.url1 + value);
+    return this.httpclient.get(this.url + value);
   }
 
   // public postApiClimbers(user: UserApi): Observable<any> {
@@ -31,3 +31,5 @@ export class ClimbersService {
   // }
 
 }
+
+

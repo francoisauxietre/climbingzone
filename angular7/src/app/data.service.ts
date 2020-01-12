@@ -22,4 +22,8 @@ export class DataService {
   getClimbingRoutes() {
     return this.httpClient.get('http://spring.auxietre.com/climbingroutes/');
   }
+  getClimbingCards() {
+    return this.httpClient.get('http://spring.auxietre.com/cards/');
+  }
+
 }
