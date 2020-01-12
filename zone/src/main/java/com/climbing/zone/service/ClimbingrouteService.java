@@ -134,6 +134,7 @@ public class ClimbingrouteService {
 
     /**
      * Donne la liste des voies par type de bonus
+     *
      * @param bonusType
      * @return List<ClimbingrouteDto> liste des voies correpondantes
      */
@@ -142,7 +143,157 @@ public class ClimbingrouteService {
         routes = ClimbingrouteDto.toDTO(climbingrouteRepository.findAllByBonus(bonusType));
         return routes;
     }
+//physique
 
+    /**
+     * Donne la liste des voies ayant cette difficulté physique
+     *
+     * @param id la difficulté demandé
+     * @return List<ClimbingrouteDto> liste des voies correpondantes
+     */
+    public List<ClimbingrouteDto> findAllByPhysical(@Param("id") Integer id) {
+        List<ClimbingrouteDto> routes = new ArrayList<>();
+        routes = ClimbingrouteDto.toDTO(climbingrouteRepository.findAllByPhysical(id));
+        return routes;
+    }
+
+    /**
+     * Donne la liste des voies ayant au moins cette difficulté physique
+     *
+     * @param id la difficulté demandé
+     * @return List<ClimbingrouteDto> liste des voies correpondantes
+     */
+    public List<ClimbingrouteDto> findAllByPhysicalMin(@Param("id") Integer id) {
+        List<ClimbingrouteDto> routes = new ArrayList<>();
+        routes = ClimbingrouteDto.toDTO(climbingrouteRepository.findAllByPhysicalMin(id));
+        return routes;
+    }
+
+    /**
+     * Donne la liste des voies ayant au plus cette difficulté physique
+     *
+     * @param id la difficulté demandé
+     * @return List<ClimbingrouteDto> liste des voies correpondantes
+     */
+    public List<ClimbingrouteDto> findAllByPhysicalMax(@Param("id") Integer id) {
+        List<ClimbingrouteDto> routes = new ArrayList<>();
+        routes = ClimbingrouteDto.toDTO(climbingrouteRepository.findAllByPhysicalMax(id));
+        return routes;
+    }
+
+    //technique
+
+    /**
+     * Donne la liste des voies ayant cette difficulté technique
+     *
+     * @param id la difficulté demandé
+     * @return List<ClimbingrouteDto> liste des voies correpondantes
+     */
+    public List<ClimbingrouteDto> findAllByTechnical(@Param("id") Integer id) {
+        List<ClimbingrouteDto> routes = new ArrayList<>();
+        routes = ClimbingrouteDto.toDTO(climbingrouteRepository.findAllByTechnical(id));
+        return routes;
+    }
+
+    /**
+     * Donne la liste des voies ayant au moins cette difficulté technique
+     *
+     * @param id la difficulté demandé
+     * @return List<ClimbingrouteDto> liste des voies correpondantes
+     */
+    public List<ClimbingrouteDto> findAllByTechnicalMin(@Param("id") Integer id) {
+        List<ClimbingrouteDto> routes = new ArrayList<>();
+        routes = ClimbingrouteDto.toDTO(climbingrouteRepository.findAllByTechnicalMin(id));
+        return routes;
+    }
+
+    /**
+     * Donne la liste des voies ayant au plus cette difficulté technique
+     *
+     * @param id la difficulté demandé
+     * @return List<ClimbingrouteDto> liste des voies correpondantes
+     */
+    public List<ClimbingrouteDto> findAllByTechnicalMax(@Param("id") Integer id) {
+        List<ClimbingrouteDto> routes = new ArrayList<>();
+        routes = ClimbingrouteDto.toDTO(climbingrouteRepository.findAllByTechnicalMax(id));
+        return routes;
+    }
+
+    //tactique
+
+    /**
+     * Donne la liste des voies ayant cette difficulté tactique
+     *
+     * @param id la tactique demandé
+     * @return List<ClimbingrouteDto> liste des voies correpondantes
+     */
+    public List<ClimbingrouteDto> findAllByTactical(@Param("id") Integer id) {
+        List<ClimbingrouteDto> routes = new ArrayList<>();
+        routes = ClimbingrouteDto.toDTO(climbingrouteRepository.findAllByTactical(id));
+        return routes;
+    }
+
+    /**
+     * Donne la liste des voies ayant au moins cette difficulté technique
+     *
+     * @param id la difficulté demandé
+     * @return List<ClimbingrouteDto> liste des voies correpondantes
+     */
+    public List<ClimbingrouteDto> findAllByTacticalMin(@Param("id") Integer id) {
+        List<ClimbingrouteDto> routes = new ArrayList<>();
+        routes = ClimbingrouteDto.toDTO(climbingrouteRepository.findAllByTacticalMin(id));
+        return routes;
+    }
+
+    /**
+     * Donne la liste des voies ayant au plus cette difficulté technique
+     *
+     * @param id la difficulté demandé
+     * @return List<ClimbingrouteDto> liste des voies correpondantes
+     */
+    public List<ClimbingrouteDto> findAllByTacticalMax(@Param("id") Integer id) {
+        List<ClimbingrouteDto> routes = new ArrayList<>();
+        routes = ClimbingrouteDto.toDTO(climbingrouteRepository.findAllByTacticalMax(id));
+        return routes;
+    }
+
+    //mental
+
+    /**
+     * Donne la liste des voies ayant cette difficulté mental
+     *
+     * @param id le mental demandé
+     * @return List<ClimbingrouteDto> liste des voies correpondantes
+     */
+    public List<ClimbingrouteDto> findAllByMental(@Param("id") Integer id) {
+        List<ClimbingrouteDto> routes = new ArrayList<>();
+        routes = ClimbingrouteDto.toDTO(climbingrouteRepository.findAllByMental(id));
+        return routes;
+    }
+
+    /**
+     * Donne la liste des voies ayant au moins cette difficulté mental
+     *
+     * @param id le mental demandé
+     * @return List<ClimbingrouteDto> liste des voies correpondantes
+     */
+    public List<ClimbingrouteDto> findAllByMentalMin(@Param("id") Integer id) {
+        List<ClimbingrouteDto> routes = new ArrayList<>();
+        routes = ClimbingrouteDto.toDTO(climbingrouteRepository.findAllByMentalMin(id));
+        return routes;
+    }
+
+    /**
+     * Donne la liste des voies ayant au plus cette difficulté mental
+     *
+     * @param id le mental demandé
+     * @return List<ClimbingrouteDto> liste des voies correpondantes
+     */
+    public List<ClimbingrouteDto> findAllByMentalMax(@Param("id") Integer id) {
+        List<ClimbingrouteDto> routes = new ArrayList<>();
+        routes = ClimbingrouteDto.toDTO(climbingrouteRepository.findAllByMentalMax(id));
+        return routes;
+    }
 
     /**
      * Sauvegarde de notre voie ces parametres seront envoyés par nos clients  (React, vuejs, angular et l'application AndroidClimbing)

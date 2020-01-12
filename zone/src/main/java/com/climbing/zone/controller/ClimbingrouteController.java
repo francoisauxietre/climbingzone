@@ -117,6 +117,108 @@ public class ClimbingrouteController {
         return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByBonus(bonusType), HttpStatus.OK);
     }
 
+    //-----------------------------------------PHYSICAL---------------------------------------------------------------
+    //affiche la liste des voies par
+    @ApiOperation(value = "Affiche la liste des voies par physique", response = List.class)
+    @GetMapping("/Climbingroute/physical/{id}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByPhysical(@PathVariable("id") Integer id) {
+        log.info("affichage de tous les voies par niveau physique");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByPhysical(id), HttpStatus.OK);
+    }
+
+    //affiche la liste des voies par
+    @ApiOperation(value = "Affiche la liste des voies par technique au moins", response = List.class)
+    @GetMapping("/Climbingroute/physicalMin/{id}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByPhysicalMin(@PathVariable("id") Integer id) {
+        log.info("affichage de tous les voies par niveau physique");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByPhysicalMin(id), HttpStatus.OK);
+    }
+
+    //affiche la liste des voies par
+    @ApiOperation(value = "Affiche la liste des voies par technique au max", response = List.class)
+    @GetMapping("/Climbingroute/physicalMax/{id}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByPhysicalMax(@PathVariable("id") Integer id) {
+        log.info("affichage de tous les voies par niveau physique");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByPhysicalMax(id), HttpStatus.OK);
+    }
+
+    //-----------------------------------------TACTICAL---------------------------------------------------------------
+    //affiche la liste des voies par
+    @ApiOperation(value = "Affiche la liste des voies par tactite", response = List.class)
+    @GetMapping("/Climbingroute/tactical/{id}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByTactical(@PathVariable("id") Integer id) {
+        log.info("affichage de tous les voies par niveau tactite");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByTactical(id), HttpStatus.OK);
+    }
+
+    //affiche la liste des voies par
+    @ApiOperation(value = "Affiche la liste des voies par tactite au moins", response = List.class)
+    @GetMapping("/Climbingroute/tacticalMin/{id}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByTacticalMin(@PathVariable("id") Integer id) {
+        log.info("affichage de tous les voies par niveau tactite");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByTacticalMin(id), HttpStatus.OK);
+    }
+
+    //affiche la liste des voies par
+    @ApiOperation(value = "Affiche la liste des voies par tactite au max", response = List.class)
+    @GetMapping("/Climbingroute/tacticalMax/{id}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByTacticalMax(@PathVariable("id") Integer id) {
+        log.info("affichage de tous les voies par niveau tactite");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByTacticalMax(id), HttpStatus.OK);
+    }
+
+    //-----------------------------------------TECHNICAL---------------------------------------------------------------
+    //affiche la liste des voies par
+    @ApiOperation(value = "Affiche la liste des voies par technique", response = List.class)
+    @GetMapping("/Climbingroute/technical/{id}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByTechnical(@PathVariable("id") Integer id) {
+        log.info("affichage de tous les voies par niveau technique");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByTechnical(id), HttpStatus.OK);
+    }
+
+    //affiche la liste des voies par
+    @ApiOperation(value = "Affiche la liste des voies par technique au moins", response = List.class)
+    @GetMapping("/Climbingroute/technicalMin/{id}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByTechnicalMin(@PathVariable("id") Integer id) {
+        log.info("affichage de tous les voies par niveau technique");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByTechnicalMin(id), HttpStatus.OK);
+    }
+
+    //affiche la liste des voies par
+    @ApiOperation(value = "Affiche la liste des voies par technique au max", response = List.class)
+    @GetMapping("/Climbingroute/technicalMax/{id}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByTechnicalMax(@PathVariable("id") Integer id) {
+        log.info("affichage de tous les voies par niveau technique");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByTechnicalMax(id), HttpStatus.OK);
+    }
+
+    //-----------------------------------------MENTAL---------------------------------------------------------------
+    //affiche la liste des voies par
+    @ApiOperation(value = "Affiche la liste des voies par mental", response = List.class)
+    @GetMapping("/Climbingroute/mental/{id}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByMental(@PathVariable("id") Integer id) {
+        log.info("affichage de tous les voies par niveau mental");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByMental(id), HttpStatus.OK);
+    }
+
+    //affiche la liste des voies par
+    @ApiOperation(value = "Affiche la liste des voies par mental au moins", response = List.class)
+    @GetMapping("/Climbingroute/mentalMin/{id}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByMentalMin(@PathVariable("id") Integer id) {
+        log.info("affichage de tous les voies par niveau mental");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByMentalMin(id), HttpStatus.OK);
+    }
+
+    //affiche la liste des voies par
+    @ApiOperation(value = "Affiche la liste des voies par mental au max", response = List.class)
+    @GetMapping("/Climbingroute/mentalMax/{id}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByMentalMax(@PathVariable("id") Integer id) {
+        log.info("affichage de tous les voies par niveau mental");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByMentalMax(id), HttpStatus.OK);
+    }
+
+
+
 
 //
 //
