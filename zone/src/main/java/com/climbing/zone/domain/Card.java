@@ -1,5 +1,6 @@
 package com.climbing.zone.domain;
 
+import com.climbing.zone.enumeration.BonusType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -18,7 +19,7 @@ public class Card implements Serializable {
     private CardPk id;
 
     @Column(name = "bonus")
-    private String bonus;
+    private BonusType bonus;
 
     @Column(name = "info")
     private String info;

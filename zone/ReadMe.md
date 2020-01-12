@@ -1,5 +1,33 @@
 ![hello_Min](https://user-images.githubusercontent.com/55358842/68070716-06946b80-fd72-11e9-94bb-4e06b9f30141.jpg)
 
+Site en ligne APi Swagger http://spring.auxietre.com/swagger-ui.html#/Api_Climbing_Routes
+Acces Api /climbers/ sur http://spring.auxietre.com/climbers/
+          /climbingroutes/ sur http://spring.auxietre.com/climbingroutes/
+          
+          Site en ligne: administration sur 
+          http://spring.auxietre.com/
+          http://angular.auxietre.com/users
+          http://vue.auxietre.com/#/
+          http://react.auxietre.com/#/
+        
+        les fichiers sont rangés par catégories:
+          /configurations tout ce qui touche le login et swagger
+          /controller tous les controller qui sont appelé a chaque requete (le plus poussé étant ClimbingrouteController)
+          /domain mes classes metiers
+          /enumération les différentes énumération pour les retrouver facilement et ne pas les avoir dans le code partout
+          /filter  anciens filtre pour les problèmes de COR policy
+          /repository les premiers repository il en manque..
+          /security tout ce qui touche a l'authentification  (presque terminer)
+          /service  tous les services dont le service DTO pour les envois par requêtes en body (en prévisions de clients)
+          /resources le site pour l'admin avec certains droits.
+
+ depot git de l'ensemble des projets.
+ https://github.com/francoisauxietre/climbingzone/
+ 
+remarque: Tout n'est pas encore commenté mais les services le sont
+
+
+          
 ## Base de donnée 
 
 lancement: dans le repertoire zone (le docker-compose gere la base de donnee en msql sur le  port 3009 grace au docker compose 
@@ -7,8 +35,7 @@ lancement: dans le repertoire zone (le docker-compose gere la base de donnee en 
 **Lombok** 
 tres utile pour alléger les classes sans devoir réecrire sans cesse tous les getters and setters.
 
-Différents ReadMe: https://github.com/francoisauxietre/climbingzone/tree/master/zone
-
+Différents ReadMe pour chaque projet
 
 -----------------
 ###  MOTS CLES APPRIS PENDANT LES ANNEES A L'ISTIC

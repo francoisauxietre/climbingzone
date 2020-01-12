@@ -1,6 +1,7 @@
 package com.climbing.zone.controller;
 
 import com.climbing.zone.domain.*;
+import com.climbing.zone.enumeration.BonusType;
 import com.climbing.zone.service.ClimbingrouteService;
 import com.climbing.zone.service.dto.ClimbingrouteDto;
 import io.swagger.annotations.Api;
@@ -23,7 +24,6 @@ import java.util.List;
 
 public class ClimbingrouteController {
 
-
 //pour eviter le cache dans chrome et etre obliger d'aller le vider a la main
 //    @ModelAttribute
 //    public void setResponseHeader(HttpServletResponse response) {
@@ -34,7 +34,7 @@ public class ClimbingrouteController {
     ClimbingrouteService climbingrouteService;
 
     //-----------------------------------------CLIMBINGROUTE---------------------------------------------------------------
-    //get
+
     @ApiOperation(value = "ClimingRoutes DTO")
     @RequestMapping(method = RequestMethod.GET, value = "/")
     public ResponseEntity<List<ClimbingrouteDto>> findAll() {
@@ -51,35 +51,71 @@ public class ClimbingrouteController {
         return new ResponseEntity<String>(new String(climbingroute.getId() + ""), HttpStatus.OK);
     }
 
-
-
-
-
-
-    //affiche la liste des voies par latitudes et longitudes
-    @ApiOperation(value = "Affiche la liste des voies dans une boite de centre latitude, longitude et de rayon distance", response = List.class)
+    //affiche la liste des voies depuis un point gps latitude et longitude et une distance depuis ce moint
+    @ApiOperation(value = "Affiche la liste des voies depuis un centre (latitude, longitude) et un rayon (distance)", response = List.class)
     @GetMapping("/Climbingroute/{latitude}/{longitude}/{distance}")
-    public ResponseEntity<List<Climbingroute>> findRouteClimbingByBox(@PathVariable("latitude") float latitude)
-    {
+    public ResponseEntity<List<ClimbingrouteDto>> findAround(@PathVariable("latitude") float latitude,
+                                                             @PathVariable("longitude") float longitude,
+                                                             @PathVariable("distance") float distance) {
         log.info("affichage de toutes les voies à partir du point(lattitude, longitude, distance)");
-        return new ResponseEntity<List<Climbingroute>>(climbingrouteService.findAround(latitude), HttpStatus.OK);
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAround(latitude, longitude, distance), HttpStatus.OK);
     }
 
+    //affiche la liste des voies ayant plus que x etoiles
+    @ApiOperation(value = "Affiche la liste des voies ayant plus de X etoiles", response = List.class)
+    @GetMapping("/Climbingroute/{id}")
+    public ResponseEntity<List<ClimbingrouteDto>> findRouteByStar(@PathVariable("id") Integer id) {
+        log.info("affichage de toutes les voies à partir du point(lattitude, longitude, distance)");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findRouteByStar(id), HttpStatus.OK);
+    }
 
+    //affiche la liste des voies par zone
+    @ApiOperation(value = "Affiche la liste des voies par zoneType (EXTERIOR INTERIOR)", response = List.class)
+    @GetMapping("/Climbingroute/zoneType/{zoneType}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByZoneType(@PathVariable("zoneType") ZoneType zoneType) {
+        log.info("affichage de tous les voies par type de zone");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByZoneType(zoneType), HttpStatus.OK);
+    }
 
+    //affiche la liste des voies par genre
+    @ApiOperation(value = "Affiche la liste des voies par genre (BOULDER, ROUTE)", response = List.class)
+    @GetMapping("/Climbingroute/routeType/{routeType}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByZoneType(@PathVariable("routeType") RouteType routeType) {
+        log.info("affichage de tous les voies de type de route");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByRouteType(routeType), HttpStatus.OK);
+    }
 
+    //affiche la liste des voies par difficulte exacte
+    @ApiOperation(value = "Affiche la liste des voies par difficulte exacte", response = List.class)
+    @GetMapping("/Climbingroute/difficulty/{id}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByDifficulty(@PathVariable("id") Integer id) {
+        log.info("affichage de tous les voies de cette difficulte");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByDifficulty(id), HttpStatus.OK);
+    }
 
-//
-//    //affiche la liste des voies par latitudes et longitudes
-//    @ApiOperation(value = "Affiche la liste des voies dans une boite de centre latitude, longitude et de rayon distance", response = List.class)
-//    @GetMapping("/Climbingroute/{latitude}/{longitude}/{distance}")
-//    public List<Climbingroute> findRouteClimbingByBox(@PathVariable("latitude") float latitude,
-//                                                      @PathVariable("longitude") float longitude,
-//                                                      @PathVariable("distance") float distance)
-//                                                      {
-//        log.info("affichage de toutes les voies à partir du point(lattitude, longitude, distance)");
-//        return (List<Climbingroute>) new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAround(latitude, longitude, distance), HttpStatus.OK);
-//    }
+    //affiche la liste des voies ayant aumoins la difficulte
+    @ApiOperation(value = "Affiche la liste des voies par difficulte au moins", response = List.class)
+    @GetMapping("/Climbingroute/difficultyMin/{id}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByDifficultyMin(@PathVariable("id") Integer id) {
+        log.info("affichage de tous les voies de cette difficulte au moins");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByDifficultyMin(id), HttpStatus.OK);
+    }
+
+    //affiche la liste des voies ayant au plus la difficulte
+    @ApiOperation(value = "Affiche la liste des voies par difficulte au plus", response = List.class)
+    @GetMapping("/Climbingroute/difficultyMax/{id}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByDifficultyMax(@PathVariable("id") Integer id) {
+        log.info("affichage de tous les voies de cette difficulte au plus");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByDifficultyMax(id), HttpStatus.OK);
+    }
+
+    //affiche la liste des voies par bonus
+    @ApiOperation(value = "Affiche la liste des voies par bonus (ROOF...)", response = List.class)
+    @GetMapping("/Climbingroute/bonus/{bonusType}")
+    public ResponseEntity<List<ClimbingrouteDto>> findAllByBonus(@PathVariable("bonusType") BonusType bonusType) {
+        log.info("affichage de tous les voies par type de bonus");
+        return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAllByBonus(bonusType), HttpStatus.OK);
+    }
 
 
 //
@@ -92,17 +128,7 @@ public class ClimbingrouteController {
 //        climbingrouteService.deleteClimbingrouteById(id);
 //    }
 //(@PathVariable("firstName") String firstName)
-//
-//    //affiche la liste des voies par latitudes et longitudes
-//    @ApiOperation(value = "Affiche la liste des voies dans une boite de latitude longitudes", response = List.class)
-//    @GetMapping("/Climbingroute/{lat1}/{lat2}/{long1}/{long2}")
-//    public List<Climbingroute> findRouteClimbingByBox(@PathVariable("lat1") float lat1,
-//                                                      @PathVariable("lat2") float lat2,
-//                                                      @PathVariable("long1") float long1,
-//                                                      @PathVariable("long2") float long2) {
-//        log.info("affichage de toutes les voies");
-//        return climbingrouteService.findAllByLatitudeGreaterThanEqualAndLatitudeLessThanEqualAndLongitudeIsGreaterThanEqualAndLongitudeIsLessThanEqual(lat1, lat2, long1, long2);
-//    }
+
 //
 //    //affiche la liste des parking
 //    @ApiOperation(value = "Affiche la liste des parking", response = List.class)
@@ -111,19 +137,5 @@ public class ClimbingrouteController {
 //        log.info("affichage de tous les parking");
 //        return climbingrouteService.findAllByName(name);
 //    }
-//
-//    //affiche la liste des voies de type
-//    @ApiOperation(value = "Affiche la liste des voies de type", response = List.class)
-//    @GetMapping("/Climbingroute/routeType")
-//    public List<Climbingroute> findAllByRouteType(@PathVariable("routeType") RouteType routeType) {
-//        log.info("affichage de tous les voies de type");
-//        return climbingrouteService.findAllByRouteType(routeType);
-//    }
-//    //affiche la liste des voies de zone
-//    @ApiOperation(value = "Affiche la liste des voies de zone", response = List.class)
-//    @GetMapping("/Climbingroute/zoneType")
-//    public List<Climbingroute> findAllByZoneType(@PathVariable("zoneType") ZoneType zoneType) {
-//        log.info("affichage de tous les voies de zone");
-//        return climbingrouteService.findAllByZoneType(zoneType);
-//    }
+
 }

@@ -73,23 +73,13 @@ public class ZoneApplication {
         return (long) (Math.random() * number);
     }
 
-    public float getLatitude(int number) {
-        boolean signe = ((Math.random()) > .5) ? true : false;
-        if (signe) {
-            return (float) -(Math.random());
-        } else {
-            return (int) (Math.random() * number);
-        }
+    public float getInRange(int min , int max) {
+
+        Random r = new Random();
+        return r.nextInt((max - min) + 1) + min;
     }
 
-    public float getLongitude(int number) {
-        boolean signe = ((Math.random()) > .5) ? true : false;
-        if (signe) {
-            return (float) -(Math.random());
-        } else {
-            return (int) (Math.random() * number);
-        }
-    }
+
 
     public String getName(int number) {
         String returnC = "";
@@ -126,7 +116,7 @@ public class ZoneApplication {
         Set<Climbingroute> climbingroutes = new HashSet<>();
         Date date = new Date(System.currentTimeMillis());
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 80; i++) {
 //--------------------------------CLIMBER-----------------------------
             Climber climber = new Climber();
             climber.setLastName("" + firstName.random());
@@ -143,13 +133,13 @@ public class ZoneApplication {
             climbingroute.setClimbingRouteName(getText(20));
             climbingroute.setCreatedAt(date);
             climbingroutes.add(climbingroute);
-            climbingroute.setLatitude(getLatitude(100));
-            climbingroute.setLongitude(getLongitude(20) + 100);
+            climbingroute.setLatitude(getInRange(42, 50));
+            climbingroute.setLongitude(getInRange(-5,8));
             climbingroute.setRouteType((RouteType) routeType.random());
             climbingroute.setZoneType((ZoneType) zoneType.random());
-            climbingroute.setBonus("" + bonus.random());
+            climbingroute.setBonus((BonusType) bonus.random());
             climbingroute.setCreatedAt(date);
-            climbingroute.setDifficulty("" + fill(40));
+            climbingroute.setDifficulty(fill(40));
             climbingroute.setInfo(getText(50));
             climbingroute.setTactical(fill(6));
             climbingroute.setTechnical(fill(6));
@@ -159,13 +149,13 @@ public class ZoneApplication {
 
             climbingrouteRepository.save(climbingroute);
 //-----------------------------------CARD-----------------------------------
-            for (int j = 0; j < 50; j++) {
+            for (int j = 0; j < 30; j++) {
                 Card card = new Card();
                 CardPk cardPk = new CardPk();
                 cardPk.setClimber(climber);
                 cardPk.setClimbingroute(climbingroute);
                 card.setId(cardPk);
-                card.setBonus("" + bonus.random());
+                card.setBonus((BonusType) bonus.random());
                 card.setDate(date);
                 card.setDifficuty("" + fill(40));
                 card.setInfo(getText(50));

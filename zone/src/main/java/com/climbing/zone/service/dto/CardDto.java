@@ -2,6 +2,7 @@ package com.climbing.zone.service.dto;
 
 import com.climbing.zone.domain.Card;
 import com.climbing.zone.domain.CardPk;
+import com.climbing.zone.enumeration.BonusType;
 import lombok.*;
 
 import java.io.Serializable;
@@ -34,7 +35,7 @@ public class CardDto implements Serializable {
     private Integer technical;
     private Integer tactical;
     private Integer mental;
-    private String bonus;
+    private BonusType bonus;
     private String climberFirstName;
     private String climberLastName;
 

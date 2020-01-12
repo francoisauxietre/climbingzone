@@ -1,12 +1,12 @@
 package com.climbing.zone.service.dto;
 
 import com.climbing.zone.domain.Climbingroute;
-import com.climbing.zone.enumeration.RouteType;
-import com.climbing.zone.enumeration.ZoneType;
+import com.climbing.zone.domain.RouteType;
+import com.climbing.zone.domain.ZoneType;
+import com.climbing.zone.enumeration.BonusType;
 import lombok.*;
 
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,10 +23,10 @@ public class ClimbingrouteDto  implements Serializable {
     private Long id;
     private String climbingRouteName;
     private String info;
-    private String bonus;
+    private BonusType bonus;
     private Float latitude;
     private Float longitude;
-    private String difficulty;
+    private Integer difficulty;
     private Integer star;
     private Integer physical;
     private Integer technical;
@@ -64,6 +64,8 @@ public class ClimbingrouteDto  implements Serializable {
         this.mental = climbingroute.getMental();
         this.createdAt = climbingroute.getCreatedAt();
         this.info = climbingroute.getInfo();
+        this.routeType = climbingroute.getRouteType();
+        this.zoneType = climbingroute.getZoneType();
     }
 
     public Climbingroute fromDTO(ClimbingrouteDto climbingrouteDto){

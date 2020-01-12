@@ -1,5 +1,6 @@
 package com.climbing.zone.domain;
 
+import com.climbing.zone.enumeration.BonusType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
@@ -28,7 +29,7 @@ public class Climbingroute implements Serializable {
     private String climbingRouteName;
 
     @Column(name = "bonus")
-    private String bonus;
+    private BonusType bonus;
 
     @Column(name = "info")
     private String info;
@@ -40,7 +41,7 @@ public class Climbingroute implements Serializable {
     private Float longitude;
 
     @Column(name = "difficulty")
-    private String difficulty;
+    private Integer difficulty;
 
     @Column(name = "star")
     private Integer star;

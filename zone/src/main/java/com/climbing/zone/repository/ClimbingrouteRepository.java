@@ -1,6 +1,7 @@
 package com.climbing.zone.repository;
 
 import com.climbing.zone.domain.*;
+import com.climbing.zone.enumeration.BonusType;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -13,22 +14,40 @@ import java.util.List;
 
 //sert a dialoguer avec la base de donnee
 
-
-
-
-
 public interface ClimbingrouteRepository extends CrudRepository<Climbingroute, Long> {
 
-
     List<Climbingroute> findAll();
-    //    @Async
-    //    Future<Todo> findById(Long id);
-    //@Query("select latitude from Climbingroute c where c.latitude >1")
-    @Query("select c from Climbingroute c where c.latitude >1" )
-    List<Climbingroute> findAround(@Param("lat")float lat);
-
     void deleteClimbingrouteById(Long id);
+
+    @Query("select c from Climbingroute c where c.latitude > (:latitude - :distance) and c.latitude < (:latitude + :distance) and c.longitude > (:longitude - :distance) and c.longitude < (:longitude + :distance) ")
+    List<Climbingroute> findAround(@Param("latitude") float latitude,
+                                   @Param("longitude") float longitude,
+                                   @Param("distance") float distance);
+
+    @Query("select c from Climbingroute c where c.star >= (:id)")
+    List<Climbingroute> findRouteByStar(@Param("id") int id);
+
+    @Query("select c from Climbingroute c where c.zoneType = (:zoneType)")
+    List<Climbingroute> findAllByZoneType(@Param("zoneType") ZoneType zoneType);
+
+    @Query("select c from Climbingroute c where c.routeType = (:routeType)")
+    List<Climbingroute> findAllByRouteType(@Param("routeType") RouteType routeType);
+
+    @Query("select c from Climbingroute c where c.difficulty = (:id)")
+    List<Climbingroute> findAllByDifficulty(@Param("id") Integer id);
+
+    @Query("select c from Climbingroute c where c.difficulty >= (:id)")
+    List<Climbingroute> findAllByDifficultyMin(@Param("id") Integer id);
+
+    @Query("select c from Climbingroute c where c.difficulty <= (:id)")
+    List<Climbingroute> findAllByDifficultyMax(@Param("id") Integer id);
+
+    @Query("select c from Climbingroute c where c.bonus = (:bonusType)")
+    List<Climbingroute> findAllByBonus(@Param("bonusType") BonusType bonusType);
 
 
 }
 
+//    @Async
+//    Future<Todo> findById(Long id);
+//@Query("select latitude from Climbingroute c where c.latitude >1")
