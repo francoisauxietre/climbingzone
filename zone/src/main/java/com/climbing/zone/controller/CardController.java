@@ -21,7 +21,7 @@ import java.util.List;
 
 @Slf4j
 @RestController(value = "/cards")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "http://angular7.auxietre.com"})
 @Api(value = "card", tags = {"Api Cards"})
 @RequestMapping("/cards")
 public class CardController {
