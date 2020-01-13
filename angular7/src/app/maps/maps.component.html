@@ -1,10 +1,13 @@
 <p>maps works!</p>
 <h1>Your map</h1>
 <div>
-  <agm-map [latitude]="latitude" [longitude]="longitude">
-    <agm-marker [latitude]="latitude" [longitude]="longitude">
+  <button (click)="roadClick">Roadmap</button><button (click)="satelliteClick()">Satellite</button><button (click)="hybridClick()">Hybrid</button>
+  <button (click)="terrainClick()">terrain</button>
+
+  <agm-map [latitude]="latitude" [longitude]="longitude" [fullscreenControl]='true' [mapTypeControl]='true' [mapTypeId]=typeTerrain>
+    <agm-marker *ngFor="let climbingroute of climbingroutes" [latitude]="climbingroute.latitude" [longitude]="climbingroute.longitude">
       <agm-info-window>
-        <h3><strong>Hello</strong></h3>
+        <h3><strong>{{climbingroute.climbingRouteName}}</strong></h3>
         <p>you are here</p>
       </agm-info-window>
     </agm-marker>

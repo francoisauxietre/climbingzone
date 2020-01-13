@@ -27,18 +27,6 @@ services:
       DB_PASSWORD: "fafa1"
       DB_URL: db
 
-   angular:
-     depends_on:
-      - spring
-     build: angular/
-     networks:
-      - api
-     ports:
-     - "4200:80"
-     expose:
-     - "4200"
-     restart: always
-
    angular7:
      depends_on:
       - spring
@@ -46,9 +34,9 @@ services:
      networks:
       - api
      ports:
-     - "4201:80"
+     - "4200:80"
      expose:
-     - "4201"
+     - "4200"
      restart: always
 
    react2:

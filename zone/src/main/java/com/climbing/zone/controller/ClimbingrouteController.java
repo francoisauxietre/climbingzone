@@ -52,11 +52,12 @@ public class ClimbingrouteController {
     }
 
     //affiche la liste des voies depuis un point gps latitude et longitude et une distance depuis ce moint
+    //
     @ApiOperation(value = "Affiche la liste des voies depuis un centre (latitude, longitude) et un rayon (distance)", response = List.class)
-    @GetMapping("/Climbingroute/{latitude}/{longitude}/{distance}")
-    public ResponseEntity<List<ClimbingrouteDto>> findAround(@PathVariable("latitude") float latitude,
-                                                             @PathVariable("longitude") float longitude,
-                                                             @PathVariable("distance") float distance) {
+    @GetMapping("/Climbingroute")
+    public ResponseEntity<List<ClimbingrouteDto>> findAround(@RequestParam("latitude") float latitude,
+                                                             @RequestParam("longitude") float longitude,
+                                                             @RequestParam("distance") float distance) {
         log.info("affichage de toutes les voies à partir du point(lattitude, longitude, distance)");
         return new ResponseEntity<List<ClimbingrouteDto>>(climbingrouteService.findAround(latitude, longitude, distance), HttpStatus.OK);
     }
