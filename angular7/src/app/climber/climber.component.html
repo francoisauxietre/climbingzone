@@ -1,0 +1,15 @@
+<p>climber works!</p>
+
+
+<ul *ngIf="climbers">
+  <li *ngFor="let climber of climbers">
+    <p>id:{{ climber.id }} </p>
+    <p>level:{{ climber.firstName }}</p>
+       <span>
+      <p> lastName: {{climber.lastName}} birth: {{climber.bitrh}} </p>
+      <p> language: {{climber.language}} long:</p>
+    </span>
+
+
+  </li>
+</ul>

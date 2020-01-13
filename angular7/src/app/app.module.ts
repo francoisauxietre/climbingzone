@@ -12,6 +12,8 @@ import { ClimbingrouteComponent } from './climbingroute/climbingroute.component'
 import {ReactiveFormsModule} from '@angular/forms';
 import {AgmCoreModule} from '@agm/core';
 import { MapsComponent } from './maps/maps.component';
+import { ClimberComponent } from './climber/climber.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { MapsComponent } from './maps/maps.component';
     ContactComponent,
     HomeComponent,
     ClimbingrouteComponent,
-    MapsComponent  ],
+    MapsComponent,
+    ClimberComponent,
+    CardComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

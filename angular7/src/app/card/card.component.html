@@ -1,0 +1,20 @@
+<p>card works!</p>
+
+
+<ul *ngIf="cards">
+  <li *ngFor="let card of cards">
+    <p>id:{{ card.id }} </p>
+    <p>difficulty:{{ card.difficulty }}</p>
+    <p>:{{ card.qrcode }}</p>
+    <p>:{{ card.climberPlace }}</p>
+    <p>:{{ card.climberTotal }}</p>
+    <p>:{{ card.place }}</p>
+    <p>:{{ card.photo }}</p>
+    <p>:{{ card.climbingRouteName }}</p>
+    <p>:{{ card.physical }}</p>
+    <p>:{{ card.technical }}</p>
+    <p>:{{ card.tactical }}</p>
+    <p>:{{ card.mental }}</p>
+    <p>:{{ card.bonus }}</p>
+  </li>
+</ul>

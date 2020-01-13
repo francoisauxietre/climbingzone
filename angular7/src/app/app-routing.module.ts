@@ -5,6 +5,8 @@ import {ContactComponent} from './contact/contact.component';
 import {AboutComponent} from './about/about.component';
 import {ClimbingrouteComponent} from './climbingroute/climbingroute.component';
 import {MapsComponent} from './maps/maps.component';
+import {ClimberComponent} from './climber/climber.component';
+import {CardComponent} from './card/card.component';
 
 
 const routes: Routes = [
@@ -12,6 +14,8 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'maps', component: MapsComponent},
   {path: 'about', component: AboutComponent},
+  {path: 'climber', component: ClimberComponent},
+  {path: 'card', component: CardComponent},
   {path: 'climbingroute', component: ClimbingrouteComponent}
   // {path: 'mail/id', component: MailComponent}
 ];

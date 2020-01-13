@@ -39,6 +39,18 @@ services:
      - "4200"
      restart: always
 
+   angular7:
+     depends_on:
+      - spring
+     build: angular7/
+     networks:
+      - api
+     ports:
+     - "4201:80"
+     expose:
+     - "4201"
+     restart: always
+
    react2:
      depends_on:
        - spring
