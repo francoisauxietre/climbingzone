@@ -12,6 +12,10 @@ docker image rm -f numerodesImages</code></pre>
 
 <pre><code>//build de tout 
 docker-compose up --build</code></pre>
+
+<pre><code>//nettoyer les volumes et supprime tout
+docker prune -a</code></pre>
+
           
           Site en ligne: administration sur 
           http://spring.auxietre.com/
