@@ -14,6 +14,7 @@ import {AgmCoreModule} from '@agm/core';
 import { MapsComponent } from './maps/maps.component';
 import { ClimberComponent } from './climber/climber.component';
 import { CardComponent } from './card/card.component';
+import { Maps2Component } from './maps2/maps2.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CardComponent } from './card/card.component';
     ClimbingrouteComponent,
     MapsComponent,
     ClimberComponent,
-    CardComponent  ],
+    CardComponent,
+    Maps2Component  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

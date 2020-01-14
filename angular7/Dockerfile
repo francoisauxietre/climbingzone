@@ -1,7 +1,7 @@
 ## base image
 FROM node:latest as node
 WORKDIR /app
-EXPOSE 4200
+EXPOSE 4201
 COPY . .
 RUN npm install
 RUN npm run build --prod

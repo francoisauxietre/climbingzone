@@ -34,6 +34,18 @@ services:
      networks:
       - api
      ports:
+     - "4201:80"
+     expose:
+     - "4201"
+     restart: always
+
+        angular:
+     depends_on:
+      - spring
+     build: angular/
+     networks:
+      - api
+     ports:
      - "4200:80"
      expose:
      - "4200"
