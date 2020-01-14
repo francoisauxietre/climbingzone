@@ -39,7 +39,7 @@ services:
      - "4201"
      restart: always
 
-        angular:
+   angular:
      depends_on:
       - spring
      build: angular/
