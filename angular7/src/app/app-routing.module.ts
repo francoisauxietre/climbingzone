@@ -8,6 +8,7 @@ import {MapsComponent} from './maps/maps.component';
 import {ClimberComponent} from './climber/climber.component';
 import {CardComponent} from './card/card.component';
 import {Maps2Component} from './maps2/maps2.component';
+import {NotificationComponent} from './notification/notification.component';
 
 
 const routes: Routes = [
@@ -18,8 +19,8 @@ const routes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'climber', component: ClimberComponent},
   {path: 'card', component: CardComponent},
-  {path: 'climbingroute', component: ClimbingrouteComponent}
-
+  {path: 'climbingroute', component: ClimbingrouteComponent},
+  {path: 'notification', component: NotificationComponent},
   // {path: 'mail/id', component: MailComponent}
 ];
 

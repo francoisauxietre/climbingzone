@@ -12,9 +12,10 @@ import MarkerClusterer from '@google/markerclusterer'
   styleUrls: ['./maps.component.scss']
 })
 export class MapsComponent implements OnInit {
+  url = 'https://www.google.com/maps/place/Rennes/@48.1359463,-1.7085407,13z/data=!4m5!3m4!1s0x480ede2fa7d69085:0x40ca5cd36e4ab30!8m2!3d48.117266!4d-1.6777926'
   title = 'ClimbingZone 2.0';
-  latitude = '';
-  longitude = '';
+  latitude = '48.11509732074074';
+  longitude = '-1.6382364428552592';
   chezMoiLat = '48.10623565001941';
   chezMoiLong = '-1.697200549999934';
   isticLat = '48.11509732074074';

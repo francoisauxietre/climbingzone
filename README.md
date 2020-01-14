@@ -1,21 +1,52 @@
 # climbingzone
-card games for climbers
-*site Admin en spring
+Le jeu de cartes pour les grimpeurs:
+But donner la possibilité aux grimpeurs d'enregistrer leurs performances
+pour gagner des cartes d'un jeu.
+But GLI TAA (Olivier Barais)Apprendre les technos du web, springboot, jhipster, angular et tout ce qui va avec css, docker(file et compose), mise en production
+react vuejs  dockeriser le tout, tout mettre en production pour tester
+car souvent en localhost c'est facile et apres...
+
+# projet pour lancer mon projet il suffit de lancer docker-compose up
+chaque Dockerfile est dans chaque répertoire
+Un proxy est installé sur le Nginx du serveur sur auxietre.com 
+et fait les différentes redirections.
+Pour l'application android (apk) elle est disponible sous android
+l'application android est developpé en partenariat avec la matière MMM de Marc christie (Technos utilisées Room Firebase Google et OpenstreetMap)
+
+J'ai commencé des Readme dans chaque projets
+
+react et react2 sont deux projets react 
+angular est l'ancien angular7 est le nouveau avec css google maps 
+
+Integration continue avec Travis
+build tester sur Travis
+![alt text](https://travis-ci.org/francoisauxietre/climbingzone.svg?branch=master)
+
+coveralls
+[![Coverage Status](https://coveralls.io/repos/github/francoisauxietre/climbingzone/badge.svg?branch=master)](https://coveralls.io/github/francoisauxietre/climbingzone?branch=master)
+
+Ce qui n'est pas encore fait, les tests, la documentation des methodes, le css...
+
+
+# Site en ligne 
+http://angular.auxietre.com/
+http://angular7.auxietre.com/
+http://vue.auxietre.com/#/
+http://react.auxietre.com/
+http://spring.auxietre.com/
+
+# site Admin en spring
 http://vps541599.ovh.net:8080/
 nouvelle adresse avec les redirectiosn
 *site Angular
 http://vps541599.ovh.net:4200/
+*site Angular7
+http://vps541599.ovh.net:4201/
 *site react
 http://vps541599.ovh.net:3000/
 site vuejs
 http://vps541599.ovh.net:8081/
 
-*site Angular7
-http://vps541599.ovh.net:4201/
-
-
-installation d'un nginx a la racine du principal
-/etc/nginx/sites-enabled
 
 build tester sur Travis
 ![alt text](https://travis-ci.org/francoisauxietre/climbingzone.svg?branch=master)
@@ -34,7 +65,7 @@ verfification
 
 
 
-* some readme one in each project
+
 
 
 installé dans des docker sur la machine 
@@ -59,6 +90,8 @@ installation de npm
 integration continue avec travis 
 https://travis-ci.org/francoisauxietre/climbingzone/builds/610432482
 
+installation d'un nginx a la racine du principal
+/etc/nginx/sites-enabled
   //commande pour voir les ports utilisés
 nslookup http://spring.auxietre.com/
 systemctl status apache2
