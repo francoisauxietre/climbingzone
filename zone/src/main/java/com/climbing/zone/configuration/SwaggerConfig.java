@@ -18,6 +18,8 @@ import java.util.function.Predicate;
 @EnableSwagger2
 public class SwaggerConfig {
 
+    //.apis(RequestHandlerSelectors.basePackage("spring.auxietre.com"))
+    //.apis(RequestHandlerSelectors.any())
     @Bean
     public Docket api() {
         System.out.println("passe dans swagger");
@@ -25,7 +27,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("spring.auxietre.com"))
+                .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build()
                 .host("spring.auxietre.com");
