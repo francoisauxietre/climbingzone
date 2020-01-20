@@ -8,6 +8,29 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-analytics.js"></script>
+
+<script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyDH-7qpZorNzFeyuHOlAEOVeLkH0DcFI3w",
+        authDomain: "climbingangular.firebaseapp.com",
+        databaseURL: "https://climbingangular.firebaseio.com",
+        projectId: "climbingangular",
+        storageBucket: "climbingangular.appspot.com",
+        messagingSenderId: "169601555341",
+        appId: "1:169601555341:web:9f59b851a970300d1ffbc4",
+        measurementId: "G-F8FP80S109"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+</script>
   <app-root></app-root><!-- composant principal appeler ici tout le reste est vide-->
 </body>
 </html>

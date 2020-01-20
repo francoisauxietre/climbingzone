@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  dialogflow: {
+    //angular chatbot
+    angularBot: 'efb3cb46dc4942979cb9badf0147e8aa',
+    //onetoone Chat
+    appId: '13106bc75a27c53'
+  }
 };
 
 /*
@@ -14,3 +21,5 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+

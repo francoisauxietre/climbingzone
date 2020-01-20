@@ -2,3 +2,55 @@ google api key ancienne de chez rever AIzaSyDs_ZdPw4vFrV94b5T0T8IOxUAbD7d_198
 AIzaSyBWYyHJd8a_m4DgrN4J5oEn_mZTg-QOI14
 ipapi api key
 3f70df695376ae53abacb16e8bbfb54a
+
+
+Climbingangular web key AIzaSyDH-7qpZorNzFeyuHOlAEOVeLkH0DcFI3w
+firebase init fait
+
+https://console.firebase.google.com/u/0/project/climbingangular/database/firestore/data~2Fchats~2Fmessages
+
+referencement sur https://app.cometchat.io/apps d'un nouveau chat
+https://app.cometchat.io/apps/13106bc75a27c53
+climbingChat
+App ID: 13106bc75a27c53
+Region: eu
+api key full acces  4a9aab3805504795b9803a0a333fc9a832a7cc85
+auth only e8b0fee1ef5e07729a2c982b8187e7a36f115ad8
+
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/francois/Travail/climbingzone/angular7
+
+? Which Firebase CLI features do you want to set up for this folder? Press Space to select features, then Enter to confirm your choices. Database: Deploy Firebase Realtime Database
+ Rules
+
+=== Project Setup
+
+First, let's associate this project directory with a Firebase project.
+You can create multiple project aliases by running firebase use --add,
+but for now we'll just set up a default project.
+
+? Please select an option: Use an existing project
+? Select a default Firebase project for this directory: climbingangular (climbingAngular)
+i  Using project climbingangular (climbingAngular)
+
+=== Database Setup
+
+Firebase Realtime Database Rules allow you to define how your data should be
+structured and when your data can be read from and written to.
+
+? What file should be used for Database Rules? database.rules.json
+✔  Database Rules for climbingangular have been downloaded to database.rules.json.
+Future modifications to database.rules.json will update Database Rules when you run
+firebase deploy.
+
+i  Writing configuration info to firebase.json...
+i  Writing project information to .firebaserc...
+
+✔  Firebase initialization complete!

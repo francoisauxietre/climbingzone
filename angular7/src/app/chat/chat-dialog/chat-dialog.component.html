@@ -1,0 +1,18 @@
+<p>chat-dialog works!</p>
+<h1>Angular Bot</h1>
+
+<ng-container *ngFor="let message of messages | async">
+
+  <div class="message" >
+    {{ message.content }}
+  </div>
+
+</ng-container>
+
+
+<label>Your Message</label>
+
+
+<input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text">
+
+<button (click)="sendMessage()">Send</button>

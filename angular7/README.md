@@ -69,3 +69,10 @@ AJOUT DE API GOOGLE MAPS
 <pre><code>
 npm install --save @agm/core
 </code></pre>
+
+POUR CHANGER LE REPERTOIRE DE SORTIE 
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "www",

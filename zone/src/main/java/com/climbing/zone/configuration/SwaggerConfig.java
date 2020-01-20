@@ -21,12 +21,14 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         System.out.println("passe dans swagger");
+        System.out.println("--------------url trouvee----------"+RequestHandlerSelectors.basePackage("spring.auxietre.com"));
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("spring.auxietre.com"))
                 .paths(PathSelectors.any())
-                .build();
+                .build()
+                .host("spring.auxietre.com");
 
     }
 

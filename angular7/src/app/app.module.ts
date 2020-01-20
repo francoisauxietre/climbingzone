@@ -17,6 +17,7 @@ import { CardComponent } from './card/card.component';
 import { Maps2Component } from './maps2/maps2.component';
 import {NotifierModule, NotifierOptions} from 'angular-notifier';
 import { NotificationComponent } from './notification/notification.component';
+import {ChatModule} from './chat/chat.module';
 
 /**
  * Custom angular notifier options
@@ -81,7 +82,8 @@ const customNotifierOptions: NotifierOptions = {
     HttpClientModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({apiKey: 'AIzaSyBWYyHJd8a_m4DgrN4J5oEn_mZTg-QOI14'}),
-    NotifierModule
+    NotifierModule,
+    ChatModule
   ],
   providers: [],
   bootstrap: [AppComponent]

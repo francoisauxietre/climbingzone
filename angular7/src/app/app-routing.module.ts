@@ -9,6 +9,7 @@ import {ClimberComponent} from './climber/climber.component';
 import {CardComponent} from './card/card.component';
 import {Maps2Component} from './maps2/maps2.component';
 import {NotificationComponent} from './notification/notification.component';
+import {ChatDialogComponent} from './chat/chat-dialog/chat-dialog.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'card', component: CardComponent},
   {path: 'climbingroute', component: ClimbingrouteComponent},
   {path: 'notification', component: NotificationComponent},
+  {path: 'chat', component: ChatDialogComponent},
   // {path: 'mail/id', component: MailComponent}
 ];
 
