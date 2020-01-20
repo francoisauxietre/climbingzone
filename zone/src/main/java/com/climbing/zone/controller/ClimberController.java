@@ -50,7 +50,7 @@ import org.springframework.web.bind.annotation.RestController;
 //TODO CHANGER ICI
 @Slf4j
 @RestController(value = "/climbers")
-@CrossOrigin(origins = {"http://localhost:4200", "http://angular7.auxietre.com"})
+@CrossOrigin(origins = {"http://localhost:4200", "http://angular7.auxietre.com", "http://localhost:8080"})
 @Api(value = "Climber", tags = {"Api Climbers"})
 @RequestMapping("/climbers")
 public class ClimberController {
